@@ -8,6 +8,8 @@ const emit = defineEmits<{ action: [id: string] }>()
 const { t, locale } = useI18n()
 
 const time = computed(() => fmtTime(props.card.time, locale.value))
+// The table's date and time in numbers: "Tue, 1/14 · 6:30 PM" / "mar, 14/1 · 6:30 p. m."
+const when = computed(() => `${fmtDate(props.date, locale.value, { weekday: 'short', month: 'numeric', day: 'numeric' })} · ${time.value}`)
 const weekday = computed(() => capitalize(fmtDate(props.date, locale.value, { weekday: 'long' })))
 const evidenceKey = computed(() => props.card.evidence.replace(' ', '_'))
 const [primary, ...others] = props.card.actions
@@ -19,8 +21,10 @@ const [primary, ...others] = props.card.actions
     <template v-if="card.kind === 'table'">
       <div class="bg-grumble-500 text-white px-5 py-4 flex items-center gap-3">
         <UIcon name="i-lucide-utensils" class="size-7" />
-        <p class="font-display font-bold text-[26px] leading-tight flex-1">{{ card.title }}</p>
-        <span class="font-display font-semibold text-[20px] tabular">{{ time }}</span>
+        <div class="flex-1">
+          <p class="font-display font-bold text-[26px] leading-tight">{{ card.title }}</p>
+          <p class="font-display font-semibold text-[20px] tabular opacity-95">{{ capitalize(when) }}</p>
+        </div>
       </div>
       <div class="p-5 flex flex-col gap-3">
         <p class="text-[17px]">{{ card.body }}</p>

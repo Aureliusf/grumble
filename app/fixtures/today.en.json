@@ -3,7 +3,7 @@
   "nudge": "Dinner was at 9:40 last night. Not a crime. Tonight, aim for 8.",
   "status_yesterday": "amber",
   "card": { "id": "p2-table", "kind": "table",
-    "title": "Versailles, six thirty.",
+    "title": "Versailles",
     "body": "Tony has the table. Vaca frita's on the menu, beans first. Seat's yours if you want it. Walk down Eighth after.",
     "time": "18:30", "walk_min": 10, "person": "Tony", "evidence": "observed pattern",
     "actions": [{"id":"seat","label":"I'll be there"},{"id":"skip","label":"Not this week"}] },

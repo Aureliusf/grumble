@@ -38,7 +38,7 @@
       "body": "Esta noche: lo que ibas a comer, antes de las {target}, y después diez minutos afuera."
     },
     "p2-table": {
-      "title": "Versailles, {time}.",
+      "title": "Versailles",
       "body": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho.",
       "body_covered": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. El plato está cubierto, unos ${cost}. Tu silla está lista si la quieres. Después, caminar por la Ocho."
     },

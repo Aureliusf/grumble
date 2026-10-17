@@ -3,7 +3,7 @@
   "nudge": "Anoche cenó a las 9:40. No es un crimen. Hoy, intente a las 8.",
   "status_yesterday": "amber",
   "card": { "id": "p2-table", "kind": "table",
-    "title": "Versailles, seis y media.",
+    "title": "Versailles",
     "body": "Tony tiene la mesa. Hay vaca frita, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho.",
     "time": "18:30", "walk_min": 10, "person": "Tony", "evidence": "observed pattern",
     "actions": [{"id":"seat","label":"Ahí estaré"},{"id":"skip","label":"Esta semana no"}] },
