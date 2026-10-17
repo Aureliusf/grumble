@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "updated": "2026-10-17T12:30:00-04:00",
+  "person": {
+    "id": "N0771",
+    "display_name": "Marisol",
+    "language": "es",
+    "age": 71,
+    "sex": "female",
+    "food_background": "Cuban",
+    "cancer_type": "breast",
+    "years_since_treatment": 3.0,
+    "blood_sugar_group": "prediabetes",
+    "wears_cgm": true,
+    "schedule": { "type": "retired", "sleep_start": "23:30", "sleep_end": "07:00", "work_days": [] },
+    "has_dog": false,
+    "dietary_restrictions": []
+  },
+  "risks": {
+    "company": {
+      "eats_with": ["my daughter on Sundays", "Carmen from the building, sometimes"],
+      "usual_dinner_company": "alone",
+      "would_call_on_a_bad_day": "my daughter Yesenia",
+      "open_to_table": true,
+      "open_to_hosting": false
+    },
+    "taste": {
+      "loves": ["pastelito-de-guayaba-and-cafecito", "cafe-con-leche", "vaca-frita-with-rice-and-black-beans", "arroz-con-pollo", "picadillo-with-white-rice-and-maduros"],
+      "refuses": ["anything with cilantro", "fish that smells like fish"],
+      "grew_up_on": "Cuban, Hialeah",
+      "appetite_pattern": "steady"
+    },
+    "money": { "weekly_food_budget_usd": 90, "snap": false, "who_cooks": "self", "store": "Sedano's on 49th" },
+    "convenience": { "meals_out_per_week": 2, "cooks_days_per_week": 5, "usual_places": ["Versailles", "La Carreta"], "commute_minutes": 0 }
+  },
+  "standards": {
+    "items": [
+      { "id": "dinner-by-8", "kind": "last_meal_by", "statement": "Comer antes de las 8 para dormir mejor", "value": "20:00", "relative_to_sleep": false, "why": "In people like you, dinner after 8 ran 24 mg/dL higher at the peak and half again more glucose over two hours", "negotiated_on": "2026-10-17" },
+      { "id": "walk-10", "kind": "walk_after_dinner_min", "statement": "Diez minutos caminando después de cenar, con Carmen si puede", "value": 10, "unit": "min", "why": "Ten minutes right after cut the peak by 23 mg/dL in people like you; more than ten didn't add anything", "negotiated_on": "2026-10-17" },
+      { "id": "beans-first", "kind": "protein_first", "statement": "Los frijoles y la carne antes del arroz", "value": true, "why": "Fiber and protein before starch flatten the peak", "negotiated_on": "2026-10-17" },
+      { "id": "rice-100", "kind": "starch_portion_g", "statement": "Una taza de arroz, no dos", "value": 100, "unit": "g", "why": "Each 10 g of carbohydrate adds about 6 mg/dL to the peak", "negotiated_on": "2026-10-17" },
+      { "id": "pastelito-morning", "kind": "custom", "statement": "El pastelito con el cafecito de la mañana, no de la noche", "value": "before 11:00", "why": "Same pastelito, morning peak is lower and it doesn't sit on the overnight fast", "negotiated_on": "2026-10-17" },
+      { "id": "table-tuesday", "kind": "social_nights_per_week", "statement": "Martes en Versailles con la mesa", "value": 1, "why": "Coaching with company moved HbA1c four times more than tips alone", "negotiated_on": "2026-10-17" }
+    ]
+  },
+  "procedures": {
+    "items": [
+      { "standard_id": "dinner-by-8", "source": "meal_log", "cadence": "daily", "computation": "time of last logged item with calories > 5 kcal, on the 4am-to-4am eating day, is <= 20:00" },
+      { "standard_id": "walk-10", "source": "tracker_steps", "cadence": "daily", "computation": "steps in the 60 min after the last meal >= 800 (about 10 min walking)" },
+      { "standard_id": "beans-first", "source": "daily_checkin", "cadence": "daily", "computation": "self-report toggle on the dinner card" },
+      { "standard_id": "rice-100", "source": "meal_log", "cadence": "per_meal", "computation": "logged rice portion <= 120 g" },
+      { "standard_id": "pastelito-morning", "source": "meal_log", "cadence": "daily", "computation": "no pastelito logged after 11:00" },
+      { "standard_id": "table-tuesday", "source": "table_attendance", "cadence": "weekly", "computation": "checked in at a Versailles table this week" }
+    ]
+  },
+  "thresholds": {
+    "daily": {
+      "amber_if": ["dinner-by-8 missed", "walk-10 missed"],
+      "red_if": ["no food logged and no check-in"],
+      "amber_action": "nudge",
+      "red_action": "coach_notified"
+    },
+    "weekly": {
+      "amber_if": ["dinner-by-8 missed 3+ days", "walk-10 missed 4+ days"],
+      "red_if": ["no log 3 consecutive days", "mood <= 2 on 3 days", "cgm time above 180 mg/dL > 25%"],
+      "red_action": "coach_calls"
+    }
+  },
+  "accountable": {
+    "coach": { "name": "Lourdes", "contact": "sylvester-survivorship" },
+    "buddy": { "name": "Carmen", "relationship": "neighbor, 4th floor", "walks": true },
+    "table": { "role": "guest", "usual_night": "Tue", "last_attended": null },
+    "dog": null
+  },
+  "dishes": {
+    "rotation": [
+      { "dish_id": "vaca-frita-with-rice-and-black-beans", "slot": "dinner", "star": true, "move": "Beans first, then the vaca frita, rice last and one cup. Walk after.", "flags": ["high_fiber", "table_menu"], "cost_usd": 4.5 },
+      { "dish_id": "arroz-con-pollo", "slot": "lunch", "star": true, "move": "Add a side of black beans; half the rice.", "flags": ["cheap"] },
+      { "dish_id": "picadillo-with-white-rice-and-maduros", "slot": "dinner", "move": "Two maduros, not four. Picadillo and beans before rice.", "flags": [] },
+      { "dish_id": "pastelito-de-guayaba-and-cafecito", "slot": "breakfast", "star": true, "move": "Keep it. Morning only, with the cafecito, after two eggs.", "flags": ["cheap", "zero_prep"] },
+      { "dish_id": "cafe-con-leche", "slot": "breakfast", "move": "As is.", "flags": ["zero_prep", "low_appetite_ok"] },
+      { "dish_id": "sancocho", "slot": "dinner", "move": "As is. Already Mediterranean-style by the program's score.", "flags": ["low_appetite_ok", "high_fiber"] }
+    ],
+    "places": [
+      { "venue": "Versailles", "order": "Vaca frita, moros, no maduros; or pollo a la plancha with black beans. Cafecito after, not flan.", "avoid": "Palomilla with fries, Cuban sandwich at dinner", "calories": 700, "protein_g": 45, "confidence": "estimated" },
+      { "venue": "La Carreta", "order": "Pollo a la plancha, frijoles negros, small rice", "avoid": "Fried plantains in volume", "calories": 650, "protein_g": 45, "confidence": "estimated" }
+    ]
+  },
+  "contract": {
+    "framing": "suggestive",
+    "nag_tolerance": "low",
+    "quiet_hours": ["22:00-08:00"],
+    "never_mention": ["weight"]
+  }
+}
