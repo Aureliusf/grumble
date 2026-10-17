@@ -1,7 +1,7 @@
 import type { Curve, Dish, Lang, SimulateRequest, SimulateResponse, SugarGroup } from '../shared/types'
 import { N_DINNERS, P, type Graph } from './data'
 import { movesFor, type Portion } from './moves'
-import { grumbleTime, resolveLate } from './time'
+import { dinnerTime, resolveLate } from './time'
 import { clockLabel, t } from './copy'
 
 const O = P.ols_peak_delta_mg_dl
@@ -67,7 +67,7 @@ export function simulate(req: SimulateRequest, dish: Dish, graph: Graph, lang: L
   }
 
   const current = run(req.time, req.walk_min, req.move, false)
-  const grumble = run(grumbleTime(schedule), 10, true, true)
+  const grumble = run(dinnerTime(graph), 10, true, true)
   return {
     baseline_mg_dl: P.baseline_mg_dl[group],
     group,

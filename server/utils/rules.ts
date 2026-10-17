@@ -3,7 +3,7 @@ import { clock, dishById, type Graph, type LogDay } from './data'
 import { MENU_IDS, moveText } from './menu'
 import { checkins, skipped, tableView, tables, weekDays, yesterday } from './state'
 import { dayStatus, weekStatus } from './status'
-import { grumbleTime, resolveTarget } from './time'
+import { dinnerTime, resolveTarget } from './time'
 import { cap, shortDish, spellTime, t, shortClock } from './copy'
 
 interface Ctx { graph: Graph; lang: Lang; today: string; weekday: string; checkin?: Checkin; week: Week; yesterday?: LogDay; yesterdayLateMissed: boolean }
@@ -22,7 +22,7 @@ const company = (c: Ctx) => c.checkin?.company ?? 'unknown'
 // A dinner card: dish, the move, the move's time (sleep_start - 4.5 h), a ten-minute walk, and a person when there is one.
 interface DinnerOpts { vars?: Record<string, string>; dishId?: string; evidence?: Card['evidence']; person?: string }
 function dinner(c: Ctx, id: string, { vars = {}, dishId = starredDinner(c.graph).dish_id, evidence = 'rule based', person }: DinnerOpts = {}): Card {
-  const time = grumbleTime(c.graph.person.schedule), move = moveLine(dishId, c.lang)
+  const time = dinnerTime(c.graph), move = moveLine(dishId, c.lang)
   return {
     id, kind: 'dinner', title: dishById.get(dishId)?.name ?? dishId,
     body: t(c.lang, `cards.${id}.body`, { time: cap(spellTime(time, c.lang)), move, walk: t(c.lang, 'moves.walk10'), ...vars }),
@@ -35,7 +35,7 @@ const todaysTable = (c: Ctx) => tables.find(tb => tb.date === c.today && tb.host
 // 05 §The one suggestion: ordered, first match wins.
 const RULES: Rule[] = [
   { id: 'p1-red', when: c => c.week.red, card: c => {
-    const std = lastMealStd(c.graph), target = std ? resolveTarget(std, c.graph.person.schedule) : grumbleTime(c.graph.person.schedule)
+    const target = dinnerTime(c.graph)
     const coach = c.graph.accountable.coach.name
     return { id: 'p1-red', kind: 'red', title: t(c.lang, 'cards.p1-red.title', { coach }), body: t(c.lang, 'cards.p1-red.body', { target: spellTime(target, c.lang) }),
       time: target, walk_min: 10, person: coach, evidence: 'coach reviewed', actions: [] }

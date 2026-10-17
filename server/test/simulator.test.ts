@@ -52,6 +52,14 @@ it('walk 20 shows the same numbers as walk 10', () => {
   expect(ten.same_as_ten).toBe(false)
 })
 
+it("the move runs at her own standard (dinner by 8), and 8 itself isn't late", () => {
+  const r = sim({})
+  expect(r.grumble.label.startsWith('8:00 pm')).toBe(true)
+  expect(r.grumble.late).toBe(false)
+  expect(resolveLate('20:00', marisol.person.schedule)).toBe(false)
+  expect(resolveLate('20:30', marisol.person.schedule)).toBe(true)
+})
+
 it('Jean (night shift, sleeps 09:00): 02:00 is not late, 06:00 is', () => {
   expect(resolveLate('02:00', jean.person.schedule)).toBe(false)
   expect(resolveLate('06:00', jean.person.schedule)).toBe(true)

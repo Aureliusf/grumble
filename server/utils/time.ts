@@ -12,17 +12,21 @@ export const minutesBeforeSleep = (time: string, sleepStart: string) => {
   return m > 1440 - 360 ? m - 1440 : m
 }
 
-// Late as fitted (>= 20:00 or < 04:00) for day sleepers who sleep at 23:00 or later; otherwise within 3.5 h of sleep.
+// Late = after 20:00 or before 04:00 for day sleepers who sleep at 23:00 or later; otherwise less than 3.5 h before sleep.
+// The boundary itself is on time, so "dinner by 8" at 8 is not a late dinner.
 export function resolveLate(time: string, schedule: Schedule) {
   if (schedule.type !== 'night shift' && toMin(schedule.sleep_start) >= 23 * 60) {
     const t = toMin(time)
-    return t >= 20 * 60 || t < 4 * 60
+    return t > 20 * 60 || t < 4 * 60
   }
-  return minutesBeforeSleep(time, schedule.sleep_start) <= 210
+  return minutesBeforeSleep(time, schedule.sleep_start) < 210
 }
 
-// The move's dinner time: sleep_start - 4.5 h, rounded to the half hour (Marisol 23:30 -> 19:00, Jean 09:00 -> 04:30).
-export const grumbleTime = (schedule: Schedule) => fromMin(Math.round((toMin(schedule.sleep_start) - 270) / 30) * 30)
+// Tonight's dinner time: the person's own last_meal_by standard (Marisol 20:00), else sleep_start - 4.5 h on the half hour.
+export function dinnerTime(g: { person: { schedule: Schedule }; standards: { items: Standard[] } }) {
+  const std = g.standards.items.find(s => s.kind === 'last_meal_by')
+  return std ? resolveTarget(std, g.person.schedule) : fromMin(Math.round((toMin(g.person.schedule.sleep_start) - 270) / 30) * 30)
+}
 
 export function resolveTarget(standard: Standard, schedule: Schedule) {
   const v = String(standard.value)
