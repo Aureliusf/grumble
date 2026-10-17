@@ -28,7 +28,7 @@
   p.lead { font-size: 28px; line-height: 1.4; color: var(--ink-2); margin-top: 22px; max-width: 1180px; }
   .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; color: var(--ink-3); font-size: 18px; }
   .src { font-size: 17px; color: var(--ink-3); line-height: 1.4; }
-  .logo { height: 54px; width: auto; align-self: flex-start; mix-blend-mode: multiply; }
+  .logo { display: block; height: 64px; width: auto; max-width: none; flex: none; align-self: flex-start; object-fit: contain; mix-blend-mode: multiply; }
   .pill { display: inline-block; padding: 6px 16px; border-radius: 999px; background: var(--coral-100); color: var(--coral-600); font-weight: 700; font-size: 18px; }
 
   /* slide 1 */
@@ -110,8 +110,8 @@
 
   <!-- 1 · The problem and what's new -->
   <section class="slide">
-    <img class="logo" src="../assets/logo-horizontal.png" alt="Grumble">
-    <div class="kicker" style="margin-top:34px">Miami AI Hackathon · Challenge 2: Dose and Timing · with Sylvester</div>
+    <img class="logo" style="height:96px" src="../public/logo-horizontal.png" alt="Grumble">
+    <div class="kicker" style="margin-top:26px">Miami AI Hackathon · Challenge 2: Dose and Timing · with Sylvester</div>
     <h1>Food apps count what's on the plate. Nobody asks who's across the table.</h1>
     <p class="lead">After cancer treatment, survivors are told to eat better: less sugar, earlier dinners, move more. Then the casseroles stop, the calls stop, and dinner is at 9:40, alone, in front of the TV. Grumble works on all three things that shape blood sugar after a meal:</p>
     <div class="three">
@@ -297,7 +297,7 @@
       </div>
     </div>
     <div class="foot">
-      <img class="logo" src="../assets/logo-horizontal.png" alt="Grumble">
+      <img class="logo" src="../public/logo-horizontal.png" alt="Grumble">
       <span>Thank you.</span>
     </div>
     <aside class="notes">~20 s. Land the line, then stop talking. If asked about real people: "The synthetic patterns are Sylvester's design. The real finding is NHANES: distressed survivors eat less and run higher HbA1c. Grumble collects what the data doesn't have: who you ate with."</aside>
