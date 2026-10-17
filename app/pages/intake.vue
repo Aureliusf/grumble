@@ -69,7 +69,7 @@ function set(k: keyof IntakeAnswers, v: unknown) {
 const suggestions = computed(() => {
   if (step.value.suggestions) return step.value.suggestions
   if (step.value.suggestionsKey) return (tm(`intake.sugg.${step.value.suggestionsKey}`) as unknown[]).map(x => rt(x as never))
-  if (step.value.id === 'buddy') return answers.eats_with
+  if (['call', 'buddy'].includes(step.value.id)) return answers.eats_with
   return []
 })
 
