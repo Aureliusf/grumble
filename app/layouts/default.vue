@@ -2,6 +2,9 @@
 const { t, locale } = useI18n()
 const { restore } = useLang()
 const isDev = import.meta.dev
+// The spike bar needs a day to draw; the splash and the intake don't have one yet.
+const route = useRoute()
+const showSpikes = computed(() => !['/', '/intake'].includes(route.path))
 
 onMounted(restore)
 useHead({ htmlAttrs: { lang: locale } })
@@ -27,6 +30,7 @@ const tabs = computed(() => [
             <LangPill />
           </div>
         </div>
+        <SpikeBar v-if="showSpikes" />
         <DevStrip v-if="isDev" />
       </header>
 

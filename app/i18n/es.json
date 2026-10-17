@@ -387,5 +387,9 @@
     "of": "{n} de {target}",
     "targets_note": "Metas del día según las Guías Alimentarias de EE. UU., por edad y sexo.",
     "remove": "Quitar"
+  },
+  "spike": {
+    "title": "Picos de hoy · gente como usted",
+    "aria": "Abrir la curva de glucosa de todo el día"
   }
 }

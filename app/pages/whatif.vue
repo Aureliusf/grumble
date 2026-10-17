@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { SelectMenuItem } from '@nuxt/ui'
 import type { Dish } from '#shared/types'
-import type { BalancedDay } from '#shared/balance'
-import { dayCurve, latenessFor } from '#shared/simulate'
 import { fixtures } from '~/fixtures'
 
 const PERSON = 'N0771'
@@ -15,30 +13,7 @@ const { state, result } = useWhatIf(PERSON)
 // Whole day: the balanced day against the same fixed meal with usual plates around it (shared/simulate.ts).
 const route = useRoute()
 const mode = ref<'one' | 'day'>(route.query.mode === 'day' ? 'day' : 'one')
-const { today: balancedDay, usual: usualDayPlan, person, eaten } = useDay(PERSON)
-const hasWalk = computed(() => graph.value.standards.items.some(s => s.kind === 'walk_after_dinner_min'))
-// Meal times on the person's own clock: breakfast an hour after waking, lunch five hours later,
-// dinner four hours before sleep. Night shift lands where it should with no special case.
-const frame = computed(() => {
-  const wake = toMinutes(person.value.schedule.sleep_end)
-  const sleep = toMinutes(person.value.schedule.sleep_start)
-  const awake = (sleep - wake + 1440) % 1440 || 1440
-  return { from: wake, to: wake + awake, at: { breakfast: wake + 60, lunch: wake + 360, dinner: wake + awake - 240 } }
-})
-const mealsOf = (day: BalancedDay) => day.plates.map(p => ({
-  at: frame.value.at[p.slot],
-  n: p.n,
-  dinner: p.slot === 'dinner',
-  late: latenessFor(toHHMM(frame.value.at[p.slot] % 1440), person.value.schedule.sleep_start),
-  walk_min: p.slot === 'dinner' && hasWalk.value ? 10 : 0,
-  label: t(`day.slots.${p.slot}`),
-}))
-const curves = computed(() => {
-  const g = person.value.blood_sugar_group
-  const b = dayCurve(mealsOf(balancedDay.value), g, frame.value.from, frame.value.to + 120)
-  const u = dayCurve(mealsOf(usualDayPlan.value), g, frame.value.from, frame.value.to + 120)
-  return { b, u, peakB: Math.max(...b.points.map(p => p.mg_dl)), peakU: Math.max(...u.points.map(p => p.mg_dl)) }
-})
+const { today: balancedDay, person, eaten, frame, mealsOf, curves } = useDayGlucose(PERSON)
 const fixedName = computed(() => balancedDay.value.plates.find(p => p.fixed)?.dish.name ?? '')
 const dayGroupKey = computed(() => (person.value.blood_sugar_group === 'type 2 diabetes' ? 't2d' : person.value.blood_sugar_group))
 
@@ -111,7 +86,7 @@ const showSameAsTen = computed(() => r.value.same_as_ten && state.walk_min > 10)
         :baseline="curves.b.baseline"
         :meals="mealsOf(balancedDay).map(m => ({ at: m.at, label: m.label }))"
         :from="frame.from"
-        :to="frame.to + 120"
+        :to="frame.to"
       />
       <div class="mt-2 flex flex-col gap-1 text-[15px]">
         <span v-if="fixedName" class="flex items-center gap-2"><span class="inline-block w-4 h-1 rounded-full bg-grumble-500" />{{ t('whatif.day_usual', { dish: fixedName }) }}</span>

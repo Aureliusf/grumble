@@ -52,3 +52,8 @@ Choices made where the spec was silent or the installed versions differed from i
 - **Today's meals** go through `/api/meal` (Claude; word match without a key; moved from `/api/intake/meal`) and are kept as the day log beside the graph (`useEaten`, localStorage), per 05's log.days.
 - **Whole-day simulator** (`shared/simulate.ts`) is 04's math, with every constant from `simulator-params.json`, so meal curves add up on one clock. Meal times are set from the person's own sleep window (breakfast at wake +1 h, lunch at wake +6 h, dinner 4 h before sleep), so night shift needs no special case. The comparison line is the same fixed meal with the median-calorie plate of their cuisine in the other slots ("usual plates"), not something made up. `tests/simulator.test.ts` is 04's hand check (85.8 / 38.8 / 21.6, walk 20 = walk 10, night-shift lateness) against this code. Aurelio's `/api/simulate` can import the same module.
 - **Fixes:** "no one" as a buddy is now no buddy; a dish name mid-sentence is lowercase ("The pastelito de guayaba…"); unknown restaurants no longer get a filler order line.
+
+## 2026-10-17 — spike bar under the header
+
+- **Glucose, not insulin.** The team asked for "insulin spikes", but every parameter in `simulator-params.json` is CGM glucose, and the only insulin data is one fasting value per check-up. An insulin bar would be numbers we made up (rules 3 and 10).
+- **What the bar shows:** a sparkline of today's whole-day curve, coral above 140, with one rise-above-baseline per meal. It uses the same `useDayGlucose` composable as What if → Whole day, so the bar and the chart can't disagree. It's labelled "people like you". Tapping it opens the whole-day view. Hidden on the splash and the intake, which have no day to draw yet.

@@ -387,5 +387,9 @@
     "of": "{n} of {target}",
     "targets_note": "Day targets from the US Dietary Guidelines, by age and sex.",
     "remove": "Remove"
+  },
+  "spike": {
+    "title": "Today's spikes · people like you",
+    "aria": "Open today's whole-day glucose curve"
   }
 }
