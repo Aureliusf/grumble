@@ -1,0 +1,1 @@
+{ "source": "count of meal_type == dinner per blood_sugar_group in analysis/meal_responses.csv (checked by test/simulator.test.ts)", "normal": 2550, "prediabetes": 1585, "type 2 diabetes": 1337 }

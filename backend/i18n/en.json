@@ -1,0 +1,43 @@
+{
+  "moves": {
+    "earlier": "Same plate, an hour earlier.",
+    "walk10": "Ten minutes after. Then I'll stop grumbling.",
+    "beans-first": "Beans first, rice last.",
+    "protein-first": "Meat before rice.",
+    "one-cup": "One cup of rice, not two. Same {dish}.",
+    "two-not-four": "Two maduros, not four. Nobody's counting but me.",
+    "morning-not-night": "The {dish} in the morning. Same {dish}.",
+    "add-beans": "Add a side of black beans. It's the cheapest thing on the menu.",
+    "share-it": "That's two dinners. Share it or box half before you start.",
+    "soup-counts": "Sancocho counts as dinner.",
+    "table": "Versailles, six thirty. Seat's yours.",
+    "as-is": "As is. Don't let anyone tell you otherwise."
+  },
+  "short": {
+    "one-cup": "one cup",
+    "two-not-four": "two maduros",
+    "beans-first": "beans first",
+    "protein-first": "meat first",
+    "add-beans": "side of beans",
+    "morning-not-night": "in the morning",
+    "share-it": "shared",
+    "soup-counts": "soup",
+    "as-is": "as is",
+    "walk10": "10-min walk",
+    "no_walk": "no walk",
+    "walk_n": "{n}-min walk"
+  },
+  "actions": { "seat": "I'll be there", "skip": "Not this week" },
+  "nudge": "{last} last night. Not a crime. Tonight, {target}.",
+  "cards": {
+    "p1-red": { "title": "{coach} is going to call you this week.", "body": "Tonight: whatever you were going to eat, before {target}, then ten minutes outside." },
+    "p2-table": { "title": "Versailles, {time}.", "body": "{host} has the table. {dish}'s on the menu, beans first. Seat's yours if you want it. Walk down Eighth after." },
+    "p3-buddy": { "body": "{time}. {move} And text {buddy} about the walk after. Ten minutes, {buddy}'s block and back." },
+    "p4-dog": { "body": "{time}. {move} Then {dog} gets the long way around the block. Ten minutes." },
+    "p5-alone": { "body": "{time}. {move} At the table, not the couch. Ten minutes outside after. The bay's right there." },
+    "p6-place": { "body": "{order}. Skip the {avoid}. Walk to the car the long way." },
+    "p7-light": { "body": "Nothing heavy. {time}. {move}" },
+    "p9-earlier": { "body": "{time}, earlier than last night. {move} That's the whole ask." },
+    "p10-default": { "body": "{time}. {move} {walk}" }
+  }
+}

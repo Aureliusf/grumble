@@ -1,0 +1,43 @@
+{
+  "moves": {
+    "earlier": "El mismo plato, una hora antes.",
+    "walk10": "Diez minutos después. Y dejo de refunfuñar.",
+    "beans-first": "Primero los frijoles, el arroz al final.",
+    "protein-first": "La carne antes del arroz.",
+    "one-cup": "Una taza de arroz, no dos. La misma {dish}.",
+    "two-not-four": "Dos maduros, no cuatro. Nadie cuenta, solo yo.",
+    "morning-not-night": "El {dish} por la mañana. El mismo {dish}.",
+    "add-beans": "Agrega frijoles negros. Es lo más barato del menú.",
+    "share-it": "Eso son dos cenas. Comparte o guarda la mitad antes de empezar.",
+    "soup-counts": "El sancocho cuenta como cena.",
+    "table": "Versailles, seis y media. Tu silla está lista.",
+    "as-is": "Así como está. Que nadie te diga lo contrario."
+  },
+  "short": {
+    "one-cup": "una taza",
+    "two-not-four": "dos maduros",
+    "beans-first": "frijoles primero",
+    "protein-first": "la carne primero",
+    "add-beans": "con frijoles",
+    "morning-not-night": "por la mañana",
+    "share-it": "compartido",
+    "soup-counts": "sopa",
+    "as-is": "así como está",
+    "walk10": "10 min caminando",
+    "no_walk": "sin caminar",
+    "walk_n": "{n} min caminando"
+  },
+  "actions": { "seat": "Ahí estaré", "skip": "Esta semana no" },
+  "nudge": "{last} anoche. No es un crimen. Hoy, a las {target}.",
+  "cards": {
+    "p1-red": { "title": "{coach} te va a llamar esta semana.", "body": "Esta noche: lo que ibas a comer, antes de las {target}, y después diez minutos afuera." },
+    "p2-table": { "title": "Versailles, {time}.", "body": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho." },
+    "p3-buddy": { "body": "{time}. {move} Y escríbele a {buddy} para la caminata. Diez minutos, hasta la esquina de {buddy} y de vuelta." },
+    "p4-dog": { "body": "{time}. {move} Después, {dog} se gana la vuelta larga a la cuadra. Diez minutos." },
+    "p5-alone": { "body": "{time}. {move} En la mesa, no en el sofá. Diez minutos afuera después. La bahía está ahí mismo." },
+    "p6-place": { "body": "{order}. Sin {avoid}. Al carro por el camino largo." },
+    "p7-light": { "body": "Nada pesado. {time}. {move}" },
+    "p9-earlier": { "body": "{time}, más temprano que anoche. {move} Eso es todo." },
+    "p10-default": { "body": "{time}. {move} {walk}" }
+  }
+}
