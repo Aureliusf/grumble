@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { N_DINNERS, dishById, graphs } from '../utils/data'
 import { movesFor } from '../utils/moves'
-import { peakDelta, simulate } from '../utils/sim'
+import { simulate } from '../utils/sim'
+import { peakDelta } from '../../shared/simulate'
 import { resolveLate } from '../utils/time'
 import type { SimulateRequest } from '../shared/types'
 
@@ -14,9 +15,9 @@ const sim = (r: Partial<SimulateRequest>) =>
 
 describe('04 hand check, Marisol, vaca frita', () => {
   it('regression peak delta: 85.8 late no walk, 38.8 at 19:00 + walk 10, 21.6 with one cup', () => {
-    expect(peakDelta(plate, true, 0, 'prediabetes')).toBeCloseTo(85.8, 0)
-    expect(peakDelta(plate, false, 10, 'prediabetes')).toBeCloseTo(38.8, 0)
-    expect(peakDelta({ ...plate, carbs_g: plate.carbs_g * 0.65 }, false, 10, 'prediabetes')).toBeCloseTo(21.6, 0)
+    expect(peakDelta(plate, { group: 'prediabetes', dinner: true, late: true, walk_min: 0 })).toBeCloseTo(85.8, 0)
+    expect(peakDelta(plate, { group: 'prediabetes', dinner: true, late: false, walk_min: 10 })).toBeCloseTo(38.8, 0)
+    expect(peakDelta({ ...plate, carbs_g: plate.carbs_g * 0.65 }, { group: 'prediabetes', dinner: true, late: false, walk_min: 10 })).toBeCloseTo(21.6, 0)
   })
 
   it('moves for vaca frita are one cup + beans first', () => {

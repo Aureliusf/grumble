@@ -19,7 +19,7 @@
 - Contract kept for the frontend: the open Tuesday has `host: { name: "—", years_out: 0 }` (16), and `funded_by` comes back localized.
 - Dinner and place cards carry the move in `card.move` only; `body` no longer repeats it, so the frontend shows it once.
 - Routes use Nitro's auto-imported h3 helpers instead of importing `h3`, so standalone Nitro and Nuxt share one h3.
-- The late effect is always the group-stratified dinner effect (15), including for non-dinner dishes.
+- One formula: `server/utils/sim.ts` imports `peakDelta` and `shapeAt` from `shared/simulate.ts`, the same code the day view and spike bar run in the browser. What-if passes `dinner: true` (its slider is "Dinner at"), so it keeps the group dinner effects; beans-first is passed as 1.5x the fiber grams, which is identical in a linear model. The server keeps its own `resolveLate` (the 20:00 boundary is on time); the day view still uses `latenessFor` (8 pm counts as late) until that line in `shared/` changes.
 - "First three moves" counts dish moves only; `walk10` and `earlier` are added on top.
 - Component keywords match whole words, so "pan" doesn't hit "pancake". Added the protein words vaca, res, carne, picadillo, ropa vieja, lechon, palomilla and gallina, plus guayaba as sweet and spaghetti as starch.
 - The seeded logs are hand-written. N0771's real `synthetic_daily` rows have no-log streaks that would turn her week red.
