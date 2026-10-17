@@ -1,6 +1,6 @@
 # Grumble — the pitch deck
 
-Six slides, five minutes: about two minutes of slides, then the live demo and the close.
+Seven slides, five minutes: about two minutes of slides, then the live demo and the close.
 
 ## Run it
 
@@ -20,12 +20,13 @@ Start the app before the pitch (`npm run dev` at the repo root). The demo slide'
 
 | Time | Slide | The point |
 |---|---|---|
-| 0:00–0:30 | 1 · The problem | Food apps count the plate; nobody asks who's across the table. Grumble works on what, when (on your clock) and who with. |
-| 0:30–1:00 | 2 · Mental health | NHANES, 808 real survivors: with severe depressive symptoms they eat *less* (1,414 vs 1,781 kcal), fiber collapses (10.9 vs 15.4 g), HbA1c 5.9 vs 5.7, diabetes 45% vs 22%. Grumble asks how the day is going, calls in the coach, never labels. |
-| 1:00–1:30 | 3 · What works | Coaching −0.22 vs tips −0.06 HbA1c (4×). Walk after dinner: 65 → 42 mg/dL, and 20 minutes adds nothing. |
-| 1:30–1:50 | 4 · What we built | Intake that learns → Today (log in plain words, the day rebalances) → What if → the table. |
-| 1:50–4:30 | 5 · Demo | Marisol: the nudge, log a burger at lunch, dinner turns lean, check in → the table card, whole-day curve, save a seat. |
-| 4:30–5:00 | 6 · Close | "Coaching beat tips four to one. The relationship did the work. So we built a table." |
+| 0:00–0:25 | 1 · The problem | Food apps count the plate; nobody asks who's across the table. Grumble works on what, when (on your clock) and who with. |
+| 0:25–0:50 | 2 · Mental health | NHANES, 808 real survivors: with severe depressive symptoms they eat *less* (1,414 vs 1,781 kcal), fiber collapses (10.9 vs 15.4 g), HbA1c 5.9 vs 5.7, diabetes 45% vs 22%. |
+| 0:50–1:10 | 3 · What works | Coaching −0.22 vs tips −0.06 HbA1c (4×). Walk after dinner: 65 → 42 mg/dL, and 20 minutes adds nothing. |
+| 1:10–1:40 | 4 · **The table** | The center of the pitch. One Tuesday at Versailles hits every lever: early dinner, food they love, the walk, a person across the table. Grumble asks who's at the table every day, names a person when you're alone, and saves the seat in one tap. Survivors host; donors pay $20 a seat. |
+| 1:40–1:55 | 5 · Around the table | The daily loop: intake that learns, Today (log in plain words, the day rebalances), What if. |
+| 1:55–4:30 | 6 · Demo | Marisol: the nudge, log a burger at lunch, dinner turns lean, check in → **the table card**, whole-day curve, save a seat. |
+| 4:30–5:00 | 7 · Close | "Coaching beat tips four to one. The relationship did the work. So we built a table." |
 
 ## Before you present
 
