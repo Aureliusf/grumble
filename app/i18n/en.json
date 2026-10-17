@@ -154,7 +154,7 @@
       "coach_reviewed": "coach reviewed"
     },
     "ate_title": "What did you eat?",
-    "ate_placeholder": "a cup of rice, a palm of chicken, a cup of beans",
+    "ate_placeholder": "a cup of rice\na palm of chicken\na cup of black beans",
     "ate_add": "Add",
     "rest": "The rest of today",
     "usda_note": "Foods and amounts read by Claude; the numbers are USDA FoodData Central, per gram."

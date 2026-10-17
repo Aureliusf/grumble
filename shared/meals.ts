@@ -44,7 +44,7 @@ export const HAND_MEASURES = 'palm of meat, chicken or fish ≈ 85 g (3 oz, USDA
 export function localParse(text: string, dishes: Dish[]): LoggedItem[] {
   const words = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').split(/[^a-z]+/).filter(w => w.length > 2)
   const ALIAS: Record<string, string> = { arroz: 'white-rice', rice: 'white-rice', pollo: 'chicken-breast', chicken: 'chicken-breast', frijoles: 'black-beans', beans: 'black-beans', huevo: 'egg', egg: 'egg', ensalada: 'lettuce', salad: 'lettuce', pescado: 'white-fish', fish: 'white-fish', maduros: 'plantain-ripe-fried', tostones: 'plantain-green-fried', papas: 'french-fries', fries: 'french-fries', aguacate: 'avocado', avocado: 'avocado', pan: 'white-bread', bread: 'white-bread' }
-  return text.split(/,|\band\b|\by\b|\+/i).map(s => s.trim()).filter(Boolean).flatMap((piece): LoggedItem[] => {
+  return text.split(/,|\n|\band\b|\by\b|\+/i).map(s => s.trim()).filter(Boolean).flatMap((piece): LoggedItem[] => {
     const w = words(piece)
     const alias = w.map(x => ALIAS[x]).find(Boolean)
     const dish = dishes.map(d => ({ d, s: words(d.name).filter(x => w.includes(x)).length })).sort((a, b) => b.s - a.s)[0]

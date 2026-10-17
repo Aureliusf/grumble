@@ -154,7 +154,7 @@
       "coach_reviewed": "revisado por su coach"
     },
     "ate_title": "¿Qué comió?",
-    "ate_placeholder": "una taza de arroz, una palma de pollo, una taza de frijoles",
+    "ate_placeholder": "una taza de arroz\nuna palma de pollo\nuna taza de frijoles negros",
     "ate_add": "Agregar",
     "rest": "El resto de hoy",
     "usda_note": "Claude lee las comidas y las cantidades; los números son de USDA FoodData Central, por gramo."
