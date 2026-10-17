@@ -31,6 +31,12 @@ describe('simulator hand check (04)', () => {
     expect(latenessFor('06:00', '09:00')).toBe(true)
   })
 
+  it('exactly 3.5 h before sleep is on time, so a dinner on the standard is never late', () => {
+    expect(latenessFor('20:00', '23:30')).toBe(false)
+    expect(latenessFor('20:30', '23:30')).toBe(true)
+    expect(latenessFor('05:30', '09:00')).toBe(false)
+  })
+
   it('a day returns to baseline and has positive exposure', () => {
     const day = dayCurve([{ at: 19 * 60, n: scale(vaca, 1), dinner: true, late: false, walk_min: 10, label: 'dinner' }], group)
     expect(day.exposure).toBeGreaterThan(0)

@@ -109,11 +109,12 @@ const hhmm = (m: number) => {
   const x = ((m % 1440) + 1440) % 1440
   return `${String(Math.floor(x / 60)).padStart(2, '0')}:${String(x % 60).padStart(2, '0')}`
 }
-// Sleep at or after 23:00 (or before 04:00, i.e. late) → dinner by 20:00; otherwise 3 h before sleep.
+// Sleep at or after 23:00 (or before 04:00, i.e. late) → dinner by 20:00; otherwise 3.5 h before sleep (04 §Inputs),
+// so a dinner on the standard is never inside the late window.
 export function lastMealBy(a: IntakeAnswers) {
   const s = mins(a.sleep_start)
   if (s >= 23 * 60 || s < 4 * 60) return '20:00'
-  return hhmm(s - 180)
+  return hhmm(s - 210)
 }
 export const nightShift = (a: IntakeAnswers) => a.work === 'night shift'
 
@@ -136,8 +137,8 @@ export function proposeStandards(a: IntakeAnswers, loved: Dish[], tr: Tr): Propo
 
   // always: last meal by
   if (night) {
-    out.push({ id: 'dinner-before-sleep', kind: 'last_meal_by', value: '3h', relative_to_sleep: true, required: true,
-      ...both('intake.std.last_meal_night', { h: 3 }), why: why('intake.why.last_meal', { n: Math.round(e.late_dinner_peak_delta) }) })
+    out.push({ id: 'dinner-before-sleep', kind: 'last_meal_by', value: '3.5h', relative_to_sleep: true, required: true,
+      ...both('intake.std.last_meal_night', { h: '3½' }), why: why('intake.why.last_meal', { n: Math.round(e.late_dinner_peak_delta) }) })
   }
   else {
     const t = lastMealBy(a)
