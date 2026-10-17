@@ -35,12 +35,12 @@
   },
   "standards": {
     "items": [
-      { "id": "dinner-by-8", "kind": "last_meal_by", "statement": "Comer antes de las 8 para dormir mejor", "value": "20:00", "relative_to_sleep": false, "why": "In people like you, dinner after 8 ran 24 mg/dL higher at the peak and half again more glucose over two hours", "negotiated_on": "2026-10-17" },
-      { "id": "walk-10", "kind": "walk_after_dinner_min", "statement": "Diez minutos caminando después de cenar, con Carmen si puede", "value": 10, "unit": "min", "why": "Ten minutes right after cut the peak by 23 mg/dL in people like you; more than ten didn't add anything", "negotiated_on": "2026-10-17" },
-      { "id": "beans-first", "kind": "protein_first", "statement": "Los frijoles y la carne antes del arroz", "value": true, "why": "Fiber and protein before starch flatten the peak", "negotiated_on": "2026-10-17" },
-      { "id": "rice-100", "kind": "starch_portion_g", "statement": "Una taza de arroz, no dos", "value": 100, "unit": "g", "why": "Each 10 g of carbohydrate adds about 6 mg/dL to the peak", "negotiated_on": "2026-10-17" },
-      { "id": "pastelito-morning", "kind": "custom", "statement": "El pastelito con el cafecito de la mañana, no de la noche", "value": "before 11:00", "why": "Same pastelito, morning peak is lower and it doesn't sit on the overnight fast", "negotiated_on": "2026-10-17" },
-      { "id": "table-tuesday", "kind": "social_nights_per_week", "statement": "Martes en Versailles con la mesa", "value": 1, "why": "Coaching with company moved HbA1c four times more than tips alone", "negotiated_on": "2026-10-17" }
+      { "id": "dinner-by-8", "kind": "last_meal_by", "statement": "Comer antes de las 8 para dormir mejor", "statement_en": "Dinner before 8 so I sleep better", "value": "20:00", "relative_to_sleep": false, "why": "In people like you, dinner after 8 ran 24 mg/dL higher at the peak and half again more glucose over two hours", "negotiated_on": "2026-10-17" },
+      { "id": "walk-10", "kind": "walk_after_dinner_min", "statement": "Diez minutos caminando después de cenar, con Carmen si puede", "statement_en": "Ten minutes walking after dinner, with Carmen if she can", "value": 10, "unit": "min", "why": "Ten minutes right after cut the peak by 23 mg/dL in people like you; more than ten didn't add anything", "negotiated_on": "2026-10-17" },
+      { "id": "beans-first", "kind": "protein_first", "statement": "Los frijoles y la carne antes del arroz", "statement_en": "Beans and meat before the rice", "value": true, "why": "Fiber and protein before starch flatten the peak", "negotiated_on": "2026-10-17" },
+      { "id": "rice-100", "kind": "starch_portion_g", "statement": "Una taza de arroz, no dos", "statement_en": "One cup of rice, not two", "value": 100, "unit": "g", "why": "Each 10 g of carbohydrate adds about 6 mg/dL to the peak", "negotiated_on": "2026-10-17" },
+      { "id": "pastelito-morning", "kind": "custom", "statement": "El pastelito con el cafecito de la mañana, no de la noche", "statement_en": "The pastelito with the morning cafecito, not at night", "value": "before 11:00", "why": "Same pastelito, morning peak is lower and it doesn't sit on the overnight fast", "negotiated_on": "2026-10-17" },
+      { "id": "table-tuesday", "kind": "social_nights_per_week", "statement": "Martes en Versailles con la mesa", "statement_en": "Tuesdays at Versailles with the table", "value": 1, "why": "Coaching with company moved HbA1c four times more than tips alone", "negotiated_on": "2026-10-17" }
     ]
   },
   "procedures": {
