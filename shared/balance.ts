@@ -126,3 +126,24 @@ export function usualDay(fixedPlates: Plate[], dishes: Dish[], targets: Targets,
   const plates = [...fixedPlates, ...fill].sort((a, b) => SLOTS.indexOf(a.slot) - SLOTS.indexOf(b.slot))
   return { plates, totals: sum(plates.map(p => p.n)), targets, heavy: [] }
 }
+
+// The part of the day still open, split across the open meals by how much of a day each stands for.
+export const MEAL_SHARE: Record<Slot, number> = { breakfast: 0.25, lunch: 0.35, dinner: 0.4 }
+
+export function mealBudget(targets: Targets, eaten: Nutrients, slot: Slot, open: Slot[]): Targets {
+  const share = MEAL_SHARE[slot] / open.reduce((s, x) => s + MEAL_SHARE[x], 0)
+  const left = (t: number, e: number) => Math.max(0, t - e) * share
+  return {
+    calories: left(targets.calories, eaten.calories),
+    carbs_g: left(targets.carbs_g, eaten.carbs_g),
+    protein_g: left(targets.protein_g, eaten.protein_g),
+    fiber_g: left(targets.fiber_g, eaten.fiber_g),
+  }
+}
+
+// How much of a dish fits a meal's budget: the portion that meets its calories and carbs (whichever runs out
+// first), to the nearest quarter plate, ¼ to 1½.
+export function portionFor(d: Dish, budget: Targets) {
+  const fit = Math.min(budget.calories / Math.max(d.calories, 1), budget.carbs_g / Math.max(d.carbs_g, 1))
+  return Math.min(1.5, Math.max(0.25, Math.round(fit * 4) / 4))
+}

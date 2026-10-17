@@ -476,6 +476,17 @@
   "next": {
     "title": "Lo próximo: {slot}",
     "why_heavy": "Proteína magra y vegetales, porque {dish} fue fuerte. Se queda.",
-    "why_fit": "Escogido para que el resto del día llegue a sus metas."
+    "why_fit": "Escogido para que el resto del día llegue a sus metas.",
+    "group_rec": "Recomendado",
+    "group_yours": "Sus platos",
+    "group_lean": "Proteína magra y vegetales",
+    "group_all": "Todo para {slot}",
+    "search": "Buscar un plato…",
+    "why_picked": "Su elección. Esto es lo que cabe en lo que queda del día.",
+    "how_much": "Cuánto:",
+    "plate_one": "un plato",
+    "plate_n": "{n} de plato",
+    "peak": "En gente como usted: unos +{n} mg/dL en el pico.",
+    "day_after": "Su día después de esta comida:"
   }
 }

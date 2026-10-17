@@ -476,6 +476,17 @@
   "next": {
     "title": "Next: {slot}",
     "why_heavy": "Lean protein and vegetables, because {dish} was a big one. You keep it.",
-    "why_fit": "Picked so the rest of your day lands on your targets."
+    "why_fit": "Picked so the rest of your day lands on your targets.",
+    "group_rec": "Recommended",
+    "group_yours": "Your dishes",
+    "group_lean": "Lean protein & vegetables",
+    "group_all": "Everything for {slot}",
+    "search": "Find a dish…",
+    "why_picked": "Your pick. Here's how much of it fits what's left of today.",
+    "how_much": "How much:",
+    "plate_one": "one plate",
+    "plate_n": "{n} plate",
+    "peak": "For people like you: about +{n} mg/dL at the peak.",
+    "day_after": "Your day after this meal:"
   }
 }
