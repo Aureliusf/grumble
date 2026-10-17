@@ -166,7 +166,7 @@
       "fund": "Fund a week"
     },
     "intro": "Tuesdays at six thirty at Versailles. Nobody pays.",
-    "years_out": "{n} years out",
+    "years_out": "{n} year out | {n} years out",
     "language": {
       "es": "Español",
       "en": "English",

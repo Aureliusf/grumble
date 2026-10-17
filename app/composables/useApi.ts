@@ -14,10 +14,11 @@ export async function apiCall<T>(
     const res = await $fetch<T>(path, { method: opts.method ?? 'GET', body: opts.body, query: { lang } }) as T
     // A route that doesn't exist yet comes back as the SPA's HTML with a 200; that's a miss too.
     if (res === null || typeof res !== 'object') throw new Error(`${path}: not JSON`)
+    dev.value.fallbacks = dev.value.fallbacks.filter(p => p !== path)
     return res
   }
   catch {
-    dev.value.fixture = true
+    if (!dev.value.fallbacks.includes(path)) dev.value.fallbacks = [...dev.value.fallbacks, path]
     return structuredClone(toRaw(fixture(lang)))
   }
 }

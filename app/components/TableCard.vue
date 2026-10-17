@@ -20,7 +20,7 @@ const date = computed(() => capitalize(fmtDate(props.table.date, locale.value)))
       <div class="flex flex-wrap items-center gap-1.5">
         <template v-if="!hostless">
           <span class="font-semibold">{{ table.host.name }}</span>
-          <UBadge color="secondary" variant="soft" class="rounded-full">{{ t('table.years_out', { n: table.host.years_out }) }}</UBadge>
+          <UBadge color="secondary" variant="soft" class="rounded-full">{{ t('table.years_out', table.host.years_out) }}</UBadge>
         </template>
         <span v-else class="font-semibold">{{ t('table.host_you') }}</span>
         <UBadge color="neutral" variant="soft" icon="i-lucide-languages" class="rounded-full">{{ t(`table.language.${table.language}`) }}</UBadge>

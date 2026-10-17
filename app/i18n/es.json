@@ -166,7 +166,7 @@
       "fund": "Fondear"
     },
     "intro": "Martes a las seis y media en Versailles. Nadie paga.",
-    "years_out": "{n} años",
+    "years_out": "{n} año | {n} años",
     "language": {
       "es": "Español",
       "en": "English",
