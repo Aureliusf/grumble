@@ -7,6 +7,7 @@ onMounted(restore)
 useHead({ htmlAttrs: { lang: locale } })
 
 const tabs = computed(() => [
+  { to: '/intake', icon: 'i-lucide-message-circle', label: t('nav.intake') },
   { to: '/plan', icon: 'i-lucide-clipboard-list', label: t('nav.plan') },
   { to: '/whatif', icon: 'i-lucide-activity', label: t('nav.whatif') },
   { to: '/today', icon: 'i-lucide-sun', label: t('nav.today') },
@@ -35,7 +36,7 @@ const tabs = computed(() => [
 
       <nav class="fixed bottom-0 inset-x-0 z-30 pointer-events-none">
         <div class="max-w-[430px] mx-auto pointer-events-auto bg-white/95 dark:bg-crema-900/95 backdrop-blur border-t border-crema-200 dark:border-crema-800 pb-[env(safe-area-inset-bottom)]">
-          <ul class="grid grid-cols-4">
+          <ul class="grid grid-cols-5">
             <li v-for="tab in tabs" :key="tab.to">
               <NuxtLink
                 :to="tab.to"
