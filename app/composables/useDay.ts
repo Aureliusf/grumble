@@ -1,6 +1,6 @@
 import type { Dish, FoodGraph } from '#shared/types'
 import { balanceDay, slotOf, SLOTS, usualDay, type Slot } from '#shared/balance'
-import { dailyTargets, type Sex } from '#shared/nutrition'
+import { dailyTargets, type Nutrients, type Sex } from '#shared/nutrition'
 import { mealFromParts, totalOf, unslug, type PricedItem } from '#shared/meals'
 import { fixtures } from '~/fixtures'
 
@@ -10,7 +10,7 @@ export interface Eaten { slot: Slot; label: string; said: string; items: PricedI
 const KEY = 'grumble.eaten'
 
 // The meal the next-meal simulator is showing: planned, not eaten. Shared so every view agrees; not saved.
-export const usePendingMeal = () => useState<{ slot: Slot; dish_id: string; portion: number } | null>('pendingMeal', () => null)
+export const usePendingMeal = () => useState<{ slot: Slot; dish_id: string; portion: number; n?: Nutrients } | null>('pendingMeal', () => null)
 
 // What the person said they ate today. Part of the day log beside the graph (05 §Data written per day).
 export function useEaten() {
@@ -78,7 +78,9 @@ export function useDay(personId: string) {
     const p = pending.value
     const d = p && !eaten.value.some(e => e.slot === p.slot) ? byId.value.get(p.dish_id) : undefined
     if (!d || !p) return todayEaten.value
-    return balanceDay({ ...common.value, fixed: [...ate.value, { slot: p.slot, dish: d, portion: p.portion, pending: true }], skip: skipped.value })
+    // The simulator may hand over the adjusted plate (less rice, same beans); use its numbers when it does.
+    const planned = p.n ? { ...d, ...p.n } : d
+    return balanceDay({ ...common.value, fixed: [...ate.value, { slot: p.slot, dish: planned, portion: p.portion, pending: true }], skip: skipped.value })
   })
 
   // The same fixed plates with ordinary plates around them, for the what-if comparison.

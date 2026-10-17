@@ -2,14 +2,16 @@
 import type { SelectMenuItem } from '@nuxt/ui'
 import type { Dish } from '#shared/types'
 import { isLean, mealBudget, plate, portionFor, slotOf, SLOTS, type Slot } from '#shared/balance'
-import { sum } from '#shared/nutrition'
+import { sum, type Nutrients } from '#shared/nutrition'
 import { peakDelta } from '#shared/simulate'
+import { COMPONENTS, type PricedItem } from '#shared/meals'
+import { howToEat } from '#shared/recipe'
 
 // After a meal is logged: simulate the next one. Pick any dish (the balanced day's pick comes first);
 // Grumble works out how much of it fits what's left of the day, and shows the numbers, where the day
 // lands, and the rise for people like you. Nothing is saved; logging the meal is still the box above.
 const PERSON = 'N0771'
-const { t } = useI18n()
+const { t, te } = useI18n()
 const { todayEaten: day, eaten, dishes, targets, graph, person, pending } = useDay(PERSON)
 const { mealsOf } = useDayGlucose(PERSON)
 
@@ -57,8 +59,21 @@ const items = computed<SelectMenuItem[][]>(() => {
 
 const ateTotals = computed(() => sum(day.value.plates.filter(p => p.fixed).map(p => p.n)))
 const budget = computed(() => (slot.value ? mealBudget(targets.value, ateTotals.value, slot.value, open.value) : null))
-const portion = computed(() => (dish.value && budget.value ? portionFor(dish.value, budget.value) : 1))
-const sim = computed(() => (dish.value && slot.value ? plate(slot.value, dish.value, portion.value) : null))
+
+// The dish's parts (precomputed, instant; see data/dish-components.json). Without them, the whole dish scales.
+const recipes = useState<Record<string, PricedItem[] | null>>('recipes', () => ({}))
+watch(dishId, async (id) => {
+  if (!id || id in recipes.value) return
+  const res = await apiCall<{ items: PricedItem[] } | null>('/api/recipe', () => null, { method: 'POST', body: { dish_id: id } })
+  recipes.value = { ...recipes.value, [id]: res?.items?.length ? res.items : null }
+}, { immediate: true })
+const parts = computed(() => recipes.value[dishId.value] ?? null)
+
+// How to eat it: beans, vegetables and protein first and whole; starches and fried sides last and less.
+const how = computed(() => (parts.value && budget.value ? howToEat(parts.value, budget.value) : null))
+const portion = computed(() => (how.value ? 1 : dish.value && budget.value ? portionFor(dish.value, budget.value) : 1))
+const plateN = computed<Nutrients | null>(() => how.value?.n ?? (dish.value ? plate(slot.value ?? 'dinner', dish.value, portion.value).n : null))
+const sim = computed(() => (dish.value && slot.value && plateN.value ? { ...plate(slot.value, dish.value, 1), n: plateN.value } : null))
 
 // Where the day lands with this meal: eaten + this plate (the other open meals aren't counted yet).
 const after = computed(() => (sim.value ? sum([ateTotals.value, sim.value.n]) : null))
@@ -69,12 +84,27 @@ const peak = computed(() => {
 })
 
 const QUARTERS: Record<string, string> = { '0.25': '¼', '0.5': '½', '0.75': '¾', '1': '1', '1.25': '1¼', '1.5': '1½' }
-const howMuch = computed(() => t(portion.value === 1 ? 'next.plate_one' : 'next.plate_n', { n: QUARTERS[String(portion.value)] ?? portion.value }))
+const q = (x: number) => QUARTERS[String(Math.round(x * 4) / 4)] ?? String(Math.round(x * 4) / 4)
+const howMuch = computed(() => {
+  if (how.value) return how.value.lastFactor < 1 || how.value.thenFactor < 1 ? t('next.plate_less') : t('next.plate_one')
+  return t(portion.value === 1 ? 'next.plate_one' : 'next.plate_n', { n: q(portion.value) })
+})
 const heavy = computed(() => day.value.heavy[0]?.dish.name)
 
+// An item's amount in cups when USDA gives a cup weight, else grams.
+const cupOf = (id: string) => COMPONENTS.find(c => c.id === id)?.measures.find(m => /^1 cup\b/.test(m.measure))?.g
+function amount(id: string, g: number) {
+  if (g < 20) return t('next.taste')
+  const cup = cupOf(id)
+  if (!cup || g < cup / 8) return `${g} g`
+  const n = Math.max(0.25, Math.round((g / cup) * 4) / 4)
+  return `${q(n)} ${n > 1 ? t('next.cups') : t('next.cup')}`
+}
+const foodName = (i: PricedItem) => (te(`foods.${i.id}`) ? t(`foods.${i.id}`) : i.name.split(',')[0])
+
 // Whatever the card shows is the planned meal for the rest of the app ("The rest of today", the spike bar).
-watch([slot, dishId, portion], ([s, id, p]) => {
-  pending.value = s && id ? { slot: s, dish_id: id, portion: p } : null
+watch([slot, dishId, plateN], ([s, id, n]) => {
+  pending.value = s && id && n ? { slot: s, dish_id: id, portion: 1, n } : null
 }, { immediate: true })
 const r = (n: number) => Math.round(n)
 </script>
@@ -101,6 +131,21 @@ const r = (n: number) => Math.round(n)
 
     <div v-if="sim" class="mt-3">
       <p class="font-display font-semibold text-[20px]">{{ t('next.how_much') }} <span class="text-grumble-600">{{ howMuch }}</span></p>
+      <!-- how to eat it: each part, first or last, and how much -->
+      <ul v-if="how" class="mt-2 flex flex-col gap-1">
+        <li v-for="i in how.items" :key="i.id" class="flex items-center gap-2 text-[15px]">
+          <UBadge
+            :color="i.role === 'first' ? 'primary' : i.role === 'then' ? 'secondary' : 'neutral'"
+            variant="soft"
+            size="sm"
+            class="rounded-full shrink-0 w-[4.5rem] justify-center"
+>{{ t(`next.${i.role}`) }}</UBadge>
+          <span class="flex-1 truncate">{{ foodName(i) }}</span>
+          <span class="shrink-0 tabular" :class="amount(i.id, i.to) !== amount(i.id, i.from) ? 'text-grumble-600 font-semibold' : 'text-crema-800/70'">
+            <template v-if="amount(i.id, i.to) !== amount(i.id, i.from)"><s class="text-crema-800/40 font-normal">{{ amount(i.id, i.from) }}</s> → </template>{{ amount(i.id, i.to) }}
+          </span>
+        </li>
+      </ul>
       <MacroTiles :n="sim.n" tone="next" />
       <p v-if="peak !== null" class="mt-1 text-[15px] text-crema-800/80">{{ t('next.peak', { n: peak }) }}</p>
       <p v-if="after" class="mt-2 text-[15px] tabular leading-snug">

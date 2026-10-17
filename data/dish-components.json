@@ -1,0 +1,2391 @@
+{
+ "source": "Claude (claude-opus-5-5) split each dish in dishes.json into foods from components.json with grams for one typical plate; grams rescaled in code so each dish's parts add up to its calories in dishes.json. Regenerate: npm run dev, then node data/scripts/build-dish-components.mjs",
+ "dishes": {
+  "ackee-and-saltfish-with-fried-dumplings": [
+   {
+    "id": "white-fish",
+    "grams": 70
+   },
+   {
+    "id": "avocado",
+    "grams": 120
+   },
+   {
+    "id": "white-bread",
+    "grams": 80
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   }
+  ],
+  "ajiaco": [
+   {
+    "id": "chicken-breast",
+    "grams": 110
+   },
+   {
+    "id": "potato",
+    "grams": 250
+   },
+   {
+    "id": "corn",
+    "grams": 100
+   },
+   {
+    "id": "avocado",
+    "grams": 60
+   },
+   {
+    "id": "milk",
+    "grams": 30
+   },
+   {
+    "id": "white-rice",
+    "grams": 1
+   }
+  ],
+  "akasan-cornmeal-drink": [
+   {
+    "id": "milk",
+    "grams": 120
+   },
+   {
+    "id": "corn-tortilla",
+    "grams": 40
+   },
+   {
+    "id": "sugar",
+    "grams": 25
+   }
+  ],
+  "apple-with-peanut-butter": [
+   {
+    "id": "sweet-potato",
+    "grams": 110
+   },
+   {
+    "id": "olive-oil",
+    "grams": 11
+   },
+   {
+    "id": "cheddar",
+    "grams": 15
+   },
+   {
+    "id": "sugar",
+    "grams": 6
+   }
+  ],
+  "arepa-con-queso": [
+   {
+    "id": "corn-tortilla",
+    "grams": 110
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 60
+   },
+   {
+    "id": "butter",
+    "grams": 8
+   }
+  ],
+  "arepa-with-scrambled-eggs-and-avocado": [
+   {
+    "id": "corn-tortilla",
+    "grams": 90
+   },
+   {
+    "id": "egg",
+    "grams": 100
+   },
+   {
+    "id": "avocado",
+    "grams": 70
+   },
+   {
+    "id": "butter",
+    "grams": 7
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 20
+   }
+  ],
+  "arroz-con-gandules-with-pernil": [
+   {
+    "id": "white-rice",
+    "grams": 250
+   },
+   {
+    "id": "red-beans",
+    "grams": 70
+   },
+   {
+    "id": "pork-loin",
+    "grams": 140
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "arroz-con-pollo": [
+   {
+    "id": "white-rice",
+    "grams": 250
+   },
+   {
+    "id": "chicken-thigh",
+    "grams": 120
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 45
+   },
+   {
+    "id": "olive-oil",
+    "grams": 8
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 40
+   }
+  ],
+  "avena-sweet-oatmeal-drink": [
+   {
+    "id": "milk",
+    "grams": 200
+   },
+   {
+    "id": "oatmeal",
+    "grams": 175
+   },
+   {
+    "id": "sugar",
+    "grams": 25
+   }
+  ],
+  "avocado-toast-on-whole-grain-with-an-egg": [
+   {
+    "id": "white-bread",
+    "grams": 58
+   },
+   {
+    "id": "avocado",
+    "grams": 85
+   },
+   {
+    "id": "egg-fried",
+    "grams": 46
+   },
+   {
+    "id": "tomato",
+    "grams": 30
+   },
+   {
+    "id": "olive-oil",
+    "grams": 4
+   }
+  ],
+  "bagel-with-cream-cheese": [
+   {
+    "id": "white-bread",
+    "grams": 105
+   },
+   {
+    "id": "butter",
+    "grams": 15
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 15
+   }
+  ],
+  "baked-chicken-with-greens-and-sweet-potato": [
+   {
+    "id": "chicken-thigh",
+    "grams": 160
+   },
+   {
+    "id": "sweet-potato",
+    "grams": 200
+   },
+   {
+    "id": "broccoli",
+    "grams": 100
+   },
+   {
+    "id": "butter",
+    "grams": 5
+   }
+  ],
+  "baked-fish-with-roasted-vegetables": [
+   {
+    "id": "white-fish",
+    "grams": 170
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 200
+   },
+   {
+    "id": "potato",
+    "grams": 100
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   }
+  ],
+  "baleadas-2": [
+   {
+    "id": "white-bread",
+    "grams": 90
+   },
+   {
+    "id": "red-beans",
+    "grams": 130
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 45
+   },
+   {
+    "id": "butter",
+    "grams": 15
+   }
+  ],
+  "banana": [
+   {
+    "id": "plantain-boiled",
+    "grams": 88
+   }
+  ],
+  "bandeja-paisa": [
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "red-beans",
+    "grams": 180
+   },
+   {
+    "id": "ground-beef",
+    "grams": 85
+   },
+   {
+    "id": "pork-loin",
+    "grams": 90
+   },
+   {
+    "id": "egg-fried",
+    "grams": 46
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 100
+   },
+   {
+    "id": "avocado",
+    "grams": 50
+   },
+   {
+    "id": "corn-tortilla",
+    "grams": 40
+   }
+  ],
+  "bannann-peze-with-fried-pork": [
+   {
+    "id": "plantain-green-fried",
+    "grams": 150
+   },
+   {
+    "id": "pork-loin",
+    "grams": 110
+   },
+   {
+    "id": "olive-oil",
+    "grams": 8
+   },
+   {
+    "id": "lettuce",
+    "grams": 30
+   },
+   {
+    "id": "tomato",
+    "grams": 20
+   }
+  ],
+  "batido-de-mamey": [
+   {
+    "id": "milk",
+    "grams": 244
+   },
+   {
+    "id": "sweet-potato",
+    "grams": 120
+   },
+   {
+    "id": "sugar",
+    "grams": 28
+   }
+  ],
+  "beef-patty": [
+   {
+    "id": "white-bread",
+    "grams": 68
+   },
+   {
+    "id": "ground-beef",
+    "grams": 35
+   },
+   {
+    "id": "butter",
+    "grams": 13
+   }
+  ],
+  "beer": [
+   {
+    "id": "sugar",
+    "grams": 8
+   },
+   {
+    "id": "white-rice",
+    "grams": 20
+   }
+  ],
+  "berries-with-yogurt": [
+   {
+    "id": "milk",
+    "grams": 150
+   },
+   {
+    "id": "sugar",
+    "grams": 13
+   }
+  ],
+  "biscuit-with-sausage-gravy": [
+   {
+    "id": "white-bread",
+    "grams": 90
+   },
+   {
+    "id": "pork-loin",
+    "grams": 30
+   },
+   {
+    "id": "milk",
+    "grams": 120
+   },
+   {
+    "id": "butter",
+    "grams": 28
+   }
+  ],
+  "black-bean-soup-with-a-little-white-rice": [
+   {
+    "id": "black-beans",
+    "grams": 260
+   },
+   {
+    "id": "white-rice",
+    "grams": 120
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   },
+   {
+    "id": "tomato",
+    "grams": 30
+   }
+  ],
+  "black-beans-and-brown-rice-bowl-with-avocado": [
+   {
+    "id": "brown-rice",
+    "grams": 200
+   },
+   {
+    "id": "black-beans",
+    "grams": 172
+   },
+   {
+    "id": "avocado",
+    "grams": 100
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   }
+  ],
+  "bread-with-peanut-butter-and-haitian-coffee": [
+   {
+    "id": "white-bread",
+    "grams": 58
+   },
+   {
+    "id": "butter",
+    "grams": 16
+   },
+   {
+    "id": "milk",
+    "grams": 120
+   },
+   {
+    "id": "sugar",
+    "grams": 8
+   }
+  ],
+  "breakfast-sandwich-from-a-drive-thru": [
+   {
+    "id": "burger-bun",
+    "grams": 60
+   },
+   {
+    "id": "egg-fried",
+    "grams": 50
+   },
+   {
+    "id": "pork-loin",
+    "grams": 40
+   },
+   {
+    "id": "cheddar",
+    "grams": 20
+   },
+   {
+    "id": "butter",
+    "grams": 8
+   }
+  ],
+  "burrito-bowl-with-chicken-beans-and-rice": [
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "black-beans",
+    "grams": 130
+   },
+   {
+    "id": "chicken-breast",
+    "grams": 120
+   },
+   {
+    "id": "cheddar",
+    "grams": 28
+   },
+   {
+    "id": "avocado",
+    "grams": 50
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "lettuce",
+    "grams": 30
+   }
+  ],
+  "cafe-con-leche": [
+   {
+    "id": "milk",
+    "grams": 180
+   },
+   {
+    "id": "sugar",
+    "grams": 12
+   }
+  ],
+  "cafe-con-leche-and-cuban-toast-with-butter": [
+   {
+    "id": "white-bread",
+    "grams": 80
+   },
+   {
+    "id": "butter",
+    "grams": 14
+   },
+   {
+    "id": "milk",
+    "grams": 180
+   },
+   {
+    "id": "sugar",
+    "grams": 8
+   }
+  ],
+  "cafecito": [
+   {
+    "id": "sugar",
+    "grams": 15
+   }
+  ],
+  "calentado-rice-and-beans-with-egg": [
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "red-beans",
+    "grams": 150
+   },
+   {
+    "id": "egg-fried",
+    "grams": 46
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 40
+   }
+  ],
+  "callaloo-with-boiled-green-banana": [
+   {
+    "id": "mixed-vegetables",
+    "grams": 180
+   },
+   {
+    "id": "plantain-boiled",
+    "grams": 200
+   },
+   {
+    "id": "tomato",
+    "grams": 40
+   },
+   {
+    "id": "olive-oil",
+    "grams": 9
+   }
+  ],
+  "cereal-with-milk": [
+   {
+    "id": "milk",
+    "grams": 200
+   },
+   {
+    "id": "corn-tortilla",
+    "grams": 60
+   },
+   {
+    "id": "sugar",
+    "grams": 10
+   }
+  ],
+  "cheese-and-crackers": [
+   {
+    "id": "cheddar",
+    "grams": 30
+   },
+   {
+    "id": "white-bread",
+    "grams": 32
+   }
+  ],
+  "cheeseburger-and-fries": [
+   {
+    "id": "burger-bun",
+    "grams": 60
+   },
+   {
+    "id": "ground-beef",
+    "grams": 113
+   },
+   {
+    "id": "cheddar",
+    "grams": 28
+   },
+   {
+    "id": "lettuce",
+    "grams": 15
+   },
+   {
+    "id": "tomato",
+    "grams": 25
+   },
+   {
+    "id": "french-fries",
+    "grams": 150
+   }
+  ],
+  "chicken-caesar-wrap": [
+   {
+    "id": "white-bread",
+    "grams": 75
+   },
+   {
+    "id": "chicken-breast",
+    "grams": 90
+   },
+   {
+    "id": "lettuce",
+    "grams": 60
+   },
+   {
+    "id": "cheddar",
+    "grams": 15
+   },
+   {
+    "id": "olive-oil",
+    "grams": 18
+   },
+   {
+    "id": "tomato",
+    "grams": 30
+   }
+  ],
+  "chicken-stir-fry-with-brown-rice": [
+   {
+    "id": "brown-rice",
+    "grams": 202
+   },
+   {
+    "id": "chicken-breast",
+    "grams": 100
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 120
+   },
+   {
+    "id": "broccoli",
+    "grams": 50
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "chicken-tenders-with-fries": [
+   {
+    "id": "chicken-breast",
+    "grams": 140
+   },
+   {
+    "id": "white-bread",
+    "grams": 40
+   },
+   {
+    "id": "olive-oil",
+    "grams": 22
+   },
+   {
+    "id": "french-fries",
+    "grams": 154
+   }
+  ],
+  "chickpea-and-vegetable-salad-with-olive-oil": [
+   {
+    "id": "chickpeas",
+    "grams": 200
+   },
+   {
+    "id": "tomato",
+    "grams": 120
+   },
+   {
+    "id": "lettuce",
+    "grams": 60
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 30
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   }
+  ],
+  "coffee-with-milk": [
+   {
+    "id": "milk",
+    "grams": 60
+   }
+  ],
+  "congee-with-egg": [
+   {
+    "id": "white-rice",
+    "grams": 145
+   },
+   {
+    "id": "egg",
+    "grams": 50
+   },
+   {
+    "id": "chicken-breast",
+    "grams": 15
+   }
+  ],
+  "cookies-3": [
+   {
+    "id": "white-bread",
+    "grams": 35
+   },
+   {
+    "id": "sugar",
+    "grams": 18
+   },
+   {
+    "id": "butter",
+    "grams": 12
+   },
+   {
+    "id": "egg",
+    "grams": 6
+   }
+  ],
+  "croqueta": [
+   {
+    "id": "pork-loin",
+    "grams": 20
+   },
+   {
+    "id": "white-bread",
+    "grams": 12
+   },
+   {
+    "id": "milk",
+    "grams": 15
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "croquetas-3-and-cafe-con-leche": [
+   {
+    "id": "pork-loin",
+    "grams": 45
+   },
+   {
+    "id": "white-bread",
+    "grams": 30
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   },
+   {
+    "id": "milk",
+    "grams": 180
+   },
+   {
+    "id": "sugar",
+    "grams": 12
+   }
+  ],
+  "cuban-sandwich": [
+   {
+    "id": "white-bread",
+    "grams": 110
+   },
+   {
+    "id": "pork-loin",
+    "grams": 110
+   },
+   {
+    "id": "cheddar",
+    "grams": 35
+   },
+   {
+    "id": "butter",
+    "grams": 8
+   }
+  ],
+  "curry-goat-with-roti": [
+   {
+    "id": "pork-loin",
+    "grams": 150
+   },
+   {
+    "id": "potato",
+    "grams": 120
+   },
+   {
+    "id": "white-bread",
+    "grams": 110
+   },
+   {
+    "id": "butter",
+    "grams": 15
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   }
+  ],
+  "dark-chocolate-2-squares": [
+   {
+    "id": "sugar",
+    "grams": 9
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   }
+  ],
+  "diri-djon-djon-with-chicken": [
+   {
+    "id": "white-rice",
+    "grams": 300
+   },
+   {
+    "id": "chicken-thigh",
+    "grams": 140
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "empanada": [
+   {
+    "id": "corn-tortilla",
+    "grams": 45
+   },
+   {
+    "id": "ground-beef",
+    "grams": 20
+   },
+   {
+    "id": "potato",
+    "grams": 15
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "empanadas-3-with-aji": [
+   {
+    "id": "corn-tortilla",
+    "grams": 110
+   },
+   {
+    "id": "ground-beef",
+    "grams": 45
+   },
+   {
+    "id": "potato",
+    "grams": 40
+   },
+   {
+    "id": "olive-oil",
+    "grams": 18
+   },
+   {
+    "id": "tomato",
+    "grams": 20
+   }
+  ],
+  "escovitch-fish-with-festival": [
+   {
+    "id": "white-fish",
+    "grams": 180
+   },
+   {
+    "id": "corn-tortilla",
+    "grams": 110
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 80
+   },
+   {
+    "id": "olive-oil",
+    "grams": 15
+   },
+   {
+    "id": "sugar",
+    "grams": 10
+   }
+  ],
+  "flan": [
+   {
+    "id": "milk",
+    "grams": 150
+   },
+   {
+    "id": "egg",
+    "grams": 45
+   },
+   {
+    "id": "sugar",
+    "grams": 35
+   }
+  ],
+  "fried-chicken-mac-and-cheese-and-collards": [
+   {
+    "id": "chicken-thigh",
+    "grams": 140
+   },
+   {
+    "id": "white-bread",
+    "grams": 25
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   },
+   {
+    "id": "pasta",
+    "grams": 150
+   },
+   {
+    "id": "cheddar",
+    "grams": 50
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   },
+   {
+    "id": "broccoli",
+    "grams": 120
+   }
+  ],
+  "fried-chicken-sandwich": [
+   {
+    "id": "burger-bun",
+    "grams": 60
+   },
+   {
+    "id": "chicken-breast",
+    "grams": 120
+   },
+   {
+    "id": "white-bread",
+    "grams": 30
+   },
+   {
+    "id": "olive-oil",
+    "grams": 22
+   },
+   {
+    "id": "lettuce",
+    "grams": 15
+   },
+   {
+    "id": "tomato",
+    "grams": 25
+   },
+   {
+    "id": "butter",
+    "grams": 8
+   }
+  ],
+  "fried-eggs-with-cuban-toast": [
+   {
+    "id": "egg-fried",
+    "grams": 92
+   },
+   {
+    "id": "white-bread",
+    "grams": 62
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   }
+  ],
+  "fruit-cup-mango-papaya-pineapple": [
+   {
+    "id": "sugar",
+    "grams": 28
+   }
+  ],
+  "fruit-smoothie-with-spinach-and-flax": [
+   {
+    "id": "milk",
+    "grams": 200
+   },
+   {
+    "id": "sugar",
+    "grams": 25
+   },
+   {
+    "id": "lettuce",
+    "grams": 30
+   },
+   {
+    "id": "oatmeal",
+    "grams": 100
+   }
+  ],
+  "gallo-pinto-with-egg-and-plantain": [
+   {
+    "id": "white-rice",
+    "grams": 150
+   },
+   {
+    "id": "red-beans",
+    "grams": 100
+   },
+   {
+    "id": "egg-fried",
+    "grams": 46
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 85
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "glass-of-red-wine": [
+   {
+    "id": "sugar",
+    "grams": 4
+   },
+   {
+    "id": "sugar",
+    "grams": 27
+   }
+  ],
+  "glass-of-white-wine": [
+   {
+    "id": "sugar",
+    "grams": 5
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "granola-bar": [
+   {
+    "id": "oatmeal",
+    "grams": 60
+   },
+   {
+    "id": "sugar",
+    "grams": 14
+   },
+   {
+    "id": "butter",
+    "grams": 6
+   },
+   {
+    "id": "olive-oil",
+    "grams": 2
+   }
+  ],
+  "greek-yogurt": [
+   {
+    "id": "milk",
+    "grams": 170
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 15
+   }
+  ],
+  "greek-yogurt-with-berries-and-walnuts": [
+   {
+    "id": "milk",
+    "grams": 230
+   },
+   {
+    "id": "sugar",
+    "grams": 14
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 25
+   }
+  ],
+  "green-juice": [
+   {
+    "id": "lettuce",
+    "grams": 150
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 120
+   },
+   {
+    "id": "sugar",
+    "grams": 12
+   }
+  ],
+  "grilled-chicken-salad-with-olive-oil-dressing": [
+   {
+    "id": "chicken-breast",
+    "grams": 120
+   },
+   {
+    "id": "lettuce",
+    "grams": 100
+   },
+   {
+    "id": "tomato",
+    "grams": 90
+   },
+   {
+    "id": "chickpeas",
+    "grams": 60
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 20
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   }
+  ],
+  "grilled-chicken-with-salad-and-black-beans": [
+   {
+    "id": "chicken-breast",
+    "grams": 140
+   },
+   {
+    "id": "black-beans",
+    "grams": 172
+   },
+   {
+    "id": "lettuce",
+    "grams": 60
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "avocado",
+    "grams": 50
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   }
+  ],
+  "grilled-fish-with-rice-and-salad": [
+   {
+    "id": "white-fish",
+    "grams": 170
+   },
+   {
+    "id": "white-rice",
+    "grams": 158
+   },
+   {
+    "id": "lettuce",
+    "grams": 60
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "avocado",
+    "grams": 50
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "grilled-salmon-with-quinoa-and-greens": [
+   {
+    "id": "salmon",
+    "grams": 150
+   },
+   {
+    "id": "quinoa",
+    "grams": 185
+   },
+   {
+    "id": "lettuce",
+    "grams": 60
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "griot-with-diri-ak-pwa-and-pikliz": [
+   {
+    "id": "pork-loin",
+    "grams": 150
+   },
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "red-beans",
+    "grams": 60
+   },
+   {
+    "id": "plantain-green-fried",
+    "grams": 90
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 50
+   }
+  ],
+  "grits-eggs-and-bacon": [
+   {
+    "id": "oatmeal",
+    "grams": 234
+   },
+   {
+    "id": "egg-fried",
+    "grams": 92
+   },
+   {
+    "id": "pork-loin",
+    "grams": 35
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   }
+  ],
+  "haitian-spaghetti-with-hot-dog": [
+   {
+    "id": "pasta",
+    "grams": 220
+   },
+   {
+    "id": "pork-loin",
+    "grams": 50
+   },
+   {
+    "id": "tomato",
+    "grams": 40
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "hot-dog-and-a-soda": [
+   {
+    "id": "burger-bun",
+    "grams": 50
+   },
+   {
+    "id": "pork-loin",
+    "grams": 50
+   },
+   {
+    "id": "sugar",
+    "grams": 40
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   }
+  ],
+  "hummus-plate-with-vegetables-and-pita": [
+   {
+    "id": "chickpeas",
+    "grams": 150
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   },
+   {
+    "id": "white-bread",
+    "grams": 60
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "lettuce",
+    "grams": 30
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 60
+   }
+  ],
+  "hummus-with-carrots": [
+   {
+    "id": "chickpeas",
+    "grams": 70
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 80
+   }
+  ],
+  "ice-cream-1-cup": [
+   {
+    "id": "milk",
+    "grams": 100
+   },
+   {
+    "id": "butter",
+    "grams": 15
+   },
+   {
+    "id": "sugar",
+    "grams": 26
+   }
+  ],
+  "jerk-chicken-with-rice-and-peas": [
+   {
+    "id": "chicken-thigh",
+    "grams": 200
+   },
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "red-beans",
+    "grams": 60
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 60
+   }
+  ],
+  "la-bandera-rice-beans-and-stewed-chicken": [
+   {
+    "id": "white-rice",
+    "grams": 280
+   },
+   {
+    "id": "red-beans",
+    "grams": 130
+   },
+   {
+    "id": "chicken-thigh",
+    "grams": 130
+   },
+   {
+    "id": "olive-oil",
+    "grams": 8
+   }
+  ],
+  "lechon-asado-with-moros-and-yuca": [
+   {
+    "id": "pork-loin",
+    "grams": 170
+   },
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "black-beans",
+    "grams": 80
+   },
+   {
+    "id": "yuca",
+    "grams": 150
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   }
+  ],
+  "legim-with-rice": [
+   {
+    "id": "white-rice",
+    "grams": 250
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 180
+   },
+   {
+    "id": "steak",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   },
+   {
+    "id": "red-beans",
+    "grams": 40
+   }
+  ],
+  "lentil-soup-with-whole-grain-bread": [
+   {
+    "id": "lentils",
+    "grams": 200
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 100
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   },
+   {
+    "id": "white-bread",
+    "grams": 45
+   }
+  ],
+  "malta": [
+   {
+    "id": "sugar",
+    "grams": 43
+   },
+   {
+    "id": "milk",
+    "grams": 20
+   }
+  ],
+  "mangu-con-los-tres-golpes": [
+   {
+    "id": "plantain-boiled",
+    "grams": 220
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   },
+   {
+    "id": "egg-fried",
+    "grams": 46
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 60
+   },
+   {
+    "id": "pork-loin",
+    "grams": 60
+   }
+  ],
+  "mixed-nuts-a-handful": [
+   {
+    "id": "olive-oil",
+    "grams": 12
+   },
+   {
+    "id": "chickpeas",
+    "grams": 20
+   },
+   {
+    "id": "cheddar",
+    "grams": 8
+   }
+  ],
+  "mofongo-with-shrimp": [
+   {
+    "id": "plantain-green-fried",
+    "grams": 250
+   },
+   {
+    "id": "shrimp",
+    "grams": 130
+   },
+   {
+    "id": "pork-loin",
+    "grams": 30
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   }
+  ],
+  "mojito": [
+   {
+    "id": "sugar",
+    "grams": 25
+   },
+   {
+    "id": "lettuce",
+    "grams": 3
+   }
+  ],
+  "nacatamal": [
+   {
+    "id": "corn-tortilla",
+    "grams": 200
+   },
+   {
+    "id": "pork-loin",
+    "grams": 85
+   },
+   {
+    "id": "white-rice",
+    "grams": 40
+   },
+   {
+    "id": "potato",
+    "grams": 50
+   },
+   {
+    "id": "olive-oil",
+    "grams": 18
+   },
+   {
+    "id": "tomato",
+    "grams": 30
+   }
+  ],
+  "oatmeal-with-banana-and-almonds": [
+   {
+    "id": "oatmeal",
+    "grams": 234
+   },
+   {
+    "id": "plantain-boiled",
+    "grams": 70
+   },
+   {
+    "id": "milk",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   },
+   {
+    "id": "sugar",
+    "grams": 4
+   }
+  ],
+  "orange-chicken-with-fried-rice": [
+   {
+    "id": "chicken-thigh",
+    "grams": 150
+   },
+   {
+    "id": "white-rice",
+    "grams": 250
+   },
+   {
+    "id": "sugar",
+    "grams": 30
+   },
+   {
+    "id": "egg",
+    "grams": 25
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 40
+   },
+   {
+    "id": "olive-oil",
+    "grams": 15
+   }
+  ],
+  "orange-juice": [
+   {
+    "id": "sugar",
+    "grams": 27
+   }
+  ],
+  "pabellon-criollo": [
+   {
+    "id": "white-rice",
+    "grams": 160
+   },
+   {
+    "id": "black-beans",
+    "grams": 120
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 80
+   },
+   {
+    "id": "steak",
+    "grams": 110
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "palomilla-steak-with-fries": [
+   {
+    "id": "steak",
+    "grams": 170
+   },
+   {
+    "id": "french-fries",
+    "grams": 150
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "pancakes-with-syrup-and-bacon": [
+   {
+    "id": "white-bread",
+    "grams": 110
+   },
+   {
+    "id": "sugar",
+    "grams": 40
+   },
+   {
+    "id": "butter",
+    "grams": 14
+   },
+   {
+    "id": "pork-loin",
+    "grams": 25
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   }
+  ],
+  "pastelito-de-carne": [
+   {
+    "id": "white-bread",
+    "grams": 50
+   },
+   {
+    "id": "butter",
+    "grams": 13
+   },
+   {
+    "id": "ground-beef",
+    "grams": 25
+   },
+   {
+    "id": "sugar",
+    "grams": 3
+   }
+  ],
+  "pastelito-de-guayaba-and-cafecito": [
+   {
+    "id": "white-bread",
+    "grams": 45
+   },
+   {
+    "id": "butter",
+    "grams": 14
+   },
+   {
+    "id": "sugar",
+    "grams": 30
+   },
+   {
+    "id": "milk",
+    "grams": 15
+   }
+  ],
+  "pate-kode": [
+   {
+    "id": "white-bread",
+    "grams": 62
+   },
+   {
+    "id": "ground-beef",
+    "grams": 25
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   },
+   {
+    "id": "tomato",
+    "grams": 15
+   }
+  ],
+  "pepperoni-pizza-2-slices": [
+   {
+    "id": "white-bread",
+    "grams": 125
+   },
+   {
+    "id": "cheddar",
+    "grams": 50
+   },
+   {
+    "id": "pork-loin",
+    "grams": 30
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 3
+   }
+  ],
+  "pho-with-beef": [
+   {
+    "id": "pasta",
+    "grams": 300
+   },
+   {
+    "id": "steak",
+    "grams": 110
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 60
+   },
+   {
+    "id": "lettuce",
+    "grams": 20
+   }
+  ],
+  "picadillo-with-white-rice-and-maduros": [
+   {
+    "id": "ground-beef",
+    "grams": 110
+   },
+   {
+    "id": "white-rice",
+    "grams": 240
+   },
+   {
+    "id": "plantain-ripe-fried",
+    "grams": 100
+   },
+   {
+    "id": "tomato",
+    "grams": 40
+   }
+  ],
+  "poisson-gros-sel-with-boiled-plantain": [
+   {
+    "id": "white-fish",
+    "grams": 200
+   },
+   {
+    "id": "plantain-boiled",
+    "grams": 200
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   },
+   {
+    "id": "butter",
+    "grams": 5
+   },
+   {
+    "id": "tomato",
+    "grams": 40
+   }
+  ],
+  "poke-bowl-with-salmon": [
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "salmon",
+    "grams": 113
+   },
+   {
+    "id": "avocado",
+    "grams": 50
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 60
+   },
+   {
+    "id": "lettuce",
+    "grams": 20
+   },
+   {
+    "id": "olive-oil",
+    "grams": 7
+   }
+  ],
+  "popcorn": [
+   {
+    "id": "corn",
+    "grams": 120
+   },
+   {
+    "id": "butter",
+    "grams": 5
+   }
+  ],
+  "potato-chips-small-bag": [
+   {
+    "id": "potato",
+    "grams": 105
+   },
+   {
+    "id": "olive-oil",
+    "grams": 15
+   }
+  ],
+  "pupusas-2-with-curtido": [
+   {
+    "id": "corn-tortilla",
+    "grams": 150
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 60
+   },
+   {
+    "id": "red-beans",
+    "grams": 40
+   },
+   {
+    "id": "pork-loin",
+    "grams": 30
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 80
+   },
+   {
+    "id": "olive-oil",
+    "grams": 8
+   }
+  ],
+  "red-beans-and-rice-with-sausage": [
+   {
+    "id": "white-rice",
+    "grams": 180
+   },
+   {
+    "id": "red-beans",
+    "grams": 150
+   },
+   {
+    "id": "pork-loin",
+    "grams": 100
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "ropa-vieja-with-white-rice-and-black-beans": [
+   {
+    "id": "steak",
+    "grams": 140
+   },
+   {
+    "id": "white-rice",
+    "grams": 240
+   },
+   {
+    "id": "black-beans",
+    "grams": 130
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   }
+  ],
+  "rum-and-coke": [
+   {
+    "id": "sugar",
+    "grams": 22
+   }
+  ],
+  "sancocho": [
+   {
+    "id": "chicken-thigh",
+    "grams": 130
+   },
+   {
+    "id": "yuca",
+    "grams": 120
+   },
+   {
+    "id": "plantain-boiled",
+    "grams": 90
+   },
+   {
+    "id": "corn",
+    "grams": 60
+   },
+   {
+    "id": "potato",
+    "grams": 60
+   },
+   {
+    "id": "white-rice",
+    "grams": 80
+   }
+  ],
+  "sancocho-de-gallina": [
+   {
+    "id": "chicken-thigh",
+    "grams": 150
+   },
+   {
+    "id": "yuca",
+    "grams": 100
+   },
+   {
+    "id": "plantain-boiled",
+    "grams": 80
+   },
+   {
+    "id": "potato",
+    "grams": 80
+   },
+   {
+    "id": "corn",
+    "grams": 60
+   },
+   {
+    "id": "white-rice",
+    "grams": 60
+   }
+  ],
+  "shrimp-and-grits": [
+   {
+    "id": "oatmeal",
+    "grams": 300
+   },
+   {
+    "id": "shrimp",
+    "grams": 120
+   },
+   {
+    "id": "cheddar",
+    "grams": 30
+   },
+   {
+    "id": "butter",
+    "grams": 14
+   },
+   {
+    "id": "pork-loin",
+    "grams": 35
+   }
+  ],
+  "shrimp-ceviche-with-salad": [
+   {
+    "id": "shrimp",
+    "grams": 170
+   },
+   {
+    "id": "lettuce",
+    "grams": 70
+   },
+   {
+    "id": "tomato",
+    "grams": 120
+   },
+   {
+    "id": "avocado",
+    "grams": 50
+   },
+   {
+    "id": "chickpeas",
+    "grams": 50
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "smothered-pork-chops-with-rice": [
+   {
+    "id": "pork-loin",
+    "grams": 150
+   },
+   {
+    "id": "white-rice",
+    "grams": 180
+   },
+   {
+    "id": "butter",
+    "grams": 20
+   },
+   {
+    "id": "milk",
+    "grams": 60
+   },
+   {
+    "id": "white-bread",
+    "grams": 15
+   }
+  ],
+  "soda-1-can": [
+   {
+    "id": "sugar",
+    "grams": 39
+   }
+  ],
+  "sopa-de-res": [
+   {
+    "id": "steak",
+    "grams": 130
+   },
+   {
+    "id": "yuca",
+    "grams": 80
+   },
+   {
+    "id": "corn",
+    "grams": 60
+   },
+   {
+    "id": "potato",
+    "grams": 60
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 90
+   },
+   {
+    "id": "plantain-boiled",
+    "grams": 40
+   }
+  ],
+  "soup-joumou": [
+   {
+    "id": "steak",
+    "grams": 100
+   },
+   {
+    "id": "sweet-potato",
+    "grams": 150
+   },
+   {
+    "id": "pasta",
+    "grams": 60
+   },
+   {
+    "id": "potato",
+    "grams": 80
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 90
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "spaghetti-and-meatballs": [
+   {
+    "id": "pasta",
+    "grams": 280
+   },
+   {
+    "id": "ground-beef",
+    "grams": 120
+   },
+   {
+    "id": "tomato",
+    "grams": 150
+   },
+   {
+    "id": "cheddar",
+    "grams": 10
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "steamed-fish-with-okra-and-bammy": [
+   {
+    "id": "white-fish",
+    "grams": 170
+   },
+   {
+    "id": "yuca",
+    "grams": 110
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 120
+   },
+   {
+    "id": "tomato",
+    "grams": 40
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "sushi-2-rolls": [
+   {
+    "id": "white-rice",
+    "grams": 300
+   },
+   {
+    "id": "salmon",
+    "grams": 60
+   },
+   {
+    "id": "shrimp",
+    "grams": 30
+   },
+   {
+    "id": "avocado",
+    "grams": 40
+   },
+   {
+    "id": "sugar",
+    "grams": 8
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 30
+   }
+  ],
+  "sweet-tea": [
+   {
+    "id": "sugar",
+    "grams": 45
+   }
+  ],
+  "tostones-with-mojo": [
+   {
+    "id": "plantain-green-fried",
+    "grams": 150
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "tres-leches-cake": [
+   {
+    "id": "milk",
+    "grams": 120
+   },
+   {
+    "id": "sugar",
+    "grams": 32
+   },
+   {
+    "id": "egg",
+    "grams": 25
+   },
+   {
+    "id": "white-bread",
+    "grams": 25
+   },
+   {
+    "id": "butter",
+    "grams": 10
+   }
+  ],
+  "tuna-salad-on-whole-wheat-with-fruit": [
+   {
+    "id": "white-fish",
+    "grams": 110
+   },
+   {
+    "id": "white-bread",
+    "grams": 80
+   },
+   {
+    "id": "olive-oil",
+    "grams": 12
+   },
+   {
+    "id": "lettuce",
+    "grams": 30
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "avocado",
+    "grams": 40
+   }
+  ],
+  "turkey-sandwich-and-chips": [
+   {
+    "id": "white-bread",
+    "grams": 58
+   },
+   {
+    "id": "chicken-breast",
+    "grams": 85
+   },
+   {
+    "id": "lettuce",
+    "grams": 15
+   },
+   {
+    "id": "tomato",
+    "grams": 30
+   },
+   {
+    "id": "cheddar",
+    "grams": 14
+   },
+   {
+    "id": "french-fries",
+    "grams": 60
+   }
+  ],
+  "vaca-frita-with-rice-and-black-beans": [
+   {
+    "id": "steak",
+    "grams": 130
+   },
+   {
+    "id": "white-rice",
+    "grams": 200
+   },
+   {
+    "id": "black-beans",
+    "grams": 130
+   },
+   {
+    "id": "olive-oil",
+    "grams": 10
+   },
+   {
+    "id": "tomato",
+    "grams": 20
+   }
+  ],
+  "vegetable-omelet-with-whole-grain-toast": [
+   {
+    "id": "egg",
+    "grams": 120
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 60
+   },
+   {
+    "id": "tomato",
+    "grams": 40
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 30
+   },
+   {
+    "id": "white-bread",
+    "grams": 45
+   },
+   {
+    "id": "olive-oil",
+    "grams": 5
+   }
+  ],
+  "vegetable-soup-and-a-small-salad": [
+   {
+    "id": "mixed-vegetables",
+    "grams": 180
+   },
+   {
+    "id": "chickpeas",
+    "grams": 60
+   },
+   {
+    "id": "potato",
+    "grams": 80
+   },
+   {
+    "id": "lettuce",
+    "grams": 50
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 9
+   }
+  ],
+  "whole-grain-toast-with-olive-oil-and-tomato": [
+   {
+    "id": "white-bread",
+    "grams": 58
+   },
+   {
+    "id": "olive-oil",
+    "grams": 9
+   },
+   {
+    "id": "tomato",
+    "grams": 100
+   }
+  ],
+  "whole-wheat-pasta-with-vegetables-and-olive-oil": [
+   {
+    "id": "pasta",
+    "grams": 300
+   },
+   {
+    "id": "mixed-vegetables",
+    "grams": 150
+   },
+   {
+    "id": "tomato",
+    "grams": 60
+   },
+   {
+    "id": "olive-oil",
+    "grams": 14
+   },
+   {
+    "id": "queso-fresco",
+    "grams": 15
+   }
+  ]
+ }
+}
