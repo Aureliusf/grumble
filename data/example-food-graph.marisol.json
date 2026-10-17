@@ -74,7 +74,7 @@
   },
   "dishes": {
     "rotation": [
-      { "dish_id": "vaca-frita-with-rice-and-black-beans", "slot": "dinner", "star": true, "move": "Beans first, then the vaca frita, rice last and one cup. Walk after.", "flags": ["high_fiber", "table_menu"], "cost_usd": 4.5 },
+      { "dish_id": "vaca-frita-with-rice-and-black-beans", "slot": "dinner", "star": true, "move": "Beans first, then the vaca frita, rice last and one cup. Walk after.", "flags": ["high_fiber", "table_menu"] },
       { "dish_id": "arroz-con-pollo", "slot": "lunch", "star": true, "move": "Add a side of black beans; half the rice.", "flags": ["cheap"] },
       { "dish_id": "picadillo-with-white-rice-and-maduros", "slot": "dinner", "move": "Two maduros, not four. Picadillo and beans before rice.", "flags": [] },
       { "dish_id": "pastelito-de-guayaba-and-cafecito", "slot": "breakfast", "star": true, "move": "Keep it. Morning only, with the cafecito, after two eggs.", "flags": ["cheap", "zero_prep"] },

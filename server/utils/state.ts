@@ -11,7 +11,8 @@ const today = clock().today
 const OPEN = { name: '—', years_out: 0 }   // the host-less Tuesday, as 16's fixture spells it
 const hostFrom = (h: { persona?: string; name?: string; years_out?: number } | null): Table['host'] | null => {
   if (!h) return null
-  if (h.persona) return { name: h.persona[0].toUpperCase() + h.persona.slice(1), years_out: Math.round(personas[h.persona].profile.years_since_treatment) }
+  // A seeded years_out wins over the persona row: the demo ages Tony to 4 years out (16), as 10 ages Dani.
+  if (h.persona) return { name: h.persona[0].toUpperCase() + h.persona.slice(1), years_out: h.years_out ?? Math.round(personas[h.persona].profile.years_since_treatment) }
   return { name: h.name!, years_out: h.years_out! }
 }
 

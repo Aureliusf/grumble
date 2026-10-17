@@ -84,6 +84,7 @@ async function onAction(actionId: string) {
   </div>
 
   <!-- what did you eat? -->
+  <AiBanner v-if="!isRed" />
   <UCard v-if="!isRed">
     <p class="font-display font-semibold text-[20px] mb-3">{{ t('today.ate_title') }}</p>
     <div class="grid grid-cols-3 gap-2 mb-3">

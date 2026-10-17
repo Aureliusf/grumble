@@ -9,7 +9,11 @@
   "app": {
     "fixture": "fixture",
     "week": "week {n}",
-    "language": "Language"
+    "language": "Language",
+    "ai_off": {
+      "title": "Meal reading is offline",
+      "body": "The server has no ANTHROPIC_API_KEY, so meals are matched by simple word lookup and some won't be recognized. Add the key to .env and restart the server."
+    }
   },
   "character": {
     "alt": "Grumble, a stomach with its arms crossed"
@@ -166,7 +170,7 @@
       "fund": "Fund a week"
     },
     "intro": "Tuesdays at six thirty at Versailles. Nobody pays.",
-    "years_out": "{n} years out",
+    "years_out": "{n} year out | {n} years out",
     "language": {
       "es": "Español",
       "en": "English",

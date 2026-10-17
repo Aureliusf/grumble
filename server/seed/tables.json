@@ -1,6 +1,6 @@
 [
-  {"id": "t1", "host": {"persona": "tony"}, "language": "both", "seats_total": 8, "seats_taken": 5, "funded_by": {"en": "the García family", "es": "la familia García"}},
+  {"id": "t1", "host": {"persona": "tony", "years_out": 4}, "language": "both", "seats_total": 8, "seats_taken": 5, "funded_by": {"en": "the García family", "es": "la familia García"}},
   {"id": "t2", "host": {"name": "Ana R.", "years_out": 6}, "language": "es", "seats_total": 8, "seats_taken": 0},
-  {"id": "t3", "host": {"persona": "tony"}, "language": "both", "seats_total": 6, "seats_taken": 0},
+  {"id": "t3", "host": {"persona": "tony", "years_out": 4}, "language": "both", "seats_total": 6, "seats_taken": 0},
   {"id": "t4", "host": null, "language": "both", "seats_total": 8, "seats_taken": 0}
 ]

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "updated": "2025-01-13T09:00:00Z",
+  "person": {
+    "id": "N0170",
+    "display_name": "Tony",
+    "language": "en",
+    "age": 62,
+    "sex": "male",
+    "food_background": "Southern US",
+    "cancer_type": "prostate",
+    "years_since_treatment": 1.2,
+    "blood_sugar_group": "normal",
+    "wears_cgm": false,
+    "schedule": { "type": "retired", "sleep_start": "23:30", "sleep_end": "07:00", "work_days": [] },
+    "has_dog": false,
+    "dietary_restrictions": []
+  },
+  "risks": {
+    "company": {
+      "usual_dinner_company": "alone",
+      "open_to_table": false,
+      "open_to_hosting": true
+    },
+    "taste": {
+      "loves": ["shrimp-and-grits", "smothered-pork-chops-with-rice", "biscuit-with-sausage-gravy", "fried-chicken-mac-and-cheese-and-collards", "red-beans-and-rice-with-sausage"],
+      "refuses": [],
+      "grew_up_on": "Southern US",
+      "appetite_pattern": "steady"
+    },
+    "money": { "weekly_food_budget_usd": 60, "snap": true, "who_cooks": "self" },
+    "convenience": { "meals_out_per_week": 1, "cooks_days_per_week": 6, "usual_places": [] }
+  },
+  "standards": {
+    "items": [
+      { "id": "dinner-by-8", "kind": "last_meal_by", "statement": "Dinner by 8 so I sleep better", "value": "20:00", "relative_to_sleep": false, "why": "Timing counts from when you sleep; at 11:30, 8 pm is three and a half hours before", "negotiated_on": "2025-01-06" },
+      { "id": "walk-10", "kind": "walk_after_dinner_min", "statement": "Ten minutes walking after dinner", "value": 10, "unit": "min", "why": "Ten minutes cut the peak; more didn't add anything", "negotiated_on": "2025-01-06" },
+      { "id": "beans-first", "kind": "protein_first", "statement": "Beans and the meat before the rice or grits", "value": true, "why": "Fiber and protein before starch flatten the peak", "negotiated_on": "2025-01-06" }
+    ]
+  },
+  "procedures": {
+    "items": [
+      { "standard_id": "dinner-by-8", "source": "meal_log", "cadence": "daily", "computation": "time of last logged item with calories > 5 kcal, on the 4am-to-4am eating day, is <= 20:00" },
+      { "standard_id": "walk-10", "source": "tracker_steps", "cadence": "daily", "computation": "steps in the 60 min after the last meal >= 800" },
+      { "standard_id": "beans-first", "source": "daily_checkin", "cadence": "daily", "computation": "self-report toggle on the dinner card" }
+    ]
+  },
+  "thresholds": {
+    "daily": { "amber_if": ["dinner-by-8 missed", "walk-10 missed"], "red_if": ["no food logged and no check-in"], "amber_action": "nudge", "red_action": "coach_notified" },
+    "weekly": { "amber_if": ["dinner-by-8 missed 3+ days", "walk-10 missed 4+ days"], "red_if": ["no log 3 consecutive days", "mood <= 2 on 3 days"], "red_action": "coach_calls" }
+  },
+  "accountable": {
+    "coach": { "name": "Lourdes", "contact": "sylvester-survivorship" },
+    "buddy": null,
+    "table": { "role": "host", "usual_night": "Tue", "last_attended": null },
+    "dog": null
+  },
+  "dishes": {
+    "rotation": [
+      { "dish_id": "smothered-pork-chops-with-rice", "slot": "dinner", "star": true, "move": "A side of beans. Pork chop and beans before the rice, one cup.", "flags": [] },
+      { "dish_id": "red-beans-and-rice-with-sausage", "slot": "dinner", "move": "Beans first, then the rest.", "flags": ["high_fiber"] },
+      { "dish_id": "fried-chicken-mac-and-cheese-and-collards", "slot": "dinner", "move": "Collards and chicken first. That's two dinners; box half.", "flags": [] },
+      { "dish_id": "shrimp-and-grits", "slot": "lunch", "star": true, "move": "Shrimp first, then the grits. A side of beans.", "flags": [] },
+      { "dish_id": "biscuit-with-sausage-gravy", "slot": "breakfast", "move": "Keep it. Two eggs first.", "flags": [] },
+      { "dish_id": "ice-cream-1-cup", "slot": "snack", "move": "Keep it. After the walk, not at bedtime.", "flags": [] }
+    ],
+    "places": []
+  },
+  "contract": { "framing": "suggestive", "nag_tolerance": "low", "quiet_hours": ["22:00-07:00"], "never_mention": ["weight"] }
+}

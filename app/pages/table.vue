@@ -121,8 +121,11 @@ const ledgerMonth = computed(() => {
   <UTabs v-model="tab" :items="tabs" color="primary" size="lg" class="w-full" :ui="{ list: 'rounded-full', indicator: 'rounded-full', trigger: 'font-display font-semibold' }">
     <template #table>
       <div class="flex flex-col gap-4 pt-2">
-        <p class="font-display font-semibold text-[20px] leading-snug">{{ t('table.intro') }}</p>
-        <TableInfo />
+        <!-- The intro and its help read as one block: the help is a quiet link under the line it explains. -->
+        <div class="flex flex-col">
+          <p class="font-display font-semibold text-[20px] leading-snug">{{ t('table.intro') }}</p>
+          <TableInfo class="-mt-0.5 text-crema-800/70 dark:text-crema-200/70" />
+        </div>
         <TableCard
           v-for="tbl in tables"
           :key="tbl.id"

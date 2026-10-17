@@ -9,7 +9,11 @@
   "app": {
     "fixture": "fixture",
     "week": "semana {n}",
-    "language": "Idioma"
+    "language": "Idioma",
+    "ai_off": {
+      "title": "La lectura de comidas está apagada",
+      "body": "El servidor no tiene ANTHROPIC_API_KEY, así que las comidas se reconocen por palabras sueltas y algunas no se van a encontrar. Agregue la clave en .env y reinicie el servidor."
+    }
   },
   "character": {
     "alt": "Grumble, un estómago con los brazos cruzados"
@@ -166,7 +170,7 @@
       "fund": "Fondear"
     },
     "intro": "Martes a las seis y media en Versailles. Nadie paga.",
-    "years_out": "{n} años",
+    "years_out": "{n} año | {n} años",
     "language": {
       "es": "Español",
       "en": "English",

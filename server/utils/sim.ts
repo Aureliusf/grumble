@@ -4,6 +4,7 @@ import { movesFor, type Portion } from './moves'
 import { peakDelta, shapeAt } from '../../shared/simulate'
 import { dinnerTime, resolveLate } from './time'
 import { clockLabel, t } from './copy'
+import { dishCost } from './cost'
 
 const r1 = (n: number) => Math.round(n * 10) / 10
 
@@ -58,5 +59,6 @@ export function simulate(req: SimulateRequest, dish: Dish, graph: Graph, lang: L
     grumble,
     delta: { peak_mg_dl: r1(grumble.peak_mg_dl - current.peak_mg_dl), iauc_pct: Math.round((grumble.iauc_2h / current.iauc_2h - 1) * 100) },
     same_as_ten: req.walk_min > 10,
+    cost: dishCost(dish.id),
   }
 }

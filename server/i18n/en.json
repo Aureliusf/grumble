@@ -39,7 +39,8 @@
     },
     "p2-table": {
       "title": "Versailles, {time}.",
-      "body": "{host} has the table. {dish}'s on the menu, beans first. Seat's yours if you want it. Walk down Eighth after."
+      "body": "{host} has the table. {dish}'s on the menu, beans first. Seat's yours if you want it. Walk down Eighth after.",
+      "body_covered": "{host} has the table. {dish}'s on the menu, beans first. The plate's covered, about ${cost}. Seat's yours if you want it. Walk down Eighth after."
     },
     "p3-buddy": {
       "body": "{time}. And text {buddy} about the walk after. Ten minutes, {buddy}'s block and back."
@@ -51,10 +52,14 @@
       "body": "{time}. At the table, not the couch. Ten minutes outside after. The bay's right there."
     },
     "p6-place": {
-      "body": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way."
+      "body": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way.",
+      "body_snap": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way. Or at home tonight: {dish}, about ${cost}."
     },
     "p7-light": {
       "body": "Nothing heavy. {time}."
+    },
+    "p8-money": {
+      "body": "{dish}, about ${cost}. Beans first. {time}. {walk}"
     },
     "p9-earlier": {
       "body": "{time}, earlier than last night. That's the whole ask."

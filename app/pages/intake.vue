@@ -77,7 +77,7 @@ function set(k: keyof IntakeAnswers, v: unknown) {
 const suggestions = computed(() => {
   if (step.value.suggestions) return step.value.suggestions
   if (step.value.suggestionsKey) return (tm(`intake.sugg.${step.value.suggestionsKey}`) as unknown[]).map(x => rt(x as never))
-  if (step.value.id === 'buddy') return answers.eats_with
+  if (['call', 'buddy'].includes(step.value.id)) return answers.eats_with
   return []
 })
 
@@ -203,6 +203,8 @@ const isSay = computed(() => ['say', 'done'].includes(step.value.type))
 </script>
 
 <template>
+  <AiBanner />
+
   <!-- refine: what Grumble knows, one more meal, change any section -->
   <template v-if="refining && !section">
     <div class="flex items-start gap-3">

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grumble — pitch</title>
-<link rel="icon" type="image/png" href="../public/grumble.png">
+<link rel="icon" type="image/png" href="../grumble.png">
 <!-- Fredoka + Nunito, as in the app. Offline, the system fallbacks take over and nothing breaks. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
 <style>
@@ -151,7 +151,7 @@
   <!-- 1 · The problem and what's new -->
   <section class="slide">
     <div class="hero-row">
-      <img class="hero-logo" src="../public/logo-horizontal.png" alt="Grumble">
+      <img class="hero-logo" src="../logo-horizontal.png" alt="Grumble">
       <div>
         <div class="kicker">Miami AI Hackathon · Challenge 2 · with Sylvester</div>
         <p class="hero-tag">Food apps count what's on the plate. Nobody asks who's across the table.</p>
@@ -380,7 +380,7 @@
           <p><b>Next.</b> Pair a real CGM. The coach view at Sylvester: who to call first. Kreyòl for the check-in. The first real Tuesday at Versailles.</p>
         </div>
       </div>
-      <img class="square-logo" src="../public/grumble-square.png" alt="Grumble">
+      <img class="square-logo" src="../grumble-square.png" alt="Grumble">
     </div>
     <div class="foot"><span></span><span>Thank you.</span></div>
     <aside class="notes">~20 s. "Money, social, the meals, time. One evening at Versailles pulls all four, with someone across the table. That's Grumble." Land the line, then stop talking. If asked about real people: "The synthetic patterns are Sylvester's design. The real finding is NHANES: distressed survivors eat less and run higher HbA1c. Grumble collects what the data doesn't have: who you ate with."</aside>
@@ -404,6 +404,7 @@
   // Demo link: ?app=http://host:port overrides the default dev server.
   try {
     const app = new URLSearchParams(location.search).get('app')
+      || (location.protocol.startsWith('http') && location.port !== '8765' ? location.origin : null)
     if (app) {
       const url = app.replace(/\/$/, '') + '/today?demo'
       document.getElementById('demo-link').href = url
