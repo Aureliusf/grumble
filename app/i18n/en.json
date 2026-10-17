@@ -154,10 +154,10 @@
       "coach_reviewed": "coach reviewed"
     },
     "ate_title": "What did you eat?",
-    "ate_placeholder": "a cup of rice, a palm of chicken, a cup of beans",
+    "ate_placeholder": "a cup of rice\na palm of chicken\na cup of black beans",
     "ate_add": "Add",
     "rest": "The rest of today",
-    "usda_note": "Foods and amounts read by Claude; the numbers are USDA FoodData Central, per gram."
+    "usda_note": "Foods and amounts read by Claude. Numbers: USDA FoodData Central for simple foods, the program's dish data for whole dishes."
   },
   "table": {
     "tabs": {
@@ -420,5 +420,50 @@
   "spike": {
     "title": "Today's spikes · people like you",
     "aria": "Open today's whole-day glucose curve"
+  },
+  "tableInfo": {
+    "toggle": "What is this?",
+    "what_q": "What is this?",
+    "what_a": "A dinner table at Versailles on Calle Ocho, every Tuesday at 6:30, for people in Sylvester's survivorship program. Up to eight people, a menu with the portions already worked out, and a ten-minute walk down Eighth after. Early dinner, food you know, a walk, and company: everything on your plan, in one evening.",
+    "host_q": "Who's {name}?",
+    "host_q_any": "Who hosts?",
+    "the_host": "The host",
+    "host_a": "{name} hosts. Hosts are people from the program who finished treatment a few years ago. They save the table and say hello. Not a doctor, not a coach, nobody selling anything.",
+    "pay_q": "Who pays?",
+    "pay_a": "Nobody at the table. Donors cover the plates through Sylvester Comprehensive Cancer Center, about {seat} a seat. If a family paid for this Tuesday, the table card says so.",
+    "catch_q": "What's the catch?",
+    "catch_a": "None. There's nothing to buy and nothing to sign. Saying yes saves you a seat; the host sees your first name and anything you don't eat, nothing else. Skip any week and nobody asks why."
+  },
+  "feedback": {
+    "title": "How today's going",
+    "spike": "{meal} ran about {d} mg/dL higher than the planned plate, for people like you. Ten minutes on your feet after a meal like that took about {n} off the peak.",
+    "carbs_ahead": "Carbs are ahead of the day: {n} of {target} g already. {next} is the lean one: protein and vegetables, the rice can sit this one out.",
+    "carbs_over": "Carbs came in at {n} of {target} g. Not a crime. Tomorrow's breakfast can be the light one.",
+    "fiber": "Fiber is the gap today: {n} of {target} g. A cup of {food} {when} adds {adds} g, and it's the cheapest thing on the menu.",
+    "protein": "Protein is light so far: {n} of {target} g. A palm of {food} {when} adds {adds} g.",
+    "protein_ok": "Protein's there: {n} of {target} g.",
+    "kcal_over": "{n} of {target} calories today. Not a crime. Ten minutes outside and tomorrow starts even.",
+    "kcal_light": "A light day: {n} of {target} calories. If you get hungry tonight, something with protein holds better than something sweet.",
+    "on_track": "Nothing to grumble about. Rare.",
+    "at": {
+      "breakfast": "at breakfast",
+      "lunch": "at lunch",
+      "dinner": "at dinner",
+      "snack": "as a snack"
+    },
+    "foods": {
+      "black-beans": "black beans",
+      "lentils": "lentils",
+      "chickpeas": "chickpeas",
+      "broccoli": "broccoli",
+      "chicken-breast": "chicken",
+      "white-fish": "fish",
+      "egg": "eggs"
+    },
+    "the": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    }
   }
 }

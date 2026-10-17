@@ -36,7 +36,7 @@ export interface SimulateResponse {
   group: SugarGroup
   n_dinners: number                         // dinners for this group in meal_responses.csv
   current: Curve
-  grumble: Curve                            // sleep_start - 4.5 h (Marisol 19:00), walk 10, move = true
+  grumble: Curve                            // the person's last_meal_by standard (Marisol 20:00), walk 10, move = true
   delta: { peak_mg_dl: number; iauc_pct: number }   // grumble vs current, negative = better
   same_as_ten: boolean                      // true when walk_min > 10
 }

@@ -18,11 +18,12 @@ export interface MealOpts {
   walk_min: number
 }
 
-// Late = at or after sleep_start − 3.5 h, on the person's own clock (04 §Inputs, CLAUDE.md rule 2).
+// Late = less than 3.5 h before sleep_start, on the person's own clock (04 §Inputs, CLAUDE.md rule 2).
+// Exactly 3.5 h is on time, so a dinner on the person's own standard is never late (same as server/utils/time.ts).
 export function latenessFor(time: string, sleepStart: string) {
   const m = (s: string) => { const [h, mm] = s.split(':').map(Number); return (h ?? 0) * 60 + (mm ?? 0) }
   const before = (m(sleepStart) - m(time) + 1440) % 1440
-  return before <= 210
+  return before < 210
 }
 
 // Peak above baseline (mg/dL). Dinner uses the group-stratified late and walk effects; other meals the pooled ones.

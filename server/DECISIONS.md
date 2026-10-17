@@ -6,7 +6,7 @@
 
 - **Peak is the top of the drawn curve.** `shape_fraction_of_peak` tops out at 0.786, so the drawn curve never reaches baseline + regression delta. The tiles read the drawn curve so chart and numbers agree. Marisol's hero comparison is 188 vs 135 mg/dL and -80% over 2 h (was 207 / 143 / -75%). iAUC 5716 matches the OLS iAUC cross-check (5788).
 - **Beans-first changes the number.** Fiber coefficient x1.5 applies. The grumble curve for vaca frita is one cup + beans first + walk 10 + earlier.
-- **The move's dinner time is 19:00 for Marisol** (sleep_start - 4.5 h, half hour). The nudge says "Tonight, seven." Her own standard `dinner-by-8` (20:00) stays as she wrote it.
+- **Tonight's dinner time is the person's own `last_meal_by` standard** (Marisol 20:00, Jean 3.5 h before his 09:00 sleep, so 05:30); sleep_start - 4.5 h only when there is no standard. The cards, the nudge and the What-if move all use it. The late boundary is now on time (late = after 20:00, or less than 3.5 h before sleep), so a dinner at exactly the standard is not penalized. Every relative dinner standard is 3.5 h before sleep (04), intake included, so a dinner on the standard sits on the late boundary and is never penalized.
 - **Red week and coach alert always go together.** `week.coach_alerted` equals `week.red`. `GET /api/coach/alerts` lists everyone in a red week.
 - **Two demo people.** Marisol (N0771) gets the Tuesday table card. Her log has one low-mood day in the trailing week, so a mood-2 tap on demo day keeps her out of red. Jean (N1904, night shift) has three low-mood days, so he gets the red card and the coach alert. His graph is `seed/graph.N1904.json`.
 - **server/ is a standalone Nitro app today** (`npm run dev` inside `server/`). Its layout (`api/`, `utils/`) is Nuxt's own `server/` directory, so once the frontend branch merges, Nuxt serves these routes on the same port with no proxy.
@@ -19,7 +19,7 @@
 - Contract kept for the frontend: the open Tuesday has `host: { name: "—", years_out: 0 }` (16), and `funded_by` comes back localized.
 - Dinner and place cards carry the move in `card.move` only; `body` no longer repeats it, so the frontend shows it once.
 - Routes use Nitro's auto-imported h3 helpers instead of importing `h3`, so standalone Nitro and Nuxt share one h3.
-- The late effect is always the group-stratified dinner effect (15), including for non-dinner dishes.
+- One formula: `server/utils/sim.ts` imports `peakDelta` and `shapeAt` from `shared/simulate.ts`, the same code the day view and spike bar run in the browser. What-if passes `dinner: true` (its slider is "Dinner at"), so it keeps the group dinner effects; beans-first is passed as 1.5x the fiber grams, which is identical in a linear model. The server keeps its own `resolveLate` (the 20:00 boundary is on time); the day view still uses `latenessFor` (8 pm counts as late) until that line in `shared/` changes.
 - "First three moves" counts dish moves only; `walk10` and `earlier` are added on top.
 - Component keywords match whole words, so "pan" doesn't hit "pancake". Added the protein words vaca, res, carne, picadillo, ropa vieja, lechon, palomilla and gallina, plus guayaba as sweet and spaghetti as starch.
 - The seeded logs are hand-written. N0771's real `synthetic_daily` rows have no-log streaks that would turn her week red.

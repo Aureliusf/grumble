@@ -97,9 +97,22 @@ async function onAction(actionId: string) {
         @click="ateSlot = s"
       >{{ t(`day.slots.${s}`) }}</UButton>
     </div>
-    <form class="flex gap-2" @submit.prevent="addEaten">
-      <UInput v-model="ateText" :placeholder="t('today.ate_placeholder')" size="xl" class="flex-1" :disabled="adding" :ui="{ base: 'rounded-full' }" />
-      <UButton type="submit" color="primary" :loading="adding" :disabled="!ateText.trim()">{{ t('today.ate_add') }}</UButton>
+    <!-- Multiline so a whole plate fits: one food per line, or a sentence. Cmd/Ctrl+Enter adds. -->
+    <form class="flex flex-col gap-2" @submit.prevent="addEaten">
+      <UTextarea
+        v-model="ateText"
+        :placeholder="t('today.ate_placeholder')"
+        :rows="5"
+        autoresize
+        :maxrows="10"
+        size="xl"
+        class="w-full"
+        :disabled="adding"
+        :ui="{ base: 'rounded-[var(--radius-grumble)] text-[17px] leading-relaxed' }"
+        @keydown.meta.enter.prevent="addEaten"
+        @keydown.ctrl.enter.prevent="addEaten"
+      />
+      <UButton type="submit" color="primary" block class="justify-center" :loading="adding" :disabled="!ateText.trim()">{{ t('today.ate_add') }}</UButton>
     </form>
     <p v-if="lastSay" class="mt-3 font-display font-semibold text-[17px] leading-snug">{{ lastSay }}</p>
 
@@ -115,6 +128,7 @@ async function onAction(actionId: string) {
   </UCard>
 
   <template v-if="!isRed && eaten.length">
+    <DayFeedback />
     <h2 class="font-display font-semibold text-[26px] mt-2">{{ t('today.rest') }}</h2>
     <DayPlan :day="day" :fixed-label="t('day.ate')" />
   </template>

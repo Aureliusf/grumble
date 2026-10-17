@@ -122,6 +122,7 @@ const ledgerMonth = computed(() => {
     <template #table>
       <div class="flex flex-col gap-4 pt-2">
         <p class="font-display font-semibold text-[20px] leading-snug">{{ t('table.intro') }}</p>
+        <TableInfo />
         <TableCard
           v-for="tbl in tables"
           :key="tbl.id"

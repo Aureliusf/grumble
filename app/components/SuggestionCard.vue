@@ -28,6 +28,7 @@ const [primary, ...others] = props.card.actions
           <UBadge v-if="card.person" color="primary" variant="soft" size="lg" icon="i-lucide-user" class="rounded-full">{{ card.person }}</UBadge>
           <UBadge color="secondary" variant="soft" size="lg" icon="i-lucide-footprints" class="rounded-full">{{ t('today.walk_n', { n: card.walk_min }) }}</UBadge>
         </div>
+        <TableInfo :host="card.person" />
         <div v-if="accepted === 'seat'" class="flex items-center gap-2 font-display font-semibold text-[20px] text-grumble-600">
           <UIcon name="i-lucide-circle-check" class="size-7" /> {{ weekday }}
         </div>
