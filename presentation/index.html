@@ -87,10 +87,11 @@
   .path li span { color: var(--ink-3); }
 
   /* slide 6: close */
-  .close { margin: auto 0; }
-  .close .quote { font-size: 64px; line-height: 1.1; max-width: 1300px; }
-  .close .quote em { font-style: normal; color: var(--coral-600); }
-  .next { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; max-width: 1300px; }
+  .close-row { margin: auto 0; display: grid; grid-template-columns: 1fr 560px; gap: 56px; align-items: center; }
+  .close-row .quote { font-size: 58px; line-height: 1.1; }
+  .close-row .quote em { font-style: normal; color: var(--coral-600); }
+  .next { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 40px; }
+  .square-logo { display: block; width: 560px; height: 560px; mix-blend-mode: multiply; }
   .next p { font-size: 21px; line-height: 1.45; color: var(--ink-2); }
   .next b { color: var(--ink); }
 
@@ -296,17 +297,17 @@
 
   <!-- 6 · Close -->
   <section class="slide">
-    <div class="close">
-      <p class="quote">Coaching beat tips four to one. <em>The relationship did the work.</em> So we built a table.</p>
-      <div class="next">
-        <p><b>What's real, what's not.</b> NHANES is real survivors. The program and CGM patterns are the challenge's synthetic data, and we say so on screen: "people like you", a range, never a forecast. Nutrients are USDA.</p>
-        <p><b>Next.</b> Pair a real CGM. The coach view at Sylvester: who to call first. Kreyòl for the check-in. The first real Tuesday at Versailles.</p>
+    <div class="close-row">
+      <div>
+        <p class="quote">Coaching beat tips four to one. <em>The relationship did the work.</em> So we built a table.</p>
+        <div class="next">
+          <p><b>What's real, what's not.</b> NHANES is real survivors. The program and CGM patterns are the challenge's synthetic data, and we say so on screen: "people like you", a range, never a forecast. Nutrients are USDA.</p>
+          <p><b>Next.</b> Pair a real CGM. The coach view at Sylvester: who to call first. Kreyòl for the check-in. The first real Tuesday at Versailles.</p>
+        </div>
       </div>
+      <img class="square-logo" src="../public/grumble-square.png" alt="Grumble">
     </div>
-    <div class="foot">
-      <img class="logo" src="../public/logo-horizontal.png" alt="Grumble">
-      <span>Thank you.</span>
-    </div>
+    <div class="foot"><span></span><span>Thank you.</span></div>
     <aside class="notes">~20 s. Land the line, then stop talking. If asked about real people: "The synthetic patterns are Sylvester's design. The real finding is NHANES: distressed survivors eat less and run higher HbA1c. Grumble collects what the data doesn't have: who you ate with."</aside>
   </section>
 </div>
