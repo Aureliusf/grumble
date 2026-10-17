@@ -21,7 +21,8 @@ const starredDinner = (g: Graph) => pick(g, r => !!r.star && r.slot === 'dinner'
 const company = (c: Ctx) => c.checkin?.company ?? 'unknown'
 
 // A dinner card: dish, the move, the move's time (sleep_start - 4.5 h), a ten-minute walk, and a person when there is one.
-function dinner(c: Ctx, id: string, vars: Record<string, string> = {}, dishId = starredDinner(c.graph).dish_id, evidence: Card['evidence'] = 'rule based', person?: string): Card {
+interface DinnerOpts { vars?: Record<string, string>; dishId?: string; evidence?: Card['evidence']; person?: string }
+function dinner(c: Ctx, id: string, { vars = {}, dishId = starredDinner(c.graph).dish_id, evidence = 'rule based', person }: DinnerOpts = {}): Card {
   const time = grumbleTime(c.graph.person.schedule), move = moveLine(dishId, c.lang)
   return {
     id, kind: 'dinner', title: dishById.get(dishId)?.name ?? dishId,
@@ -50,10 +51,13 @@ const RULES: Rule[] = [
   } },
   { id: 'p3-buddy', when: c => company(c) === 'alone' && !!c.graph.accountable.buddy, card: c => {
     const buddy = c.graph.accountable.buddy!.name
-    return dinner(c, 'p3-buddy', { buddy }, undefined, 'observed pattern', buddy)
+    return dinner(c, 'p3-buddy', { vars: { buddy }, evidence: 'observed pattern', person: buddy })
   } },
-  { id: 'p4-dog', when: c => company(c) === 'alone' && !!c.graph.accountable.dog, card: c => dinner(c, 'p4-dog', { dog: c.graph.accountable.dog! }, undefined, 'observed pattern', c.graph.accountable.dog!) },
-  { id: 'p5-alone', when: c => company(c) === 'alone', card: c => dinner(c, 'p5-alone', {}, undefined, 'observed pattern') },
+  { id: 'p4-dog', when: c => company(c) === 'alone' && !!c.graph.accountable.dog, card: c => {
+    const dog = c.graph.accountable.dog!
+    return dinner(c, 'p4-dog', { vars: { dog }, evidence: 'observed pattern', person: dog })
+  } },
+  { id: 'p5-alone', when: c => company(c) === 'alone', card: c => dinner(c, 'p5-alone', { evidence: 'observed pattern' }) },
   { id: 'p6-place', when: c => company(c) === 'out' && !!c.graph.dishes.places?.length, card: c => {
     const p = c.graph.dishes.places![0], time = grumbleTime(c.graph.person.schedule)
     return { id: 'p6-place', kind: 'place', title: p.venue, body: t(c.lang, 'cards.p6-place.body', { order: p.order.replace(/\.$/, ''), avoid: p.avoid ?? '' }),
@@ -62,7 +66,7 @@ const RULES: Rule[] = [
   { id: 'p7-light', when: c => (c.checkin?.energy ?? 5) <= 2 || (c.checkin?.hunger ?? 5) <= 2, card: c => {
     const light = pick(c.graph, r => !!r.flags?.includes('low_appetite_ok') && r.slot !== 'breakfast' && dishById.get(r.dish_id)?.typical_meal_type !== 'drink')
       ?? pick(c.graph, r => !!r.flags?.includes('low_appetite_ok')) ?? starredDinner(c.graph)
-    return dinner(c, 'p7-light', {}, light.dish_id)
+    return dinner(c, 'p7-light', { dishId: light.dish_id })
   } },
   { id: 'p9-earlier', when: c => c.yesterdayLateMissed, card: c => dinner(c, 'p9-earlier') },
   { id: 'p10-default', when: () => true, card: c => dinner(c, 'p10-default') },

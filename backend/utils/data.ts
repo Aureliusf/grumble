@@ -16,7 +16,7 @@ export interface Standard { id: string; kind: string; statement: string; value?:
 export interface RotationItem { dish_id: string; slot: string; star?: boolean; move?: string; flags?: string[]; cost_usd?: number }
 export interface Graph {
   person: { id: string; display_name: string; language: string; blood_sugar_group: SugarGroup; years_since_treatment?: number; has_dog?: boolean; schedule: Schedule }
-  risks: { company: { open_to_table?: boolean } }
+  risks: { company: { open_to_table?: boolean }; taste?: { loves?: string[] } }
   standards: { items: Standard[] }
   thresholds: { daily: { amber_if?: string[]; red_if?: string[] }; weekly: { amber_if?: string[]; red_if?: string[] } }
   accountable: { coach: { name: string }; buddy?: { name: string } | null; table?: { usual_night?: string }; dog?: string | null }
