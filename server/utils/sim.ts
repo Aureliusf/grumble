@@ -33,8 +33,10 @@ export function curve(delta: number, group: SugarGroup, late: boolean, applied: 
   const base = P.baseline_mg_dl[group], ttp = P.time_to_peak_min[group]
   const rise = Array.from({ length: 49 }, (_, i) => ({ t: i * 5, y: delta * shape(i * 5 * 60 / ttp) }))
   const top = rise.reduce((a, b) => (b.y > a.y ? b : a))
-  let iauc = 0
+  let iauc = 0, back = top.t + 5
   for (let i = 1; i < rise.length && rise[i].t <= 120; i++) iauc += (Math.max(rise[i].y, 0) + Math.max(rise[i - 1].y, 0)) / 2 * 5
+  // The stretched shape reaches 0 at 240 * ttp / 60 min, so this always ends, past the 240-min chart if it has to.
+  while (delta * shape(back * 60 / ttp) >= 3) back += 5
   return {
     label,
     points: rise.map(p => ({ t: p.t, mg_dl: r1(base + p.y) })),
@@ -43,7 +45,7 @@ export function curve(delta: number, group: SugarGroup, late: boolean, applied: 
     peak_delta: r1(top.y),
     time_to_peak_min: top.t,
     iauc_2h: Math.round(iauc),
-    back_to_baseline_min: rise.find(p => p.t > top.t && p.y < 3)?.t ?? null,
+    back_to_baseline_min: back,
     late,
     applied_moves: applied,
   }

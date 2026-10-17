@@ -1,4 +1,3 @@
-import { defineEventHandler, readBody } from 'h3'
 import type { SimulateRequest } from '../shared/types'
 import { dishById } from '../utils/data'
 import { badRequest, graphOf, langOf, notFound } from '../utils/http'

@@ -32,12 +32,12 @@
   "cards": {
     "p1-red": { "title": "{coach} te va a llamar esta semana.", "body": "Esta noche: lo que ibas a comer, antes de las {target}, y después diez minutos afuera." },
     "p2-table": { "title": "Versailles, {time}.", "body": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho." },
-    "p3-buddy": { "body": "{time}. {move} Y escríbele a {buddy} para la caminata. Diez minutos, hasta la esquina de {buddy} y de vuelta." },
-    "p4-dog": { "body": "{time}. {move} Después, {dog} se gana la vuelta larga a la cuadra. Diez minutos." },
-    "p5-alone": { "body": "{time}. {move} En la mesa, no en el sofá. Diez minutos afuera después. La bahía está ahí mismo." },
-    "p6-place": { "body": "{time}, {venue}. Lo de siempre: {dish}. {move} Al carro por el camino largo." },
-    "p7-light": { "body": "Nada pesado. {time}. {move}" },
-    "p9-earlier": { "body": "{time}, más temprano que anoche. {move} Eso es todo." },
-    "p10-default": { "body": "{time}. {move} {walk}" }
+    "p3-buddy": { "body": "{time}. Y escríbele a {buddy} para la caminata. Diez minutos, hasta la esquina de {buddy} y de vuelta." },
+    "p4-dog": { "body": "{time}. Después, {dog} se gana la vuelta larga a la cuadra. Diez minutos." },
+    "p5-alone": { "body": "{time}. En la mesa, no en el sofá. Diez minutos afuera después. La bahía está ahí mismo." },
+    "p6-place": { "body": "{time}, {venue}. Lo de siempre: {dish}. Al carro por el camino largo." },
+    "p7-light": { "body": "Nada pesado. {time}." },
+    "p9-earlier": { "body": "{time}, más temprano que anoche. Eso es todo." },
+    "p10-default": { "body": "{time}. {walk}" }
   }
 }

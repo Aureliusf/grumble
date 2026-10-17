@@ -14,8 +14,11 @@
 ## Filled in where the spec was silent or contradicted itself
 
 - `n_dinners` is the group's own dinner count from `meal_responses.csv` (prediabetes 1,585). 5,472 was the total across all groups. A test checks it against the CSV.
-- `back_to_baseline_min` is `null` when the curve is still 3 mg/dL or more above baseline at 240 min. That is the case for Marisol's late vaca frita.
+- `back_to_baseline_min` is always a number. The curve keeps falling past the 240-min chart, so Marisol's late vaca frita reads 255 rather than blank.
 - `same_as_ten` is true for walk 20 and 30, not 10.
+- Contract kept for the frontend: the open Tuesday has `host: { name: "—", years_out: 0 }` (16), and `funded_by` comes back localized.
+- Dinner and place cards carry the move in `card.move` only; `body` no longer repeats it, so the frontend shows it once.
+- Routes use Nitro's auto-imported h3 helpers instead of importing `h3`, so standalone Nitro and Nuxt share one h3.
 - The late effect is always the group-stratified dinner effect (15), including for non-dinner dishes.
 - "First three moves" counts dish moves only; `walk10` and `earlier` are added on top.
 - Component keywords match whole words, so "pan" doesn't hit "pancake". Added the protein words vaca, res, carne, picadillo, ropa vieja, lechon, palomilla and gallina, plus guayaba as sweet and spaghetti as starch.

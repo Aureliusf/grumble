@@ -1,4 +1,3 @@
-import { defineEventHandler, readBody } from 'h3'
 import type { Checkin } from '../../shared/types'
 import { clock } from '../../utils/data'
 import { badRequest, graphOf, langOf } from '../../utils/http'

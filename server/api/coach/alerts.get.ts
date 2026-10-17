@@ -1,4 +1,3 @@
-import { defineEventHandler } from 'h3'
 import type { CoachAlert } from '../../shared/types'
 import { graphs } from '../../utils/data'
 import { weekDays } from '../../utils/state'

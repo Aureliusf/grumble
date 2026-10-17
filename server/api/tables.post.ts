@@ -1,6 +1,5 @@
-import { defineEventHandler, readBody } from 'h3'
 import type { Table } from '../shared/types'
-import { badRequest, graphOf } from '../utils/http'
+import { badRequest, graphOf, langOf } from '../utils/http'
 import { host, tableView, tables } from '../utils/state'
 
 // Host a table: takes the host-less Tuesday on that date (or the first host-less one).
@@ -11,5 +10,5 @@ export default defineEventHandler(async event => {
   const t = tables.find(t => !t.host && t.date === date) ?? tables.find(t => !t.host)
   if (!t) throw badRequest('Every Tuesday already has a host')
   host(t, person_id, seats, language)
-  return tableView(t, person_id)
+  return tableView(t, person_id, langOf(event))
 })

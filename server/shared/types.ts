@@ -26,7 +26,7 @@ export interface Curve {
   peak_delta: number                        // peak_mg_dl - baseline
   time_to_peak_min: number
   iauc_2h: number
-  back_to_baseline_min: number | null       // null = still above baseline + 3 at 240 min
+  back_to_baseline_min: number              // can be past 240 when a late, heavy plate is still up at the chart's edge
   late: boolean
   applied_moves: string[]
 }
@@ -69,7 +69,7 @@ export interface ActionResponse { ok: true; fed: boolean; today: TodayResponse }
 
 export interface Table {
   id: string; date: string; time: '18:30'; venue: 'Versailles'
-  host: { name: string; years_out: number } | null; language: 'es' | 'en' | 'both'
+  host: { name: string; years_out: number }; language: 'es' | 'en' | 'both'   // open Tuesday: { name: '—', years_out: 0 } (16)
   seats_total: number; seats_left: number; funded_by?: string
   mine: 'none' | 'guest' | 'host'
 }

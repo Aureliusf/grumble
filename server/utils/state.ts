@@ -1,14 +1,15 @@
-import type { Checkin, Fund, Table } from '../shared/types'
+import type { Checkin, Fund, Lang, Table } from '../shared/types'
 import { addDays, clock, graphs, logs, personas, seeds, type LogDay } from './data'
 
 // In-memory demo state, reset on every boot (16: "Restarting resets the demo. That is a feature.").
 interface TableState {
   id: string; date: string; language: Table['language']; seats_total: number; seats_taken: number
-  host: Table['host']; host_id?: string; funded_by?: string; guests: Set<string>
+  host: Table['host'] | null; host_id?: string; funded_by?: string | Record<Lang, string>; guests: Set<string>
 }
 
 const today = clock().today
-const hostFrom = (h: { persona?: string; name?: string; years_out?: number } | null): Table['host'] => {
+const OPEN = { name: '—', years_out: 0 }   // the host-less Tuesday, as 16's fixture spells it
+const hostFrom = (h: { persona?: string; name?: string; years_out?: number } | null): Table['host'] | null => {
   if (!h) return null
   if (h.persona) return { name: h.persona[0].toUpperCase() + h.persona.slice(1), years_out: Math.round(personas[h.persona].profile.years_since_treatment) }
   return { name: h.name!, years_out: h.years_out! }
@@ -19,10 +20,11 @@ export const tables: TableState[] = seeds.tables.map((s, i) => ({
   seats_total: s.seats_total, seats_taken: s.seats_taken, host: hostFrom(s.host), funded_by: s.funded_by, guests: new Set(),
 }))
 
-export const tableView = (t: TableState, personId: string): Table => ({
-  id: t.id, date: t.date, time: '18:30', venue: 'Versailles', host: t.host, language: t.language,
+// Seeded donors are localized; a name typed into the fund form shows as typed.
+export const tableView = (t: TableState, personId: string, lang: Lang = 'es'): Table => ({
+  id: t.id, date: t.date, time: '18:30', venue: 'Versailles', host: t.host ?? OPEN, language: t.language,
   seats_total: t.seats_total, seats_left: t.seats_total - t.seats_taken - t.guests.size,
-  ...(t.funded_by ? { funded_by: t.funded_by } : {}),
+  ...(t.funded_by ? { funded_by: typeof t.funded_by === 'string' ? t.funded_by : t.funded_by[lang] } : {}),
   mine: t.host_id === personId ? 'host' : t.guests.has(personId) ? 'guest' : 'none',
 })
 
@@ -38,7 +40,7 @@ export function host(t: TableState, personId: string, seats: number, language: T
 }
 
 export const ledger = { ...seeds.fund.ledger }
-export const fundView = (lang: 'en' | 'es'): Fund => ({
+export const fundView = (lang: Lang): Fund => ({
   seat_usd: 20, table_usd: 160, month_usd: 640,
   ledger: { month: new Date(`${today}T12:00:00Z`).toLocaleString(lang, { month: 'long', timeZone: 'UTC' }), ...ledger },
 })

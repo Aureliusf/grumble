@@ -1,4 +1,3 @@
-import { defineEventHandler, readBody } from 'h3'
 import { badRequest, langOf } from '../utils/http'
 import { fundView, ledger, tables } from '../utils/state'
 

@@ -1,4 +1,4 @@
-import { createError, getQuery, getRouterParam, type H3Event } from 'h3'
+import type { H3Event } from 'h3'
 import type { Lang } from '../shared/types'
 import { graphs } from './data'
 

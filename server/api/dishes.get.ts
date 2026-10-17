@@ -1,4 +1,3 @@
-import { defineEventHandler, getQuery } from 'h3'
 import { dishes, graphs } from '../utils/data'
 
 // All 127 by default; ?cuisine= filters; ?person_id= puts that person's loves and rotation first.
