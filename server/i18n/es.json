@@ -52,7 +52,8 @@
       "body": "{time}. En la mesa, no en el sofá. Diez minutos afuera después. La bahía está ahí mismo."
     },
     "p6-place": {
-      "body": "{time}, {venue}. Lo de siempre: {dish}. Al carro por el camino largo."
+      "body": "{time}, {venue}. Lo de siempre: {dish}. Al carro por el camino largo.",
+      "body_snap": "{time}, {venue}. Lo de siempre: {dish}. Al carro por el camino largo. O en casa esta noche: {dish}, unos ${cost}."
     },
     "p7-light": {
       "body": "Nada pesado. {time}."

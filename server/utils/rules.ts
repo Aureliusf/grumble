@@ -29,18 +29,21 @@ function homeDinner(c: Ctx, preferred: Item[] = []): string {
   const rot = c.graph.dishes.rotation
   const order = [...preferred, ...rot.filter(r => r.star && r.slot === 'dinner'), ...rot.filter(r => r.slot === 'dinner'),
     ...rot.filter(r => r.star && r.slot !== 'breakfast'), ...rot.filter(r => r.slot !== 'breakfast'), ...rot]
-  return order.find(r => fits(r.dish_id, c.perMeal))?.dish_id ?? cheapestDinner().id
+  // Outside a tight week the person's own starred dishes (and dishes with no price yet) always qualify: the
+  // budget picks among them, it never takes a loved dish away. In a tight week only what fits (01 criterion 4).
+  const allowed = (r: Item) => fits(r.dish_id, c.perMeal) || (!c.tight && (!!r.star || !dishCost(r.dish_id)))
+  return order.find(allowed)?.dish_id ?? cheapestDinner().id
 }
 
 // A dinner card: dish, the move, the person's dinner time, a ten-minute walk, and a person when there is one.
 // With a weekly budget the card carries the plate's estimated home cost.
-interface DinnerOpts { vars?: Record<string, string>; dishId?: string; evidence?: Card['evidence']; person?: string }
-function dinner(c: Ctx, id: string, { vars = {}, dishId = homeDinner(c), evidence = 'rule based', person }: DinnerOpts = {}): Card {
+interface DinnerOpts { vars?: Record<string, string>; dishId?: string; evidence?: Card['evidence']; person?: string; body?: string }
+function dinner(c: Ctx, id: string, { vars = {}, dishId = homeDinner(c), evidence = 'rule based', person, body = 'body' }: DinnerOpts = {}): Card {
   const time = dinnerTime(c.graph), move = moveLine(dishId, c), name = dishById.get(dishId)?.name ?? dishId
   const cost = c.perMeal == null ? undefined : dishCost(dishId)?.usd
   return {
     id, kind: 'dinner', title: name,
-    body: t(c.lang, `cards.${id}.body`, { time: cap(spellTime(time, c.lang)), move, walk: t(c.lang, 'moves.walk10'),
+    body: t(c.lang, `cards.${id}.${body}`, { time: cap(spellTime(time, c.lang)), move, walk: t(c.lang, 'moves.walk10'),
       dish: shortDish(name), cost: cost == null ? '' : Math.max(1, Math.round(cost)), ...vars }),
     dish_id: dishId, move, time, walk_min: 10, ...(person ? { person } : {}), evidence, actions: [], ...(cost == null ? {} : { cost_usd: cost }),
   }
@@ -74,11 +77,12 @@ const RULES: Rule[] = [
     return dinner(c, 'p4-dog', { vars: { dog }, evidence: 'observed pattern', person: dog })
   } },
   { id: 'p5-alone', when: c => company(c) === 'alone', card: c => dinner(c, 'p5-alone', { evidence: 'observed pattern' }) },
-  // SNAP users get the home dinner ranked above a place: the next rule that fires is a home card with its cost.
-  { id: 'p6-place', when: c => company(c) === 'out' && !!c.graph.dishes.places?.length && !c.graph.risks.money?.snap, card: c => {
+  // Going out keeps the place. SNAP users also get the home dinner, with its cost, as a second line.
+  { id: 'p6-place', when: c => company(c) === 'out' && !!c.graph.dishes.places?.length, card: c => {
     const venue = c.graph.dishes.places![0].venue
-    // A place has no published plate price, so the card carries no cost.
-    const { cost_usd: _, ...card } = dinner(c, 'p6-place', { vars: { venue } })
+    const home = !!c.graph.risks.money?.snap && c.perMeal != null && !!dishCost(homeDinner(c))
+    // A place has no published plate price, so the card carries no cost_usd; the home line names its own.
+    const { cost_usd: _, ...card } = dinner(c, 'p6-place', { vars: { venue }, body: home ? 'body_snap' : 'body' })
     return { ...card, kind: 'place', title: venue }
   } },
   { id: 'p7-light', when: c => (c.checkin?.energy ?? 5) <= 2 || (c.checkin?.hunger ?? 5) <= 2, card: c => {

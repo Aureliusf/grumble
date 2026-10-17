@@ -97,13 +97,26 @@ describe('Marisol', () => {
     expect(today(marisol, 'en').card.body).not.toContain('$')
   })
 
-  it('with SNAP, going out still gets a home dinner with its cost', () => {
+  it('with SNAP, going out keeps the place and adds the home dinner with its cost', () => {
     checkins.set('N0771', { company: 'out' })
     const away = withRisks(marisol, {}, { company: { open_to_table: false } })
-    expect(today(away, 'en').card.kind).toBe('place')
+    expect(today(away, 'en').card.body).not.toContain('Or at home')
     const card = today(withRisks(away, { snap: true }), 'en').card
-    expect(card.kind).toBe('dinner')
-    expect(card.cost_usd).toBeLessThanOrEqual(perMealUsd(marisol)!)
+    expect(card.kind).toBe('place')
+    expect(card.body).toMatch(/Or at home tonight: .+, about \$\d+\.$/)
+    expect(today(withRisks(away, { snap: true }), 'es').card.body).toMatch(/O en casa esta noche: .+, unos \$\d+\.$/)
+    checkins.delete('N0771')
+  })
+
+  it('keeps her starred vaca frita on non-table nights, even though it costs more than her per-meal amount', () => {
+    checkins.set('N0771', { company: 'alone' })
+    skipped.set('N0771', new Set(['p2-table']))
+    try {
+      const card = today(marisol, 'en').card
+      expect(card.dish_id).toBe('vaca-frita-with-rice-and-black-beans')
+      expect(card.cost_usd!).toBeGreaterThan(perMealUsd(marisol)!)
+    }
+    finally { checkins.delete('N0771'); skipped.delete('N0771') }
   })
 })
 

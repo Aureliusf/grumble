@@ -52,7 +52,8 @@
       "body": "{time}. At the table, not the couch. Ten minutes outside after. The bay's right there."
     },
     "p6-place": {
-      "body": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way."
+      "body": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way.",
+      "body_snap": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way. Or at home tonight: {dish}, about ${cost}."
     },
     "p7-light": {
       "body": "Nothing heavy. {time}."
