@@ -30,7 +30,9 @@ const lines = computed(() => {
   const slots = ate.map(e => e.slot)
   const pace = slots.reduce((s, x) => s + SHARE[x], 0)
   const done = SLOTS.every(s => slots.includes(s))
-  const next = SLOTS.find(s => !slots.includes(s))
+  // The next meal is the first open slot after the latest one logged; past dinner it's a snack.
+  const last = Math.max(...slots.map(x => SLOTS.indexOf(x)))
+  const next = SLOTS.slice(last + 1).find(s => !slots.includes(s))
   const when = t(`feedback.at.${next ?? 'snack'}`)
   const x = sum(ate.flatMap(e => e.items.map(i => i.n)))
   const g = targets.value
