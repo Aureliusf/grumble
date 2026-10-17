@@ -465,5 +465,17 @@
       "lunch": "El almuerzo",
       "dinner": "La comida"
     }
+  },
+  "macros": {
+    "protein": "proteína",
+    "carbs": "carbohidratos",
+    "fat": "grasa",
+    "sugar": "azúcar",
+    "fiber": "fibra"
+  },
+  "next": {
+    "title": "Lo próximo: {slot}",
+    "why_heavy": "Proteína magra y vegetales, porque {dish} fue fuerte. Se queda.",
+    "why_fit": "Escogido para que el resto del día llegue a sus metas."
   }
 }

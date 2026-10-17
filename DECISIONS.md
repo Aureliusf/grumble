@@ -87,3 +87,9 @@ Choices made where the spec was silent or the installed versions differed from i
 - **No key:** the same word-match fallback as Today (`localParse`). The slot comes from the matched dish, otherwise dinner.
 - A custom meal's slug shows as words on screen ("Rice chicken and beans"), not as `rice-chicken-and-beans`.
 - **One client path:** the intake and Today both call `/api/log` through `apiCall` with the same `localMeal` fallback and `MealParse` type. Today keeps its own slot picker.
+
+## 2026-10-17 — macros per meal and the next meal
+
+- Every logged meal shows protein, carbs, fat and sugar as four tiles (calories and fiber beneath). The intake meal uses the same component.
+- **Sugar is from USDA too:** `data/scripts/fdc_extract.py` now also pulls nutrient 2000 "Sugars, Total", and `data/components.json` was regenerated with it. Dishes already carried `sugar_g`. In `shared/nutrition.ts` and `shared/types.ts`, `sugar_g` is optional, because the glucose model doesn't use it and the server's simulator builds nutrients without it.
+- **"Next: {slot}"** is the plate the balanced day already picked for the next open slot after the latest logged meal (the same one "The rest of today" lists), with its four tiles and one line of why (a heavy meal → lean protein and vegetables; otherwise "lands on your targets"). After dinner there's no next slot, so no card; the feedback box suggests a snack.

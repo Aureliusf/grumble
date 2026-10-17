@@ -124,6 +124,7 @@ async function onAction(actionId: string) {
       </div>
       <MealItems :items="e.items" />
     </div>
+    <NextMeal />
     <p v-if="logged.length" class="mt-2 text-xs text-crema-800/50">{{ t('today.usda_note') }}</p>
   </UCard>
 

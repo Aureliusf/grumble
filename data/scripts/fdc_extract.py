@@ -44,7 +44,7 @@ WANT = [
   ("butter", "Butter", "Butter, salted"),
   ("sugar", "Sugar", "Sugars, granulated"),
 ]
-NUT = {"1008": "calories", "1005": "carbs_g", "1003": "protein_g", "1004": "fat_g", "1079": "fiber_g"}
+NUT = {"1008": "calories", "1005": "carbs_g", "1003": "protein_g", "1004": "fat_g", "1079": "fiber_g", "2000": "sugar_g"}
 food = {r["description"]: r["fdc_id"] for r in csv.DictReader(open(os.path.join(src, "food.csv"), encoding="utf-8"))}
 missing = [w for w in WANT if w[2] not in food]
 for m in missing:
@@ -66,7 +66,7 @@ items = []
 for fid, (cid, name, desc) in ids.items():
     n = nut.get(fid, {})
     items.append({"id": cid, "name": name, "usda": desc, "fdc_id": int(fid),
-                  "per_100g": {k: round(n.get(k, 0.0), 1) for k in ["calories", "carbs_g", "fiber_g", "protein_g", "fat_g"]},
+                  "per_100g": {k: round(n.get(k, 0.0), 1) for k in ["calories", "carbs_g", "fiber_g", "protein_g", "fat_g", "sugar_g"]},
                   "measures": portions.get(fid, [])[:6]})
 items.sort(key=lambda x: [w[0] for w in WANT].index(x["id"]))
 json.dump({"source": "USDA FoodData Central, SR Legacy (April 2018 release), per 100 g edible portion; household measures from the same release", "count": len(items), "components": items}, open(out, "w"), indent=1)

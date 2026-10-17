@@ -465,5 +465,17 @@
       "lunch": "Lunch",
       "dinner": "Dinner"
     }
+  },
+  "macros": {
+    "protein": "protein",
+    "carbs": "carbs",
+    "fat": "fat",
+    "sugar": "sugar",
+    "fiber": "fiber"
+  },
+  "next": {
+    "title": "Next: {slot}",
+    "why_heavy": "Lean protein and vegetables, because {dish} was a big one. You keep it.",
+    "why_fit": "Picked so the rest of your day lands on your targets."
   }
 }

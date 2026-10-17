@@ -5,7 +5,7 @@ export type SugarGroup = 'normal' | 'prediabetes' | 'type 2 diabetes'
 export interface Dish {
   id: string; name: string; cuisine: string
   typical_meal_type: 'breakfast'|'lunch'|'dinner'|'snack'|'late snack'|'drink'|'meal at work'
-  calories: number; carbs_g: number; protein_g: number; fat_g: number; fiber_g: number
+  calories: number; carbs_g: number; protein_g: number; fat_g: number; fiber_g: number; sugar_g?: number
   mediterranean_style: boolean
 }
 

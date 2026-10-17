@@ -12,7 +12,8 @@
     "carbs_g": 28.2,
     "fiber_g": 0.4,
     "protein_g": 2.7,
-    "fat_g": 0.3
+    "fat_g": 0.3,
+    "sugar_g": 0.1
    },
    "measures": [
     {
@@ -31,7 +32,8 @@
     "carbs_g": 25.6,
     "fiber_g": 1.6,
     "protein_g": 2.7,
-    "fat_g": 1.0
+    "fat_g": 1.0,
+    "sugar_g": 0.2
    },
    "measures": [
     {
@@ -50,7 +52,8 @@
     "carbs_g": 23.7,
     "fiber_g": 8.7,
     "protein_g": 8.9,
-    "fat_g": 0.5
+    "fat_g": 0.5,
+    "sugar_g": 0.3
    },
    "measures": [
     {
@@ -69,7 +72,8 @@
     "carbs_g": 22.8,
     "fiber_g": 7.4,
     "protein_g": 8.7,
-    "fat_g": 0.5
+    "fat_g": 0.5,
+    "sugar_g": 0.3
    },
    "measures": [
     {
@@ -92,7 +96,8 @@
     "carbs_g": 26.2,
     "fiber_g": 9.0,
     "protein_g": 9.0,
-    "fat_g": 0.7
+    "fat_g": 0.7,
+    "sugar_g": 0.3
    },
    "measures": [
     {
@@ -115,7 +120,8 @@
     "carbs_g": 27.4,
     "fiber_g": 7.6,
     "protein_g": 8.9,
-    "fat_g": 2.6
+    "fat_g": 2.6,
+    "sugar_g": 4.8
    },
    "measures": [
     {
@@ -134,7 +140,8 @@
     "carbs_g": 20.1,
     "fiber_g": 7.9,
     "protein_g": 9.0,
-    "fat_g": 0.4
+    "fat_g": 0.4,
+    "sugar_g": 1.8
    },
    "measures": [
     {
@@ -157,7 +164,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 31.0,
-    "fat_g": 3.6
+    "fat_g": 3.6,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -184,7 +192,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 24.8,
-    "fat_g": 8.2
+    "fat_g": 8.2,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -211,7 +220,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 24.6,
-    "fat_g": 14.0
+    "fat_g": 14.0,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -234,7 +244,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 27.0,
-    "fat_g": 14.2
+    "fat_g": 14.2,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -257,7 +268,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 27.1,
-    "fat_g": 14.7
+    "fat_g": 14.7,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -280,7 +292,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 22.1,
-    "fat_g": 12.3
+    "fat_g": 12.3,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -303,7 +316,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 26.1,
-    "fat_g": 2.6
+    "fat_g": 2.6,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -322,7 +336,8 @@
     "carbs_g": 1.5,
     "fiber_g": 0.0,
     "protein_g": 22.8,
-    "fat_g": 1.7
+    "fat_g": 1.7,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -345,7 +360,8 @@
     "carbs_g": 1.1,
     "fiber_g": 0.0,
     "protein_g": 12.6,
-    "fat_g": 10.6
+    "fat_g": 10.6,
+    "sugar_g": 1.1
    },
    "measures": [
     {
@@ -372,7 +388,8 @@
     "carbs_g": 0.8,
     "fiber_g": 0.0,
     "protein_g": 13.6,
-    "fat_g": 14.8
+    "fat_g": 14.8,
+    "sugar_g": 0.4
    },
    "measures": [
     {
@@ -391,7 +408,8 @@
     "carbs_g": 40.8,
     "fiber_g": 3.2,
     "protein_g": 1.4,
-    "fat_g": 7.5
+    "fat_g": 7.5,
+    "sugar_g": 21.8
    },
    "measures": [
     {
@@ -410,7 +428,8 @@
     "carbs_g": 49.2,
     "fiber_g": 3.5,
     "protein_g": 1.5,
-    "fat_g": 11.8
+    "fat_g": 11.8,
+    "sugar_g": 3.6
    },
    "measures": [
     {
@@ -433,7 +452,8 @@
     "carbs_g": 29.1,
     "fiber_g": 2.6,
     "protein_g": 1.1,
-    "fat_g": 0.1
+    "fat_g": 0.1,
+    "sugar_g": 2.2
    },
    "measures": [
     {
@@ -452,7 +472,8 @@
     "carbs_g": 38.1,
     "fiber_g": 1.8,
     "protein_g": 1.4,
-    "fat_g": 0.3
+    "fat_g": 0.3,
+    "sugar_g": 1.7
    },
    "measures": [
     {
@@ -475,7 +496,8 @@
     "carbs_g": 21.1,
     "fiber_g": 2.2,
     "protein_g": 2.5,
-    "fat_g": 0.1
+    "fat_g": 0.1,
+    "sugar_g": 1.2
    },
    "measures": [
     {
@@ -506,7 +528,8 @@
     "carbs_g": 20.7,
     "fiber_g": 3.3,
     "protein_g": 2.0,
-    "fat_g": 0.1
+    "fat_g": 0.1,
+    "sugar_g": 6.5
    },
    "measures": [
     {
@@ -537,7 +560,8 @@
     "carbs_g": 41.4,
     "fiber_g": 3.8,
     "protein_g": 3.4,
-    "fat_g": 14.7
+    "fat_g": 14.7,
+    "sugar_g": 0.3
    },
    "measures": [
     {
@@ -564,7 +588,8 @@
     "carbs_g": 7.2,
     "fiber_g": 3.3,
     "protein_g": 2.4,
-    "fat_g": 0.4
+    "fat_g": 0.4,
+    "sugar_g": 1.4
    },
    "measures": [
     {
@@ -599,7 +624,8 @@
     "carbs_g": 13.1,
     "fiber_g": 4.4,
     "protein_g": 2.9,
-    "fat_g": 0.1
+    "fat_g": 0.1,
+    "sugar_g": 3.1
    },
    "measures": [
     {
@@ -622,7 +648,8 @@
     "carbs_g": 3.3,
     "fiber_g": 2.1,
     "protein_g": 1.2,
-    "fat_g": 0.3
+    "fat_g": 0.3,
+    "sugar_g": 1.2
    },
    "measures": [
     {
@@ -657,7 +684,8 @@
     "carbs_g": 3.9,
     "fiber_g": 1.2,
     "protein_g": 0.9,
-    "fat_g": 0.2
+    "fat_g": 0.2,
+    "sugar_g": 2.6
    },
    "measures": [
     {
@@ -696,7 +724,8 @@
     "carbs_g": 8.5,
     "fiber_g": 6.7,
     "protein_g": 2.0,
-    "fat_g": 14.7
+    "fat_g": 14.7,
+    "sugar_g": 0.7
    },
    "measures": [
     {
@@ -731,7 +760,8 @@
     "carbs_g": 21.0,
     "fiber_g": 2.4,
     "protein_g": 3.4,
-    "fat_g": 1.5
+    "fat_g": 1.5,
+    "sugar_g": 4.5
    },
    "measures": [
     {
@@ -766,7 +796,8 @@
     "carbs_g": 49.4,
     "fiber_g": 2.7,
     "protein_g": 8.8,
-    "fat_g": 3.3
+    "fat_g": 3.3,
+    "sugar_g": 5.7
    },
    "measures": [
     {
@@ -805,7 +836,8 @@
     "carbs_g": 50.1,
     "fiber_g": 1.8,
     "protein_g": 9.8,
-    "fat_g": 3.9
+    "fat_g": 3.9,
+    "sugar_g": 7.3
    },
    "measures": [
     {
@@ -828,7 +860,8 @@
     "carbs_g": 44.6,
     "fiber_g": 6.3,
     "protein_g": 5.7,
-    "fat_g": 2.9
+    "fat_g": 2.9,
+    "sugar_g": 0.9
    },
    "measures": [
     {
@@ -855,7 +888,8 @@
     "carbs_g": 30.9,
     "fiber_g": 1.8,
     "protein_g": 5.8,
-    "fat_g": 0.9
+    "fat_g": 0.9,
+    "sugar_g": 0.6
    },
    "measures": [
     {
@@ -894,7 +928,8 @@
     "carbs_g": 21.3,
     "fiber_g": 2.8,
     "protein_g": 4.4,
-    "fat_g": 1.9
+    "fat_g": 1.9,
+    "sugar_g": 0.9
    },
    "measures": [
     {
@@ -913,7 +948,8 @@
     "carbs_g": 12.0,
     "fiber_g": 1.7,
     "protein_g": 2.5,
-    "fat_g": 1.5
+    "fat_g": 1.5,
+    "sugar_g": 0.3
    },
    "measures": [
     {
@@ -940,7 +976,8 @@
     "carbs_g": 3.4,
     "fiber_g": 0.0,
     "protein_g": 22.9,
-    "fat_g": 33.3
+    "fat_g": 33.3,
+    "sugar_g": 0.5
    },
    "measures": [
     {
@@ -979,7 +1016,8 @@
     "carbs_g": 3.0,
     "fiber_g": 0.0,
     "protein_g": 18.1,
-    "fat_g": 23.8
+    "fat_g": 23.8,
+    "sugar_g": 2.3
    },
    "measures": [
     {
@@ -998,7 +1036,8 @@
     "carbs_g": 4.8,
     "fiber_g": 0.0,
     "protein_g": 3.1,
-    "fat_g": 3.2
+    "fat_g": 3.2,
+    "sugar_g": 5.0
    },
    "measures": [
     {
@@ -1029,7 +1068,8 @@
     "carbs_g": 0.0,
     "fiber_g": 0.0,
     "protein_g": 0.0,
-    "fat_g": 100.0
+    "fat_g": 100.0,
+    "sugar_g": 0.0
    },
    "measures": [
     {
@@ -1056,7 +1096,8 @@
     "carbs_g": 0.1,
     "fiber_g": 0.0,
     "protein_g": 0.8,
-    "fat_g": 81.1
+    "fat_g": 81.1,
+    "sugar_g": 0.1
    },
    "measures": [
     {
@@ -1087,7 +1128,8 @@
     "carbs_g": 100.0,
     "fiber_g": 0.0,
     "protein_g": 0.0,
-    "fat_g": 0.0
+    "fat_g": 0.0,
+    "sugar_g": 99.8
    },
    "measures": [
     {

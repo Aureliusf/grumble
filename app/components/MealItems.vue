@@ -3,7 +3,6 @@ import { totalOf, type PricedItem } from '#shared/meals'
 
 // What a meal came to: each food, the amount, the numbers. Shared by Today's log and the intake meal.
 const props = defineProps<{ items: PricedItem[] }>()
-const { t } = useI18n()
 const r = (n: number) => Math.round(n)
 const amount = (i: PricedItem) => (i.kind === 'component' ? `${i.grams} g` : `×${i.portion}`)
 const total = computed(() => totalOf(props.items))
@@ -17,8 +16,6 @@ const total = computed(() => totalOf(props.items))
         <span class="shrink-0 text-crema-800/70">{{ amount(i) }} · {{ r(i.n.calories) }} kcal</span>
       </li>
     </ul>
-    <p class="mt-1 text-xs text-crema-800/60 tabular">
-      {{ r(total.calories) }} kcal · {{ r(total.carbs_g) }} g {{ t('day.carbs') }} · {{ r(total.fiber_g) }} g {{ t('day.fiber') }} · {{ r(total.protein_g) }} g {{ t('day.protein') }}
-    </p>
+    <MacroTiles :n="total" />
   </div>
 </template>
