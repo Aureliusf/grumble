@@ -415,7 +415,9 @@
     "protein": "protein",
     "of": "{n} of {target}",
     "targets_note": "Day targets from the US Dietary Guidelines, by age and sex.",
-    "remove": "Remove"
+    "remove": "Remove",
+    "pending": "planned · not eaten yet",
+    "not_logged": "not logged · add it above if you ate"
   },
   "spike": {
     "title": "Today's spikes · people like you",

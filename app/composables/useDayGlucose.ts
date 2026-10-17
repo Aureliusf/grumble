@@ -32,6 +32,7 @@ export function useDayGlucose(personId: string) {
     label: t(`day.slots.${p.slot}`),
     slot: p.slot,
     fixed: p.fixed,
+    pending: !!p.pending,
   }))
 
   const curves = computed(() => {

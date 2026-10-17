@@ -9,6 +9,9 @@ export interface Eaten { slot: Slot; label: string; said: string; items: PricedI
 
 const KEY = 'grumble.eaten'
 
+// The meal the next-meal simulator is showing: planned, not eaten. Shared so every view agrees; not saved.
+export const usePendingMeal = () => useState<{ slot: Slot; dish_id: string; portion: number } | null>('pendingMeal', () => null)
+
 // What the person said they ate today. Part of the day log beside the graph (05 §Data written per day).
 export function useEaten() {
   const eaten = useState<Eaten[]>('eaten', () => {
@@ -56,14 +59,30 @@ export function useDay(personId: string) {
 
   const plan = computed(() => balanceDay({ ...common.value, fixed: anchor.value ? [anchor.value] : [] }))
 
+  // A logged meal becomes a plate of its own, with the summed numbers of what was in it.
+  const ate = computed(() => eaten.value.map(e => ({ slot: e.slot, dish: loggedDish(e) })))
+
+  // Meals before the latest logged one that weren't logged are past: skipped, not planned, not counted.
+  const skipped = computed<Slot[]>(() => {
+    if (!eaten.value.length) return []
+    const last = Math.max(...eaten.value.map(e => SLOTS.indexOf(e.slot)))
+    return SLOTS.slice(0, last).filter(s => !eaten.value.some(e => e.slot === s))
+  })
+
+  // Today from what was eaten alone: the next-meal simulator recommends from this.
+  const todayEaten = computed(() => (ate.value.length ? balanceDay({ ...common.value, fixed: ate.value, skip: skipped.value }) : plan.value))
+
+  // Today as everyone else shows it: eaten meals, plus the meal being simulated as a pending plate.
+  const pending = usePendingMeal()
   const today = computed(() => {
-    // A logged meal becomes a plate of its own, with the summed numbers of what was in it.
-    const ate = eaten.value.map(e => ({ slot: e.slot, dish: loggedDish(e) }))
-    return ate.length ? balanceDay({ ...common.value, fixed: ate }) : plan.value
+    const p = pending.value
+    const d = p && !eaten.value.some(e => e.slot === p.slot) ? byId.value.get(p.dish_id) : undefined
+    if (!d || !p) return todayEaten.value
+    return balanceDay({ ...common.value, fixed: [...ate.value, { slot: p.slot, dish: d, portion: p.portion, pending: true }], skip: skipped.value })
   })
 
   // The same fixed plates with ordinary plates around them, for the what-if comparison.
   const usual = computed(() => usualDay(today.value.plates.filter(p => p.fixed), dishes.value, targets.value, person.value.food_background))
 
-  return { graph, dishes, person, targets, anchor, plan, today, usual, eaten }
+  return { graph, dishes, person, targets, anchor, plan, today, todayEaten, usual, eaten, pending, skipped }
 }

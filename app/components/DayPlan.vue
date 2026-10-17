@@ -2,7 +2,9 @@
 import type { BalancedDay } from '#shared/balance'
 
 // One day: three plates and the day's totals against the targets.
-const props = defineProps<{ day: BalancedDay; fixedLabel: string; removable?: boolean }>()
+import { SLOTS, type Slot } from '#shared/balance'
+
+const props = defineProps<{ day: BalancedDay; fixedLabel: string; removable?: boolean; skipped?: Slot[] }>()
 const emit = defineEmits<{ remove: [slot: string] }>()
 const { t } = useI18n()
 
@@ -26,11 +28,21 @@ const meters = computed(() => {
   <div class="flex flex-col gap-3">
     <p v-if="heavyLine" class="font-display font-semibold text-[17px] leading-snug text-cafecito-700">{{ heavyLine }}</p>
 
+    <!-- a meal already past and not logged: shown, not planned -->
+    <div
+      v-for="s in SLOTS.filter(x => skipped?.includes(x) && !day.plates.some(p => p.slot === x))"
+      :key="`skip-${s}`"
+      class="rounded-[var(--radius-grumble)] border-2 border-dashed border-crema-200 dark:border-crema-800 px-4 py-3 flex gap-3 text-[15px] text-crema-800/60"
+    >
+      <span class="w-20 shrink-0 font-semibold">{{ t(`day.slots.${s}`) }}</span>
+      <span>{{ t('day.not_logged') }}</span>
+    </div>
+
     <div
       v-for="p in day.plates"
       :key="p.slot"
       class="rounded-[var(--radius-grumble)] bg-white dark:bg-crema-900 shadow-sm p-4 flex gap-3"
-      :class="p.fixed ? 'ring-2 ring-grumble-200' : ''"
+      :class="p.pending ? 'border-2 border-dashed border-cafecito-300' : p.fixed ? 'ring-2 ring-grumble-200' : ''"
     >
       <div class="w-20 shrink-0">
         <p class="text-[15px] font-semibold text-crema-800/70">{{ t(`day.slots.${p.slot}`) }}</p>
@@ -38,14 +50,15 @@ const meters = computed(() => {
       <div class="flex-1 min-w-0">
         <p class="font-display font-semibold text-[17px] leading-snug">{{ p.dish.name }}</p>
         <div class="mt-1 flex flex-wrap gap-1.5">
-          <UBadge v-if="p.fixed" color="primary" variant="soft" class="rounded-full">{{ fixedLabel }}</UBadge>
+          <UBadge v-if="p.pending" color="secondary" variant="soft" icon="i-lucide-clock" class="rounded-full">{{ t('day.pending') }}</UBadge>
+          <UBadge v-else-if="p.fixed" color="primary" variant="soft" class="rounded-full">{{ fixedLabel }}</UBadge>
           <UBadge v-if="p.portion < 1" color="secondary" variant="soft" class="rounded-full">{{ t('day.smaller') }}</UBadge>
         </div>
         <p class="mt-1 text-[15px] text-crema-800/70 tabular">
           {{ r(p.n.calories) }} kcal · {{ r(p.n.carbs_g) }} g {{ t('day.carbs') }} · {{ r(p.n.fiber_g) }} g {{ t('day.fiber') }} · {{ r(p.n.protein_g) }} g {{ t('day.protein') }}
         </p>
       </div>
-      <UButton v-if="removable && p.fixed" icon="i-lucide-x" size="sm" color="neutral" variant="ghost" :aria-label="t('day.remove')" @click="emit('remove', p.slot)" />
+      <UButton v-if="removable && p.fixed && !p.pending" icon="i-lucide-x" size="sm" color="neutral" variant="ghost" :aria-label="t('day.remove')" @click="emit('remove', p.slot)" />
     </div>
 
     <!-- the day against its targets -->

@@ -28,7 +28,7 @@ const chips = computed(() => {
     slot: meals[i]!.slot,
     rise: Math.round(p.mg_dl - day.value.baseline),
     over: p.mg_dl > 140,
-    ate: meals[i]!.fixed,
+    ate: meals[i]!.fixed && !meals[i]!.pending,
   }))
 })
 </script>

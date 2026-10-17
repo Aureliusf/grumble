@@ -415,7 +415,9 @@
     "protein": "proteína",
     "of": "{n} de {target}",
     "targets_note": "Metas del día según las Guías Alimentarias de EE. UU., por edad y sexo.",
-    "remove": "Quitar"
+    "remove": "Quitar",
+    "pending": "planeado · todavía no",
+    "not_logged": "sin anotar · agréguelo arriba si comió"
   },
   "spike": {
     "title": "Picos de hoy · gente como usted",

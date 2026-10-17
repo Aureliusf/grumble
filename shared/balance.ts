@@ -13,6 +13,7 @@ export interface Plate {
   dish: Dish
   portion: number           // 1 = the usual plate, 0.75 = a smaller plate
   fixed: boolean            // decided by the person (loved or eaten), not by the balancer
+  pending?: boolean         // planned for a meal still ahead (the next-meal simulator), not eaten yet
   n: Nutrients              // the plate's numbers at this portion
 }
 
@@ -60,16 +61,17 @@ export const isLean = (d: Dish) => (d.protein_g * 4) / d.calories >= 0.25 && (d.
 export const isHeavy = (n: Nutrients, g: Targets) => n.calories > (g.calories / 3) * 1.15 || n.carbs_g > (g.carbs_g / 3) * 1.15
 
 export function balanceDay(opts: {
-  fixed: { slot: Slot; dish: Dish; portion?: number }[]
+  fixed: { slot: Slot; dish: Dish; portion?: number; pending?: boolean }[]
   dishes: Dish[]
   targets: Targets
   cuisine?: string          // the person's food, preferred when it costs little
   refuses?: string[]        // words from "anything you won't eat?"
+  skip?: Slot[]             // meals already past and not logged: neither planned nor counted
 }): BalancedDay {
   const { dishes, targets } = opts
-  const fixed = opts.fixed.map(f => plate(f.slot, f.dish, f.portion ?? 1, true))
+  const fixed = opts.fixed.map(f => ({ ...plate(f.slot, f.dish, f.portion ?? 1, true), pending: f.pending }))
   const taken = new Set(fixed.map(p => p.slot))
-  const open = SLOTS.filter(s => !taken.has(s))
+  const open = SLOTS.filter(s => !taken.has(s) && !opts.skip?.includes(s))
   const usedIds = new Set(fixed.map(p => p.dish.id))
 
   const refused = (opts.refuses ?? []).flatMap(r => r.toLowerCase().split(/[^a-z]+/)).filter(w => w.length > 3)
@@ -78,7 +80,8 @@ export function balanceDay(opts: {
   const theirs = (d: Dish) => !!cuisine && d.cuisine.toLowerCase().startsWith(cuisine)
 
   // A heavy meal keeps its place; the other lunch and dinner become lean protein and vegetables.
-  const heavy = fixed.filter(p => isHeavy(p.n, targets))
+  // Only what was eaten or loved counts as heavy; a planned meal doesn't reshape the day around itself.
+  const heavy = fixed.filter(p => !p.pending && isHeavy(p.n, targets))
 
   // Per open slot: their cuisine's dishes plus the leanest overall, each at both portions.
   const candidates = open.map((slot) => {

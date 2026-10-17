@@ -10,7 +10,7 @@ import { peakDelta } from '#shared/simulate'
 // lands, and the rise for people like you. Nothing is saved; logging the meal is still the box above.
 const PERSON = 'N0771'
 const { t } = useI18n()
-const { today: day, eaten, dishes, targets, graph, person } = useDay(PERSON)
+const { todayEaten: day, eaten, dishes, targets, graph, person, pending } = useDay(PERSON)
 const { mealsOf } = useDayGlucose(PERSON)
 
 const slots = computed(() => eaten.value.map(e => e.slot))
@@ -71,6 +71,11 @@ const peak = computed(() => {
 const QUARTERS: Record<string, string> = { '0.25': '¼', '0.5': '½', '0.75': '¾', '1': '1', '1.25': '1¼', '1.5': '1½' }
 const howMuch = computed(() => t(portion.value === 1 ? 'next.plate_one' : 'next.plate_n', { n: QUARTERS[String(portion.value)] ?? portion.value }))
 const heavy = computed(() => day.value.heavy[0]?.dish.name)
+
+// Whatever the card shows is the planned meal for the rest of the app ("The rest of today", the spike bar).
+watch([slot, dishId, portion], ([s, id, p]) => {
+  pending.value = s && id ? { slot: s, dish_id: id, portion: p } : null
+}, { immediate: true })
 const r = (n: number) => Math.round(n)
 </script>
 
