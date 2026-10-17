@@ -34,7 +34,9 @@
   /* slide 1 */
   .hero-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 28px; }
   .hero-logo { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
-  .hero-title { font-size: 54px; margin-top: 12px; }
+  .hero-tag { font-family: var(--display); font-weight: 600; font-size: 36px; line-height: 1.2; color: var(--ink-2); margin-top: 12px; }
+  .thesis { font-size: 46px; line-height: 1.18; margin-top: 40px; max-width: none; }
+  .thesis em { font-style: normal; color: var(--coral-600); }
   .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
   .card { background: #fff; border-radius: 28px; padding: 30px 32px; box-shadow: 0 2px 10px rgba(59,36,21,.06); }
   .card .n { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--ink-3); }
@@ -132,11 +134,11 @@
       <img class="hero-logo" src="../public/logo-horizontal.png" alt="Grumble">
       <div>
         <div class="kicker">Miami AI Hackathon · Challenge 2 · with Sylvester</div>
-        <h1 class="hero-title">Food apps count what's on the plate. Nobody asks who's across the table.</h1>
+        <p class="hero-tag">Food apps count what's on the plate. Nobody asks who's across the table.</p>
       </div>
     </div>
-    <p class="lead" style="margin-top:48px">After treatment, the casseroles stop, the calls stop, and dinner is at 9:40, alone, in front of the TV. Grumble works on all three things that shape blood sugar after a meal:</p>
-    <div class="three" style="margin-top:44px">
+    <h1 class="thesis">After treatment, the casseroles stop, the calls stop, and dinner is at 9:40, alone, in front of the TV. Grumble works on <em>all three things</em> that shape blood sugar after a meal:</h1>
+    <div class="three" style="margin-top:36px">
       <div class="card">
         <div class="n">1 · What you eat</div>
         <h3>In your own words</h3>
@@ -154,7 +156,7 @@
       </div>
     </div>
     <div class="foot"><span>The stomach grumbles when it's empty. A person grumbles when nobody's listening. Same complaint.</span></div>
-    <aside class="notes">~30 s. "This is Grumble. Every food app logs what's on the plate. None of them asks who you're eating with, and for people after cancer treatment that's half the problem. Grumble works on all three: what you eat, logged in your own words; when, measured against your own sleep; and who with, which is the part nobody else does: a real table at Versailles."</aside>
+    <aside class="notes">~25 s. Read the big line; it's the thesis. "After treatment, the casseroles stop, the calls stop, and dinner is at 9:40, alone, in front of the TV." Then: "Every food app logs what's on the plate. None of them asks who you're eating with, and for people after cancer treatment that's half the problem. Grumble works on all three: what you eat, logged in your own words; when, measured against your own sleep; and who with, which is the part nobody else does: a real table at Versailles."</aside>
   </section>
 
   <!-- 2 · Mental health, eating, glucose -->
