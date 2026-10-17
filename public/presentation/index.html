@@ -355,19 +355,18 @@
       <div>
         <p class="marisol"><b>71, Hialeah.</b> Breast cancer, three years out. Prediabetes. In the coaching program and it isn't reaching her: 37% of her calories after 8 pm, the last bite at ten, <b>alone</b>.</p>
         <a class="go" id="demo-link" href="http://localhost:3000/today?demo" target="_blank" rel="noopener">Open Grumble →</a>
-        <p class="src" style="margin-top:18px">Opens <span id="demo-url">http://localhost:3000/today?demo</span>. Different port? Add <code>?app=http://localhost:3456</code> to this page's URL.</p>
       </div>
       <div class="path">
-        <h2>Four beats · ~2½ min</h2>
+        <h2>What you'll see</h2>
         <ol>
-          <li>Today: type <b>"a burger and fries"</b> at lunch. <span>The burger stays; dinner turns lean; the spike bar moves.</span></li>
-          <li>Check in "Just me" → <b>the table card</b>. <span>Open "What is this?", then "I'll be there".</span></li>
-          <li>What if: vaca frita at 9:30 vs Grumble's move. <span>Slide the walk to 20: "Same as ten".</span></li>
-          <li>Tap <b>ES</b>. <span>Five seconds, then back to the deck.</span></li>
+          <li>She tells Grumble what she ate, <b>in her own words</b>.</li>
+          <li>Grumble <b>balances the rest of her day</b>. The burger stays; dinner gets lighter.</li>
+          <li>Instead of a chart, she gets <b>a seat at the table</b>.</li>
+          <li>Same dinner, earlier, with <b>a ten-minute walk</b>: what that does to her blood sugar.</li>
         </ol>
       </div>
     </div>
-    <aside class="notes">The button opens the app with ?demo: Marisol's plan, nothing logged, English. Say: "Tuesday afternoon. She ate a burger at lunch; she tells Grumble in plain words. It doesn't scold. It keeps the burger and makes dinner the lean one. Then the card that matters: not a chart, a seat."</aside>
+    <aside class="notes">Click Open Grumble (it opens /today?demo: Marisol's plan, nothing logged, English; if the app is on another port, open the deck with ?app=http://localhost:3456). Do: 1) Today, Lunch, type "a burger and fries", Add. 2) Check in "Just me", Done → the table card; open "What is this?", tap "I'll be there". 3) What if: vaca frita at 9:30 vs Grumble's move; slide the walk to 20 → "Same as ten". 4) Tap ES for five seconds, then back to the deck. Say: "Tuesday afternoon. She ate a burger at lunch; she tells Grumble in plain words. It doesn't scold. It keeps the burger and makes dinner the lean one. Then the card that matters: not a chart, a seat."</aside>
   </section>
 
   <!-- 7 · Close -->
@@ -408,7 +407,6 @@
     if (app) {
       const url = app.replace(/\/$/, '') + '/today?demo'
       document.getElementById('demo-link').href = url
-      document.getElementById('demo-url').textContent = url
     }
   } catch {}
 
