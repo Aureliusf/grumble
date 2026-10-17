@@ -1,5 +1,5 @@
 {
-  "name": "grumble-backend",
+  "name": "grumble-server",
   "private": true,
   "type": "module",
   "scripts": {

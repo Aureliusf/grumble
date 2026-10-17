@@ -1,4 +1,4 @@
-// The API contract (16-api-contract.md). Changes from 16 are listed in backend/DECISIONS.md.
+// The API contract (16-api-contract.md). Changes from 16 are listed in server/DECISIONS.md.
 export type Lang = 'en' | 'es'
 export type SugarGroup = 'normal' | 'prediabetes' | 'type 2 diabetes'
 export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'late snack' | 'drink' | 'meal at work'

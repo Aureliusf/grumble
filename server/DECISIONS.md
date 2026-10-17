@@ -9,7 +9,7 @@
 - **The move's dinner time is 19:00 for Marisol** (sleep_start - 4.5 h, half hour). The nudge says "Tonight, seven." Her own standard `dinner-by-8` (20:00) stays as she wrote it.
 - **Red week and coach alert always go together.** `week.coach_alerted` equals `week.red`. `GET /api/coach/alerts` lists everyone in a red week.
 - **Two demo people.** Marisol (N0771) gets the Tuesday table card. Her log has one low-mood day in the trailing week, so a mood-2 tap on demo day keeps her out of red. Jean (N1904, night shift) has three low-mood days, so he gets the red card and the coach alert. His graph is `seed/graph.N1904.json`.
-- **backend/ is a standalone Nitro app** (`npm run dev` inside `backend/`). Its layout (`api/`, `utils/`) is what Nuxt expects from `serverDir: 'backend'` if the frontend later mounts it.
+- **server/ is a standalone Nitro app today** (`npm run dev` inside `server/`). Its layout (`api/`, `utils/`) is Nuxt's own `server/` directory, so once the frontend branch merges, Nuxt serves these routes on the same port with no proxy.
 
 ## Filled in where the spec was silent or contradicted itself
 
