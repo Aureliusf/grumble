@@ -65,3 +65,15 @@ Choices made where the spec was silent or the installed versions differed from i
 - **`data/components.json`** is new reference data: 42 everyday foods per 100 g from USDA FoodData Central SR Legacy (April 2018 release), with USDA's household measures. It was extracted from the official CSV by `data/scripts/fdc_extract.py`, matching exact USDA descriptions. No number in it was typed by hand. This adds a USDA source alongside the synthetic data in `data/` (rule 9 is about not inventing nutrients; these are published).
 - **The intake learns:** the first run is the full interview. Later runs open on a summary of what the graph already says (`answersFromGraph`). Any of seven sections can be reopened, and "one more meal you love" adds to the list (up to five, newest kept). Standards merge across runs: accepted ones keep the person's wording, declined ones stay declined (`standards.declined` in the graph; the schema allows it), and new ideas are marked "new" and have to be reviewed before saving.
 - **Legacy cleanup on read:** graphs saved while "no one" counted as a buddy had ", with no one" inside the walk statement; it's dropped when the graph is read back.
+
+## 2026-10-17 — "How today's going" feedback on Today
+
+- Shown once anything is logged. Judged against the share of the day eaten so far (breakfast 25%, lunch 35%, dinner 40%), so after breakfast it talks about lunch, and at the end of the day about a snack or tomorrow.
+- **Checks, in order:**
+  - the latest meal ran ≥15 mg/dL above the plan's plate for that slot (the walk effect from `simulator-params.json`; the plain 140 line fired on nearly every prediabetes meal);
+  - carbs more than 20% ahead of pace;
+  - fiber or protein more than 25% behind (with a fix from `components.json`: a cup of beans, a palm of chicken, skipping foods they won't eat);
+  - the day's calories at the end of the day;
+  - 09's walk line once dinner is logged;
+  - "Nothing to grumble about. Rare." when nothing needs nudging.
+- No Claude call: every number is computed, and the lines update the moment a meal is added.

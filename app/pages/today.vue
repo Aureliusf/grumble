@@ -142,6 +142,7 @@ async function onAction(actionId: string) {
   </UCard>
 
   <template v-if="!isRed && eaten.length">
+    <DayFeedback />
     <h2 class="font-display font-semibold text-[26px] mt-2">{{ t('today.rest') }}</h2>
     <DayPlan :day="day" :fixed-label="t('day.ate')" />
   </template>
