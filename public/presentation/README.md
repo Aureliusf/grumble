@@ -4,9 +4,9 @@ Seven slides, five minutes: about two minutes of slides, then the live demo and 
 
 ## Run it
 
-Open `presentation/index.html` in a browser (double-click works), or run `npm run deck` and go to http://127.0.0.1:8765/presentation/ (local only, port 8765). It's one self-contained file. Offline, the fonts fall back to the system font and nothing else changes.
+Open `public/presentation/index.html` in a browser (double-click works), or run `npm run deck` and go to http://127.0.0.1:8765/presentation/ (local only, port 8765). It's one self-contained file. Offline, the fonts fall back to the system font and nothing else changes. The app also serves it at `/presentation/`, locally and on Vercel.
 
-Start the app before the pitch (`npm run dev` at the repo root). The demo slide's **Open Grumble** button goes to `http://localhost:3000/today`. If the app runs on another port, open the deck as `index.html?app=http://localhost:3456`.
+Start the app before the pitch (`npm run dev` at the repo root). The demo slide's **Open Grumble** button goes to `/today` on whatever server is showing the deck, or to `http://localhost:3000/today` when the deck is opened from disk or `npm run deck`. If the app runs elsewhere, open the deck as `index.html?app=http://localhost:3456`.
 
 | Key | Does |
 |---|---|
