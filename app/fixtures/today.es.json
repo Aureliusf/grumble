@@ -1,0 +1,11 @@
+{
+  "date": "2025-01-14", "weekday": "Tuesday",
+  "nudge": "Nueve y cuarenta anoche. No es un crimen. Hoy, a las ocho.",
+  "status_yesterday": "amber",
+  "card": { "id": "p2-table", "kind": "table",
+    "title": "Versailles, seis y media.",
+    "body": "Tony tiene la mesa. Hay vaca frita, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho.",
+    "time": "18:30", "walk_min": 10, "person": "Tony", "evidence": "observed pattern",
+    "actions": [{"id":"seat","label":"Ahí estaré"},{"id":"skip","label":"Esta semana no"}] },
+  "week": { "red": false, "reasons": ["mood <= 2 on 3 days"] }
+}

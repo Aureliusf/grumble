@@ -1,0 +1,11 @@
+{
+  "baseline_mg_dl": 121, "group": "prediabetes", "n_dinners": 5472,
+  "current": { "label": "9:30 pm, no walk", "peak_mg_dl": 207, "peak_delta": 85.8, "time_to_peak_min": 72, "iauc_2h": 5721, "back_to_baseline_min": 215, "late": true, "applied_moves": [],
+    "points": [{"t":0,"mg_dl":121},{"t":30,"mg_dl":174},{"t":60,"mg_dl":186},{"t":72,"mg_dl":207},{"t":90,"mg_dl":172},{"t":120,"mg_dl":149},{"t":180,"mg_dl":127},{"t":240,"mg_dl":121}],
+    "band": [{"t":0,"lo":121,"hi":121},{"t":72,"lo":185,"hi":228},{"t":240,"lo":121,"hi":121}] },
+  "grumble": { "label": "7:00 pm, beans first, one cup, 10-min walk", "peak_mg_dl": 143, "peak_delta": 21.6, "time_to_peak_min": 72, "iauc_2h": 1440, "back_to_baseline_min": 190, "late": false, "applied_moves": ["one-cup","beans-first","walk10","earlier"],
+    "points": [{"t":0,"mg_dl":121},{"t":30,"mg_dl":134},{"t":60,"mg_dl":138},{"t":72,"mg_dl":143},{"t":90,"mg_dl":134},{"t":120,"mg_dl":128},{"t":180,"mg_dl":123},{"t":240,"mg_dl":121}],
+    "band": [{"t":0,"lo":121,"hi":121},{"t":72,"lo":137,"hi":148},{"t":240,"lo":121,"hi":121}] },
+  "delta": { "peak_mg_dl": -64, "iauc_pct": -75 },
+  "same_as_ten": false
+}

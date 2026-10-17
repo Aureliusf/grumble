@@ -1,0 +1,7 @@
+[
+  { "dish_id": "vaca-frita-with-rice-and-black-beans", "name": "Vaca frita, moros, no maduros", "move": "Beans in the moros first, one scoop", "calories": 620, "carbs_g": 60, "fiber_g": 11 },
+  { "dish_id": "arroz-con-pollo", "name": "Pollo a la plancha, frijoles negros, small rice", "move": "Beans first", "calories": 560, "carbs_g": 45, "fiber_g": 10 },
+  { "dish_id": "grilled-fish-with-salad", "name": "Pescado a la plancha, ensalada, small rice", "move": "As is", "calories": 480, "carbs_g": 35, "fiber_g": 5 },
+  { "dish_id": "picadillo-with-white-rice-and-maduros", "name": "Picadillo, moros, two maduros", "move": "Picadillo first, two not four", "calories": 640, "carbs_g": 70, "fiber_g": 6 },
+  { "dish_id": "sopa-de-pollo", "name": "Sopa de pollo, Cuban bread (one piece)", "move": "As is", "calories": 420, "carbs_g": 40, "fiber_g": 4 }
+]

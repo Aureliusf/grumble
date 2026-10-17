@@ -1,0 +1,6 @@
+[
+  { "id": "t1", "date": "2025-01-14", "time": "18:30", "venue": "Versailles", "host": { "name": "Tony", "years_out": 4 }, "language": "both", "seats_total": 8, "seats_left": 3, "funded_by": "the García family", "mine": "none" },
+  { "id": "t2", "date": "2025-01-21", "time": "18:30", "venue": "Versailles", "host": { "name": "Ana R.", "years_out": 6 }, "language": "es", "seats_total": 8, "seats_left": 8, "mine": "none" },
+  { "id": "t3", "date": "2025-01-28", "time": "18:30", "venue": "Versailles", "host": { "name": "Tony", "years_out": 4 }, "language": "both", "seats_total": 6, "seats_left": 6, "mine": "none" },
+  { "id": "t4", "date": "2025-02-04", "time": "18:30", "venue": "Versailles", "host": { "name": "—", "years_out": 0 }, "language": "both", "seats_total": 8, "seats_left": 8, "mine": "none" }
+]

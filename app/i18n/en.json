@@ -1,0 +1,196 @@
+{
+  "nav": {
+    "plan": "Plan",
+    "whatif": "What if",
+    "today": "Today",
+    "table": "Table"
+  },
+  "app": {
+    "fixture": "fixture",
+    "week": "week {n}",
+    "language": "Language"
+  },
+  "character": {
+    "alt": "Grumble, a stomach with its arms crossed"
+  },
+  "splash": {
+    "line": "The stomach grumbles when it's empty. A person grumbles when nobody's listening. Same complaint. Grumble feeds both.",
+    "start": "See Marisol's plan"
+  },
+  "plan": {
+    "good_day": "A good day",
+    "what_you_eat": "What you eat",
+    "where_you_eat": "Where you eat",
+    "who_shows_up": "Who shows up",
+    "skip": "skip:",
+    "star": "a favorite",
+    "coach": "coach",
+    "walks": "walks",
+    "table": "The table",
+    "nights": {
+      "Mon": "Mondays",
+      "Tue": "Tuesdays",
+      "Wed": "Wednesdays",
+      "Thu": "Thursdays",
+      "Fri": "Fridays",
+      "Sat": "Saturdays",
+      "Sun": "Sundays"
+    },
+    "slot": {
+      "breakfast": "breakfast",
+      "lunch": "lunch",
+      "dinner": "dinner",
+      "snack": "snack"
+    }
+  },
+  "whatif": {
+    "title": "What if…",
+    "dish": "Dish",
+    "yours": "Your dishes",
+    "all_cuban": "All Versailles / Cuban",
+    "time": "Dinner at",
+    "walk": "Walk after",
+    "move": "Grumble's move",
+    "legend_current": "{time}, {walk}",
+    "no_walk": "no walk",
+    "walk_n": "{n}-min walk",
+    "peak": "Peak",
+    "two_h": "Over 2 h",
+    "back": "Back by",
+    "caption": "People like you · {group} · {n} dinners",
+    "range_note": "A range from made-up program data, not a forecast.",
+    "same_as_ten": "Same as ten",
+    "same_as_ten_line": "Same as ten. Ten is the whole trick.",
+    "same_plate": "Same plate.",
+    "see_tuesday": "See this on Tuesday",
+    "order_effect": "Beans first: order effect, estimated.",
+    "unknown": "I don't have numbers for that one yet. Closest I've got:"
+  },
+  "groups": {
+    "normal": "normal",
+    "prediabetes": "prediabetes",
+    "t2d": "type 2 diabetes"
+  },
+  "moves": {
+    "earlier": "Same plate, an hour earlier.",
+    "walk10": "Ten minutes after. Then I'll stop grumbling.",
+    "beans-first": "Beans first, rice last.",
+    "protein-first": "Meat before rice.",
+    "one-cup": "One cup of rice, not two. Same vaca frita.",
+    "two-not-four": "Two maduros, not four. Nobody's counting but me.",
+    "morning-not-night": "The pastelito in the morning. Same pastelito.",
+    "add-beans": "Add a side of black beans. It's the cheapest thing on the menu.",
+    "half-the-bread": "Half the bread. Keep the butter.",
+    "share-it": "That's two dinners. Share it or box half before you start.",
+    "soup-counts": "Sancocho counts as dinner.",
+    "table": "Versailles, six thirty. Seat's yours.",
+    "as-is": "As is. Don't let anyone tell you otherwise."
+  },
+  "moveShort": {
+    "earlier": "earlier",
+    "walk10": "ten minutes",
+    "beans-first": "beans first",
+    "protein-first": "meat first",
+    "one-cup": "one cup",
+    "two-not-four": "two maduros",
+    "morning-not-night": "in the morning",
+    "add-beans": "add beans",
+    "half-the-bread": "half the bread",
+    "share-it": "share it",
+    "soup-counts": "soup counts",
+    "table": "the table",
+    "as-is": "as is"
+  },
+  "today": {
+    "energy": "Energy",
+    "hunger": "Hunger",
+    "mood": "How's the day going?",
+    "company": "Who's at the table tonight?",
+    "scale": {
+      "energy": [
+        "Empty",
+        "Low",
+        "Okay",
+        "Good",
+        "Plenty"
+      ],
+      "hunger": [
+        "None",
+        "A little",
+        "Some",
+        "Hungry",
+        "Starving"
+      ],
+      "mood": [
+        "Rough",
+        "Meh",
+        "So-so",
+        "Good",
+        "Great"
+      ]
+    },
+    "companies": {
+      "alone": "Just me",
+      "someone": "Someone's coming",
+      "out": "Going out",
+      "table": "The table",
+      "unknown": "Don't know yet"
+    },
+    "done": "Done",
+    "walk_n": "{n}-min walk",
+    "skip": "skip:",
+    "evidence": {
+      "rule_based": "rule based",
+      "observed_pattern": "observed pattern",
+      "coach_reviewed": "coach reviewed"
+    }
+  },
+  "table": {
+    "tabs": {
+      "table": "Table",
+      "menu": "Menu",
+      "fund": "Fund a week"
+    },
+    "intro": "Tuesdays at six thirty at Versailles. Nobody pays.",
+    "years_out": "{n} years out",
+    "language": {
+      "es": "Español",
+      "en": "English",
+      "both": "Español · English"
+    },
+    "seats_left": "no seats left | {n} seat left | {n} seats left",
+    "funded_by": "This table is from {name}",
+    "save_seat": "Save me a seat",
+    "your_seat": "Your seat",
+    "hosting": "You're hosting",
+    "host_you": "Host: you?",
+    "host_this": "Host this table",
+    "full": "Full",
+    "modal": {
+      "title": "Your table, {date}",
+      "blurb": "You pick the Tuesday. We fill the seats and cover the plates.",
+      "seats": "Seats: {n}",
+      "language": "Language at the table",
+      "submit": "Open the table"
+    },
+    "menu": {
+      "what_does": "What does this do for me?",
+      "kcal": "kcal",
+      "carbs": "g carbs",
+      "fiber": "g fiber",
+      "flan": "Flan: one for the table, cut eight ways."
+    },
+    "fund": {
+      "headline": "One Tuesday at Versailles, eight people, eight plates and cafecito: about {amount}.",
+      "seat": "a seat",
+      "table": "a table",
+      "month": "a month",
+      "name": "In the name of…",
+      "thanks": "Thank you. That Tuesday has a table.",
+      "tables": "tables",
+      "seats": "seats",
+      "taken": "taken",
+      "via": "Through Sylvester Comprehensive Cancer Center."
+    }
+  }
+}

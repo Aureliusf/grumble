@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Layout: one phone-width column (max 430px) centered on desktop inside a soft page ground;
+   bottom tab bar; every screen = header strip + one scrolling column of cards */
+@theme {
+  /* brand coral — from the character */
+  --color-grumble-50:  #fff1ee;
+  --color-grumble-100: #ffe0d9;
+  --color-grumble-200: #ffc4b7;
+  --color-grumble-300: #ff9f8a;
+  --color-grumble-400: #fb7a60;
+  --color-grumble-500: #f05a3d;   /* primary */
+  --color-grumble-600: #d8432a;
+  --color-grumble-700: #b23420;
+  --color-grumble-800: #8e2d1e;
+  --color-grumble-900: #74291d;
+  --color-grumble-950: #3f1109;
+  /* cafecito — warm brown, the secondary. 200/400/600/800/950 interpolated from 14's stops
+     so Nuxt UI has every shade it reads; no new hues. */
+  --color-cafecito-50:  #faf5f0;
+  --color-cafecito-100: #f1e6d9;
+  --color-cafecito-200: #e2cdb4;
+  --color-cafecito-300: #d3b48f;
+  --color-cafecito-400: #b88f67;
+  --color-cafecito-500: #9c6b3f;
+  --color-cafecito-600: #845833;
+  --color-cafecito-700: #6b4527;
+  --color-cafecito-800: #53351e;
+  --color-cafecito-900: #3b2415;
+  --color-cafecito-950: #26170d;
+  /* neutral with a warm bias, not grey */
+  --color-crema-50:  #fffaf5;   /* page ground, light */
+  --color-crema-100: #fdf3ea;
+  --color-crema-200: #f5e6d8;
+  --color-crema-800: #3a3128;
+  --color-crema-900: #2a221b;
+  --color-crema-950: #1b1511;   /* page ground, dark */
+
+  --font-display: "Fredoka", "Nunito", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --radius-grumble: 1.25rem;
+}
+
+/* Type scale 34/26/20/17/15, body 17 */
+html { font-size: 17px; }
+body { @apply bg-crema-50 text-crema-900 dark:bg-crema-950 dark:text-crema-50; }
+.tabular { font-variant-numeric: tabular-nums; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

@@ -1,0 +1,196 @@
+{
+  "nav": {
+    "plan": "Plan",
+    "whatif": "¿Y si…?",
+    "today": "Hoy",
+    "table": "La mesa"
+  },
+  "app": {
+    "fixture": "fixture",
+    "week": "semana {n}",
+    "language": "Idioma"
+  },
+  "character": {
+    "alt": "Grumble, un estómago con los brazos cruzados"
+  },
+  "splash": {
+    "line": "La barriga refunfuña cuando está vacía. Una persona refunfuña cuando nadie la escucha. La misma queja. Grumble atiende las dos.",
+    "start": "Ver el plan de Marisol"
+  },
+  "plan": {
+    "good_day": "Un buen día",
+    "what_you_eat": "Lo que comes",
+    "where_you_eat": "Dónde comes",
+    "who_shows_up": "Quién aparece",
+    "skip": "otro día:",
+    "star": "un favorito",
+    "coach": "su coach",
+    "walks": "camina",
+    "table": "La mesa",
+    "nights": {
+      "Mon": "los lunes",
+      "Tue": "los martes",
+      "Wed": "los miércoles",
+      "Thu": "los jueves",
+      "Fri": "los viernes",
+      "Sat": "los sábados",
+      "Sun": "los domingos"
+    },
+    "slot": {
+      "breakfast": "desayuno",
+      "lunch": "almuerzo",
+      "dinner": "comida",
+      "snack": "merienda"
+    }
+  },
+  "whatif": {
+    "title": "¿Y si…?",
+    "dish": "Plato",
+    "yours": "Tus platos",
+    "all_cuban": "Todo Versailles / cubano",
+    "time": "Comida a las",
+    "walk": "Caminar después",
+    "move": "La movida de Grumble",
+    "legend_current": "{time}, {walk}",
+    "no_walk": "sin caminar",
+    "walk_n": "{n} min caminando",
+    "peak": "Pico",
+    "two_h": "En 2 h",
+    "back": "De vuelta",
+    "caption": "Gente como tú · {group} · {n} cenas",
+    "range_note": "Un rango de datos inventados del programa, no un pronóstico.",
+    "same_as_ten": "Igual que diez",
+    "same_as_ten_line": "Igual que diez. Diez es todo el truco.",
+    "same_plate": "Mismo plato.",
+    "see_tuesday": "Ver esto el martes",
+    "order_effect": "Frijoles primero: efecto del orden, estimado.",
+    "unknown": "Todavía no tengo números para ese. Lo más parecido:"
+  },
+  "groups": {
+    "normal": "glucosa normal",
+    "prediabetes": "prediabetes",
+    "t2d": "diabetes tipo 2"
+  },
+  "moves": {
+    "earlier": "El mismo plato, una hora antes.",
+    "walk10": "Diez minutos después. Y dejo de refunfuñar.",
+    "beans-first": "Primero los frijoles, el arroz al final.",
+    "protein-first": "La carne antes del arroz.",
+    "one-cup": "Una taza de arroz, no dos. La misma vaca frita.",
+    "two-not-four": "Dos maduros, no cuatro. Nadie cuenta, solo yo.",
+    "morning-not-night": "El pastelito por la mañana. El mismo pastelito.",
+    "add-beans": "Agrega frijoles negros. Es lo más barato del menú.",
+    "half-the-bread": "Medio pan. La mantequilla se queda.",
+    "share-it": "Eso son dos cenas. Comparte o guarda la mitad antes de empezar.",
+    "soup-counts": "El sancocho cuenta como cena.",
+    "table": "Versailles, seis y media. Tu silla está lista.",
+    "as-is": "Así como está. Que nadie te diga lo contrario."
+  },
+  "moveShort": {
+    "earlier": "más temprano",
+    "walk10": "diez minutos",
+    "beans-first": "frijoles primero",
+    "protein-first": "la carne primero",
+    "one-cup": "una taza",
+    "two-not-four": "dos maduros",
+    "morning-not-night": "por la mañana",
+    "add-beans": "más frijoles",
+    "half-the-bread": "medio pan",
+    "share-it": "para compartir",
+    "soup-counts": "la sopa cuenta",
+    "table": "la mesa",
+    "as-is": "así como está"
+  },
+  "today": {
+    "energy": "Energía",
+    "hunger": "Hambre",
+    "mood": "¿Cómo va el día?",
+    "company": "¿Quién está a la mesa esta noche?",
+    "scale": {
+      "energy": [
+        "Sin pilas",
+        "Poca",
+        "Regular",
+        "Bien",
+        "Mucha"
+      ],
+      "hunger": [
+        "Nada",
+        "Un poco",
+        "Algo",
+        "Bastante",
+        "Mucha"
+      ],
+      "mood": [
+        "Mal",
+        "Flojo",
+        "Ahí",
+        "Bien",
+        "Muy bien"
+      ]
+    },
+    "companies": {
+      "alone": "Solo yo",
+      "someone": "Viene alguien",
+      "out": "Salgo",
+      "table": "La mesa",
+      "unknown": "No sé"
+    },
+    "done": "Listo",
+    "walk_n": "{n} min caminando",
+    "skip": "otro día:",
+    "evidence": {
+      "rule_based": "regla",
+      "observed_pattern": "patrón observado",
+      "coach_reviewed": "revisado por su coach"
+    }
+  },
+  "table": {
+    "tabs": {
+      "table": "Mesa",
+      "menu": "Menú",
+      "fund": "Fondear"
+    },
+    "intro": "Martes a las seis y media en Versailles. Nadie paga.",
+    "years_out": "{n} años",
+    "language": {
+      "es": "Español",
+      "en": "English",
+      "both": "Español · English"
+    },
+    "seats_left": "sin sillas | {n} silla | {n} sillas",
+    "funded_by": "Esta mesa la paga {name}",
+    "save_seat": "Guárdame una silla",
+    "your_seat": "Tu silla",
+    "hosting": "Usted es anfitrión",
+    "host_you": "Anfitrión: ¿tú?",
+    "host_this": "Ser anfitrión",
+    "full": "Llena",
+    "modal": {
+      "title": "Su mesa del {date}",
+      "blurb": "Usted escoge el martes. Nosotros llenamos las sillas y pagamos los platos.",
+      "seats": "Sillas: {n}",
+      "language": "Idioma en la mesa",
+      "submit": "Abrir la mesa"
+    },
+    "menu": {
+      "what_does": "¿Qué me hace esto?",
+      "kcal": "kcal",
+      "carbs": "g carbohidratos",
+      "fiber": "g fibra",
+      "flan": "Flan: uno para la mesa, en ocho."
+    },
+    "fund": {
+      "headline": "Un martes en Versailles, ocho personas, ocho platos y cafecito: unos {amount}.",
+      "seat": "silla",
+      "table": "mesa",
+      "month": "mes",
+      "name": "A nombre de…",
+      "thanks": "Gracias. Ese martes ya tiene mesa.",
+      "tables": "mesas",
+      "seats": "sillas",
+      "taken": "ocupadas",
+      "via": "A través de Sylvester Comprehensive Cancer Center."
+    }
+  }
+}
