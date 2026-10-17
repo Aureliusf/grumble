@@ -1,0 +1,1201 @@
+{
+ "version": 1,
+ "updated": "2026-10-17T12:30:00-04:00",
+ "person": {
+  "id": "founder",
+  "display_name": "Dani (founder's graph, health details removed)",
+  "language": "en",
+  "age": 36,
+  "sex": "male",
+  "food_background": "Colombian",
+  "blood_sugar_group": "prediabetes",
+  "wears_cgm": false,
+  "schedule": {
+   "type": "works from home",
+   "sleep_start": "23:45",
+   "sleep_end": "07:15",
+   "work_days": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri"
+   ]
+  },
+  "has_dog": false,
+  "dietary_restrictions": []
+ },
+ "risks": {
+  "company": {
+   "eats_with": [
+    "friends on social night",
+    "family Sunday dinner"
+   ],
+   "usual_dinner_company": "alone",
+   "open_to_table": true,
+   "open_to_hosting": true
+  },
+  "taste": {
+   "loves": [
+    "thai-basil-chicken-rice",
+    "larb-lettuce-wraps-chicken",
+    "salmon-poke-bowl",
+    "pho-with-extra-meat",
+    "sudado-or-sancocho-home-version"
+   ],
+   "refuses": [
+    "fatty fast food ('didn't enjoy this fatty shit')",
+    "tendon",
+    "tripe"
+   ],
+   "grew_up_on": "Colombian",
+   "appetite_pattern": "cycles"
+  },
+  "money": {
+   "weekly_food_budget_usd": 150,
+   "snap": false,
+   "who_cooks": "self",
+   "store": "Publix / Costco"
+  },
+  "convenience": {
+   "meals_out_per_week": 4,
+   "cooks_days_per_week": 5,
+   "usual_places": [
+    "Pollo Tropical",
+    "Cava",
+    "Chipotle",
+    "pho",
+    "Korean BBQ"
+   ],
+   "commute_minutes": 40
+  }
+ },
+ "standards": {
+  "items": [
+   {
+    "id": "dinner-by-8",
+    "kind": "last_meal_by",
+    "statement": "Last substantial meal by 8pm. Dense or fatty meals later cost deep sleep twice.",
+    "value": "20:00",
+    "why": "Last substantial meal by 8pm. Dense or fatty meals later have twice cost deep sleep."
+   },
+   {
+    "id": "eat-before-10",
+    "kind": "first_meal_by",
+    "statement": "Eat before 10am",
+    "value": "10:00",
+    "why": "Two hypoglycemic episodes and multiple flat training days traced to long morning gaps."
+   },
+   {
+    "id": "walk-10",
+    "kind": "walk_after_dinner_min",
+    "statement": "10-min post-meal walk",
+    "value": 10,
+    "unit": "min",
+    "why": "Listed as a crash fix; never executed. The one standard the data says matters most."
+   },
+   {
+    "id": "protein-first",
+    "kind": "protein_first",
+    "statement": "Protein and fiber before starch",
+    "value": true,
+    "why": "Three post-meal crashes traced to rice-first plates"
+   },
+   {
+    "id": "rice-100",
+    "kind": "starch_portion_g",
+    "statement": "~100g rice per meal, not 150",
+    "value": 100,
+    "unit": "g",
+    "why": "Crash fix"
+   },
+   {
+    "id": "protein-150",
+    "kind": "protein_g_per_day",
+    "statement": "150 g protein daily, no averaging",
+    "value": 150,
+    "unit": "g",
+    "why": "1.6 g/kg is the plateau (Morton meta-analysis). 150g = 1.7 g/kg. Adequate with margin."
+   },
+   {
+    "id": "fiber-30",
+    "kind": "fiber_g_per_day",
+    "statement": "30 g fiber",
+    "value": 30,
+    "unit": "g",
+    "why": "Running 15-22; legumes are the lever"
+   },
+   {
+    "id": "social-1",
+    "kind": "social_nights_per_week",
+    "statement": "One social night a week at ~2,000 kcal",
+    "value": 1,
+    "why": "Planned, so it isn't a failure"
+   },
+   {
+    "id": "legumes-4",
+    "kind": "legume_meals_per_week",
+    "statement": "Beans, lentils or chickpeas 4 times a week",
+    "value": 4,
+    "why": "Biggest available fiber lever"
+   },
+   {
+    "id": "home-5",
+    "kind": "home_cooked_days_per_week",
+    "statement": "Cook Sunday; 5 home days",
+    "value": 5,
+    "why": "Days you cook are the days the numbers are real"
+   }
+  ]
+ },
+ "procedures": {
+  "items": [
+   {
+    "standard_id": "dinner-by-8",
+    "source": "meal_log",
+    "cadence": "daily",
+    "computation": "last item >5 kcal logged <= 20:00"
+   },
+   {
+    "standard_id": "eat-before-10",
+    "source": "meal_log",
+    "cadence": "daily",
+    "computation": "first item >5 kcal logged <= 10:00"
+   },
+   {
+    "standard_id": "walk-10",
+    "source": "tracker_steps",
+    "cadence": "daily",
+    "computation": "steps in 60 min after last meal >= 800"
+   },
+   {
+    "standard_id": "protein-first",
+    "source": "daily_checkin",
+    "cadence": "daily",
+    "computation": "toggle on dinner card"
+   },
+   {
+    "standard_id": "rice-100",
+    "source": "meal_log",
+    "cadence": "per_meal",
+    "computation": "rice portion <= 120 g"
+   },
+   {
+    "standard_id": "protein-150",
+    "source": "meal_log",
+    "cadence": "daily",
+    "computation": "sum protein_g >= 150"
+   },
+   {
+    "standard_id": "fiber-30",
+    "source": "meal_log",
+    "cadence": "daily",
+    "computation": "sum fiber_g >= 30"
+   },
+   {
+    "standard_id": "social-1",
+    "source": "meal_log",
+    "cadence": "weekly",
+    "computation": "days with calories > 1,800 <= 1"
+   },
+   {
+    "standard_id": "legumes-4",
+    "source": "meal_log",
+    "cadence": "weekly",
+    "computation": "meals containing a legume dish >= 4"
+   },
+   {
+    "standard_id": "home-5",
+    "source": "meal_log",
+    "cadence": "weekly",
+    "computation": "days with no restaurant-tagged meal >= 5"
+   }
+  ]
+ },
+ "thresholds": {
+  "daily": {
+   "amber_if": [
+    "dinner-by-8 missed",
+    "walk-10 missed",
+    "protein-150 missed"
+   ],
+   "red_if": [
+    "no food logged and no check-in"
+   ],
+   "amber_action": "nudge",
+   "red_action": "coach_notified"
+  },
+  "weekly": {
+   "amber_if": [
+    "social-1 exceeded",
+    "legumes-4 missed"
+   ],
+   "red_if": [
+    "no log 3 consecutive days",
+    "energy <= 2 several days running (stop rule)"
+   ],
+   "red_action": "coach_calls"
+  }
+ },
+ "accountable": {
+  "coach": {
+   "name": "Bonehead",
+   "contact": "chat"
+  },
+  "buddy": null,
+  "table": {
+   "role": "host",
+   "usual_night": "Tue",
+   "last_attended": null
+  },
+  "dog": null
+ },
+ "dishes": {
+  "rotation": [
+   {
+    "dish_id": "salmon--2-eggs--spinach--olive-oil",
+    "slot": "breakfast",
+    "star": true,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "salmon_cooked_g": 150,
+     "eggs": 2,
+     "spinach_g": 100,
+     "olive_oil_tsp": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 560,
+     "protein_g": 50
+    }
+   },
+   {
+    "dish_id": "kodiak-overnight-oats---milk---3-eggs",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "kodiak_pouch": 1,
+     "milk_cup": 0.75,
+     "eggs": 3
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 595,
+     "protein_g": 46
+    }
+   },
+   {
+    "dish_id": "greek-yogurt--berries--walnuts",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "greek_yogurt_0_g": 250,
+     "berries_g": 100,
+     "walnuts_g": 20
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 380,
+     "protein_g": 30
+    }
+   },
+   {
+    "dish_id": "leftover-larb---2-eggs",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "larb_g": 200,
+     "eggs": 2
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 500,
+     "protein_g": 48
+    }
+   },
+   {
+    "dish_id": "smoked-salmon--3-eggs--arugula--sourdough",
+    "slot": "breakfast",
+    "star": false,
+    "move": "Cured — high sodium",
+    "portion_override": {
+     "smoked_salmon_g": 100,
+     "eggs": 3,
+     "sourdough_slice": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 520,
+     "protein_g": 45
+    }
+   },
+   {
+    "dish_id": "shrimp-and-egg-scramble---rice",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "shrimp_cooked_g": 150,
+     "eggs": 3,
+     "peppers_onions_g": 150,
+     "rice_cooked_g": 100
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 600,
+     "protein_g": 55
+    }
+   },
+   {
+    "dish_id": "cottage-cheese--tomato--olive-oil--sourdough",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "cottage_cheese_g": 250,
+     "tomato": 1,
+     "olive_oil_tsp": 2,
+     "sourdough_slice": 1
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 480,
+     "protein_g": 34
+    }
+   },
+   {
+    "dish_id": "chicken-basil---2-eggs---rice",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_basil_g": 200,
+     "eggs": 2,
+     "rice_cooked_g": 100
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 615,
+     "protein_g": 47
+    }
+   },
+   {
+    "dish_id": "tortilla-espanola---eggs--potato--onion",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "eggs": 4,
+     "potato_g": 200,
+     "onion": 0.5,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 560,
+     "protein_g": 30
+    }
+   },
+   {
+    "dish_id": "sardines-on-toast-with-tomato",
+    "slot": "breakfast",
+    "star": false,
+    "move": "Zero prep",
+    "portion_override": {
+     "sardines_g": 120,
+     "sourdough_slice": 2,
+     "tomato": 1,
+     "olive_oil_tsp": 1
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 450,
+     "protein_g": 32
+    }
+   },
+   {
+    "dish_id": "oats--protein-powder--peanut-butter--banana",
+    "slot": "breakfast",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "oats_dry_g": 60,
+     "protein_scoop": 1,
+     "peanut_butter_tbsp": 1,
+     "banana": 1
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 620,
+     "protein_g": 38
+    }
+   },
+   {
+    "dish_id": "steak-and-eggs---nibble-potatoes---greens",
+    "slot": "breakfast",
+    "star": false,
+    "move": "Red meat meal",
+    "portion_override": {
+     "skirt_cooked_g": 150,
+     "eggs": 2,
+     "potato_g": 150,
+     "spring_mix_g": 100
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 760,
+     "protein_g": 54
+    }
+   },
+   {
+    "dish_id": "burger---2-eggs",
+    "slot": "breakfast",
+    "star": false,
+    "move": "Red meat meal",
+    "portion_override": {
+     "beef_90_10_raw_g": 150,
+     "eggs": 2,
+     "bun": 1,
+     "cheese_slice": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 585,
+     "protein_g": 45
+    }
+   },
+   {
+    "dish_id": "kielbasa---3-eggs",
+    "slot": "breakfast",
+    "star": false,
+    "move": "Processed meat — limit",
+    "portion_override": {
+     "kielbasa_link": 1,
+     "eggs": 3
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 465,
+     "protein_g": 31
+    }
+   },
+   {
+    "dish_id": "larb-lettuce-wraps--chicken",
+    "slot": "lunch",
+    "star": true,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "ground_chicken_g": 200,
+     "lettuce": "0.5 head",
+     "cucumber": 1,
+     "herbs": "handful",
+     "fish_sauce_tbsp": 0.5,
+     "lime": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 420,
+     "protein_g": 45
+    }
+   },
+   {
+    "dish_id": "grilled-chicken--black-beans--rice",
+    "slot": "lunch",
+    "star": false,
+    "move": "Best fiber meal in rotation — 11g",
+    "portion_override": {
+     "chicken_cooked_g": 185,
+     "black_beans_g": 150,
+     "rice_cooked_g": 100
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 630,
+     "protein_g": 62
+    }
+   },
+   {
+    "dish_id": "salmon--rice--broccoli--olive-oil",
+    "slot": "lunch",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "salmon_cooked_g": 150,
+     "rice_cooked_g": 150,
+     "broccoli_g": 200,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 660,
+     "protein_g": 42
+    }
+   },
+   {
+    "dish_id": "sardines-or-tinned-salmon-on-greens",
+    "slot": "lunch",
+    "star": false,
+    "move": "Zero prep. Best no-appetite option.",
+    "portion_override": {
+     "tinned_fish_g": 150,
+     "greens_g": 150,
+     "olive_oil_tbsp": 1,
+     "sourdough_slice": 1
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 520,
+     "protein_g": 38
+    }
+   },
+   {
+    "dish_id": "lentil-and-chicken-stew",
+    "slot": "lunch",
+    "star": false,
+    "move": "15g fiber",
+    "portion_override": {
+     "chicken_cooked_g": 150,
+     "lentils_cooked_g": 200,
+     "vegetables_g": 200
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 620,
+     "protein_g": 60
+    }
+   },
+   {
+    "dish_id": "chickpea-and-tuna-salad",
+    "slot": "lunch",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chickpeas_g": 200,
+     "tuna_g": 150,
+     "cucumber_tomato_g": 200,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 610,
+     "protein_g": 52
+    }
+   },
+   {
+    "dish_id": "chicken-shawarma-bowl--home",
+    "slot": "lunch",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_cooked_g": 200,
+     "rice_cooked_g": 150,
+     "hummus_g": 60,
+     "salad_g": 200
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 780,
+     "protein_g": 66
+    }
+   },
+   {
+    "dish_id": "shrimp--quinoa--roasted-vegetables",
+    "slot": "lunch",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "shrimp_cooked_g": 200,
+     "quinoa_cooked_g": 150,
+     "vegetables_g": 250,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 640,
+     "protein_g": 54
+    }
+   },
+   {
+    "dish_id": "turkey-chili-with-beans",
+    "slot": "lunch",
+    "star": false,
+    "move": "Batch cooks well",
+    "portion_override": {
+     "ground_turkey_g": 150,
+     "kidney_beans_g": 200,
+     "tomato_veg_g": 200
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 560,
+     "protein_g": 55
+    }
+   },
+   {
+    "dish_id": "korean-beef-bowl",
+    "slot": "lunch",
+    "star": false,
+    "move": "Red meat meal",
+    "portion_override": {
+     "beef_90_10_g": 150,
+     "rice_cooked_g": 150,
+     "cucumber": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 510,
+     "protein_g": 36
+    }
+   },
+   {
+    "dish_id": "tuna-nicoise",
+    "slot": "lunch",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "tuna_g": 180,
+     "eggs": 2,
+     "green_beans_g": 150,
+     "potato_g": 150,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 680,
+     "protein_g": 58
+    }
+   },
+   {
+    "dish_id": "chicken-and-white-bean-soup",
+    "slot": "lunch",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_cooked_g": 180,
+     "cannellini_g": 200,
+     "vegetables_g": 200
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 580,
+     "protein_g": 62
+    }
+   },
+   {
+    "dish_id": "baked-salmon--sweet-potato--greens",
+    "slot": "dinner",
+    "star": true,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "salmon_cooked_g": 150,
+     "sweet_potato_g": 150,
+     "greens_g": 150,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 600,
+     "protein_g": 40
+    }
+   },
+   {
+    "dish_id": "thai-basil-chicken---rice",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_cooked_g": 200,
+     "rice_cooked_g": 150,
+     "basil_veg": "generous"
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 620,
+     "protein_g": 58
+    }
+   },
+   {
+    "dish_id": "white-fish--vegetables--potato--olive-oil",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "cod_or_snapper_cooked_g": 200,
+     "vegetables_g": 250,
+     "potato_g": 150,
+     "olive_oil_tbsp": 1
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 580,
+     "protein_g": 45
+    }
+   },
+   {
+    "dish_id": "shrimp--vegetables--rice",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "shrimp_cooked_g": 200,
+     "vegetables_g": 250,
+     "rice_cooked_g": 150
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 560,
+     "protein_g": 48
+    }
+   },
+   {
+    "dish_id": "chicken-thighs--roasted-vegetables--farro",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_thigh_cooked_g": 200,
+     "vegetables_g": 250,
+     "farro_cooked_g": 150
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 700,
+     "protein_g": 56
+    }
+   },
+   {
+    "dish_id": "salmon-poke-bowl",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "salmon_raw_g": 180,
+     "rice_cooked_g": 150,
+     "cucumber_avocado_edamame": "generous"
+    },
+    "flags": [
+     "low_appetite_ok",
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 680,
+     "protein_g": 42
+    }
+   },
+   {
+    "dish_id": "chicken-sofrito-with-rice-and-beans",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_cooked_g": 200,
+     "black_beans_g": 150,
+     "rice_cooked_g": 100,
+     "sofrito": "generous"
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 700,
+     "protein_g": 68
+    }
+   },
+   {
+    "dish_id": "grilled-mackerel--greens--potato",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "mackerel_cooked_g": 150,
+     "greens_g": 200,
+     "potato_g": 150
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 600,
+     "protein_g": 38
+    }
+   },
+   {
+    "dish_id": "chicken-and-vegetable-stir-fry",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_cooked_g": 250,
+     "vegetables_g": 300,
+     "rice_cooked_g": 150,
+     "soy_low_sodium_tbsp": 1.5
+    },
+    "flags": [
+     "high_fiber"
+    ],
+    "nutrition": {
+     "calories": 650,
+     "protein_g": 60
+    }
+   },
+   {
+    "dish_id": "pho-with-extra-meat",
+    "slot": "dinner",
+    "star": false,
+    "move": "1500-2500mg sodium. Expect +1-2 lb water for 2-3 days.",
+    "portion_override": {
+     "eye_round_or_chicken": "double",
+     "noodles": "half",
+     "herbs_sprouts": "all"
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 650,
+     "protein_g": 50
+    }
+   },
+   {
+    "dish_id": "grilled-skirt-or-picanha--salad--nibble-potatoes",
+    "slot": "dinner",
+    "star": false,
+    "move": "Red meat meal. Green Egg 600-700F, 90sec/side, slice against grain.",
+    "portion_override": {
+     "steak_cooked_g": 150,
+     "spring_mix_g": 150,
+     "potato_g": 150
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 700,
+     "protein_g": 45
+    }
+   },
+   {
+    "dish_id": "meatballs--sofrito--rice",
+    "slot": "dinner",
+    "star": false,
+    "move": "Red meat. Dense — not after 7pm.",
+    "portion_override": {
+     "beef_90_10_g": 200,
+     "rice_cooked_g": 150,
+     "sofrito": "generous"
+    },
+    "flags": [],
+    "nutrition": {
+     "calories": 715,
+     "protein_g": 44
+    }
+   },
+   {
+    "dish_id": "sudado-or-sancocho--home-version",
+    "slot": "dinner",
+    "star": false,
+    "move": "As written: weigh protein and starch, not vegetables or sauce.",
+    "portion_override": {
+     "chicken_or_lean_beef_g": 200,
+     "root_veg_g": 250,
+     "broth": "generous"
+    },
+    "flags": [
+     "low_appetite_ok"
+    ],
+    "nutrition": {
+     "calories": 600,
+     "protein_g": 50
+    }
+   },
+   {
+    "dish_id": "core-power-elite-42g",
+    "slot": "snack",
+    "star": true,
+    "move": "9.5 c/g at Costco 12-pack or Amazon",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 230,
+     "protein_g": 42
+    }
+   },
+   {
+    "dish_id": "fairlife-42g",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 160,
+     "protein_g": 42
+    }
+   },
+   {
+    "dish_id": "core-power-26g",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 170,
+     "protein_g": 26
+    }
+   },
+   {
+    "dish_id": "muscle-milk-pro",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 160,
+     "protein_g": 33
+    }
+   },
+   {
+    "dish_id": "shamrock-rockin-refuel",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 260,
+     "protein_g": 50
+    }
+   },
+   {
+    "dish_id": "greek-yogurt-250g",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 150,
+     "protein_g": 25
+    }
+   },
+   {
+    "dish_id": "cottage-cheese-200g",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 160,
+     "protein_g": 22
+    }
+   },
+   {
+    "dish_id": "tinned-tuna-or-sardines",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 180,
+     "protein_g": 30
+    }
+   },
+   {
+    "dish_id": "3-hard-boiled-eggs",
+    "slot": "snack",
+    "star": false,
+    "move": "Fills a gap, not a dinner replacement.",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 215,
+     "protein_g": 18
+    }
+   },
+   {
+    "dish_id": "now-whey-isolate",
+    "slot": "snack",
+    "star": false,
+    "move": "Suspected nausea cause — under test, avoid",
+    "flags": [
+     "low_appetite_ok",
+     "zero_prep"
+    ],
+    "nutrition": {
+     "calories": 150,
+     "protein_g": 25
+    }
+   }
+  ],
+  "places": [
+   {
+    "venue": "Cava",
+    "order": "Greens base, double chicken or harissa chicken, hummus, tomato-cucumber, pickled onion, roasted veg, light tahini",
+    "avoid": "Pita, feta, crazy feta, lamb meatballs",
+    "calories": 700,
+    "protein_g": 55,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Pollo Tropical",
+    "order": "Grilled chicken breast 185g, black beans, rice",
+    "avoid": "Fried, sauces",
+    "calories": 630,
+    "protein_g": 62,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Chipotle",
+    "order": "Bowl, double chicken, brown rice, black beans, fajita veg, salsas, lettuce, guac",
+    "avoid": "Queso, sour cream, chips",
+    "calories": 700,
+    "protein_g": 60,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Pho",
+    "order": "Eye round or chicken, extra meat, half noodles, all herbs and sprouts",
+    "avoid": "Tendon (collagen, not usable protein), tripe, hoisin",
+    "calories": 650,
+    "protein_g": 50,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Japanese / sushi",
+    "order": "Sashimi, grilled fish, salmon or yellowtail. Hand rolls over specialty rolls.",
+    "avoid": "Tempura, spicy mayo rolls, sweet sauces",
+    "calories": 550,
+    "protein_g": 45,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Peruvian",
+    "order": "Ceviche, grilled fish, pulpo, pollo a la brasa",
+    "avoid": "Causa, fried yuca, aji cremoso in volume",
+    "calories": 600,
+    "protein_g": 50,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Persian / kabab",
+    "order": "Chicken koobideh or joojeh, salad shirazi, half the rice",
+    "avoid": "Butter on rice, lamb in volume",
+    "calories": 700,
+    "protein_g": 55,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Thai",
+    "order": "Basil chicken, larb, tom yum, grilled fish",
+    "avoid": "Pad thai, curries with coconut in volume, fried apps",
+    "calories": 650,
+    "protein_g": 55,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Colombian / Cuban",
+    "order": "Grilled chicken or fish, black beans, salad, small rice",
+    "avoid": "Fried plantains in volume, chicharron, guarapo",
+    "calories": 700,
+    "protein_g": 50,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Korean BBQ",
+    "order": "Lean cuts, kimchi, vegetables, rice",
+    "avoid": "Pork belly, brisket in volume, sweet marinades, japchae, pancakes",
+    "calories": 1000,
+    "protein_g": 70,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Shake Shack",
+    "order": "Double ShackBurger, no fries, no shake",
+    "avoid": "",
+    "calories": 760,
+    "protein_g": 51,
+    "confidence": "estimated"
+   },
+   {
+    "venue": "Joe & The Juice",
+    "order": "Protein shake only",
+    "avoid": "All juices — liquid fructose, worst item for MASLD",
+    "confidence": "estimated"
+   }
+  ]
+ },
+ "contract": {
+  "framing": "suggestive",
+  "nag_tolerance": "low",
+  "quiet_hours": [],
+  "never_mention": [],
+  "notes": [
+   "no condescension, no over-diagnosis, don't gate good recommendations behind stale character reads",
+   "suggestive, not directive ('I'm your superior, only speak in a suggestive matter')",
+   "proportional - no freak-outs or over-warning on routine stuff",
+   "pattern threshold: three dated instances or it's not a pattern",
+   "lookback: one week maximum"
+  ]
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "source": "specs/analysis/cgm_model.py over synthetic_glucose_every_15_min.csv joined to synthetic_meals.csv; 21,231 meals, 500 sensored participants; MADE-UP DATA, patterns are the Crane Lab's design",
+ "baseline_mg_dl": {
+  "normal": 95.8,
+  "prediabetes": 121.0,
+  "type 2 diabetes": 171.7
+ },
+ "time_to_peak_min": {
+  "normal": 59,
+  "prediabetes": 72,
+  "type 2 diabetes": 87
+ },
+ "shape_fraction_of_peak": {
+  "0": 0.0,
+  "30": 0.622,
+  "60": 0.786,
+  "90": 0.549,
+  "120": 0.301,
+  "180": 0.07,
+  "240": 0.0
+ },
+ "ols_peak_delta_mg_dl": {
+  "r2": 0.373,
+  "intercept": 27.552,
+  "per_g_carbs": 0.576,
+  "per_g_fiber": -0.725,
+  "per_g_protein": -0.136,
+  "per_g_fat": 0.008,
+  "late_dinner_flag": 14.672,
+  "per_min_walk_capped_30": -0.71,
+  "prediabetes": 20.403,
+  "type_2_diabetes": 38.714,
+  "per_mg_dl_baseline": -0.184
+ },
+ "ols_iauc_2h": {
+  "r2": 0.448,
+  "intercept": 1270.0,
+  "per_g_carbs": 48.3,
+  "per_g_fiber": -60.2,
+  "per_g_protein": -3.7,
+  "late_dinner_flag": 1233.4,
+  "per_min_walk_capped_30": -56.6,
+  "prediabetes": 1631.3,
+  "type_2_diabetes": 2901.1,
+  "per_mg_dl_baseline": -13.5
+ },
+ "dinner_effects_by_group": {
+  "normal": {
+   "late_dinner_peak_delta": 13.4,
+   "late_dinner_iauc_ratio": 1.39,
+   "walk_peak_delta": -15.6,
+   "walk_iauc_ratio": 0.67
+  },
+  "prediabetes": {
+   "late_dinner_peak_delta": 24.4,
+   "late_dinner_iauc_ratio": 1.48,
+   "walk_peak_delta": -22.6,
+   "walk_iauc_ratio": 0.65
+  },
+  "type 2 diabetes": {
+   "late_dinner_peak_delta": 31.4,
+   "late_dinner_iauc_ratio": 1.59,
+   "walk_peak_delta": -24.8,
+   "walk_iauc_ratio": 0.65
+  }
+ },
+ "walk_dose_response_dinner_peak": {
+  "(-1, 0]": 64.8,
+  "(0, 10]": 42.1,
+  "(10, 20]": 45.6,
+  "(20, 60]": 46.6
+ },
+ "walk_saturation_note": "Benefit is essentially complete by 10 minutes; 20 and 30+ minutes add nothing further on glucose. 'How much is enough' = 10 minutes, right after."
+}

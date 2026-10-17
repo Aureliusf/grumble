@@ -1,0 +1,629 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "grumble/food-graph/v1",
+  "title": "Grumble Food Graph",
+  "description": "One person's negotiated standards, what gets checked, when to act, and who shows up. Produced by intake, revised by the daily check-in and the coach. Mirrors the Attestify Combined Assurance Blueprint: risk sources -> control standards -> assurance procedures -> risk evaluation -> accountable person.",
+  "type": "object",
+  "required": [
+    "version",
+    "person",
+    "risks",
+    "standards",
+    "procedures",
+    "thresholds",
+    "accountable",
+    "dishes",
+    "updated"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "person": {
+      "type": "object",
+      "required": [
+        "id",
+        "language",
+        "blood_sugar_group",
+        "schedule"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "language": {
+          "enum": [
+            "en",
+            "es",
+            "ht"
+          ]
+        },
+        "age": {
+          "type": "integer"
+        },
+        "sex": {
+          "enum": [
+            "female",
+            "male",
+            "other"
+          ]
+        },
+        "food_background": {
+          "type": "string",
+          "description": "Free text from intake; maps to dishes.json cuisine when it matches"
+        },
+        "cancer_type": {
+          "type": "string"
+        },
+        "years_since_treatment": {
+          "type": "number"
+        },
+        "blood_sugar_group": {
+          "enum": [
+            "normal",
+            "prediabetes",
+            "type 2 diabetes"
+          ]
+        },
+        "wears_cgm": {
+          "type": "boolean"
+        },
+        "schedule": {
+          "type": "object",
+          "description": "Timing rules are anchored to this, not the wall clock. Night shift sets sleep_start/sleep_end to daytime.",
+          "required": [
+            "type",
+            "sleep_start",
+            "sleep_end"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "day job",
+                "night shift",
+                "works from home",
+                "retired",
+                "not working"
+              ]
+            },
+            "sleep_start": {
+              "type": "string",
+              "pattern": "^\\d{2}:\\d{2}$"
+            },
+            "sleep_end": {
+              "type": "string",
+              "pattern": "^\\d{2}:\\d{2}$"
+            },
+            "work_days": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Mon",
+                  "Tue",
+                  "Wed",
+                  "Thu",
+                  "Fri",
+                  "Sat",
+                  "Sun"
+                ]
+              }
+            }
+          }
+        },
+        "has_dog": {
+          "type": "boolean"
+        },
+        "dietary_restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Immunocompromised, allergies, renal, dysphagia, etc. Shown to a table host."
+        }
+      }
+    },
+    "risks": {
+      "type": "object",
+      "description": "The four risk sources to glucose control, each with what intake learned. Never shown to the person as labels.",
+      "required": [
+        "company",
+        "taste",
+        "money",
+        "convenience"
+      ],
+      "properties": {
+        "company": {
+          "type": "object",
+          "properties": {
+            "eats_with": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "People or groups seen in a typical week, in the person's words"
+            },
+            "usual_dinner_company": {
+              "enum": [
+                "alone",
+                "partner",
+                "family",
+                "friends",
+                "varies"
+              ]
+            },
+            "would_call_on_a_bad_day": {
+              "type": "string"
+            },
+            "open_to_table": {
+              "type": "boolean",
+              "description": "Willing to be invited to the Versailles table"
+            },
+            "open_to_hosting": {
+              "type": "boolean"
+            }
+          }
+        },
+        "taste": {
+          "type": "object",
+          "properties": {
+            "loves": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "dish ids from dishes.json or free text"
+            },
+            "refuses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "grew_up_on": {
+              "type": "string"
+            },
+            "appetite_pattern": {
+              "enum": [
+                "steady",
+                "low",
+                "cycles"
+              ],
+              "description": "cycles = GLP-1 style weekly suppression arc"
+            }
+          }
+        },
+        "money": {
+          "type": "object",
+          "properties": {
+            "weekly_food_budget_usd": {
+              "type": "number"
+            },
+            "snap": {
+              "type": "boolean"
+            },
+            "who_cooks": {
+              "enum": [
+                "self",
+                "someone else",
+                "nobody"
+              ]
+            },
+            "store": {
+              "type": "string"
+            }
+          }
+        },
+        "convenience": {
+          "type": "object",
+          "properties": {
+            "meals_out_per_week": {
+              "type": "integer"
+            },
+            "cooks_days_per_week": {
+              "type": "integer"
+            },
+            "usual_places": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "commute_minutes": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "standards": {
+      "type": "object",
+      "description": "What a good day is, for this person. Negotiated at intake, in their words. Each has an id so procedures and thresholds can point at it.",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "kind",
+              "statement"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "last_meal_by",
+                  "first_meal_by",
+                  "walk_after_dinner_min",
+                  "overnight_fast_hours",
+                  "protein_first",
+                  "starch_portion_g",
+                  "fiber_g_per_day",
+                  "protein_g_per_day",
+                  "calories_per_day",
+                  "social_nights_per_week",
+                  "alcohol_drinks_per_week",
+                  "vegetables_meals_per_day",
+                  "home_cooked_days_per_week",
+                  "legume_meals_per_week",
+                  "custom"
+                ]
+              },
+              "statement": {
+                "type": "string",
+                "description": "The rule in the person's own words, e.g. 'Dinner by 8 so I sleep'"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "string",
+                  "boolean"
+                ]
+              },
+              "unit": {
+                "type": "string"
+              },
+              "relative_to_sleep": {
+                "type": "boolean",
+                "description": "true = value is hours before sleep_start; used for night shift"
+              },
+              "why": {
+                "type": "string",
+                "description": "What the data says this buys them, one line"
+              },
+              "negotiated_on": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      }
+    },
+    "procedures": {
+      "type": "object",
+      "description": "What gets checked, automatically, per standard. One procedure per standard id.",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "standard_id",
+              "source",
+              "cadence"
+            ],
+            "properties": {
+              "standard_id": {
+                "type": "string"
+              },
+              "source": {
+                "enum": [
+                  "meal_log",
+                  "tracker_steps",
+                  "tracker_sleep",
+                  "cgm",
+                  "daily_checkin",
+                  "table_attendance",
+                  "manual"
+                ]
+              },
+              "cadence": {
+                "enum": [
+                  "per_meal",
+                  "daily",
+                  "weekly"
+                ]
+              },
+              "computation": {
+                "type": "string",
+                "description": "Plain-language rule the code implements, e.g. 'last logged calories >5 kcal before sleep_start minus 3h'"
+              }
+            }
+          }
+        }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "description": "Risk evaluation: when a day or a week is green, amber or red, and what each triggers.",
+      "required": [
+        "daily",
+        "weekly"
+      ],
+      "properties": {
+        "daily": {
+          "type": "object",
+          "properties": {
+            "amber_if": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Conditions in terms of standard ids, e.g. 'last_meal_by missed' "
+            },
+            "red_if": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "amber_action": {
+              "const": "nudge"
+            },
+            "red_action": {
+              "const": "coach_notified"
+            }
+          }
+        },
+        "weekly": {
+          "type": "object",
+          "properties": {
+            "amber_if": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "red_if": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "e.g. 'no log 3 consecutive days', 'mood <=2 three days', 'cgm time_above_180 > 25%'"
+            },
+            "red_action": {
+              "const": "coach_calls"
+            }
+          }
+        }
+      }
+    },
+    "accountable": {
+      "type": "object",
+      "description": "Who shows up. The coach is always present; the rest are the person's own.",
+      "required": [
+        "coach"
+      ],
+      "properties": {
+        "coach": {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "contact": {
+              "type": "string"
+            }
+          }
+        },
+        "buddy": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "relationship": {
+              "type": "string"
+            },
+            "walks": {
+              "type": "boolean"
+            }
+          }
+        },
+        "table": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "enum": [
+                "guest",
+                "host",
+                "both",
+                "none"
+              ]
+            },
+            "usual_night": {
+              "enum": [
+                "Mon",
+                "Tue",
+                "Wed",
+                "Thu",
+                "Fri",
+                "Sat",
+                "Sun"
+              ]
+            },
+            "last_attended": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            }
+          }
+        },
+        "dog": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Name, if any. Counts as a walking partner."
+        }
+      }
+    },
+    "dishes": {
+      "type": "object",
+      "description": "The person's own rotation, each dish with the move that keeps it. Starred = default suggestion for that slot.",
+      "required": [
+        "rotation"
+      ],
+      "properties": {
+        "rotation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "dish_id",
+              "slot"
+            ],
+            "properties": {
+              "dish_id": {
+                "type": "string"
+              },
+              "slot": {
+                "enum": [
+                  "breakfast",
+                  "lunch",
+                  "dinner",
+                  "snack",
+                  "table"
+                ]
+              },
+              "star": {
+                "type": "boolean"
+              },
+              "move": {
+                "type": "string",
+                "description": "The portion/order/time change that keeps the dish, e.g. 'half the rice, beans first'"
+              },
+              "portion_override": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                },
+                "description": "Portion per component: grams as numbers, or a word like 'generous' when the component is inside the error band and isn't weighed"
+              },
+              "flags": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "low_appetite_ok",
+                    "high_fiber",
+                    "cheap",
+                    "zero_prep",
+                    "table_menu"
+                  ]
+                }
+              },
+              "cost_usd": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "places": {
+          "type": "array",
+          "description": "Restaurant playbook: what to order where",
+          "items": {
+            "type": "object",
+            "required": [
+              "venue",
+              "order"
+            ],
+            "properties": {
+              "venue": {
+                "type": "string"
+              },
+              "order": {
+                "type": "string"
+              },
+              "avoid": {
+                "type": "string"
+              },
+              "calories": {
+                "type": "number"
+              },
+              "protein_g": {
+                "type": "number"
+              },
+              "confidence": {
+                "enum": [
+                  "published",
+                  "estimated",
+                  "unknowable"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "contract": {
+      "type": "object",
+      "description": "How Grumble is allowed to talk to this person. Set at intake, editable any time.",
+      "properties": {
+        "framing": {
+          "enum": [
+            "suggestive",
+            "direct"
+          ],
+          "default": "suggestive"
+        },
+        "nag_tolerance": {
+          "enum": [
+            "none",
+            "low",
+            "normal"
+          ]
+        },
+        "quiet_hours": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "never_mention": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Topics the person asked Grumble not to raise (weight, alcohol, a specific food)"
+        }
+      }
+    }
+  }
+}
