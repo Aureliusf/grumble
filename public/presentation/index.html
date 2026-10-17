@@ -389,7 +389,7 @@
 <div id="progress"></div>
 <div id="count"></div>
 <div id="timer">0:00</div>
-<div id="help">← → · F fullscreen · N notes · T timer</div>
+<div id="help" hidden>← → · F fullscreen · N notes · T timer</div>
 <div id="notes"><div class="t"></div><div class="b"></div></div>
 
 <script>
@@ -399,6 +399,9 @@
   const timer = document.getElementById('timer')
   const TOTAL = 5 * 60 // the whole pitch, seconds
   let i = 0, t0 = 0, tick = null
+
+  // The public view is the audience's: key hints only for the presenter (?presenter). N and T still work for anyone.
+  try { if (new URLSearchParams(location.search).has('presenter')) document.getElementById('help').hidden = false } catch {}
 
   // Demo link: ?app=http://host:port overrides the default dev server.
   try {

@@ -31,7 +31,7 @@ Back to the deck, slide 7: "Four levers. One evening. Someone across the table."
 - **"Is this real data?"** "Two kinds, and every number is tagged on screen. NHANES is real survivors: distress travels with lower income, less fiber and higher HbA1c. The program and the glucose patterns are the challenge's synthetic data, Sylvester's design. We say 'people like you', a range, never a forecast."
 - **"Isn't this another glucose app?"** "The curve is table stakes. Nobody has a plan for bandeja paisa, nobody asks who you're eating with, and nobody's buying the table."
 - **"Where's the coach?"** "Designed (07), next to build: who to call first. Today, three low days in a week routes to the coach, quietly."
-- More answers: `presentation/README.md` § Q&A.
+- More answers: `pitch/README.md` § Q&A.
 
 ## Pre-flight
 

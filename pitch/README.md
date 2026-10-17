@@ -1,4 +1,6 @@
-# Grumble — the pitch deck
+# Grumble — the pitch deck (presenter notes)
+
+This file is for the team, not the audience; it lives outside `public/` so the deployed site doesn't serve it. The deck itself is `public/presentation/index.html`, public at `/presentation/`.
 
 Seven slides, five minutes: about two minutes of slides, two and a half of live demo, a thirty-second close. The full talk track is `13-demo-script.md`; the speaker notes (N) carry it slide by slide.
 
@@ -7,6 +9,8 @@ Seven slides, five minutes: about two minutes of slides, two and a half of live 
 Open `public/presentation/index.html` in a browser (double-click works), or run `npm run deck` and go to http://127.0.0.1:8765/presentation/ (local only, port 8765). It's one self-contained file. Offline, the fonts fall back to the system font and nothing else changes. The app also serves it at `/presentation/`, locally and on Vercel.
 
 Start the app before the pitch (`npm run dev` at the repo root). The demo slide's **Open Grumble** button opens `/today?demo` on whatever server is showing the deck, or `http://localhost:3000/today?demo` when the deck is opened from disk or `npm run deck`. `?demo` resets the app to the demo state: Marisol's plan, nothing logged, English. If the app runs elsewhere, open the deck as `index.html?app=http://localhost:3456`. Add `?debug` to any app URL to see the date strip and the "fixture" chip again.
+
+Add `?presenter` to the deck URL to show the key hints. The keys work either way.
 
 | Key | Does |
 |---|---|
