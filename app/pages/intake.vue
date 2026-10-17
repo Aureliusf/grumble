@@ -37,7 +37,7 @@ async function findMeal() {
   const text = mealText.value.trim()
   const res = await apiCall<MealParse>('/api/log', () =>
     localMeal(text, dishes.value, t('intake.ui.no_match')),
-  { method: 'POST', body: { text, lang: answers.language } })
+  { method: 'POST', body: { text, lang: answers.language, love: true } })
   match.value = res
   const love = loveKey(res)
   // A later run adds to what they love (up to five, newest kept); the first run starts the list.

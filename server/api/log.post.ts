@@ -51,7 +51,7 @@ export interface LogResponse { label: string; items: PricedItem[]; total: Return
 let client: Anthropic | null = null
 
 export default defineEventHandler(async (event): Promise<LogResponse> => {
-  const body = await readBody<{ text?: string; lang?: string }>(event)
+  const body = await readBody<{ text?: string; lang?: string; love?: boolean }>(event)
   const text = (body?.text ?? '').trim().slice(0, 400)
   const lang = body?.lang === 'es' ? 'es' : 'en'
   if (!text) throw createError({ statusCode: 400, statusMessage: 'text is required' })
@@ -67,7 +67,7 @@ export default defineEventHandler(async (event): Promise<LogResponse> => {
       output_config: { effort: 'low', format: betaZodOutputFormat(Parsed) },
       cache_control: { type: 'ephemeral' },
       system: SYSTEM,
-      messages: [{ role: 'user', content: `Language: ${lang}\nWhat they ate: ${text}` }],
+      messages: [{ role: 'user', content: `Language: ${lang}\n${body?.love ? 'A meal they love (not a log of what they ate)' : 'What they ate'}: ${text}` }],
     })
     const out = res.parsed_output
     if (res.stop_reason === 'refusal' || !out) throw createError({ statusCode: 502, statusMessage: 'nothing parsed' })

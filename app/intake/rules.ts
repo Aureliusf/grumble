@@ -267,7 +267,7 @@ export function placeFor(venue: string) {
 }
 
 export const slug = (s: string) =>
-  s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
 // The program default coach (02 §Rules: never null).
 export const DEFAULT_COACH = { ...marisol.accountable.coach }
