@@ -41,7 +41,7 @@ export interface SimulateResponse {
 }
 
 export interface Standard { id: string; kind: string; statement: string; statement_en?: string; value: number|string|boolean; unit?: string; why: string }
-export interface RotationItem { dish_id: string; slot: string; star?: boolean; move: string; flags: string[]; cost_usd?: number }
+export interface RotationItem { dish_id: string; slot: string; star?: boolean; move: string; flags: string[]; cost_usd?: number; portion_override?: Record<string, number | string> }
 export interface Place { venue: string; order: string; avoid?: string; calories?: number; protein_g?: number }
 export interface FoodGraph {               // subset of data/food-graph.schema.json the UI needs
   person: { id: string; display_name: string; language: Lang; blood_sugar_group: SugarGroup; schedule: { type: string; sleep_start: string; sleep_end: string } }

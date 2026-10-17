@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Dish, FoodGraph } from '#shared/types'
+import { unslug } from '#shared/meals'
 import { fixtures } from '~/fixtures'
 
 const PERSON = 'N0771'
@@ -9,7 +10,7 @@ const graph = useGraph(PERSON)
 const { own, clear } = useFoodGraph()
 const { plan } = useDay(PERSON)
 const { data: dishes } = useApi<Dish[]>(`/api/dishes?person_id=${PERSON}`, fixtures.dishes)
-const dishName = (id: string) => dishes.value.find(d => d.id === id)?.name ?? id
+const dishName = (id: string) => dishes.value.find(d => d.id === id)?.name ?? unslug(id)
 
 // The graph carries more than the FoodGraph subset; read the extras defensively.
 const person = computed(() => graph.value.person as FoodGraph['person'] & { age?: number })

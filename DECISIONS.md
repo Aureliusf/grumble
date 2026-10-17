@@ -77,3 +77,13 @@ Choices made where the spec was silent or the installed versions differed from i
   - 09's walk line once dinner is logged;
   - "Nothing to grumble about. Rare." when nothing needs nudging.
 - No Claude call: every number is computed, and the lines update the moment a meal is added.
+
+## 2026-10-17 — the loved meal, parsed like a Today log (03)
+
+- **The intake meal goes through `/api/log`**, the same parser as Today. Claude splits it into USDA foods from `components.json` with grams, or a whole dish from `dishes.json` with a portion. It now also returns `meal_type` (breakfast, lunch, dinner or snack, the four rotation slots) and `cuisine`. Claude can't invent an id, and `shared/meals.ts` still does the math.
+- **One dish stays whole.** If the meal is a single dish from `dishes.json`, the love is that dish id. Anything else is the person's own meal, kept in their words.
+- **The meal type is the AI's call, and the person can change it.** The screen shows the parts the same way Today does (`MealItems`) and four meal-type buttons with the AI's pick selected. Only the meal type can be edited, not the parts. The chosen slot goes into `dishes.rotation[].slot` and overrides the dish's `typical_meal_type` on Plan and Today.
+- **A custom meal's parts live in `rotation[].portion_override`** (already in the schema, so no schema change). A component id holds grams and a dish id holds a plate fraction. The ids never overlap. Plan, Today and the intake's standards and moves rebuild the meal's numbers from those parts (`mealFromParts`), so a meal that isn't one of the 127 dishes can anchor the day.
+- **No key:** the same word-match fallback as Today (`localParse`). The slot comes from the matched dish, otherwise dinner.
+- A custom meal's slug shows as words on screen ("Rice chicken and beans"), not as `rice-chicken-and-beans`.
+- **One client path:** the intake and Today both call `/api/log` through `apiCall` with the same `localMeal` fallback and `MealParse` type. Today keeps its own slot picker.
