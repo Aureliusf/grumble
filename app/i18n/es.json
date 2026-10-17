@@ -154,9 +154,10 @@
       "coach_reviewed": "revisado por su coach"
     },
     "ate_title": "¿Qué comió?",
-    "ate_placeholder": "una hamburguesa con papitas",
+    "ate_placeholder": "una taza de arroz, una palma de pollo, una taza de frijoles",
     "ate_add": "Agregar",
-    "rest": "El resto de hoy"
+    "rest": "El resto de hoy",
+    "usda_note": "Claude lee las comidas y las cantidades; los números son de USDA FoodData Central, por gramo."
   },
   "table": {
     "tabs": {
@@ -367,6 +368,27 @@
       "legume": "La palanca de fibra más grande en su comida",
       "fast": "El grupo de ayuno del programa bajó las calorías de la noche de 22% a 13%",
       "figure": "Marcado para su coach en la entrevista"
+    },
+    "refine": {
+      "hello": "De vuelta. Esto es lo que sé hasta ahora. Cambie lo que quiera, o dígame otra comida que le encanta.",
+      "one_more": "¿Otra comida que le encanta?",
+      "change": "Cambiar",
+      "update": "Actualizar mi plan",
+      "start_over": "Empezar de nuevo",
+      "updated": "Plan actualizado.",
+      "new": "nuevo",
+      "not": "no",
+      "out_n": "{n} comidas fuera a la semana",
+      "standards_n": "sin metas todavía | {n} meta | {n} metas",
+      "sections": {
+        "you": "Usted",
+        "food": "Lo que come",
+        "week": "Su semana",
+        "people": "Su gente",
+        "goodday": "Un buen día",
+        "dishes": "Sus platos",
+        "talk": "Cómo le hablo"
+      }
     }
   },
   "day": {

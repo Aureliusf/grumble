@@ -154,9 +154,10 @@
       "coach_reviewed": "coach reviewed"
     },
     "ate_title": "What did you eat?",
-    "ate_placeholder": "a burger and fries",
+    "ate_placeholder": "a cup of rice, a palm of chicken, a cup of beans",
     "ate_add": "Add",
-    "rest": "The rest of today"
+    "rest": "The rest of today",
+    "usda_note": "Foods and amounts read by Claude; the numbers are USDA FoodData Central, per gram."
   },
   "table": {
     "tabs": {
@@ -367,6 +368,27 @@
       "legume": "Biggest fiber lever in your food",
       "fast": "The program's fast group pulled evening calories from 22% to 13%",
       "figure": "Flagged for the coach at intake"
+    },
+    "refine": {
+      "hello": "Back again. Here's what I know so far. Change anything, or tell me one more meal you love.",
+      "one_more": "One more meal you love?",
+      "change": "Change",
+      "update": "Update my plan",
+      "start_over": "Start over",
+      "updated": "Plan updated.",
+      "new": "new",
+      "not": "not",
+      "out_n": "{n} dinners out a week",
+      "standards_n": "no standards yet | {n} standard | {n} standards",
+      "sections": {
+        "you": "You",
+        "food": "What you eat",
+        "week": "Your week",
+        "people": "Your people",
+        "goodday": "A good day",
+        "dishes": "Your dishes",
+        "talk": "How I talk to you"
+      }
     }
   },
   "day": {

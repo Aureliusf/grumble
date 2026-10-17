@@ -23,7 +23,7 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
   const buddy = a.buddy && !/^(no ?one|nobody|none|nadie|ninguno|ninguna|n\/a|-)$/i.test(a.buddy.trim()) ? a.buddy.trim() : undefined
 
   const standards = accepted.map((s) => {
-    const withBuddy = s.kind === 'walk_after_dinner_min' && buddy
+    const withBuddy = s.kind === 'walk_after_dinner_min' && buddy && !s.statement_en.includes(buddy)
     return clean({
       id: s.id,
       kind: s.kind,
@@ -87,7 +87,7 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
       money: clean({ weekly_food_budget_usd: a.budget, snap: a.snap, who_cooks: a.who_cooks, store: a.store }),
       convenience: clean({ meals_out_per_week: a.meals_out, cooks_days_per_week: a.cooks_days, usual_places: a.places }),
     },
-    standards: { items: standards },
+    standards: { items: standards, declined: a.declined },
     procedures: { items: accepted.map(s => procedureFor(s, a.manual.includes(s.id))) },
     thresholds: {
       daily: {

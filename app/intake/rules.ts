@@ -41,6 +41,7 @@ export interface IntakeAnswers {
   open_to_table?: boolean
   open_to_hosting?: boolean
   standards: ProposedStandard[]
+  declined: string[]                 // standard ids the person said "not this one" to; kept across runs
   manual: string[]
   buddy?: string
   starred: string[]
@@ -61,7 +62,7 @@ export interface ProposedStandard {
   coach_flag?: boolean
 }
 
-export interface Proposal extends ProposedStandard { accepted: boolean }
+export interface Proposal extends ProposedStandard { accepted: boolean; isNew?: boolean }
 
 // Translate into a given language; the page passes vue-i18n's t bound with { locale }.
 export type Tr = (key: string, named?: Record<string, unknown>, lang?: Lang) => string
@@ -75,6 +76,7 @@ export const emptyAnswers = (language: Lang): IntakeAnswers => ({
   places: [],
   eats_with: [],
   standards: [],
+  declined: [],
   manual: [],
   starred: [],
   never_mention: [],
@@ -258,3 +260,78 @@ export const slug = (s: string) =>
 
 // The program default coach (02 §Rules: never null).
 export const DEFAULT_COACH = { ...marisol.accountable.coach }
+
+// --- Progressive intake: each run starts from what the last one learned ---
+
+// Proposals for this run, merged with the last: an accepted standard keeps the person's own wording,
+// a declined one stays declined, a new idea is on and marked new, and an accepted one whose trigger
+// no longer fires is kept (they negotiated it).
+export function mergeProposals(fresh: ProposedStandard[], previous: ProposedStandard[], declined: string[], firstRun: boolean): Proposal[] {
+  const prev = new Map(previous.map(p => [p.id, p]))
+  const merged: Proposal[] = fresh.map((p) => {
+    const old = prev.get(p.id)
+    if (old) return { ...p, statement: old.statement, statement_en: old.statement_en, accepted: true }
+    if (declined.includes(p.id)) return { ...p, accepted: false }
+    return { ...p, accepted: true, isNew: !firstRun }
+  })
+  const freshIds = new Set(fresh.map(p => p.id))
+  for (const p of previous) if (!freshIds.has(p.id)) merged.push({ ...p, accepted: true })
+  return merged
+}
+
+type AnyGraph = Record<string, any>
+
+// The intake answers a saved food graph implies, so a later run starts there (the graph stays the only state).
+export function answersFromGraph(g: AnyGraph): IntakeAnswers {
+  const person = g.person ?? {}
+  const risks = g.risks ?? {}
+  const acc = g.accountable ?? {}
+  const procedures: AnyGraph[] = g.procedures?.items ?? []
+  const required = new Set<StandardKind>(['last_meal_by', 'walk_after_dinner_min'])
+  // Graphs saved before "no one" stopped counting as a buddy carry it in the walk statement; drop it on read.
+  const nobody = /^(no ?one|nobody|none|nadie|ninguno|ninguna|n\/a|-)$/i
+  const buddyName: string | undefined = acc.buddy?.name && !nobody.test(acc.buddy.name.trim()) ? acc.buddy.name : undefined
+  const unNobody = (st: string) => (acc.buddy?.name && !buddyName ? st.replace(new RegExp(`, (with|con) ${acc.buddy.name}$`, 'i'), '') : st)
+  return {
+    ...emptyAnswers(person.language === 'es' ? 'es' : 'en'),
+    name: person.display_name,
+    age: person.age,
+    sex: person.sex,
+    food: person.food_background,
+    sleep_start: person.schedule?.sleep_start ?? '23:00',
+    sleep_end: person.schedule?.sleep_end ?? '07:00',
+    work: person.schedule?.type,
+    has_dog: person.has_dog,
+    dog: acc.dog ?? undefined,
+    sugar: person.blood_sugar_group,
+    cgm: person.wears_cgm,
+    cancer_type: person.cancer_type,
+    years_since: person.years_since_treatment,
+    loves: risks.taste?.loves ?? [],
+    refuses: risks.taste?.refuses ?? [],
+    grew_up_on: risks.taste?.grew_up_on,
+    appetite: risks.taste?.appetite_pattern,
+    meals_out: risks.convenience?.meals_out_per_week,
+    places: risks.convenience?.usual_places ?? [],
+    cooks_days: risks.convenience?.cooks_days_per_week,
+    budget: risks.money?.weekly_food_budget_usd,
+    snap: risks.money?.snap,
+    who_cooks: risks.money?.who_cooks,
+    store: risks.money?.store,
+    dinner_company: risks.company?.usual_dinner_company,
+    eats_with: risks.company?.eats_with ?? [],
+    call: risks.company?.would_call_on_a_bad_day,
+    open_to_table: risks.company?.open_to_table,
+    open_to_hosting: risks.company?.open_to_hosting,
+    standards: (g.standards?.items ?? []).map((s: AnyGraph) => ({
+      id: s.id, kind: s.kind, statement: unNobody(s.statement), statement_en: unNobody(s.statement_en ?? s.statement),
+      value: s.value, unit: s.unit, relative_to_sleep: s.relative_to_sleep, why: s.why ?? '', required: required.has(s.kind),
+    })),
+    declined: g.standards?.declined ?? [],
+    manual: procedures.filter(p => p.source === 'manual').map(p => p.standard_id),
+    buddy: buddyName,
+    starred: (g.dishes?.rotation ?? []).filter((r: AnyGraph) => r.star).map((r: AnyGraph) => r.dish_id),
+    framing: g.contract?.framing,
+    never_mention: g.contract?.never_mention ?? [],
+  }
+}

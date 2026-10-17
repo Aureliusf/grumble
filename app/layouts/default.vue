@@ -9,12 +9,13 @@ const showSpikes = computed(() => !['/', '/intake'].includes(route.path))
 onMounted(restore)
 useHead({ htmlAttrs: { lang: locale } })
 
+// Today first: it's the screen people open every day. Intake last: it's where they go back to refine.
 const tabs = computed(() => [
-  { to: '/intake', icon: 'i-lucide-message-circle', label: t('nav.intake') },
+  { to: '/today', icon: 'i-lucide-sun', label: t('nav.today') },
   { to: '/plan', icon: 'i-lucide-clipboard-list', label: t('nav.plan') },
   { to: '/whatif', icon: 'i-lucide-activity', label: t('nav.whatif') },
-  { to: '/today', icon: 'i-lucide-sun', label: t('nav.today') },
   { to: '/table', icon: 'i-lucide-utensils', label: t('nav.table') },
+  { to: '/intake', icon: 'i-lucide-message-circle', label: t('nav.intake') },
 ])
 </script>
 

@@ -73,3 +73,15 @@ export const STEPS: Step[] = [
 
   { id: 'done', stage: 7, type: 'done' },
 ]
+
+// Sections a later run can reopen from the summary (progressive intake). Language and intro aren't reopened:
+// the header pill changes language.
+export const SECTIONS: Record<string, string[]> = {
+  you: ['name', 'age', 'sex', 'sleep', 'work', 'dog', 'sugar', 'cgm', 'cancer'],
+  food: ['refuses', 'grew_up_on', 'appetite'],
+  week: ['meals_out', 'places', 'cooks_days', 'budget', 'snap', 'who_cooks', 'store'],
+  people: ['dinner_company', 'eats_with', 'call', 'table', 'host', 'buddy', 'dog_name'],
+  goodday: ['proposals', 'procedures'],
+  dishes: ['rotation'],
+  talk: ['framing', 'never_mention'],
+}

@@ -1,0 +1,1112 @@
+{
+ "source": "USDA FoodData Central, SR Legacy (April 2018 release), per 100 g edible portion; household measures from the same release",
+ "count": 42,
+ "components": [
+  {
+   "id": "white-rice",
+   "name": "White rice, cooked",
+   "usda": "Rice, white, long-grain, regular, enriched, cooked",
+   "fdc_id": 168878,
+   "per_100g": {
+    "calories": 130.0,
+    "carbs_g": 28.2,
+    "fiber_g": 0.4,
+    "protein_g": 2.7,
+    "fat_g": 0.3
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 158.0
+    }
+   ]
+  },
+  {
+   "id": "brown-rice",
+   "name": "Brown rice, cooked",
+   "usda": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+   "fdc_id": 169704,
+   "per_100g": {
+    "calories": 123.0,
+    "carbs_g": 25.6,
+    "fiber_g": 1.6,
+    "protein_g": 2.7,
+    "fat_g": 1.0
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 202.0
+    }
+   ]
+  },
+  {
+   "id": "black-beans",
+   "name": "Black beans, cooked",
+   "usda": "Beans, black, mature seeds, cooked, boiled, without salt",
+   "fdc_id": 173735,
+   "per_100g": {
+    "calories": 132.0,
+    "carbs_g": 23.7,
+    "fiber_g": 8.7,
+    "protein_g": 8.9,
+    "fat_g": 0.5
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 172.0
+    }
+   ]
+  },
+  {
+   "id": "red-beans",
+   "name": "Red kidney beans, cooked",
+   "usda": "Beans, kidney, red, mature seeds, cooked, boiled, without salt",
+   "fdc_id": 175194,
+   "per_100g": {
+    "calories": 127.0,
+    "carbs_g": 22.8,
+    "fiber_g": 7.4,
+    "protein_g": 8.7,
+    "fat_g": 0.5
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 177.0
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 11.0
+    }
+   ]
+  },
+  {
+   "id": "pinto-beans",
+   "name": "Pinto beans, cooked",
+   "usda": "Beans, pinto, mature seeds, cooked, boiled, without salt",
+   "fdc_id": 175200,
+   "per_100g": {
+    "calories": 143.0,
+    "carbs_g": 26.2,
+    "fiber_g": 9.0,
+    "protein_g": 9.0,
+    "fat_g": 0.7
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 171.0
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 10.6
+    }
+   ]
+  },
+  {
+   "id": "chickpeas",
+   "name": "Chickpeas, cooked",
+   "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+   "fdc_id": 173757,
+   "per_100g": {
+    "calories": 164.0,
+    "carbs_g": 27.4,
+    "fiber_g": 7.6,
+    "protein_g": 8.9,
+    "fat_g": 2.6
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 164.0
+    }
+   ]
+  },
+  {
+   "id": "lentils",
+   "name": "Lentils, cooked",
+   "usda": "Lentils, mature seeds, cooked, boiled, without salt",
+   "fdc_id": 172421,
+   "per_100g": {
+    "calories": 116.0,
+    "carbs_g": 20.1,
+    "fiber_g": 7.9,
+    "protein_g": 9.0,
+    "fat_g": 0.4
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 198.0
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 12.3
+    }
+   ]
+  },
+  {
+   "id": "chicken-breast",
+   "name": "Chicken breast, roasted",
+   "usda": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+   "fdc_id": 171477,
+   "per_100g": {
+    "calories": 165.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 31.0,
+    "fat_g": 3.6
+   },
+   "measures": [
+    {
+     "measure": "1 cup, chopped or diced",
+     "g": 140.0
+    },
+    {
+     "measure": "1 unit (yield from 1 lb ready-to-cook chicken)",
+     "g": 52.0
+    },
+    {
+     "measure": "0.5 breast, bone and skin removed",
+     "g": 86.0
+    }
+   ]
+  },
+  {
+   "id": "chicken-thigh",
+   "name": "Chicken thigh, roasted",
+   "usda": "Chicken, broilers or fryers, thigh, meat only, cooked, roasted",
+   "fdc_id": 172388,
+   "per_100g": {
+    "calories": 179.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 24.8,
+    "fat_g": 8.2
+   },
+   "measures": [
+    {
+     "measure": "3 oz",
+     "g": 85.0
+    },
+    {
+     "measure": "1 thigh without skin",
+     "g": 116.0
+    },
+    {
+     "measure": "1 thigh with skin",
+     "g": 137.0
+    }
+   ]
+  },
+  {
+   "id": "ground-beef",
+   "name": "Ground beef (85% lean), cooked",
+   "usda": "Beef, ground, 85% lean meat / 15% fat, patty, cooked, pan-broiled",
+   "fdc_id": 174033,
+   "per_100g": {
+    "calories": 232.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 24.6,
+    "fat_g": 14.0
+   },
+   "measures": [
+    {
+     "measure": "3 oz",
+     "g": 85.0
+    },
+    {
+     "measure": "1 patty ( yield from 1/4 lb raw meat )",
+     "g": 83.0
+    }
+   ]
+  },
+  {
+   "id": "steak",
+   "name": "Beef steak (sirloin), broiled",
+   "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled",
+   "fdc_id": 168727,
+   "per_100g": {
+    "calories": 243.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 27.0,
+    "fat_g": 14.2
+   },
+   "measures": [
+    {
+     "measure": "3 oz",
+     "g": 85.0
+    },
+    {
+     "measure": "1 piece, cooked, excluding refuse (yield from 1 lb raw meat with refuse)",
+     "g": 306.0
+    }
+   ]
+  },
+  {
+   "id": "pork-loin",
+   "name": "Pork loin, roasted",
+   "usda": "Pork, fresh, loin, whole, separable lean and fat, cooked, roasted",
+   "fdc_id": 167821,
+   "per_100g": {
+    "calories": 248.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 27.1,
+    "fat_g": 14.7
+   },
+   "measures": [
+    {
+     "measure": "3 oz",
+     "g": 85.0
+    },
+    {
+     "measure": "1 chop, excluding refuse (yield from 1 raw chop, with refuse, weighing 151 g)",
+     "g": 89.0
+    }
+   ]
+  },
+  {
+   "id": "salmon",
+   "name": "Salmon, cooked",
+   "usda": "Fish, salmon, Atlantic, farmed, cooked, dry heat",
+   "fdc_id": 175168,
+   "per_100g": {
+    "calories": 206.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 22.1,
+    "fat_g": 12.3
+   },
+   "measures": [
+    {
+     "measure": "3 oz",
+     "g": 85.0
+    },
+    {
+     "measure": "0.5 fillet",
+     "g": 178.0
+    }
+   ]
+  },
+  {
+   "id": "white-fish",
+   "name": "White fish (tilapia), cooked",
+   "usda": "Fish, tilapia, cooked, dry heat",
+   "fdc_id": 175177,
+   "per_100g": {
+    "calories": 128.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 26.1,
+    "fat_g": 2.6
+   },
+   "measures": [
+    {
+     "measure": "1 fillet",
+     "g": 87.0
+    }
+   ]
+  },
+  {
+   "id": "shrimp",
+   "name": "Shrimp, cooked",
+   "usda": "Crustaceans, shrimp, mixed species, cooked, moist heat (may contain additives to retain moisture)",
+   "fdc_id": 171971,
+   "per_100g": {
+    "calories": 119.0,
+    "carbs_g": 1.5,
+    "fiber_g": 0.0,
+    "protein_g": 22.8,
+    "fat_g": 1.7
+   },
+   "measures": [
+    {
+     "measure": "3 oz",
+     "g": 85.0
+    },
+    {
+     "measure": "4 large",
+     "g": 22.0
+    }
+   ]
+  },
+  {
+   "id": "egg",
+   "name": "Egg, hard-boiled",
+   "usda": "Egg, whole, cooked, hard-boiled",
+   "fdc_id": 173424,
+   "per_100g": {
+    "calories": 155.0,
+    "carbs_g": 1.1,
+    "fiber_g": 0.0,
+    "protein_g": 12.6,
+    "fat_g": 10.6
+   },
+   "measures": [
+    {
+     "measure": "1 cup, chopped",
+     "g": 136.0
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 8.5
+    },
+    {
+     "measure": "1 large",
+     "g": 50.0
+    }
+   ]
+  },
+  {
+   "id": "egg-fried",
+   "name": "Egg, fried",
+   "usda": "Egg, whole, cooked, fried",
+   "fdc_id": 173423,
+   "per_100g": {
+    "calories": 196.0,
+    "carbs_g": 0.8,
+    "fiber_g": 0.0,
+    "protein_g": 13.6,
+    "fat_g": 14.8
+   },
+   "measures": [
+    {
+     "measure": "1 large",
+     "g": 46.0
+    }
+   ]
+  },
+  {
+   "id": "plantain-ripe-fried",
+   "name": "Sweet plantains (maduros), fried",
+   "usda": "Plantains, yellow, fried, Latino restaurant",
+   "fdc_id": 168200,
+   "per_100g": {
+    "calories": 236.0,
+    "carbs_g": 40.8,
+    "fiber_g": 3.2,
+    "protein_g": 1.4,
+    "fat_g": 7.5
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 169.0
+    }
+   ]
+  },
+  {
+   "id": "plantain-green-fried",
+   "name": "Tostones (green plantain), fried",
+   "usda": "Plantains, green, fried",
+   "fdc_id": 168199,
+   "per_100g": {
+    "calories": 309.0,
+    "carbs_g": 49.2,
+    "fiber_g": 3.5,
+    "protein_g": 1.5,
+    "fat_g": 11.8
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 118.0
+    },
+    {
+     "measure": "1 slices (1/4\" thick)",
+     "g": 53.0
+    }
+   ]
+  },
+  {
+   "id": "plantain-boiled",
+   "name": "Plantain, boiled",
+   "usda": "Plantains, green, boiled",
+   "fdc_id": 168216,
+   "per_100g": {
+    "calories": 121.0,
+    "carbs_g": 29.1,
+    "fiber_g": 2.6,
+    "protein_g": 1.1,
+    "fat_g": 0.1
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 137.0
+    }
+   ]
+  },
+  {
+   "id": "yuca",
+   "name": "Yuca (cassava)",
+   "usda": "Cassava, raw",
+   "fdc_id": 169985,
+   "per_100g": {
+    "calories": 160.0,
+    "carbs_g": 38.1,
+    "fiber_g": 1.8,
+    "protein_g": 1.4,
+    "fat_g": 0.3
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 206.0
+    },
+    {
+     "measure": "1 root",
+     "g": 408.0
+    }
+   ]
+  },
+  {
+   "id": "potato",
+   "name": "Potato, baked",
+   "usda": "Potatoes, baked, flesh and skin, without salt",
+   "fdc_id": 170093,
+   "per_100g": {
+    "calories": 93.0,
+    "carbs_g": 21.1,
+    "fiber_g": 2.2,
+    "protein_g": 2.5,
+    "fat_g": 0.1
+   },
+   "measures": [
+    {
+     "measure": "1 NLEA serving",
+     "g": 148.0
+    },
+    {
+     "measure": "1 potato large",
+     "g": 299.0
+    },
+    {
+     "measure": "1 potato medium",
+     "g": 173.0
+    },
+    {
+     "measure": "1 potato small",
+     "g": 138.0
+    }
+   ]
+  },
+  {
+   "id": "sweet-potato",
+   "name": "Sweet potato, baked",
+   "usda": "Sweet potato, cooked, baked in skin, flesh, without salt",
+   "fdc_id": 168483,
+   "per_100g": {
+    "calories": 90.0,
+    "carbs_g": 20.7,
+    "fiber_g": 3.3,
+    "protein_g": 2.0,
+    "fat_g": 0.1
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 200.0
+    },
+    {
+     "measure": "1 large",
+     "g": 180.0
+    },
+    {
+     "measure": "1 medium (2\" dia, 5\" long, raw)",
+     "g": 114.0
+    },
+    {
+     "measure": "1 small",
+     "g": 60.0
+    }
+   ]
+  },
+  {
+   "id": "french-fries",
+   "name": "French fries",
+   "usda": "Fast foods, potato, french fried in vegetable oil",
+   "fdc_id": 170698,
+   "per_100g": {
+    "calories": 312.0,
+    "carbs_g": 41.4,
+    "fiber_g": 3.8,
+    "protein_g": 3.4,
+    "fat_g": 14.7
+   },
+   "measures": [
+    {
+     "measure": "1 serving small",
+     "g": 71.0
+    },
+    {
+     "measure": "1 serving medium",
+     "g": 117.0
+    },
+    {
+     "measure": "1 serving large",
+     "g": 154.0
+    }
+   ]
+  },
+  {
+   "id": "broccoli",
+   "name": "Broccoli, cooked",
+   "usda": "Broccoli, cooked, boiled, drained, without salt",
+   "fdc_id": 169967,
+   "per_100g": {
+    "calories": 35.0,
+    "carbs_g": 7.2,
+    "fiber_g": 3.3,
+    "protein_g": 2.4,
+    "fat_g": 0.4
+   },
+   "measures": [
+    {
+     "measure": "0.5 cup, chopped",
+     "g": 78.0
+    },
+    {
+     "measure": "1 stalk, large (11\"-12\" long)",
+     "g": 280.0
+    },
+    {
+     "measure": "1 stalk, medium (7-1/2\" - 8\" long)",
+     "g": 180.0
+    },
+    {
+     "measure": "1 stalk, small (5\" long)",
+     "g": 140.0
+    },
+    {
+     "measure": "1 spear (about 5\" long)",
+     "g": 37.0
+    }
+   ]
+  },
+  {
+   "id": "mixed-vegetables",
+   "name": "Mixed vegetables, cooked",
+   "usda": "Vegetables, mixed, frozen, cooked, boiled, drained, without salt",
+   "fdc_id": 170472,
+   "per_100g": {
+    "calories": 65.0,
+    "carbs_g": 13.1,
+    "fiber_g": 4.4,
+    "protein_g": 2.9,
+    "fat_g": 0.1
+   },
+   "measures": [
+    {
+     "measure": "0.5 cup",
+     "g": 91.0
+    },
+    {
+     "measure": "1 package (10 oz) yields",
+     "g": 275.0
+    }
+   ]
+  },
+  {
+   "id": "lettuce",
+   "name": "Lettuce / salad greens",
+   "usda": "Lettuce, cos or romaine, raw",
+   "fdc_id": 169247,
+   "per_100g": {
+    "calories": 17.0,
+    "carbs_g": 3.3,
+    "fiber_g": 2.1,
+    "protein_g": 1.2,
+    "fat_g": 0.3
+   },
+   "measures": [
+    {
+     "measure": "1 cup shredded",
+     "g": 47.0
+    },
+    {
+     "measure": "1 leaf inner",
+     "g": 6.0
+    },
+    {
+     "measure": "1 leaf outer",
+     "g": 28.0
+    },
+    {
+     "measure": "1 head",
+     "g": 626.0
+    },
+    {
+     "measure": "1 NLEA serving",
+     "g": 85.0
+    }
+   ]
+  },
+  {
+   "id": "tomato",
+   "name": "Tomato",
+   "usda": "Tomatoes, red, ripe, raw, year round average",
+   "fdc_id": 170457,
+   "per_100g": {
+    "calories": 18.0,
+    "carbs_g": 3.9,
+    "fiber_g": 1.2,
+    "protein_g": 0.9,
+    "fat_g": 0.2
+   },
+   "measures": [
+    {
+     "measure": "1 cup cherry tomatoes",
+     "g": 149.0
+    },
+    {
+     "measure": "1 cup, chopped or sliced",
+     "g": 180.0
+    },
+    {
+     "measure": "1 Italian tomato",
+     "g": 62.0
+    },
+    {
+     "measure": "1 cherry",
+     "g": 17.0
+    },
+    {
+     "measure": "1 large whole (3\" dia)",
+     "g": 182.0
+    },
+    {
+     "measure": "1 medium whole (2-3/5\" dia)",
+     "g": 123.0
+    }
+   ]
+  },
+  {
+   "id": "avocado",
+   "name": "Avocado",
+   "usda": "Avocados, raw, all commercial varieties",
+   "fdc_id": 171705,
+   "per_100g": {
+    "calories": 160.0,
+    "carbs_g": 8.5,
+    "fiber_g": 6.7,
+    "protein_g": 2.0,
+    "fat_g": 14.7
+   },
+   "measures": [
+    {
+     "measure": "1 cup, cubes",
+     "g": 150.0
+    },
+    {
+     "measure": "1 cup, pureed",
+     "g": 230.0
+    },
+    {
+     "measure": "1 cup, sliced",
+     "g": 146.0
+    },
+    {
+     "measure": "1 avocado, NS as to Florida or California",
+     "g": 201.0
+    },
+    {
+     "measure": "1 NLEA Serving",
+     "g": 50.0
+    }
+   ]
+  },
+  {
+   "id": "corn",
+   "name": "Corn, cooked",
+   "usda": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+   "fdc_id": 169999,
+   "per_100g": {
+    "calories": 96.0,
+    "carbs_g": 21.0,
+    "fiber_g": 2.4,
+    "protein_g": 3.4,
+    "fat_g": 1.5
+   },
+   "measures": [
+    {
+     "measure": "1 ear small (5-1/2\" to 6-1/2\" long)",
+     "g": 89.0
+    },
+    {
+     "measure": "1 ear medium (6-3/4\" to 7-1/2\" long)",
+     "g": 103.0
+    },
+    {
+     "measure": "1 ear large (7-3/4\" to 9\" long)",
+     "g": 118.0
+    },
+    {
+     "measure": "1 cup cut",
+     "g": 149.0
+    },
+    {
+     "measure": "1 baby ear",
+     "g": 8.0
+    }
+   ]
+  },
+  {
+   "id": "white-bread",
+   "name": "White bread",
+   "usda": "Bread, white, commercially prepared (includes soft bread crumbs)",
+   "fdc_id": 174924,
+   "per_100g": {
+    "calories": 266.0,
+    "carbs_g": 49.4,
+    "fiber_g": 2.7,
+    "protein_g": 8.8,
+    "fat_g": 3.3
+   },
+   "measures": [
+    {
+     "measure": "1 slice",
+     "g": 29.0
+    },
+    {
+     "measure": "1 oz",
+     "g": 28.35
+    },
+    {
+     "measure": "1 cup, crumbs",
+     "g": 45.0
+    },
+    {
+     "measure": "1 cup, cubes",
+     "g": 35.0
+    },
+    {
+     "measure": "1 slice, large",
+     "g": 30.0
+    },
+    {
+     "measure": "1 slice",
+     "g": 25.0
+    }
+   ]
+  },
+  {
+   "id": "burger-bun",
+   "name": "Hamburger bun",
+   "usda": "Rolls, hamburger or hotdog, plain",
+   "fdc_id": 172796,
+   "per_100g": {
+    "calories": 279.0,
+    "carbs_g": 50.1,
+    "fiber_g": 1.8,
+    "protein_g": 9.8,
+    "fat_g": 3.9
+   },
+   "measures": [
+    {
+     "measure": "1 roll 1 serving",
+     "g": 44.0
+    },
+    {
+     "measure": "1 oz",
+     "g": 28.35
+    }
+   ]
+  },
+  {
+   "id": "corn-tortilla",
+   "name": "Corn tortilla",
+   "usda": "Tortillas, ready-to-bake or -fry, corn",
+   "fdc_id": 175036,
+   "per_100g": {
+    "calories": 218.0,
+    "carbs_g": 44.6,
+    "fiber_g": 6.3,
+    "protein_g": 5.7,
+    "fat_g": 2.9
+   },
+   "measures": [
+    {
+     "measure": "1 oz",
+     "g": 28.35
+    },
+    {
+     "measure": "1 enchilada",
+     "g": 19.0
+    },
+    {
+     "measure": "1 tortilla",
+     "g": 24.0
+    }
+   ]
+  },
+  {
+   "id": "pasta",
+   "name": "Pasta, cooked",
+   "usda": "Pasta, cooked, enriched, without added salt",
+   "fdc_id": 169737,
+   "per_100g": {
+    "calories": 158.0,
+    "carbs_g": 30.9,
+    "fiber_g": 1.8,
+    "protein_g": 5.8,
+    "fat_g": 0.9
+   },
+   "measures": [
+    {
+     "measure": "1 cup spaghetti not packed",
+     "g": 124.0
+    },
+    {
+     "measure": "1 cup spaghetti packed",
+     "g": 151.0
+    },
+    {
+     "measure": "1 cup elbows not packed",
+     "g": 120.0
+    },
+    {
+     "measure": "1 cup elbows packed",
+     "g": 132.0
+    },
+    {
+     "measure": "1 cup penne",
+     "g": 107.0
+    },
+    {
+     "measure": "1 cup farfalle",
+     "g": 107.0
+    }
+   ]
+  },
+  {
+   "id": "quinoa",
+   "name": "Quinoa, cooked",
+   "usda": "Quinoa, cooked",
+   "fdc_id": 168917,
+   "per_100g": {
+    "calories": 120.0,
+    "carbs_g": 21.3,
+    "fiber_g": 2.8,
+    "protein_g": 4.4,
+    "fat_g": 1.9
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 185.0
+    }
+   ]
+  },
+  {
+   "id": "oatmeal",
+   "name": "Oatmeal, cooked with water",
+   "usda": "Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt",
+   "fdc_id": 173905,
+   "per_100g": {
+    "calories": 71.0,
+    "carbs_g": 12.0,
+    "fiber_g": 1.7,
+    "protein_g": 2.5,
+    "fat_g": 1.5
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 234.0
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 14.6
+    },
+    {
+     "measure": "0.75 cup",
+     "g": 175.0
+    }
+   ]
+  },
+  {
+   "id": "cheddar",
+   "name": "Cheddar cheese",
+   "usda": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+   "fdc_id": 173414,
+   "per_100g": {
+    "calories": 403.0,
+    "carbs_g": 3.4,
+    "fiber_g": 0.0,
+    "protein_g": 22.9,
+    "fat_g": 33.3
+   },
+   "measures": [
+    {
+     "measure": "1 cup, diced",
+     "g": 132.0
+    },
+    {
+     "measure": "1 cup, melted",
+     "g": 244.0
+    },
+    {
+     "measure": "1 cup, shredded",
+     "g": 113.0
+    },
+    {
+     "measure": "1 oz",
+     "g": 28.35
+    },
+    {
+     "measure": "1 cubic inch",
+     "g": 17.0
+    },
+    {
+     "measure": "1 slice (1 oz)",
+     "g": 28.0
+    }
+   ]
+  },
+  {
+   "id": "queso-fresco",
+   "name": "Queso fresco",
+   "usda": "Cheese, fresh, queso fresco",
+   "fdc_id": 172223,
+   "per_100g": {
+    "calories": 299.0,
+    "carbs_g": 3.0,
+    "fiber_g": 0.0,
+    "protein_g": 18.1,
+    "fat_g": 23.8
+   },
+   "measures": [
+    {
+     "measure": "1 cup, crumbled",
+     "g": 122.0
+    }
+   ]
+  },
+  {
+   "id": "milk",
+   "name": "Whole milk",
+   "usda": "Milk, whole, 3.25% milkfat, with added vitamin D",
+   "fdc_id": 171265,
+   "per_100g": {
+    "calories": 61.0,
+    "carbs_g": 4.8,
+    "fiber_g": 0.0,
+    "protein_g": 3.1,
+    "fat_g": 3.2
+   },
+   "measures": [
+    {
+     "measure": "1 cup",
+     "g": 244.0
+    },
+    {
+     "measure": "1 fl oz",
+     "g": 30.5
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 15.0
+    },
+    {
+     "measure": "1 quart",
+     "g": 976.0
+    }
+   ]
+  },
+  {
+   "id": "olive-oil",
+   "name": "Olive oil",
+   "usda": "Oil, olive, salad or cooking",
+   "fdc_id": 171413,
+   "per_100g": {
+    "calories": 884.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "protein_g": 0.0,
+    "fat_g": 100.0
+   },
+   "measures": [
+    {
+     "measure": "1 tablespoon",
+     "g": 13.5
+    },
+    {
+     "measure": "1 cup",
+     "g": 216.0
+    },
+    {
+     "measure": "1 tsp",
+     "g": 4.5
+    }
+   ]
+  },
+  {
+   "id": "butter",
+   "name": "Butter",
+   "usda": "Butter, salted",
+   "fdc_id": 173410,
+   "per_100g": {
+    "calories": 717.0,
+    "carbs_g": 0.1,
+    "fiber_g": 0.0,
+    "protein_g": 0.8,
+    "fat_g": 81.1
+   },
+   "measures": [
+    {
+     "measure": "1 pat (1\" sq, 1/3\" high)",
+     "g": 5.0
+    },
+    {
+     "measure": "1 tbsp",
+     "g": 14.2
+    },
+    {
+     "measure": "1 cup",
+     "g": 227.0
+    },
+    {
+     "measure": "1 stick",
+     "g": 113.0
+    }
+   ]
+  },
+  {
+   "id": "sugar",
+   "name": "Sugar",
+   "usda": "Sugars, granulated",
+   "fdc_id": 169655,
+   "per_100g": {
+    "calories": 387.0,
+    "carbs_g": 100.0,
+    "fiber_g": 0.0,
+    "protein_g": 0.0,
+    "fat_g": 0.0
+   },
+   "measures": [
+    {
+     "measure": "1 serving packet",
+     "g": 2.8
+    },
+    {
+     "measure": "1 tsp",
+     "g": 4.2
+    },
+    {
+     "measure": "1 cup",
+     "g": 200.0
+    },
+    {
+     "measure": "1 serving 1 cube",
+     "g": 2.3
+    }
+   ]
+  }
+ ]
+}

@@ -27,6 +27,7 @@ const declinedBoth = computed(() => model.value.filter(p => p.required).every(p 
         :ui="{ base: '!font-display !font-semibold !text-[20px] !leading-snug !p-0 !text-crema-900 dark:!text-crema-50' }"
       />
       <p class="mt-1 text-[15px] text-crema-800/70">{{ p.why }}</p>
+      <UBadge v-if="p.isNew" color="secondary" variant="solid" size="sm" class="rounded-full mt-1">{{ t('intake.refine.new') }}</UBadge>
       <UButton
         class="mt-2"
         size="sm"

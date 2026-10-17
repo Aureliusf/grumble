@@ -1,21 +1,28 @@
 import type { Dish, FoodGraph } from '#shared/types'
 import { balanceDay, slotOf, SLOTS, usualDay, type Slot } from '#shared/balance'
 import { dailyTargets, type Sex } from '#shared/nutrition'
+import { totalOf, type PricedItem } from '#shared/meals'
 import { fixtures } from '~/fixtures'
 
-export interface Eaten { slot: Slot; dish_id: string; said: string }
+// One meal the person logged: what they said, and the foods it came to.
+export interface Eaten { slot: Slot; label: string; said: string; items: PricedItem[] }
 
 const KEY = 'grumble.eaten'
 
 // What the person said they ate today. Part of the day log beside the graph (05 §Data written per day).
 export function useEaten() {
   const eaten = useState<Eaten[]>('eaten', () => {
-    try { return JSON.parse(localStorage.getItem(KEY) ?? '[]') as Eaten[] }
+    // Entries from before freeform logging (dish_id only) are dropped.
+    try { return (JSON.parse(localStorage.getItem(KEY) ?? '[]') as Eaten[]).filter(e => Array.isArray(e.items)) }
     catch { return [] }
   })
   watch(eaten, (v) => { try { localStorage.setItem(KEY, JSON.stringify(v)) } catch {} }, { deep: true })
   return eaten
 }
+
+const loggedDish = (e: Eaten): Dish => ({
+  ...totalOf(e.items), id: `logged-${e.slot}`, name: e.label, cuisine: '', typical_meal_type: e.slot, mediterranean_style: false,
+})
 
 type Person = FoodGraph['person'] & { age?: number; sex?: Sex; food_background?: string }
 type Risks = { taste?: { refuses?: string[]; loves?: string[] } }
@@ -50,9 +57,8 @@ export function useDay(personId: string) {
   const plan = computed(() => balanceDay({ ...common.value, fixed: anchor.value ? [anchor.value] : [] }))
 
   const today = computed(() => {
-    const ate = eaten.value
-      .map(e => ({ slot: e.slot, dish: byId.value.get(e.dish_id) }))
-      .filter((x): x is { slot: Slot; dish: Dish } => !!x.dish)
+    // A logged meal becomes a plate of its own, with the summed numbers of what was in it.
+    const ate = eaten.value.map(e => ({ slot: e.slot, dish: loggedDish(e) }))
     return ate.length ? balanceDay({ ...common.value, fixed: ate }) : plan.value
   })
 
