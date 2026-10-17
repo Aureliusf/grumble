@@ -3,7 +3,8 @@
     "plan": "Plan",
     "whatif": "What if",
     "today": "Today",
-    "table": "Table"
+    "table": "Table",
+    "intake": "Intake"
   },
   "app": {
     "fixture": "fixture",
@@ -41,7 +42,8 @@
       "lunch": "lunch",
       "dinner": "dinner",
       "snack": "snack"
-    }
+    },
+    "you": "You"
   },
   "whatif": {
     "title": "What if…",
@@ -192,5 +194,173 @@
       "taken": "taken",
       "via": "Through Sylvester Comprehensive Cancer Center."
     }
+  },
+  "intake": {
+    "q": {
+      "lang": "English or Español?",
+      "intro": "I'm Grumble. I'm the part of you that's hungry and annoyed about it. Five minutes, then I'll know what you actually eat.",
+      "name": "What should I call you?",
+      "age": "How old are you?",
+      "food": "What would you call your food?",
+      "sleep": "When do you go to sleep, and when do you get up?",
+      "work": "Do you work? When?",
+      "dog": "Do you have a dog?",
+      "sugar": "Has a doctor said prediabetes or diabetes?",
+      "cgm": "Do you wear a glucose sensor?",
+      "cancer": "And the reason Sylvester sent you here. You can skip this.",
+      "loves": "Name five things you'd eat every week if nobody was watching.",
+      "refuses": "Anything you won't eat?",
+      "grew_up_on": "What did you grow up on?",
+      "appetite": "Is your appetite about the same most days?",
+      "meals_out": "How many dinners a week come from a restaurant or a window?",
+      "places": "Which places?",
+      "cooks_days": "How many nights do you cook?",
+      "budget": "About what do you spend on food in a week?",
+      "snap": "Do you use SNAP?",
+      "who_cooks": "Who does the shopping and cooking?",
+      "store": "Which store?",
+      "dinner_company": "Who do you usually have dinner with?",
+      "eats_with": "Who do you see in a normal week?",
+      "call": "If you had a bad day, who would you call?",
+      "table": "There's a table at Versailles on Tuesdays for people in the program. Nobody pays. Want a seat sometime?",
+      "host": "Would you ever host one?",
+      "proposals": "Here's what a good day could look like. Change the words, or say not this one.",
+      "procedures": "Here's what I'll keep an eye on. Nothing else.",
+      "buddy": "Who from your list would walk with you, if you asked?",
+      "dog_name": "What's the dog's name?",
+      "rotation": "Your dishes, with the move. Star the ones you want as defaults.",
+      "framing": "How do you want me to talk to you?",
+      "never_mention": "Anything you don't want me to bring up?",
+      "done": "Done. Here's your plan."
+    },
+    "opt": {
+      "work": {
+        "day job": "Day job",
+        "night shift": "Night shift",
+        "works from home": "From home",
+        "retired": "Retired",
+        "not working": "Not working"
+      },
+      "sugar": {
+        "normal": "No",
+        "prediabetes": "Prediabetes",
+        "type 2 diabetes": "Diabetes",
+        "unsure": "Not sure"
+      },
+      "appetite": {
+        "steady": "About the same",
+        "low": "Usually low",
+        "cycles": "Comes and goes"
+      },
+      "who_cooks": {
+        "self": "Me",
+        "someone else": "Someone else",
+        "nobody": "Nobody, really"
+      },
+      "dinner_company": {
+        "alone": "Alone",
+        "partner": "My partner",
+        "family": "Family",
+        "friends": "Friends",
+        "varies": "It varies"
+      },
+      "framing": {
+        "suggestive": "Suggest it. “Eight would be better.”",
+        "direct": "Tell me straight. “Eat at eight.”"
+      },
+      "yes": "Yes",
+      "no": "No"
+    },
+    "sugg": {
+      "food": [
+        "Cuban",
+        "Haitian",
+        "Colombian",
+        "Venezuelan",
+        "Dominican",
+        "Puerto Rican",
+        "Jamaican",
+        "Southern",
+        "A little of everything"
+      ],
+      "eats_with": [
+        "my daughter",
+        "a neighbor",
+        "church",
+        "the domino table",
+        "the cashier I've known for ten years"
+      ],
+      "never_mention": [
+        "weight",
+        "alcohol"
+      ]
+    },
+    "ui": {
+      "next": "Next",
+      "back": "Back",
+      "skip": "Skip",
+      "add": "Add",
+      "not_this": "Not this one",
+      "keep": "Keep it",
+      "manual": "I'll tell you myself",
+      "search_dishes": "Type a dish…",
+      "add_as_written": "Add “{text}”",
+      "up_to": "{n} of 5",
+      "see_plan": "See my plan",
+      "stage": "Step {n} of 7",
+      "invalid": "The plan didn't validate:",
+      "asleep": "Asleep at",
+      "up": "Up at",
+      "cancer_type": "What kind",
+      "years": "Years since treatment",
+      "type_here": "Type here…",
+      "per_week": "per week",
+      "no_numbers": "no numbers for this one yet",
+      "declined": "Fine. I'll figure it out from what you log. {coach} will probably ask.",
+      "start": "Start",
+      "marisol": "Show Marisol's plan",
+      "yours": "This is your plan from intake."
+    },
+    "source": {
+      "meal_log": "What you log",
+      "tracker_steps": "Your steps",
+      "tracker_sleep": "Your sleep",
+      "cgm": "Your sensor",
+      "daily_checkin": "The daily check-in",
+      "table_attendance": "Checking in at the table",
+      "manual": "You tell me"
+    },
+    "cadence": {
+      "daily": "every day",
+      "weekly": "every week",
+      "per_meal": "every meal"
+    },
+    "std": {
+      "last_meal": "Dinner by {time} so I sleep",
+      "last_meal_night": "Last meal {h} hours before I sleep",
+      "walk": "Ten minutes walking after dinner",
+      "with_buddy": ", with {name}",
+      "protein_first": "Beans and meat before the rice",
+      "starch": "One cup of rice, not two",
+      "morning": "The {dish} in the morning, not at night",
+      "table": "Tuesdays at Versailles with the table",
+      "cook": "Cook {n} nights",
+      "legume": "Beans three times a week",
+      "fast": "Thirteen hours between dinner and breakfast",
+      "figure": "Grumble figures it out from my log"
+    },
+    "why": {
+      "last_meal": "People like you ran {n} mg/dL higher after late dinners",
+      "walk": "Ten minutes cut the peak {n} mg/dL; more didn't add anything",
+      "protein_first": "Fiber and protein first flattens the peak",
+      "starch": "Each 10 g of carbohydrate adds about {n} mg/dL",
+      "morning": "Same {dish}, lower peak, and it doesn't sit on the overnight fast",
+      "table": "Coaching with company moved HbA1c four times more than tips",
+      "cook": "Days you cook are the days the numbers are real",
+      "legume": "Biggest fiber lever in your food",
+      "fast": "The program's fast group pulled evening calories from 22% to 13%",
+      "figure": "Flagged for the coach at intake"
+    },
+    "place_generic": "What you usually get, with the move: beans or salad on the side, half the starch, walk after."
   }
 }

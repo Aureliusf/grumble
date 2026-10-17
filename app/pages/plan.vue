@@ -5,24 +5,31 @@ import { fixtures } from '~/fixtures'
 const PERSON = 'N0771'
 const { t } = useI18n()
 
-const { data: graph } = useApi<FoodGraph>(`/api/graph/${PERSON}`, fixtures.graph)
+const graph = useGraph(PERSON)
+const { own, clear } = useFoodGraph()
 const { data: dishes } = useApi<Dish[]>(`/api/dishes?person_id=${PERSON}`, fixtures.dishes)
 const dishName = (id: string) => dishes.value.find(d => d.id === id)?.name ?? id
 
 // The graph carries more than the FoodGraph subset; read the extras defensively.
 const person = computed(() => graph.value.person as FoodGraph['person'] & { age?: number })
 const risks = computed(() => (graph.value as { risks?: { taste?: { grew_up_on?: string } } }).risks)
-const heroLine = computed(() => [risks.value?.taste?.grew_up_on, person.value.age].filter(Boolean).join(' · '))
+const heroLine = computed(() => [risks.value?.taste?.grew_up_on ?? (person.value as { food_background?: string }).food_background, person.value.age].filter(Boolean).join(' · '))
 
 const acc = computed(() => graph.value.accountable as FoodGraph['accountable'] & { buddy?: { walks?: boolean } | null })
 </script>
 
 <template>
+  <!-- whose plan this is -->
+  <div v-if="own" class="flex items-center gap-2 text-[15px] text-crema-800/70">
+    <span class="flex-1">{{ t('intake.ui.yours') }}</span>
+    <UButton size="sm" color="neutral" variant="outline" @click="clear">{{ t('intake.ui.marisol') }}</UButton>
+  </div>
+
   <!-- hero -->
   <UCard>
     <div class="flex items-center gap-3">
       <div class="flex-1">
-        <h1 class="font-display font-bold text-[34px] leading-tight">{{ person.display_name }}</h1>
+        <h1 class="font-display font-bold text-[34px] leading-tight">{{ person.display_name ?? t('plan.you') }}</h1>
         <p class="text-[17px] text-crema-800/70 dark:text-crema-200/70">{{ heroLine }}</p>
       </div>
       <Grumble :size="72" />
@@ -50,7 +57,7 @@ const acc = computed(() => graph.value.accountable as FoodGraph['accountable'] &
       {{ acc.coach.name }} · {{ t('plan.coach') }}
     </UBadge>
     <UBadge v-if="acc.buddy" size="xl" color="secondary" variant="soft" icon="i-lucide-footprints" class="rounded-full">
-      {{ acc.buddy.name }} · {{ acc.buddy.relationship }}<template v-if="acc.buddy.walks">, {{ t('plan.walks') }}</template>
+      {{ [acc.buddy.name, [acc.buddy.relationship, acc.buddy.walks ? t('plan.walks') : ''].filter(Boolean).join(', ')].filter(Boolean).join(' · ') }}
     </UBadge>
     <UBadge v-if="acc.table.role !== 'none'" size="xl" color="primary" variant="soft" icon="i-lucide-utensils" class="rounded-full">
       {{ t('plan.table') }} · {{ t(`plan.nights.${acc.table.usual_night}`) }}

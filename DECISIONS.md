@@ -22,3 +22,15 @@ Choices made where the spec was silent or the installed versions differed from i
 - **"Same as ten" chip** shows when `same_as_ten` is true and the walk is above 10. At exactly 10 the chip would say the obvious.
 - **Unknown dish on `/whatif`** (table-menu plates not in dishes.json) shows the 09 line and up to three dishes with the most matching words in their ids.
 - **`/` is a splash page** (character, the line from the README, one button to `/plan`): the demo opens on the logo (13).
+
+## 2026-10-17 — English first, intake back in (03)
+
+- **English is the default locale** and EN comes first in the toggle (changed from 14's Spanish default at the team's call). The demo can still switch to ES in one tap, and the intake's first screen sets the person's language.
+- **Scripted intake is built** at `/intake`, although 00 cut it for today. Same stage order as 03: language → who you are → taste, convenience, money, company → standards → procedures → who shows up → rotation → contract. One question per screen, ~30 screens, every non-required one skippable. LLM mode and Kreyòl are still cut.
+- **Required steps:** language, sleep window, work schedule and blood sugar group, because the schema requires `person.language`, `schedule` and `blood_sugar_group`. "Not sure" on blood sugar resolves to `normal`.
+- **The intake's graph is the state.** It's validated with Ajv against `data/food-graph.schema.json`, kept in `useFoodGraph()` and in localStorage, and `/plan` and `/whatif` render it in place of Marisol's. `/plan` has a "Show Marisol's plan" button that clears it. `/today` and `/table` stay on the demo person `N0771`, since their routes are Aurelio's.
+- **Generated copy** (standard statements, why lines, dish moves) is written in the person's language, with `statement_en` beside it. Every number in a why line comes from `simulator-params.json` (late-dinner and walk peak deltas by group, 10 × `per_g_carbs`).
+- **Dish moves** come from dish names and nutrients in `dishes.json` against 09's "When" column, two moves at most. "Add beans" is only offered on lunch and dinner plates, never on a sweet or a drink. Free-text dishes go into the rotation with a slug id and no move ("no numbers for this one yet").
+- **Places:** Versailles and La Carreta reuse the order templates from the example graph. Any other venue gets a generic order line and `confidence: "unknowable"`, with no nutrient numbers made up.
+- **Coach** defaults to the example graph's coach (Lourdes, sylvester-survivorship). The buddy is whoever the person names in stage 5, with `walks: true`, because the question is who would walk with them.
+- **Budget slider:** Next keeps the shown $90 starting value; Skip leaves the budget absent.

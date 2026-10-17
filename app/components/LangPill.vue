@@ -3,7 +3,7 @@ import type { Lang } from '#shared/types'
 
 const { t } = useI18n()
 const { locale, setLang } = useLang()
-const langs: Lang[] = ['es', 'en']
+const langs: Lang[] = ['en', 'es']
 </script>
 
 <template>

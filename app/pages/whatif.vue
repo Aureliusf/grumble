@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { SelectMenuItem } from '@nuxt/ui'
-import type { Dish, FoodGraph } from '#shared/types'
+import type { Dish } from '#shared/types'
 import { fixtures } from '~/fixtures'
 
 const PERSON = 'N0771'
 const { t, locale } = useI18n()
 
-const { data: graph } = useApi<FoodGraph>(`/api/graph/${PERSON}`, fixtures.graph)
+const graph = useGraph(PERSON)
 const { data: dishes } = useApi<Dish[]>(`/api/dishes?person_id=${PERSON}`, fixtures.dishes)
 const { state, result } = useWhatIf(PERSON)
 

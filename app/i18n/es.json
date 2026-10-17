@@ -3,7 +3,8 @@
     "plan": "Plan",
     "whatif": "¿Y si…?",
     "today": "Hoy",
-    "table": "La mesa"
+    "table": "La mesa",
+    "intake": "Entrevista"
   },
   "app": {
     "fixture": "fixture",
@@ -41,7 +42,8 @@
       "lunch": "almuerzo",
       "dinner": "comida",
       "snack": "merienda"
-    }
+    },
+    "you": "Usted"
   },
   "whatif": {
     "title": "¿Y si…?",
@@ -192,5 +194,173 @@
       "taken": "ocupadas",
       "via": "A través de Sylvester Comprehensive Cancer Center."
     }
+  },
+  "intake": {
+    "q": {
+      "lang": "¿English o Español?",
+      "intro": "Soy Grumble. Soy la parte de usted que tiene hambre y está molesta por eso. Cinco minutos, y sabré lo que usted come de verdad.",
+      "name": "¿Cómo le digo?",
+      "age": "¿Cuántos años tiene?",
+      "food": "¿Qué comida es la suya?",
+      "sleep": "¿A qué hora se acuesta y a qué hora se levanta?",
+      "work": "¿Trabaja? ¿Cuándo?",
+      "dog": "¿Tiene perro?",
+      "sugar": "¿Algún médico le ha dicho prediabetes o diabetes?",
+      "cgm": "¿Usa un sensor de glucosa?",
+      "cancer": "Y la razón por la que Sylvester le mandó aquí. Puede saltar esto.",
+      "loves": "Dígame cinco cosas que comería cada semana si nadie estuviera mirando.",
+      "refuses": "¿Algo que no come?",
+      "grew_up_on": "¿Con qué comida creció?",
+      "appetite": "¿Tiene más o menos el mismo apetito casi todos los días?",
+      "meals_out": "¿Cuántas comidas a la semana vienen de un restaurante o una ventanita?",
+      "places": "¿De qué lugares?",
+      "cooks_days": "¿Cuántas noches cocina?",
+      "budget": "Más o menos, ¿cuánto gasta en comida a la semana?",
+      "snap": "¿Usa SNAP (cupones)?",
+      "who_cooks": "¿Quién hace la compra y cocina?",
+      "store": "¿En qué tienda?",
+      "dinner_company": "¿Con quién come usualmente?",
+      "eats_with": "¿A quién ve en una semana normal?",
+      "call": "Si tuviera un mal día, ¿a quién llamaría?",
+      "table": "Hay una mesa en Versailles los martes para la gente del programa. Nadie paga. ¿Quiere una silla alguna vez?",
+      "host": "¿Alguna vez sería anfitrión de una?",
+      "proposals": "Así podría ser un buen día. Cambie las palabras, o diga esta no.",
+      "procedures": "Esto es lo que voy a vigilar. Nada más.",
+      "buddy": "¿Quién de su lista caminaría con usted, si se lo pidiera?",
+      "dog_name": "¿Cómo se llama el perro?",
+      "rotation": "Sus platos, con la movida. Marque con estrella los de siempre.",
+      "framing": "¿Cómo quiere que le hable?",
+      "never_mention": "¿Algo de lo que no quiere que le hable?",
+      "done": "Listo. Aquí está su plan."
+    },
+    "opt": {
+      "work": {
+        "day job": "Trabajo de día",
+        "night shift": "Turno de noche",
+        "works from home": "Desde la casa",
+        "retired": "Retirado/a",
+        "not working": "No trabajo"
+      },
+      "sugar": {
+        "normal": "No",
+        "prediabetes": "Prediabetes",
+        "type 2 diabetes": "Diabetes",
+        "unsure": "No sé"
+      },
+      "appetite": {
+        "steady": "Más o menos igual",
+        "low": "Casi siempre poco",
+        "cycles": "Va y viene"
+      },
+      "who_cooks": {
+        "self": "Yo",
+        "someone else": "Otra persona",
+        "nobody": "Nadie, la verdad"
+      },
+      "dinner_company": {
+        "alone": "Solo/a",
+        "partner": "Mi pareja",
+        "family": "La familia",
+        "friends": "Amigos",
+        "varies": "Depende"
+      },
+      "framing": {
+        "suggestive": "Sugiéramelo. «Las ocho sería mejor.»",
+        "direct": "Dígamelo directo. «Coma a las ocho.»"
+      },
+      "yes": "Sí",
+      "no": "No"
+    },
+    "sugg": {
+      "food": [
+        "Cubana",
+        "Haitiana",
+        "Colombiana",
+        "Venezolana",
+        "Dominicana",
+        "Puertorriqueña",
+        "Jamaiquina",
+        "Del sur de EE. UU.",
+        "Un poco de todo"
+      ],
+      "eats_with": [
+        "mi hija",
+        "una vecina",
+        "la iglesia",
+        "la mesa de dominó",
+        "la cajera que conozco hace diez años"
+      ],
+      "never_mention": [
+        "el peso",
+        "el alcohol"
+      ]
+    },
+    "ui": {
+      "next": "Siguiente",
+      "back": "Atrás",
+      "skip": "Saltar",
+      "add": "Agregar",
+      "not_this": "Esta no",
+      "keep": "Me quedo con esta",
+      "manual": "Se lo digo yo",
+      "search_dishes": "Escriba un plato…",
+      "add_as_written": "Agregar «{text}»",
+      "up_to": "{n} de 5",
+      "see_plan": "Ver mi plan",
+      "stage": "Paso {n} de 7",
+      "invalid": "El plan no pasó la validación:",
+      "asleep": "Me acuesto",
+      "up": "Me levanto",
+      "cancer_type": "Qué tipo",
+      "years": "Años desde el tratamiento",
+      "type_here": "Escriba aquí…",
+      "per_week": "a la semana",
+      "no_numbers": "todavía sin números para este",
+      "declined": "Está bien. Lo averiguo con lo que usted anote. {coach} seguramente le va a preguntar.",
+      "start": "Empezar",
+      "marisol": "Ver el plan de Marisol",
+      "yours": "Este es su plan de la entrevista."
+    },
+    "source": {
+      "meal_log": "Lo que anota",
+      "tracker_steps": "Sus pasos",
+      "tracker_sleep": "Su sueño",
+      "cgm": "Su sensor",
+      "daily_checkin": "La pregunta del día",
+      "table_attendance": "Llegar a la mesa",
+      "manual": "Usted me dice"
+    },
+    "cadence": {
+      "daily": "cada día",
+      "weekly": "cada semana",
+      "per_meal": "cada comida"
+    },
+    "std": {
+      "last_meal": "Comer antes de las {time} para dormir mejor",
+      "last_meal_night": "La última comida {h} horas antes de dormir",
+      "walk": "Diez minutos caminando después de comer",
+      "with_buddy": ", con {name}",
+      "protein_first": "Los frijoles y la carne antes del arroz",
+      "starch": "Una taza de arroz, no dos",
+      "morning": "{dish} por la mañana, no por la noche",
+      "table": "Martes en Versailles con la mesa",
+      "cook": "Cocinar {n} noches",
+      "legume": "Frijoles tres veces a la semana",
+      "fast": "Trece horas entre la comida y el desayuno",
+      "figure": "Grumble lo averigua con lo que anoto"
+    },
+    "why": {
+      "last_meal": "En gente como usted, comer tarde subió el pico {n} mg/dL",
+      "walk": "Diez minutos bajaron el pico {n} mg/dL; más no añadió nada",
+      "protein_first": "Fibra y proteína primero aplanan el pico",
+      "starch": "Cada 10 g de carbohidrato suma unos {n} mg/dL",
+      "morning": "Lo mismo, pico más bajo, y no se queda toda la noche",
+      "table": "El coaching con compañía movió la HbA1c cuatro veces más que los consejos",
+      "cook": "Los días que cocina son los días en que los números son reales",
+      "legume": "La palanca de fibra más grande en su comida",
+      "fast": "El grupo de ayuno del programa bajó las calorías de la noche de 22% a 13%",
+      "figure": "Marcado para su coach en la entrevista"
+    },
+    "place_generic": "Lo de siempre, con la movida: frijoles o ensalada al lado, la mitad del almidón, y caminar después."
   }
 }

@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@nuxt/ui', '@nuxtjs/i18n'],
   css: ['~/assets/css/main.css'],
+  vite: { optimizeDeps: { include: ['ajv/dist/2020'] } },
   ssr: false,
   colorMode: { preference: 'light' },
   fonts: {
@@ -20,10 +21,10 @@ export default defineNuxtConfig({
     restructureDir: 'app',
     langDir: 'i18n',
     locales: [
-      { code: 'es', file: 'es.json', name: 'ES' },
       { code: 'en', file: 'en.json', name: 'EN' },
+      { code: 'es', file: 'es.json', name: 'ES' },
     ],
-    defaultLocale: 'es',
+    defaultLocale: 'en',
     strategy: 'no_prefix',
     detectBrowserLanguage: false,
     vueI18n: './i18n.config.ts',
@@ -31,7 +32,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Grumble',
-      htmlAttrs: { lang: 'es' },
+      htmlAttrs: { lang: 'en' },
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' }],
       link: [{ rel: 'icon', type: 'image/png', href: '/grumble.png' }],
     },
