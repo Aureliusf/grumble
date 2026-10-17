@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const { restore } = useLang()
-const grumble = useGrumble()
 const isDev = import.meta.dev
 
 onMounted(restore)
@@ -20,12 +19,11 @@ const tabs = computed(() => [
     <div class="max-w-[430px] mx-auto min-h-dvh flex flex-col bg-crema-50 dark:bg-crema-950 sm:shadow-xl sm:shadow-cafecito-900/5">
       <header class="sticky top-0 z-30 bg-crema-50/90 dark:bg-crema-950/90 backdrop-blur pt-[env(safe-area-inset-top)]">
         <div class="flex items-center gap-3 px-4 py-2">
-          <NuxtLink to="/" class="font-display font-bold text-[26px] leading-none text-grumble-500 tracking-tight">
-            Grumble
+          <NuxtLink to="/" class="shrink-0" aria-label="Grumble">
+            <img src="/logo-horizontal.png" alt="Grumble" width="160" height="40" class="h-10 w-auto select-none mix-blend-multiply" draggable="false">
           </NuxtLink>
-          <div class="ml-auto flex items-center gap-3">
+          <div class="ml-auto">
             <LangPill />
-            <Grumble :state="grumble" :size="36" />
           </div>
         </div>
         <DevStrip v-if="isDev" />

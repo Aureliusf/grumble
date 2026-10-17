@@ -50,7 +50,7 @@ async function onAction(actionId: string) {
 <template>
   <!-- nudge: one dry line about yesterday -->
   <div v-if="today.nudge && !isRed" class="flex items-center gap-3">
-    <Grumble :size="56" />
+    <Grumble :state="grumble" :size="56" />
     <p class="font-display font-semibold text-[20px] leading-snug flex-1">{{ today.nudge }}</p>
   </div>
 
