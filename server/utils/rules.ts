@@ -4,7 +4,7 @@ import { MENU_IDS, moveText } from './menu'
 import { checkins, skipped, tableView, tables, weekDays, yesterday } from './state'
 import { dayStatus, weekStatus } from './status'
 import { grumbleTime, resolveTarget } from './time'
-import { cap, shortDish, spellTime, t } from './copy'
+import { cap, shortDish, spellTime, t, shortClock } from './copy'
 
 interface Ctx { graph: Graph; lang: Lang; today: string; weekday: string; checkin?: Checkin; week: Week; yesterday?: LogDay; yesterdayLateMissed: boolean }
 type Rule = { id: string; when: (c: Ctx) => boolean; card: (c: Ctx) => Card }
@@ -79,7 +79,8 @@ export function today(graph: Graph, lang: Lang): TodayResponse {
   const skip = skipped.get(id) ?? new Set()
   const rule = RULES.find(r => !skip.has(r.id) && r.when(ctx))!
   const nudge = yesterdayLateMissed && y?.last_ate
-    ? cap(t(lang, 'nudge', { last: spellTime(y.last_ate, lang), target: spellTime(grumbleTime(graph.person.schedule), lang) }))
+    // Tonight's time is their own last_meal_by standard (the plan says the same), not a fixed offset from sleep.
+    ? t(lang, 'nudge', { last: shortClock(y.last_ate), target: shortClock(resolveTarget(lm!, graph.person.schedule)) })
     : null
   return { date: today, weekday, nudge, status_yesterday: statusY.status, card: rule.card(ctx), week: ctx.week }
 }

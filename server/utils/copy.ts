@@ -28,6 +28,12 @@ export function spellTime(hhmm: string, lang: Lang) {
 
 export const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
 
+// "21:40" -> "9:40", "20:00" -> "8": a clock time in digits, no am/pm, for lines where the meal makes it obvious
+export const shortClock = (hhmm: string) => {
+  const m = toMin(hhmm), h = Math.floor(m / 60) % 12 || 12, min = m % 60
+  return min ? `${h}:${String(min).padStart(2, '0')}` : String(h)
+}
+
 // "21:30" -> "9:30 pm"
 export const clockLabel = (hhmm: string) => {
   const m = toMin(hhmm), h = Math.floor(m / 60)

@@ -1,6 +1,6 @@
 {
   "date": "2025-01-14", "weekday": "Tuesday",
-  "nudge": "Nueve y cuarenta anoche. No es un crimen. Hoy, a las ocho.",
+  "nudge": "Anoche cenó a las 9:40. No es un crimen. Hoy, intente a las 8.",
   "status_yesterday": "amber",
   "card": { "id": "p2-table", "kind": "table",
     "title": "Versailles, seis y media.",

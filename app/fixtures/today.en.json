@@ -1,6 +1,6 @@
 {
   "date": "2025-01-14", "weekday": "Tuesday",
-  "nudge": "Nine forty last night. Not a crime. Tonight, eight.",
+  "nudge": "Dinner was at 9:40 last night. Not a crime. Tonight, aim for 8.",
   "status_yesterday": "amber",
   "card": { "id": "p2-table", "kind": "table",
     "title": "Versailles, six thirty.",

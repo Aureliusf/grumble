@@ -46,7 +46,7 @@ Haitian Creole for the daily check-in and the table card only in the hackathon b
 | Intake, cancer question | "And the reason Sylvester sent you here. You can skip this." |
 | Intake, table question | "There's a table at Versailles on Tuesdays for people in the program. Nobody pays. Want a seat sometime?" |
 | Intake, both timing standards declined | "Fine. I'll figure it out from what you log. Lourdes will probably ask." |
-| Check-in open, amber yesterday | "Nine forty last night. Not a crime. Tonight, eight." (time filled from the log) |
+| Check-in open, amber yesterday | "Dinner was at 9:40 last night. Not a crime. Tonight, aim for 8." (last night from the log; tonight from the person's last_meal_by standard) |
 | Check-in, who's at the table | "Who's at the table tonight?" |
 | Post-dinner nudge | "Ten minutes. Then I'll stop grumbling." |
 | Morning after the table | "Tuesday was a good one. Eight of you, dinner at six thirty, and you walked." |

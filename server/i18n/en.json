@@ -27,17 +27,40 @@
     "no_walk": "no walk",
     "walk_n": "{n}-min walk"
   },
-  "actions": { "seat": "I'll be there", "skip": "Not this week" },
-  "nudge": "{last} last night. Not a crime. Tonight, {target}.",
+  "actions": {
+    "seat": "I'll be there",
+    "skip": "Not this week"
+  },
+  "nudge": "Dinner was at {last} last night. Not a crime. Tonight, aim for {target}.",
   "cards": {
-    "p1-red": { "title": "{coach} is going to call you this week.", "body": "Tonight: whatever you were going to eat, before {target}, then ten minutes outside." },
-    "p2-table": { "title": "Versailles, {time}.", "body": "{host} has the table. {dish}'s on the menu, beans first. Seat's yours if you want it. Walk down Eighth after." },
-    "p3-buddy": { "body": "{time}. And text {buddy} about the walk after. Ten minutes, {buddy}'s block and back." },
-    "p4-dog": { "body": "{time}. Then {dog} gets the long way around the block. Ten minutes." },
-    "p5-alone": { "body": "{time}. At the table, not the couch. Ten minutes outside after. The bay's right there." },
-    "p6-place": { "body": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way." },
-    "p7-light": { "body": "Nothing heavy. {time}." },
-    "p9-earlier": { "body": "{time}, earlier than last night. That's the whole ask." },
-    "p10-default": { "body": "{time}. {walk}" }
+    "p1-red": {
+      "title": "{coach} is going to call you this week.",
+      "body": "Tonight: whatever you were going to eat, before {target}, then ten minutes outside."
+    },
+    "p2-table": {
+      "title": "Versailles, {time}.",
+      "body": "{host} has the table. {dish}'s on the menu, beans first. Seat's yours if you want it. Walk down Eighth after."
+    },
+    "p3-buddy": {
+      "body": "{time}. And text {buddy} about the walk after. Ten minutes, {buddy}'s block and back."
+    },
+    "p4-dog": {
+      "body": "{time}. Then {dog} gets the long way around the block. Ten minutes."
+    },
+    "p5-alone": {
+      "body": "{time}. At the table, not the couch. Ten minutes outside after. The bay's right there."
+    },
+    "p6-place": {
+      "body": "{time}, {venue}. Your usual: {dish}. Walk to the car the long way."
+    },
+    "p7-light": {
+      "body": "Nothing heavy. {time}."
+    },
+    "p9-earlier": {
+      "body": "{time}, earlier than last night. That's the whole ask."
+    },
+    "p10-default": {
+      "body": "{time}. {walk}"
+    }
   }
 }
