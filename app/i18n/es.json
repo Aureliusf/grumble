@@ -413,5 +413,18 @@
   "spike": {
     "title": "Picos de hoy · gente como usted",
     "aria": "Abrir la curva de glucosa de todo el día"
+  },
+  "tableInfo": {
+    "toggle": "¿Qué es esto?",
+    "what_q": "¿Qué es esto?",
+    "what_a": "Una mesa en Versailles, en la Calle Ocho, todos los martes a las seis y media, para la gente del programa de sobrevivientes de Sylvester. Hasta ocho personas, un menú con las porciones ya pensadas, y diez minutos caminando por la Ocho después. Comer temprano, comida que usted conoce, caminar y compañía: todo su plan en una noche.",
+    "host_q": "¿Quién es {name}?",
+    "host_q_any": "¿Quién es el anfitrión?",
+    "the_host": "El anfitrión",
+    "host_a": "{name} es el anfitrión. Los anfitriones son gente del programa que terminó el tratamiento hace unos años. Guardan la mesa y dan la bienvenida. No es médico, no es coach, y no vende nada.",
+    "pay_q": "¿Quién paga?",
+    "pay_a": "Nadie en la mesa. Los donantes pagan los platos a través de Sylvester Comprehensive Cancer Center, unos {seat} por silla. Si una familia pagó este martes, la tarjeta de la mesa lo dice.",
+    "catch_q": "¿Cuál es la trampa?",
+    "catch_a": "Ninguna. No hay nada que comprar ni nada que firmar. Decir que sí le guarda una silla; el anfitrión ve su primer nombre y lo que usted no come, nada más. Si una semana no puede, nadie pregunta por qué."
   }
 }
