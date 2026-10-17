@@ -66,7 +66,14 @@
     "same_plate": "Same plate.",
     "see_tuesday": "See this on Tuesday",
     "order_effect": "Beans first: order effect, estimated.",
-    "unknown": "I don't have numbers for that one yet. Closest I've got:"
+    "unknown": "I don't have numbers for that one yet. Closest I've got:",
+    "one": "One meal",
+    "whole": "Whole day",
+    "day_balanced": "Balanced day",
+    "day_usual": "Same {dish}, usual plates around it",
+    "over_day": "Over the day",
+    "above_140": "Above 140",
+    "day_caption": "{meals} meals · people like you · {group}"
   },
   "groups": {
     "normal": "normal",
@@ -145,7 +152,11 @@
       "rule_based": "rule based",
       "observed_pattern": "observed pattern",
       "coach_reviewed": "coach reviewed"
-    }
+    },
+    "ate_title": "What did you eat?",
+    "ate_placeholder": "a burger and fries",
+    "ate_add": "Add",
+    "rest": "The rest of today"
   },
   "table": {
     "tabs": {
@@ -230,7 +241,8 @@
       "framing": "How do you want me to talk to you?",
       "never_mention": "Anything you don't want me to bring up?",
       "done": "Done. Here's your plan.",
-      "meal": "What's one meal you love?"
+      "meal": "What's one meal you love?",
+      "sex": "And for the numbers: female or male?"
     },
     "opt": {
       "work": {
@@ -268,7 +280,12 @@
         "direct": "Tell me straight. “Eat at eight.”"
       },
       "yes": "Yes",
-      "no": "No"
+      "no": "No",
+      "sex": {
+        "female": "Female",
+        "male": "Male",
+        "other": "Prefer not to say"
+      }
     },
     "sugg": {
       "eats_with": [
@@ -350,7 +367,25 @@
       "legume": "Biggest fiber lever in your food",
       "fast": "The program's fast group pulled evening calories from 22% to 13%",
       "figure": "Flagged for the coach at intake"
+    }
+  },
+  "day": {
+    "title": "Your day",
+    "slots": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner"
     },
-    "place_generic": "What you usually get, with the move: beans or salad on the side, half the starch, walk after."
+    "loved": "the one you love",
+    "ate": "you ate this",
+    "smaller": "smaller plate",
+    "heavy": "{dish} is a big one. Keep it. The rest of the day is lean protein and vegetables.",
+    "kcal": "Calories",
+    "carbs": "carbs",
+    "fiber": "fiber",
+    "protein": "protein",
+    "of": "{n} of {target}",
+    "targets_note": "Day targets from the US Dietary Guidelines, by age and sex.",
+    "remove": "Remove"
   }
 }

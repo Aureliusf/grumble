@@ -1,9 +1,9 @@
-// POST /api/intake/meal { text, lang } → the dish in dishes.json closest to a meal the person described.
+// POST /api/meal { text, lang } → the dish in dishes.json closest to a meal the person described.
 // Needs ANTHROPIC_API_KEY (in .env). Without it this returns 503 and the intake falls back to a word match.
 import Anthropic from '@anthropic-ai/sdk'
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod'
 import { z } from 'zod'
-import dishesFile from '../../../data/dishes.json'
+import dishesFile from '../../data/dishes.json'
 
 const DISHES = dishesFile.dishes
 const IDS = DISHES.map(d => d.id) as [string, ...string[]]
@@ -17,7 +17,7 @@ const MealMatch = z.object({
 export type MealMatch = z.infer<typeof MealMatch>
 
 // Frozen so the dish list caches across requests.
-const SYSTEM = `You are Grumble, the voice of a food app for cancer survivors in Miami. A person just told you one meal they love. Your job:
+const SYSTEM = `You are Grumble, the voice of a food app for cancer survivors in Miami. A person just told you about one meal: one they love, or one they just ate. Your job:
 
 1. dish_id: pick the single dish from the list below that is closest to what they described. Match on what is actually on the plate, not on wording. If nothing on the list is reasonably close, use "none". Never invent an id.
 2. meal: the meal in their own words, cleaned up, at most eight words, in their language.
@@ -48,7 +48,7 @@ export default defineEventHandler(async (event) => {
       output_config: { effort: 'low', format: betaZodOutputFormat(MealMatch) },
       cache_control: { type: 'ephemeral' },
       system: SYSTEM,
-      messages: [{ role: 'user', content: `Language: ${lang}\nMeal they love: ${text}` }],
+      messages: [{ role: 'user', content: `Language: ${lang}\nMeal: ${text}` }],
     })
     if (res.stop_reason === 'refusal' || !res.parsed_output)
       throw createError({ statusCode: 502, statusMessage: 'no match returned' })

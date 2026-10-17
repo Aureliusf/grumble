@@ -66,7 +66,14 @@
     "same_plate": "Mismo plato.",
     "see_tuesday": "Ver esto el martes",
     "order_effect": "Frijoles primero: efecto del orden, estimado.",
-    "unknown": "Todavía no tengo números para ese. Lo más parecido:"
+    "unknown": "Todavía no tengo números para ese. Lo más parecido:",
+    "one": "Una comida",
+    "whole": "Todo el día",
+    "day_balanced": "Día balanceado",
+    "day_usual": "Mismo {dish}, platos de siempre alrededor",
+    "over_day": "En el día",
+    "above_140": "Sobre 140",
+    "day_caption": "{meals} comidas · gente como usted · {group}"
   },
   "groups": {
     "normal": "glucosa normal",
@@ -145,7 +152,11 @@
       "rule_based": "regla",
       "observed_pattern": "patrón observado",
       "coach_reviewed": "revisado por su coach"
-    }
+    },
+    "ate_title": "¿Qué comió?",
+    "ate_placeholder": "una hamburguesa con papitas",
+    "ate_add": "Agregar",
+    "rest": "El resto de hoy"
   },
   "table": {
     "tabs": {
@@ -230,7 +241,8 @@
       "framing": "¿Cómo quiere que le hable?",
       "never_mention": "¿Algo de lo que no quiere que le hable?",
       "done": "Listo. Aquí está su plan.",
-      "meal": "¿Cuál es una comida que le encanta?"
+      "meal": "¿Cuál es una comida que le encanta?",
+      "sex": "Y para los números: ¿mujer u hombre?"
     },
     "opt": {
       "work": {
@@ -268,7 +280,12 @@
         "direct": "Dígamelo directo. «Coma a las ocho.»"
       },
       "yes": "Sí",
-      "no": "No"
+      "no": "No",
+      "sex": {
+        "female": "Mujer",
+        "male": "Hombre",
+        "other": "Prefiero no decir"
+      }
     },
     "sugg": {
       "eats_with": [
@@ -332,7 +349,7 @@
       "with_buddy": ", con {name}",
       "protein_first": "Los frijoles y la carne antes del arroz",
       "starch": "Una taza de arroz, no dos",
-      "morning": "{dish} por la mañana, no por la noche",
+      "morning": "El {dish} por la mañana, no por la noche",
       "table": "Martes en Versailles con la mesa",
       "cook": "Cocinar {n} noches",
       "legume": "Frijoles tres veces a la semana",
@@ -350,7 +367,25 @@
       "legume": "La palanca de fibra más grande en su comida",
       "fast": "El grupo de ayuno del programa bajó las calorías de la noche de 22% a 13%",
       "figure": "Marcado para su coach en la entrevista"
+    }
+  },
+  "day": {
+    "title": "Su día",
+    "slots": {
+      "breakfast": "Desayuno",
+      "lunch": "Almuerzo",
+      "dinner": "Comida"
     },
-    "place_generic": "Lo de siempre, con la movida: frijoles o ensalada al lado, la mitad del almidón, y caminar después."
+    "loved": "el que le encanta",
+    "ate": "ya lo comió",
+    "smaller": "plato más chico",
+    "heavy": "{dish} es fuerte. Se queda. El resto del día es proteína magra y vegetales.",
+    "kcal": "Calorías",
+    "carbs": "carbohidratos",
+    "fiber": "fibra",
+    "protein": "proteína",
+    "of": "{n} de {target}",
+    "targets_note": "Metas del día según las Guías Alimentarias de EE. UU., por edad y sexo.",
+    "remove": "Quitar"
   }
 }

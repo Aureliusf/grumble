@@ -1,5 +1,5 @@
 // One meal in the person's words → a dish from dishes.json.
-// Claude does it through POST /api/intake/meal; with no key, a word match stands in.
+// Claude does it through POST /api/meal; with no key, a word match stands in.
 import type { Dish } from '#shared/types'
 
 export interface MealMatch {

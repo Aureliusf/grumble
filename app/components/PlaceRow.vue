@@ -12,7 +12,7 @@ defineProps<{ place: Place; skipLabel: string }>()
       </div>
       <div>
         <p class="font-display font-semibold text-[17px]">{{ place.venue }}</p>
-        <p class="text-[15px] font-bold leading-snug">{{ place.order }}</p>
+        <p v-if="place.order" class="text-[15px] font-bold leading-snug">{{ place.order }}</p>
         <p v-if="place.avoid" class="mt-1 text-[15px] text-crema-800/60">{{ skipLabel }} {{ place.avoid }}</p>
       </div>
     </div>

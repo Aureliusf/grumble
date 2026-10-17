@@ -13,6 +13,7 @@ export interface IntakeAnswers {
   language: Lang
   name?: string
   age?: number
+  sex?: 'female' | 'male' | 'other'
   food?: string
   sleep_start: string
   sleep_end: string
@@ -157,7 +158,7 @@ export function proposeStandards(a: IntakeAnswers, loved: Dish[], tr: Tr): Propo
 
   const sweet = loved.find(isSweet)
   if (sweet) {
-    const dish = sweet.name.split(/ and | with /i)[0]
+    const dish = sweet.name.split(/ and | with /i)[0]!.toLowerCase()
     out.push({ id: `${sweet.id.split('-')[0]}-morning`, kind: 'custom', value: 'before 11:00',
       ...both('intake.std.morning', { dish }), why: why('intake.why.morning', { dish }) })
   }
@@ -245,10 +246,11 @@ export const slotFor = (d: Dish) => SLOT[d.typical_meal_type] ?? 'dinner'
 
 // --- places: Versailles and La Carreta templates from the example graph; a generic one otherwise ---
 const KNOWN_PLACES = Object.fromEntries(marisol.dishes.places.map(p => [p.venue.toLowerCase(), p]))
-export function placeFor(venue: string, tr: Tr, lang: Lang) {
+export function placeFor(venue: string) {
   const known = KNOWN_PLACES[venue.toLowerCase()]
   if (known) return { ...known }
-  return { venue, order: tr('intake.place_generic', {}, lang), confidence: 'unknowable' as const }
+  // No made-up order for a place we know nothing about; the day plan does the balancing.
+  return { venue, order: '', confidence: 'unknowable' as const }
 }
 
 export const slug = (s: string) =>

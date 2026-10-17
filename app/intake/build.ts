@@ -19,14 +19,16 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
   const walkId = accepted.find(s => s.kind === 'walk_after_dinner_min')?.id
   const mealId = accepted.find(s => s.kind === 'last_meal_by')?.id
   const night = a.work === 'night shift'
+  // "no one", "nadie", "nobody" mean no buddy, not a buddy named No One.
+  const buddy = a.buddy && !/^(no ?one|nobody|none|nadie|ninguno|ninguna|n\/a|-)$/i.test(a.buddy.trim()) ? a.buddy.trim() : undefined
 
   const standards = accepted.map((s) => {
-    const withBuddy = s.kind === 'walk_after_dinner_min' && a.buddy
+    const withBuddy = s.kind === 'walk_after_dinner_min' && buddy
     return clean({
       id: s.id,
       kind: s.kind,
-      statement: withBuddy ? `${s.statement}${tr('intake.std.with_buddy', { name: a.buddy }, a.language)}` : s.statement,
-      statement_en: withBuddy ? `${s.statement_en}${tr('intake.std.with_buddy', { name: a.buddy }, 'en')}` : s.statement_en,
+      statement: withBuddy ? `${s.statement}${tr('intake.std.with_buddy', { name: buddy }, a.language)}` : s.statement,
+      statement_en: withBuddy ? `${s.statement_en}${tr('intake.std.with_buddy', { name: buddy }, 'en')}` : s.statement_en,
       value: s.value,
       unit: s.unit,
       relative_to_sleep: s.kind === 'last_meal_by' ? night : s.relative_to_sleep,
@@ -58,6 +60,7 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
       display_name: a.name,
       language: a.language,
       age: a.age,
+      sex: a.sex,
       food_background: a.food,
       cancer_type: a.cancer_type,
       years_since_treatment: a.years_since,
@@ -101,13 +104,13 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
     },
     accountable: {
       coach: { ...DEFAULT_COACH },
-      buddy: a.buddy ? { name: a.buddy, walks: true } : null,
+      buddy: buddy ? { name: buddy, walks: true } : null,
       table: { role: tableRole, usual_night: 'Tue', last_attended: null },
       dog: a.has_dog ? (a.dog || null) : null,
     },
     dishes: {
       rotation,
-      places: a.places.map(v => placeFor(v, tr, a.language)),
+      places: a.places.map(placeFor),
     },
     contract: {
       framing: a.framing ?? 'suggestive',

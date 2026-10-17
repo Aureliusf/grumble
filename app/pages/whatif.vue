@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { SelectMenuItem } from '@nuxt/ui'
 import type { Dish } from '#shared/types'
+import type { BalancedDay } from '#shared/balance'
+import { dayCurve, latenessFor } from '#shared/simulate'
 import { fixtures } from '~/fixtures'
 
 const PERSON = 'N0771'
@@ -9,6 +11,36 @@ const { t, locale } = useI18n()
 const graph = useGraph(PERSON)
 const { data: dishes } = useApi<Dish[]>(`/api/dishes?person_id=${PERSON}`, fixtures.dishes)
 const { state, result } = useWhatIf(PERSON)
+
+// Whole day: the balanced day against the same fixed meal with usual plates around it (shared/simulate.ts).
+const route = useRoute()
+const mode = ref<'one' | 'day'>(route.query.mode === 'day' ? 'day' : 'one')
+const { today: balancedDay, usual: usualDayPlan, person, eaten } = useDay(PERSON)
+const hasWalk = computed(() => graph.value.standards.items.some(s => s.kind === 'walk_after_dinner_min'))
+// Meal times on the person's own clock: breakfast an hour after waking, lunch five hours later,
+// dinner four hours before sleep. Night shift lands where it should with no special case.
+const frame = computed(() => {
+  const wake = toMinutes(person.value.schedule.sleep_end)
+  const sleep = toMinutes(person.value.schedule.sleep_start)
+  const awake = (sleep - wake + 1440) % 1440 || 1440
+  return { from: wake, to: wake + awake, at: { breakfast: wake + 60, lunch: wake + 360, dinner: wake + awake - 240 } }
+})
+const mealsOf = (day: BalancedDay) => day.plates.map(p => ({
+  at: frame.value.at[p.slot],
+  n: p.n,
+  dinner: p.slot === 'dinner',
+  late: latenessFor(toHHMM(frame.value.at[p.slot] % 1440), person.value.schedule.sleep_start),
+  walk_min: p.slot === 'dinner' && hasWalk.value ? 10 : 0,
+  label: t(`day.slots.${p.slot}`),
+}))
+const curves = computed(() => {
+  const g = person.value.blood_sugar_group
+  const b = dayCurve(mealsOf(balancedDay.value), g, frame.value.from, frame.value.to + 120)
+  const u = dayCurve(mealsOf(usualDayPlan.value), g, frame.value.from, frame.value.to + 120)
+  return { b, u, peakB: Math.max(...b.points.map(p => p.mg_dl)), peakU: Math.max(...u.points.map(p => p.mg_dl)) }
+})
+const fixedName = computed(() => balancedDay.value.plates.find(p => p.fixed)?.dish.name ?? '')
+const dayGroupKey = computed(() => (person.value.blood_sugar_group === 'type 2 diabetes' ? 't2d' : person.value.blood_sugar_group))
 
 const byId = computed(() => new Map(dishes.value.map(d => [d.id, d])))
 const rotation = computed(() => graph.value.dishes.rotation)
@@ -63,6 +95,59 @@ const showSameAsTen = computed(() => r.value.same_as_ten && state.walk_min > 10)
 
 <template>
   <h1 class="font-display font-bold text-[34px] leading-tight">{{ t('whatif.title') }}</h1>
+
+  <div class="grid grid-cols-2 gap-2">
+    <UButton v-for="m in (['one', 'day'] as const)" :key="m" class="justify-center" :color="mode === m ? 'primary' : 'neutral'" :variant="mode === m ? 'solid' : 'outline'" @click="mode = m">
+      {{ m === 'one' ? t('whatif.one') : t('whatif.whole') }}
+    </UButton>
+  </div>
+
+  <!-- whole day -->
+  <template v-if="mode === 'day'">
+    <UCard>
+      <DayCurve
+        :usual="curves.u.points"
+        :balanced="curves.b.points"
+        :baseline="curves.b.baseline"
+        :meals="mealsOf(balancedDay).map(m => ({ at: m.at, label: m.label }))"
+        :from="frame.from"
+        :to="frame.to + 120"
+      />
+      <div class="mt-2 flex flex-col gap-1 text-[15px]">
+        <span v-if="fixedName" class="flex items-center gap-2"><span class="inline-block w-4 h-1 rounded-full bg-grumble-500" />{{ t('whatif.day_usual', { dish: fixedName }) }}</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-4 h-1 rounded-full bg-cafecito-500" />{{ t('whatif.day_balanced') }}</span>
+      </div>
+    </UCard>
+
+    <div class="grid grid-cols-3 gap-2">
+      <div class="rounded-[var(--radius-grumble)] bg-white dark:bg-crema-900 shadow-sm p-3 text-center">
+        <div class="text-[15px] text-crema-800/70">{{ t('whatif.peak') }}</div>
+        <div class="font-display font-semibold text-[20px] tabular">
+          <span class="text-grumble-500">{{ Math.round(curves.peakU) }}</span><span class="text-crema-800/40"> → </span><span class="text-cafecito-700">{{ Math.round(curves.peakB) }}</span>
+        </div>
+      </div>
+      <div class="rounded-[var(--radius-grumble)] bg-white dark:bg-crema-900 shadow-sm p-3 text-center">
+        <div class="text-[15px] text-crema-800/70">{{ t('whatif.over_day') }}</div>
+        <div class="font-display font-semibold text-[26px] text-cafecito-700 tabular">{{ signed((curves.b.exposure / curves.u.exposure - 1) * 100) }}</div>
+      </div>
+      <div class="rounded-[var(--radius-grumble)] bg-white dark:bg-crema-900 shadow-sm p-3 text-center">
+        <div class="text-[15px] text-crema-800/70">{{ t('whatif.above_140') }}</div>
+        <div class="font-display font-semibold text-[20px] tabular">
+          <span class="text-grumble-500">{{ curves.u.minutes_above_140 }}</span><span class="text-crema-800/40"> → </span><span class="text-cafecito-700">{{ curves.b.minutes_above_140 }}</span>
+        </div>
+        <div class="text-xs text-crema-800/60">min</div>
+      </div>
+    </div>
+    <p class="text-[15px] text-crema-800/70 -mt-1">
+      {{ t('whatif.day_caption', { meals: balancedDay.plates.length, group: t(`groups.${dayGroupKey}`) }) }}
+      <br><span class="text-xs">{{ t('whatif.range_note') }}</span>
+    </p>
+
+    <h2 class="font-display font-semibold text-[26px] mt-2">{{ t('day.title') }}</h2>
+    <DayPlan :day="balancedDay" :fixed-label="eaten.length ? t('day.ate') : t('day.loved')" />
+  </template>
+
+  <template v-else>
 
   <!-- controls -->
   <UCard>
@@ -177,4 +262,5 @@ const showSameAsTen = computed(() => r.value.same_as_ten && state.walk_min > 10)
     <p v-if="r.grumble.applied_moves.includes('beans-first')" class="mt-1 text-xs text-crema-800/60">{{ t('whatif.order_effect') }}</p>
     <UButton to="/table" color="primary" class="mt-4" trailing-icon="i-lucide-arrow-right">{{ t('whatif.see_tuesday') }}</UButton>
   </UCard>
+  </template>
 </template>

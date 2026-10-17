@@ -31,6 +31,7 @@ export const STEPS: Step[] = [
   // Stage 1 — who you are
   { id: 'name', stage: 1, type: 'text', field: 'name' },
   { id: 'age', stage: 1, type: 'number', field: 'age', min: 18, max: 110, step: 1 },
+  { id: 'sex', stage: 1, type: 'choice', field: 'sex', options: ['female', 'male', 'other'] },
   { id: 'sleep', stage: 1, type: 'sleep', required: true },
   { id: 'work', stage: 1, type: 'choice', field: 'work', options: ['day job', 'night shift', 'works from home', 'retired', 'not working'], required: true },
   { id: 'dog', stage: 1, type: 'yesno', field: 'has_dog' },
@@ -39,7 +40,7 @@ export const STEPS: Step[] = [
   { id: 'cancer', stage: 1, type: 'cancer' },
 
   // Stage 2 — the four risks: taste, convenience, money, company (company last)
-  // Taste opens with one meal in their own words; Claude matches it to dishes.json (server/api/intake/meal.post.ts).
+  // Taste opens with one meal in their own words; Claude matches it to dishes.json (server/api/meal.post.ts).
   { id: 'meal', stage: 2, type: 'meal' },
   { id: 'refuses', stage: 2, type: 'list', field: 'refuses' },
   { id: 'grew_up_on', stage: 2, type: 'text', field: 'grew_up_on' },

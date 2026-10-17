@@ -19,7 +19,7 @@ const answers = reactive<IntakeAnswers>(emptyAnswers(locale.value as Lang))
 const proposals = ref<Proposal[]>([])
 const result = ref<{ ok: boolean; errors: string[] } | null>(null)
 
-// Stage 2 opens with one meal in their words; Claude finds the closest dish (server/api/intake/meal.post.ts).
+// Stage 2 opens with one meal in their words; Claude finds the closest dish (server/api/meal.post.ts).
 const mealText = ref('')
 const match = ref<MealMatch | null>(null)
 const matching = ref(false)
@@ -28,7 +28,7 @@ watch(mealText, () => { match.value = null })
 async function findMeal() {
   matching.value = true
   const text = mealText.value.trim()
-  const res = await apiCall<MealMatch>('/api/intake/meal', () =>
+  const res = await apiCall<MealMatch>('/api/meal', () =>
     localMatch(text, dishes.value, d => (d ? t('intake.ui.closest', { dish: d.name }) : t('intake.ui.no_match'))),
   { method: 'POST', body: { text, lang: answers.language } })
   match.value = res

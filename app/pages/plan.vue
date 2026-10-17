@@ -7,6 +7,7 @@ const { t } = useI18n()
 
 const graph = useGraph(PERSON)
 const { own, clear } = useFoodGraph()
+const { plan } = useDay(PERSON)
 const { data: dishes } = useApi<Dish[]>(`/api/dishes?person_id=${PERSON}`, fixtures.dishes)
 const dishName = (id: string) => dishes.value.find(d => d.id === id)?.name ?? id
 
@@ -35,6 +36,10 @@ const acc = computed(() => graph.value.accountable as FoodGraph['accountable'] &
       <Grumble :size="72" />
     </div>
   </UCard>
+
+  <!-- the day, balanced around the meal they love -->
+  <h2 class="font-display font-semibold text-[26px] mt-2">{{ t('day.title') }}</h2>
+  <DayPlan :day="plan" :fixed-label="t('day.loved')" />
 
   <!-- a good day -->
   <h2 class="font-display font-semibold text-[26px] mt-2">{{ t('plan.good_day') }}</h2>
