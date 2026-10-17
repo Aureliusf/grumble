@@ -2,7 +2,7 @@
 import type { IntakeAnswers } from './rules'
 
 export type StepType =
-  | 'lang' | 'say' | 'choice' | 'yesno' | 'text' | 'number' | 'sleep' | 'cancer' | 'list' | 'dishes' | 'slider'
+  | 'lang' | 'say' | 'choice' | 'yesno' | 'text' | 'number' | 'sleep' | 'cancer' | 'list' | 'meal' | 'slider'
   | 'proposals' | 'procedures' | 'rotation' | 'done'
 
 export interface Step {
@@ -31,7 +31,6 @@ export const STEPS: Step[] = [
   // Stage 1 — who you are
   { id: 'name', stage: 1, type: 'text', field: 'name' },
   { id: 'age', stage: 1, type: 'number', field: 'age', min: 18, max: 110, step: 1 },
-  { id: 'food', stage: 1, type: 'text', field: 'food', suggestionsKey: 'food' },
   { id: 'sleep', stage: 1, type: 'sleep', required: true },
   { id: 'work', stage: 1, type: 'choice', field: 'work', options: ['day job', 'night shift', 'works from home', 'retired', 'not working'], required: true },
   { id: 'dog', stage: 1, type: 'yesno', field: 'has_dog' },
@@ -40,7 +39,8 @@ export const STEPS: Step[] = [
   { id: 'cancer', stage: 1, type: 'cancer' },
 
   // Stage 2 — the four risks: taste, convenience, money, company (company last)
-  { id: 'loves', stage: 2, type: 'dishes', field: 'loves' },
+  // Taste opens with one meal in their own words; Claude matches it to dishes.json (server/api/intake/meal.post.ts).
+  { id: 'meal', stage: 2, type: 'meal' },
   { id: 'refuses', stage: 2, type: 'list', field: 'refuses' },
   { id: 'grew_up_on', stage: 2, type: 'text', field: 'grew_up_on' },
   { id: 'appetite', stage: 2, type: 'choice', field: 'appetite', options: ['steady', 'low', 'cycles'] },

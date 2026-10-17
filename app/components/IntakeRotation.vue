@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import type { Dish, Lang } from '#shared/types'
-import { movesFor, type IntakeAnswers } from '~/intake/rules'
+import { moveText, movesFor, type IntakeAnswers, type Tr } from '~/intake/rules'
 
 // Each loved dish with its move from the 09 vocabulary; the person stars defaults (03 §Stage 6).
 const props = defineProps<{ loves: string[]; dishes: Dish[]; appetite?: IntakeAnswers['appetite']; lang: Lang }>()
 const starred = defineModel<string[]>({ required: true })
 const { t } = useI18n()
+const tr: Tr = (key, named = {}, lang) => t(key, named, { locale: lang ?? props.lang })
 
 const byId = computed(() => new Map(props.dishes.map(d => [d.id, d])))
 const rows = computed(() => props.loves.map((id) => {
   const d = byId.value.get(id)
-  return { id, name: d?.name ?? id, move: d ? movesFor(d, props.appetite).map(m => t(`moves.${m}`, {}, { locale: props.lang })).join(' ') : null }
+  return { id, name: d?.name ?? id, move: d ? movesFor(d, props.appetite).map(m => moveText(m, d, tr, props.lang)).join(' ') : null }
 }))
 const toggle = (id: string) => {
   starred.value = starred.value.includes(id) ? starred.value.filter(x => x !== id) : [...starred.value, id]

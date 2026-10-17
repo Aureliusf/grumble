@@ -2,7 +2,7 @@
 import Ajv2020 from 'ajv/dist/2020'
 import type { Dish } from '#shared/types'
 import schema from '~~/data/food-graph.schema.json'
-import { DEFAULT_COACH, flagsFor, sugarGroup, movesFor, placeFor, procedureFor, slotFor, slug, type IntakeAnswers, type Tr } from './rules'
+import { DEFAULT_COACH, flagsFor, moveText, sugarGroup, movesFor, placeFor, procedureFor, slotFor, slug, type IntakeAnswers, type Tr } from './rules'
 
 const ajv = new Ajv2020({ allErrors: true, strict: false, validateFormats: false })
 const validate = ajv.compile(schema)
@@ -43,7 +43,7 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
       dish_id: d.id,
       slot: slotFor(d),
       star: a.starred.includes(d.id) || undefined,
-      move: moves.map(m => tr(`moves.${m}`, {}, a.language)).join(' '),
+      move: moves.map(m => moveText(m, d, tr, a.language)).join(' '),
       flags: flagsFor(d),
     })
   })

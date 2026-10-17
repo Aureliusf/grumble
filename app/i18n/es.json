@@ -78,13 +78,13 @@
     "walk10": "Diez minutos después. Y dejo de refunfuñar.",
     "beans-first": "Primero los frijoles, el arroz al final.",
     "protein-first": "La carne antes del arroz.",
-    "one-cup": "Una taza de arroz, no dos. La misma vaca frita.",
+    "one-cup": "Una taza de arroz, no dos. {Dish}, igualito.",
     "two-not-four": "Dos maduros, no cuatro. Nadie cuenta, solo yo.",
-    "morning-not-night": "El pastelito por la mañana. El mismo pastelito.",
+    "morning-not-night": "{Dish} por la mañana. Igualito.",
     "add-beans": "Agrega frijoles negros. Es lo más barato del menú.",
     "half-the-bread": "Medio pan. La mantequilla se queda.",
     "share-it": "Eso son dos cenas. Comparte o guarda la mitad antes de empezar.",
-    "soup-counts": "El sancocho cuenta como cena.",
+    "soup-counts": "{Dish} cuenta como comida.",
     "table": "Versailles, seis y media. Tu silla está lista.",
     "as-is": "Así como está. Que nadie te diga lo contrario."
   },
@@ -201,14 +201,12 @@
       "intro": "Soy Grumble. Soy la parte de usted que tiene hambre y está molesta por eso. Cinco minutos, y sabré lo que usted come de verdad.",
       "name": "¿Cómo le digo?",
       "age": "¿Cuántos años tiene?",
-      "food": "¿Qué comida es la suya?",
       "sleep": "¿A qué hora se acuesta y a qué hora se levanta?",
       "work": "¿Trabaja? ¿Cuándo?",
       "dog": "¿Tiene perro?",
       "sugar": "¿Algún médico le ha dicho prediabetes o diabetes?",
       "cgm": "¿Usa un sensor de glucosa?",
       "cancer": "Y la razón por la que Sylvester le mandó aquí. Puede saltar esto.",
-      "loves": "Dígame cinco cosas que comería cada semana si nadie estuviera mirando.",
       "refuses": "¿Algo que no come?",
       "grew_up_on": "¿Con qué comida creció?",
       "appetite": "¿Tiene más o menos el mismo apetito casi todos los días?",
@@ -231,7 +229,8 @@
       "rotation": "Sus platos, con la movida. Marque con estrella los de siempre.",
       "framing": "¿Cómo quiere que le hable?",
       "never_mention": "¿Algo de lo que no quiere que le hable?",
-      "done": "Listo. Aquí está su plan."
+      "done": "Listo. Aquí está su plan.",
+      "meal": "¿Cuál es una comida que le encanta?"
     },
     "opt": {
       "work": {
@@ -272,17 +271,6 @@
       "no": "No"
     },
     "sugg": {
-      "food": [
-        "Cubana",
-        "Haitiana",
-        "Colombiana",
-        "Venezolana",
-        "Dominicana",
-        "Puertorriqueña",
-        "Jamaiquina",
-        "Del sur de EE. UU.",
-        "Un poco de todo"
-      ],
       "eats_with": [
         "mi hija",
         "una vecina",
@@ -303,9 +291,6 @@
       "not_this": "Esta no",
       "keep": "Me quedo con esta",
       "manual": "Se lo digo yo",
-      "search_dishes": "Escriba un plato…",
-      "add_as_written": "Agregar «{text}»",
-      "up_to": "{n} de 5",
       "see_plan": "Ver mi plan",
       "stage": "Paso {n} de 7",
       "invalid": "El plan no pasó la validación:",
@@ -319,7 +304,12 @@
       "declined": "Está bien. Lo averiguo con lo que usted anote. {coach} seguramente le va a preguntar.",
       "start": "Empezar",
       "marisol": "Ver el plan de Marisol",
-      "yours": "Este es su plan de la entrevista."
+      "yours": "Este es su plan de la entrevista.",
+      "meal_hint": "Dígalo como usted lo dice. «La ropa vieja de mi mamá con arroz» sirve.",
+      "matching": "Pensándolo…",
+      "closest": "Lo más parecido que tengo: {dish}",
+      "no_match": "Todavía no tengo números para ese.",
+      "find": "Siguiente"
     },
     "source": {
       "meal_log": "Lo que anota",

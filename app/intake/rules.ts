@@ -223,6 +223,12 @@ export function movesFor(d: Dish, appetite?: IntakeAnswers['appetite']): string[
   return m.slice(0, 2)
 }
 
+// 09's lines name a dish ("Same vaca frita."); fill in the person's own.
+export function moveText(m: string, d: Dish, tr: Tr, lang: Lang) {
+  const dish = d.name.split(/ with | and /i)[0]!.toLowerCase()
+  return tr(`moves.${m}`, { dish, Dish: dish.charAt(0).toUpperCase() + dish.slice(1) }, lang)
+}
+
 export function flagsFor(d: Dish) {
   const f: string[] = []
   if (d.fiber_g >= 8) f.push('high_fiber')

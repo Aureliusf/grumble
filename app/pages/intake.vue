@@ -3,6 +3,7 @@ import type { Dish, FoodGraph, Lang } from '#shared/types'
 import { fixtures } from '~/fixtures'
 import { buildGraph } from '~/intake/build'
 import { DEFAULT_COACH, emptyAnswers, figureItOut, proposeStandards, type IntakeAnswers, type Proposal, type Tr } from '~/intake/rules'
+import { localMatch, type MealMatch } from '~/intake/meal'
 import { STEPS, type Step } from '~/intake/steps'
 
 const { t, tm, rt, locale } = useI18n()
@@ -17,6 +18,25 @@ const byId = computed(() => new Map(dishes.value.map(d => [d.id, d])))
 const answers = reactive<IntakeAnswers>(emptyAnswers(locale.value as Lang))
 const proposals = ref<Proposal[]>([])
 const result = ref<{ ok: boolean; errors: string[] } | null>(null)
+
+// Stage 2 opens with one meal in their words; Claude finds the closest dish (server/api/intake/meal.post.ts).
+const mealText = ref('')
+const match = ref<MealMatch | null>(null)
+const matching = ref(false)
+watch(mealText, () => { match.value = null })
+
+async function findMeal() {
+  matching.value = true
+  const text = mealText.value.trim()
+  const res = await apiCall<MealMatch>('/api/intake/meal', () =>
+    localMatch(text, dishes.value, d => (d ? t('intake.ui.closest', { dish: d.name }) : t('intake.ui.no_match'))),
+  { method: 'POST', body: { text, lang: answers.language } })
+  match.value = res
+  answers.loves = res.dish_id !== 'none' ? [res.dish_id] : [res.meal || text]
+  answers.food = res.cuisine || undefined
+  matching.value = false
+}
+const matchedName = computed(() => (match.value ? byId.value.get(match.value.dish_id)?.name : undefined))
 
 // Generated copy is written in the person's language with an English copy beside it.
 const tr: Tr = (key, named = {}, lang) => t(key, named, { locale: lang ?? answers.language })
@@ -50,6 +70,7 @@ const missing = computed(() => {
   const s = step.value
   if (!s.required) return false
   if (s.type === 'sleep') return !answers.sleep_start || !answers.sleep_end
+  if (s.type === 'meal') return matching.value
   return s.field ? get(s.field) === undefined : false
 })
 
@@ -69,8 +90,10 @@ function leave(s: Step) {
   }
 }
 
-function next() {
+async function next() {
   const s = step.value
+  // First Next on the meal screen asks Claude; the second moves on.
+  if (s.type === 'meal' && mealText.value.trim() && !match.value) return findMeal()
   if (s.type === 'slider' && s.field && get(s.field) === undefined) set(s.field, s.start)
   leave(s)
   if (idx.value < visible.value.length - 1) idx.value++
@@ -83,6 +106,7 @@ function back() {
 }
 function skip() {
   if (field.value && !Array.isArray(get(field.value))) set(field.value, undefined)
+  if (step.value.type === 'meal') { mealText.value = ''; answers.loves = []; answers.food = undefined }
   next()
 }
 function pick(v: unknown) {
@@ -190,7 +214,18 @@ const isSay = computed(() => ['say', 'done'].includes(step.value.type))
       </div>
 
       <IntakeList v-else-if="step.type === 'list' && field" :model-value="get(field) as string[]" :suggestions="suggestions" @update:model-value="set(field, $event)" />
-      <IntakeDishes v-else-if="step.type === 'dishes'" v-model="answers.loves" :dishes="dishes" :food="answers.food" />
+      <!-- one meal they love, in their words -->
+      <template v-else-if="step.type === 'meal'">
+        <form @submit.prevent="next">
+          <UInput v-model="mealText" :placeholder="t('intake.ui.type_here')" size="xl" class="w-full" autofocus :disabled="matching" :ui="{ base: 'rounded-full' }" />
+        </form>
+        <p v-if="!match && !matching" class="text-[15px] text-crema-800/60">{{ t('intake.ui.meal_hint') }}</p>
+        <p v-if="matching" class="text-[15px] text-crema-800/60 flex items-center gap-2"><UIcon name="i-lucide-loader-circle" class="size-5 animate-spin" />{{ t('intake.ui.matching') }}</p>
+        <div v-if="match" class="rounded-[var(--radius-grumble)] bg-white dark:bg-crema-900 shadow-sm p-4 flex flex-col gap-2">
+          <p class="font-display font-semibold text-[20px] leading-snug">{{ match.say }}</p>
+          <UBadge v-if="matchedName" color="primary" variant="soft" size="lg" icon="i-lucide-utensils" class="rounded-full self-start">{{ matchedName }}</UBadge>
+        </div>
+      </template>
       <IntakeProposals v-else-if="step.type === 'proposals'" v-model="proposals" :coach="DEFAULT_COACH.name" />
       <IntakeProcedures v-else-if="step.type === 'procedures'" v-model="answers.manual" :standards="answers.standards" />
       <IntakeRotation v-else-if="step.type === 'rotation'" v-model="answers.starred" :loves="answers.loves" :dishes="dishes" :appetite="answers.appetite" :lang="answers.language" />
@@ -208,7 +243,7 @@ const isSay = computed(() => ['say', 'done'].includes(step.value.type))
     <UButton v-if="idx > 0" color="neutral" variant="ghost" icon="i-lucide-arrow-left" @click="back">{{ t('intake.ui.back') }}</UButton>
     <div class="ml-auto flex items-center gap-2">
       <UButton v-if="!step.required && !isSay" color="neutral" variant="ghost" @click="skip">{{ t('intake.ui.skip') }}</UButton>
-      <UButton v-if="step.type !== 'lang'" color="primary" trailing-icon="i-lucide-arrow-right" :disabled="missing" @click="next">{{ t('intake.ui.next') }}</UButton>
+      <UButton v-if="step.type !== 'lang'" color="primary" trailing-icon="i-lucide-arrow-right" :disabled="missing" :loading="matching" @click="next">{{ t('intake.ui.next') }}</UButton>
     </div>
   </div>
 </template>

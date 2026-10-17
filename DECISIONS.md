@@ -34,3 +34,11 @@ Choices made where the spec was silent or the installed versions differed from i
 - **Places:** Versailles and La Carreta reuse the order templates from the example graph. Any other venue gets a generic order line and `confidence: "unknowable"`, with no nutrient numbers made up.
 - **Coach** defaults to the example graph's coach (Lourdes, sylvester-survivorship). The buddy is whoever the person names in stage 5, with `walks: true`, because the question is who would walk with them.
 - **Budget slider:** Next keeps the shown $90 starting value; Skip leaves the budget absent.
+
+## 2026-10-17 — one meal, matched by Claude (03 LLM mode, narrow)
+
+- **The taste stage opens with one free-text question:** "What's one meal you love?" It replaces the cuisine chips and the five-dish picker. Claude Opus 5.5 matches the meal to one dish in `dishes.json` (or `none`) and gives the cuisine and one line in Grumble's voice (`server/api/intake/meal.post.ts`). The answer is structured output validated against a zod schema, and `dish_id` is restricted to the 127 real ids, so Claude can't invent a dish.
+- **The key lives on the server** as `ANTHROPIC_API_KEY` in `.env` (gitignored) and never reaches the browser. Without it the route returns 503 and the intake uses a word match against dish names, so `npm run dev` still works with no env vars (CLAUDE.md). This is the one LLM call in the build, made at the team's call.
+- **Effort `low`:** it's a lookup with one line of copy, and speed matters on a phone. Server-side refusal fallbacks are on (`fallbacks: "default"`).
+- **The route lives under `server/`** (Aurelio's side) because the key can't be in the client. It reads `data/dishes.json` directly and touches nothing else of his.
+- **Three 09 move lines named one dish** ("Same vaca frita.", "Same pastelito.", "Sancocho counts as dinner."). They now take the person's own dish name, so ropa vieja gets "Same ropa vieja."

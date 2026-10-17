@@ -78,13 +78,13 @@
     "walk10": "Ten minutes after. Then I'll stop grumbling.",
     "beans-first": "Beans first, rice last.",
     "protein-first": "Meat before rice.",
-    "one-cup": "One cup of rice, not two. Same vaca frita.",
+    "one-cup": "One cup of rice, not two. Same {dish}.",
     "two-not-four": "Two maduros, not four. Nobody's counting but me.",
-    "morning-not-night": "The pastelito in the morning. Same pastelito.",
+    "morning-not-night": "The {dish} in the morning. Same {dish}.",
     "add-beans": "Add a side of black beans. It's the cheapest thing on the menu.",
     "half-the-bread": "Half the bread. Keep the butter.",
     "share-it": "That's two dinners. Share it or box half before you start.",
-    "soup-counts": "Sancocho counts as dinner.",
+    "soup-counts": "{Dish} counts as dinner.",
     "table": "Versailles, six thirty. Seat's yours.",
     "as-is": "As is. Don't let anyone tell you otherwise."
   },
@@ -201,14 +201,12 @@
       "intro": "I'm Grumble. I'm the part of you that's hungry and annoyed about it. Five minutes, then I'll know what you actually eat.",
       "name": "What should I call you?",
       "age": "How old are you?",
-      "food": "What would you call your food?",
       "sleep": "When do you go to sleep, and when do you get up?",
       "work": "Do you work? When?",
       "dog": "Do you have a dog?",
       "sugar": "Has a doctor said prediabetes or diabetes?",
       "cgm": "Do you wear a glucose sensor?",
       "cancer": "And the reason Sylvester sent you here. You can skip this.",
-      "loves": "Name five things you'd eat every week if nobody was watching.",
       "refuses": "Anything you won't eat?",
       "grew_up_on": "What did you grow up on?",
       "appetite": "Is your appetite about the same most days?",
@@ -231,7 +229,8 @@
       "rotation": "Your dishes, with the move. Star the ones you want as defaults.",
       "framing": "How do you want me to talk to you?",
       "never_mention": "Anything you don't want me to bring up?",
-      "done": "Done. Here's your plan."
+      "done": "Done. Here's your plan.",
+      "meal": "What's one meal you love?"
     },
     "opt": {
       "work": {
@@ -272,17 +271,6 @@
       "no": "No"
     },
     "sugg": {
-      "food": [
-        "Cuban",
-        "Haitian",
-        "Colombian",
-        "Venezuelan",
-        "Dominican",
-        "Puerto Rican",
-        "Jamaican",
-        "Southern",
-        "A little of everything"
-      ],
       "eats_with": [
         "my daughter",
         "a neighbor",
@@ -303,9 +291,6 @@
       "not_this": "Not this one",
       "keep": "Keep it",
       "manual": "I'll tell you myself",
-      "search_dishes": "Type a dish…",
-      "add_as_written": "Add “{text}”",
-      "up_to": "{n} of 5",
       "see_plan": "See my plan",
       "stage": "Step {n} of 7",
       "invalid": "The plan didn't validate:",
@@ -319,7 +304,12 @@
       "declined": "Fine. I'll figure it out from what you log. {coach} will probably ask.",
       "start": "Start",
       "marisol": "Show Marisol's plan",
-      "yours": "This is your plan from intake."
+      "yours": "This is your plan from intake.",
+      "meal_hint": "Say it however you'd say it. “My mom's ropa vieja with rice” works.",
+      "matching": "Thinking about it…",
+      "closest": "Closest I've got: {dish}",
+      "no_match": "I don't have numbers for that one yet.",
+      "find": "Next"
     },
     "source": {
       "meal_log": "What you log",
