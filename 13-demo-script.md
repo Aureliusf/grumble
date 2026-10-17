@@ -1,31 +1,41 @@
 # 13 — Demo script
 
-Three minutes. Marisol, end to end, in Spanish with the English in the presenter's mouth. Fixed demo date: a Tuesday, week 4. No network.
+Five minutes on stage: about two minutes of slides (`presentation/`), two and a half of live demo, a thirty-second close. The demo is Marisol, in English, from the deck's **Open Grumble** button, which opens `/today?demo`: Marisol's plan, nothing logged, English. Demo date: a Tuesday, week 4.
 
-| t | Screen | Presenter says | What the judge sees |
-|---|---|---|---|
-| 0:00 | Grumble logo | "This is Grumble. The stomach grumbles when it's empty; a person grumbles when nobody's listening. Same complaint. Marisol's 71, Hialeah, three years past breast cancer, prediabetic, eats dinner at ten, alone." | The character, arms crossed |
-| 0:20 | Plan (her graph) | "Intake took five minutes. She told it what she actually eats. It didn't take anything away. Pastelito stays. Vaca frita stays." | Her standards in her words, the rotation with the moves |
-| 0:40 | What-if | "She asked the question every survivor asks: does it matter that I eat late?" Pick vaca frita, slide to 9:30 pm, no walk. "Here's what happened to five thousand dinners from people like her." | One curve, peak ~207 mg/dL |
-| 1:00 | What-if | "Now the same plate at seven, beans first, one cup of rice, ten minutes down the block after." | Second curve, peak ~143 mg/dL, "−75% over two hours". Time and the walk alone are worth 47 of those points; the one-cup move is the rest |
-| 1:15 | What-if, walk slider | "Twenty minutes? Same as ten. Ten is the whole trick. That's the challenge's third question answered." | "Same as ten" |
-| 1:30 | Today | "Tuesday afternoon. Four taps: energy, hunger, how's the day, who's at the table tonight." Tap "just me". | The check-in |
-| 1:45 | Today, the card | "And it doesn't give her a chart. It gives her a seat." | The Versailles table card: 6:30, Tony's hosting, seat's yours |
-| 2:00 | Table | "Nobody at the table pays. One donor, one Tuesday, eight plates, about $160. The host sees what each guest can't eat before anyone sits down. Early dinner, her food, a walk down Calle Ocho after, and people. Every lever in one evening, and she doesn't have to understand any of them." | Host-or-find, the menu, fund a week |
-| 2:30 | Coach | "Lourdes at Sylvester sees who to call first. Marisol's at the top: three low days this week. Jean, night shift, gets a badge: his 2 am dinner isn't late and the app never says it is." | Call list, reasons, the arm chart |
-| 2:50 | Logo | "The data said coaching beat tips four to one. The relationship did the work. So we built a table." | Fed face |
+## Slides (≈1:55)
+
+| t | Slide | Presenter says |
+|---|---|---|
+| 0:00 | 1 · Thesis | "Treatment ends. People stop checking in. Dinner gets late, and it's alone. Grumble helps with what you eat, when you eat, and who you eat with." |
+| 0:25 | 2 · The social side | "808 real cancer survivors in NHANES: with severe depressive symptoms they eat 370 fewer calories and a third less fiber, and twice as many have diabetes. Distress shows up as skipped meals, not binges." |
+| 0:50 | 3 · The levers | "The challenge asked three questions. Late dinner: yes, plus 24 at the peak. A walk: yes, minus 23. How much: ten minutes; twenty adds nothing. And four things shape the plate: money, social, the meals, time." |
+| 1:15 | 4 · The table | "So the product isn't a chart. It's a seat. One Tuesday at Versailles hits every lever, and a survivor hosts. Nobody at the table pays." |
+| 1:40 | 5 · Around the table | "Around it, one loop a day: an intake that learns, Today, and What if." |
+
+## Demo (≈2:30): four beats
+
+| t | Screen | Do | Say | The judge sees |
+|---|---|---|---|---|
+| 1:55 | Today | Read the nudge. Lunch → type "a burger and fries" → Add. | "Tuesday. She had a burger at lunch, and she tells Grumble in plain words. It doesn't scold. It keeps the burger and makes dinner the lean one." | "Dinner was at 9:40 last night. Not a crime. Tonight, aim for 8." The foods with USDA numbers, "How today's going", the spike bar moving |
+| 2:40 | Today → the card | Energy, how's the day, "Just me" → Done. Open "What is this?". Tap "I'll be there". | "And it doesn't hand her a chart. It hands her a seat. Who pays? Nobody at the table. What's the catch? None." | The Versailles card: 6:30, Tony hosting; the four answers; "✓ Tuesday" |
+| 3:25 | What if | Vaca frita, 9:30 pm, no walk. Then walk 10 → 20. | "Her own dinner at 9:30 against Grumble's move: same plate, earlier, one cup of rice, ten minutes outside. Twenty minutes? Same as ten. Ten is the whole trick." | The two curves, about 188 → 135 at the peak, −80% over two hours; the "Same as ten" chip |
+| 3:55 | Any screen | Tap ES. | "And all of it in Spanish." | The same screen in Miami Spanish |
+
+## Close (≈0:30)
+
+Back to the deck, slide 7: "Four levers. One evening. Someone across the table." Stop talking.
 
 ## Backup paths
 
-- If the simulator stalls: the evidence pack's Chart 3 as a static image.
-- If a judge asks about real people: "The synthetic patterns are Sylvester's design. The real finding is NHANES: survivors with severe depressive symptoms eat 370 fewer calories, a third less fiber, and run HbA1c 5.9 against 5.7, with income at the poverty line. Grumble collects the piece the data doesn't have: who you ate with."
-- If asked "isn't this January AI?": "The curve is table stakes; they do it for 32 million foods. Nobody has a plan for bandeja paisa, nobody asks who you're eating with, and nobody's buying the table."
-- If asked about the name: "Patients describe the stretch after treatment as the moment the casseroles stop and everyone stops calling. Grumble is the thing that starts when the casseroles stop."
+- **Logging is slow or offline:** say "it's reading what she typed", wait; without the key or the network, the word-match fallback still logs simple foods ("rice, chicken, beans"). Have the What if beat ready to go first if it stalls.
+- **"Is this real data?"** "Two kinds, and every number is tagged on screen. NHANES is real survivors: distress travels with lower income, less fiber and higher HbA1c. The program and the glucose patterns are the challenge's synthetic data, Sylvester's design. We say 'people like you', a range, never a forecast."
+- **"Isn't this another glucose app?"** "The curve is table stakes. Nobody has a plan for bandeja paisa, nobody asks who you're eating with, and nobody's buying the table."
+- **"Where's the coach?"** "Designed (07), next to build: who to call first. Today, three low days in a week routes to the coach, quietly."
+- More answers: `presentation/README.md` § Q&A.
 
 ## Pre-flight
 
-- [ ] Store cleared; demo clock set to the Tuesday in week 4.
-- [ ] Language set to Spanish on the device, presenter notes in English.
-- [ ] Marisol's log seeded with three mood-2 days this week so she tops the coach list.
-- [ ] Tables fixture has Tony hosting this Tuesday with 3 seats left.
-- [ ] Walk slider verified: 10 / 20 / 30 show the same number.
+- [ ] Restart `npm run dev` (resets seats and funding; the server keeps them in memory).
+- [ ] `.env` has `ANTHROPIC_API_KEY`; on the venue Wi-Fi, log "a burger and fries" once to confirm, then open `/today?demo` to clear it.
+- [ ] Deck open (`npm run deck` or the file), fullscreen (F), timer (T) at the start.
+- [ ] Walk slider checked: 10 / 20 / 30 show the same number.

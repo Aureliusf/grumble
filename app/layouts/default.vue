@@ -1,12 +1,29 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
-const { restore } = useLang()
-const isDev = import.meta.dev
+const { restore, setLang } = useLang()
 // The spike bar needs a day to draw; the splash and the intake don't have one yet.
 const route = useRoute()
+const router = useRouter()
 const showSpikes = computed(() => !['/', '/intake'].includes(route.path))
 
-onMounted(restore)
+// The date strip and the "fixture" chip are for us, not judges: only with ?debug (kept for the session).
+const debug = useState('debug', () => import.meta.dev && route.query.debug !== undefined)
+
+// ?demo puts the app in the state the pitch starts from: Marisol's plan (no saved intake),
+// nothing logged today, English. Server state (seats, funding) resets when `npm run dev` restarts.
+const { clear: clearGraph } = useFoodGraph()
+const eaten = useEaten()
+onMounted(async () => {
+  if (route.query.demo !== undefined) {
+    clearGraph()
+    eaten.value = []
+    await setLang('en')
+    const { demo: _, ...rest } = route.query
+    router.replace({ query: rest })
+    return
+  }
+  restore()
+})
 useHead({ htmlAttrs: { lang: locale } })
 
 // Today first: it's the screen people open every day. Intake last: it's where they go back to refine.
@@ -32,7 +49,7 @@ const tabs = computed(() => [
           </div>
         </div>
         <SpikeBar v-if="showSpikes" />
-        <DevStrip v-if="isDev" />
+        <DevStrip v-if="debug" />
       </header>
 
       <main class="flex-1 px-4 py-5 pb-32 flex flex-col gap-4">
