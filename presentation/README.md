@@ -22,7 +22,7 @@ Start the app before the pitch (`npm run dev` at the repo root). The demo slide'
 |---|---|---|
 | 0:00–0:25 | 1 · The problem | Food apps count the plate; nobody asks who's across the table. Grumble works on what, when (on your clock) and who with. |
 | 0:25–0:50 | 2 · Mental health | NHANES, 808 real survivors: with severe depressive symptoms they eat *less* (1,414 vs 1,781 kcal), fiber collapses (10.9 vs 15.4 g), HbA1c 5.9 vs 5.7, diabetes 45% vs 22%. |
-| 0:50–1:15 | 3 · The four levers | Money, company, the meals, time and routine: one number each (tagged NHANES real or challenge synthetic) and what Grumble does about it. Associations, not proof. |
+| 0:50–1:15 | 3 · The four levers | Money, social (friends, family, neighbors), the meals, time and routine: one number each (tagged NHANES real or challenge synthetic) and what Grumble does about it. Associations, not proof. |
 | 1:10–1:40 | 4 · **The table** | The center of the pitch. One Tuesday at Versailles hits every lever: early dinner, food they love, the walk, a person across the table. Grumble asks who's at the table every day, names a person when you're alone, and saves the seat in one tap. Survivors host; donors pay $20 a seat. |
 | 1:40–1:55 | 5 · Around the table | The daily loop: intake that learns, Today (log in plain words, the day rebalances), What if. |
 | 1:55–4:30 | 6 · Demo | Marisol: the nudge, log a burger at lunch, dinner turns lean, check in → **the table card**, whole-day curve, save a seat. |
