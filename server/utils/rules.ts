@@ -1,7 +1,6 @@
 import type { Card, Checkin, Lang, TodayResponse, Week } from '../shared/types'
 import { clock, dishById, type Graph, type LogDay } from './data'
-import { movesFor } from './moves'
-import { MENU_IDS } from './menu'
+import { MENU_IDS, moveText } from './menu'
 import { checkins, skipped, tableView, tables, weekDays, yesterday } from './state'
 import { dayStatus, weekStatus } from './status'
 import { grumbleTime, resolveTarget } from './time'
@@ -14,7 +13,7 @@ const lastMealStd = (g: Graph) => g.standards.items.find(s => s.kind === 'last_m
 const actions = (lang: Lang) => [{ id: 'seat', label: t(lang, 'actions.seat') }, { id: 'skip', label: t(lang, 'actions.skip') }]
 const moveLine = (dishId: string, lang: Lang) => {
   const d = dishById.get(dishId)
-  return d ? t(lang, `moves.${movesFor(d).ids[0] ?? 'as-is'}`, { dish: shortDish(d.name).toLowerCase() }) : ''
+  return d ? moveText(d, lang) : ''
 }
 const pick = (g: Graph, pred: (r: Graph['dishes']['rotation'][number]) => boolean) => g.dishes.rotation.find(pred)
 const starredDinner = (g: Graph) => pick(g, r => !!r.star && r.slot === 'dinner') ?? pick(g, r => !!r.star) ?? g.dishes.rotation[0]
@@ -59,9 +58,8 @@ const RULES: Rule[] = [
   } },
   { id: 'p5-alone', when: c => company(c) === 'alone', card: c => dinner(c, 'p5-alone', { evidence: 'observed pattern' }) },
   { id: 'p6-place', when: c => company(c) === 'out' && !!c.graph.dishes.places?.length, card: c => {
-    const p = c.graph.dishes.places![0], time = grumbleTime(c.graph.person.schedule)
-    return { id: 'p6-place', kind: 'place', title: p.venue, body: t(c.lang, 'cards.p6-place.body', { order: p.order.replace(/\.$/, ''), avoid: p.avoid ?? '' }),
-      time, walk_min: 10, evidence: 'rule based', actions: [] }
+    const venue = c.graph.dishes.places![0].venue, d = starredDinner(c.graph)
+    return { ...dinner(c, 'p6-place', { vars: { venue, dish: shortDish(dishById.get(d.dish_id)?.name ?? d.dish_id) } }), kind: 'place', title: venue }
   } },
   { id: 'p7-light', when: c => (c.checkin?.energy ?? 5) <= 2 || (c.checkin?.hunger ?? 5) <= 2, card: c => {
     const light = pick(c.graph, r => !!r.flags?.includes('low_appetite_ok') && r.slot !== 'breakfast' && dishById.get(r.dish_id)?.typical_meal_type !== 'drink')

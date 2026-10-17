@@ -27,7 +27,7 @@ function hit(pred: string, days: LogDay[], graph: Graph): boolean {
     return best >= Number(m[1])
   }
   if ((m = pred.match(/^mood <= (\d+) on (\d+) days$/))) return days.filter(d => (d.mood_1_to_5 ?? 6) <= Number(m![1])).length >= Number(m[2])
-  if (pred === 'no food logged and no check-in') return days.some(d => d.food_logged === false && d.mood_1_to_5 == null)
+  if (pred === 'no food logged and no check-in') return days.some(d => d.food_logged === false && !d.checked_in && d.mood_1_to_5 == null && d.energy_1_to_5 == null && d.hunger_1_to_5 == null)
   return false
 }
 

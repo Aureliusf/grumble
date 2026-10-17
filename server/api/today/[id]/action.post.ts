@@ -7,14 +7,15 @@ import { seat, skipped, tables } from '../../../utils/state'
 
 // "seat" puts the person at today's table; "skip" drops this card so the next rule fires.
 export default defineEventHandler(async (event): Promise<ActionResponse> => {
-  const graph = graphOf(event), id = graph.person.id
-  const { card_id, action_id } = await readBody<{ card_id: string; action_id: string }>(event)
+  const graph = graphOf(event), id = graph.person.id, lang = langOf(event)
+  const { card_id, action_id } = (await readBody<{ card_id?: unknown; action_id?: unknown }>(event)) ?? {}
+  const card = today(graph, lang).card
+  const tb = tables.find(t => t.date === clock().today && t.host)
+  const reseat = card_id === 'p2-table' && action_id === 'seat' && !!tb?.guests.has(id)
+  if (!reseat && (card_id !== card.id || !card.actions.some(a => a.id === action_id))) throw badRequest('card_id and action_id must match the card offered today')
   if (action_id === 'seat') {
-    const tb = tables.find(t => t.date === clock().today && t.host)
     if (!tb) throw badRequest('No table today')
     seat(tb, id)
-  } else if (action_id === 'skip') {
-    skipped.set(id, (skipped.get(id) ?? new Set()).add(card_id))
-  } else throw badRequest('action_id must be seat or skip')
-  return { ok: true, fed: action_id === 'seat', today: today(graph, langOf(event)) }
+  } else skipped.set(id, (skipped.get(id) ?? new Set()).add(card.id))
+  return { ok: true, fed: action_id === 'seat' && tb!.guests.has(id), today: today(graph, lang) }
 })

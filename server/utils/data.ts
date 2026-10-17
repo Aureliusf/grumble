@@ -22,7 +22,7 @@ export interface Graph {
   accountable: { coach: { name: string }; buddy?: { name: string } | null; table?: { usual_night?: string }; dog?: string | null }
   dishes: { rotation: RotationItem[]; places?: { venue: string; order: string; avoid?: string }[] }
 }
-export interface LogDay { date: string; food_logged?: boolean; last_ate?: string; walked_after_dinner_min?: number; mood_1_to_5?: number; energy_1_to_5?: number; hunger_1_to_5?: number }
+export interface LogDay { date: string; food_logged?: boolean; last_ate?: string; walked_after_dinner_min?: number; checked_in?: boolean; mood_1_to_5?: number; energy_1_to_5?: number; hunger_1_to_5?: number }
 
 export const P = params
 export const N_DINNERS = nDinners as unknown as Record<SugarGroup, number>

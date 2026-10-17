@@ -24,6 +24,7 @@
 - Hosts' `years_out` comes from personas.json (Tony 1.2 rounds to 1), not the fixture's 4.
 - `POST /api/today/:id/action` returns `{ ok, fed, today }`, covering both `15` and `16`. `skip` drops the card so the next rule fires.
 - `?lang=en|es` only, default `es`. Spanish copy follows the `16` fixtures (tú).
+- Restaurant cards keep the first known venue and suggest the person's starred dinner with localized portion and order moves. Raw graph `order`/`avoid` prose stays in the graph, but is not used as advice because it contains restrictions and untranslated English.
 - Seating is idempotent. Today's check-in mood counts toward the trailing week.
 - Clock week stays 4 as `00` says; the synthetic data would call 2025-01-14 week 5.
 - `.npmrc` sets `legacy-peer-deps`: npm 10 crashes resolving vitest's optional peers. `vite` is pinned explicitly for that reason.

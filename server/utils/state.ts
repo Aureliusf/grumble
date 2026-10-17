@@ -46,10 +46,10 @@ export const fundView = (lang: 'en' | 'es'): Fund => ({
 export const checkins = new Map<string, Checkin>()
 export const skipped = new Map<string, Set<string>>()
 
-// Trailing seven logged days plus today's check-in, if any.
+// Trailing seven days: the last seven logged days, or six plus today's check-in.
 export function weekDays(personId: string): LogDay[] {
-  const days = (logs[personId] ?? []).filter(d => d.date >= addDays(today, -7) && d.date < today)
   const c = checkins.get(personId)
-  return c ? [...days, { date: today, mood_1_to_5: c.mood, energy_1_to_5: c.energy, hunger_1_to_5: c.hunger }] : days
+  const days = (logs[personId] ?? []).filter(d => d.date >= addDays(today, c ? -6 : -7) && d.date < today)
+  return c ? [...days, { date: today, checked_in: true, mood_1_to_5: c.mood, energy_1_to_5: c.energy, hunger_1_to_5: c.hunger }] : days
 }
 export const yesterday = (personId: string) => (logs[personId] ?? []).find(d => d.date === addDays(today, -1))
