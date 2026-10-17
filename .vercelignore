@@ -1,0 +1,11 @@
+.env*
+.nuxt
+.output
+.data
+.nitro
+dist
+backend/data/
+analysis/
+presentation/
+Challenge4_Dose_and_Timing/
+Challenge4_Dose_and_Timing.zip
