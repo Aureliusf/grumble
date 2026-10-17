@@ -203,6 +203,8 @@ const isSay = computed(() => ['say', 'done'].includes(step.value.type))
 </script>
 
 <template>
+  <AiBanner />
+
   <!-- refine: what Grumble knows, one more meal, change any section -->
   <template v-if="refining && !section">
     <div class="flex items-start gap-3">
