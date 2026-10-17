@@ -161,7 +161,8 @@
     "ate_placeholder": "una taza de arroz\nuna palma de pollo\nuna taza de frijoles negros",
     "ate_add": "Agregar",
     "rest": "El resto de hoy",
-    "usda_note": "Claude lee las comidas y las cantidades. Números: USDA FoodData Central para alimentos sencillos, los datos de platos del programa para platos completos."
+    "usda_note": "Claude lee las comidas y las cantidades. Números: USDA FoodData Central para alimentos sencillos, los datos de platos del programa para platos completos.",
+    "invited": "Tiene una invitación"
   },
   "table": {
     "tabs": {

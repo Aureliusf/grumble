@@ -22,6 +22,7 @@ const [primary, ...others] = props.card.actions
       <div class="bg-grumble-500 text-white px-5 py-4 flex items-center gap-3">
         <UIcon name="i-lucide-utensils" class="size-7" />
         <div class="flex-1">
+          <p class="font-display font-semibold text-[15px] uppercase tracking-[0.12em] opacity-90">{{ t('today.invited') }}</p>
           <p class="font-display font-bold text-[26px] leading-tight">{{ card.title }}</p>
           <p class="font-display font-semibold text-[20px] tabular opacity-95">{{ capitalize(when) }}</p>
         </div>

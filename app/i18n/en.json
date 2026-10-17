@@ -161,7 +161,8 @@
     "ate_placeholder": "a cup of rice\na palm of chicken\na cup of black beans",
     "ate_add": "Add",
     "rest": "The rest of today",
-    "usda_note": "Foods and amounts read by Claude. Numbers: USDA FoodData Central for simple foods, the program's dish data for whole dishes."
+    "usda_note": "Foods and amounts read by Claude. Numbers: USDA FoodData Central for simple foods, the program's dish data for whole dishes.",
+    "invited": "You're invited"
   },
   "table": {
     "tabs": {
