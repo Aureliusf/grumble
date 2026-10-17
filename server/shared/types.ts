@@ -31,6 +31,9 @@ export interface Curve {
   applied_moves: string[]
 }
 
+// Every cost is an estimate: retail prices per 100 g (data/components.json) times a typical plate portion (server/utils/cost.ts).
+export interface Cost { usd: number; basis: 'estimated' }
+
 export interface SimulateResponse {
   baseline_mg_dl: number
   group: SugarGroup
@@ -39,6 +42,7 @@ export interface SimulateResponse {
   grumble: Curve                            // the person's last_meal_by standard (Marisol 20:00), walk 10, move = true
   delta: { peak_mg_dl: number; iauc_pct: number }   // grumble vs current, negative = better
   same_as_ten: boolean                      // true when walk_min > 10
+  cost?: Cost                               // home-cooked plate as Grumble suggests it; absent when unpriced
 }
 
 export interface Checkin { date?: string; energy?: 1|2|3|4|5; hunger?: 1|2|3|4|5; mood?: 1|2|3|4|5; company: 'alone'|'someone'|'out'|'table'|'unknown' }
@@ -53,6 +57,7 @@ export interface Card {
   person?: string
   evidence: Evidence
   actions: { id: string; label: string }[]
+  cost_usd?: number                         // estimated home cost of dish_id, only when the person has a weekly budget
 }
 
 export interface Week { status: 'green'|'amber'|'red'; red: boolean; reasons: string[]; coach_alerted: boolean }
@@ -63,6 +68,7 @@ export interface TodayResponse {
   status_yesterday: 'green' | 'amber' | 'red'
   card: Card
   week: Week
+  per_meal_usd?: number                     // (weekly budget - meals out x $20) / meals at home, only when a budget is known
 }
 
 export interface ActionResponse { ok: true; fed: boolean; today: TodayResponse }
@@ -73,7 +79,7 @@ export interface Table {
   seats_total: number; seats_left: number; funded_by?: string
   mine: 'none' | 'guest' | 'host'
 }
-export interface MenuItem { dish_id: string; name: string; move: string; applied_moves: string[]; calories: number; carbs_g: number; fiber_g: number }
+export interface MenuItem { dish_id: string; name: string; move: string; applied_moves: string[]; calories: number; carbs_g: number; fiber_g: number; cost?: Cost }
 export interface Fund { seat_usd: 20; table_usd: 160; month_usd: 640; ledger: { month: string; tables_funded: number; seats: number; seats_taken: number } }
 export interface Clock { today: string; weekday: string; week: number }
 export interface CoachAlert { person_id: string; display_name: string; coach: string; reasons: string[]; night_shift: boolean }

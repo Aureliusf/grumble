@@ -1,0 +1,135 @@
+{
+ "person_id": "N0170",
+ "note": "hand-written per 15 §Seeded log; meals_out counts restaurant meals that day (05 p8). Two in the trailing week, so p8 fires on demo day.",
+ "days": [
+  {
+   "date": "2024-12-31",
+   "food_logged": true,
+   "last_ate": "21:50",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-01",
+   "food_logged": true,
+   "last_ate": "19:45",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 4,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-02",
+   "food_logged": true,
+   "last_ate": "20:40",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 2,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-03",
+   "food_logged": true,
+   "last_ate": "19:30",
+   "walked_after_dinner_min": 12,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 4
+  },
+  {
+   "date": "2025-01-04",
+   "food_logged": true,
+   "last_ate": "21:15",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3,
+   "meals_out": 1
+  },
+  {
+   "date": "2025-01-05",
+   "food_logged": true,
+   "last_ate": "19:50",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 4,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-06",
+   "food_logged": true,
+   "last_ate": "20:00",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-07",
+   "food_logged": true,
+   "last_ate": "19:40",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 4,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-08",
+   "food_logged": true,
+   "last_ate": "21:30",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 2,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-09",
+   "food_logged": true,
+   "last_ate": "20:30",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 4,
+   "meals_out": 1
+  },
+  {
+   "date": "2025-01-10",
+   "food_logged": true,
+   "last_ate": "19:55",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 2,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-11",
+   "food_logged": true,
+   "last_ate": "21:00",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3,
+   "meals_out": 1
+  },
+  {
+   "date": "2025-01-12",
+   "food_logged": true,
+   "last_ate": "19:30",
+   "walked_after_dinner_min": 15,
+   "mood_1_to_5": 4,
+   "energy_1_to_5": 4,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-13",
+   "food_logged": true,
+   "last_ate": "19:45",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  }
+ ]
+}
