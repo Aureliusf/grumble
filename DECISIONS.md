@@ -87,3 +87,9 @@ Choices made where the spec was silent or the installed versions differed from i
 - **No key:** the same word-match fallback as Today (`localParse`). The slot comes from the matched dish, otherwise dinner.
 - A custom meal's slug shows as words on screen ("Rice chicken and beans"), not as `rice-chicken-and-beans`.
 - **One client path:** the intake and Today both call `/api/log` through `apiCall` with the same `localMeal` fallback and `MealParse` type. Today keeps its own slot picker.
+
+## 2026-10-17 — Vercel deploy as one service
+
+- **`vercel.json` declares one service, `app`** (Nuxt at the repo root), public on `/(.*)`. Nuxt already bundles `server/api/*` as its own server directory, so `/api/*` is served from the same function. A separate `server` service would install only `server/package.json`, miss `@anthropic-ai/sdk` and `zod`, and duplicate the in-memory state.
+- **No bindings.** The app is `ssr: false` and every API call is a same-origin browser fetch; no service calls another.
+- In-memory state (`server/utils/state.ts`) resets on each cold start and isn't shared across function instances. Acceptable for the demo.
