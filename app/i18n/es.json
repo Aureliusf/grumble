@@ -421,7 +421,8 @@
     "targets_note": "Metas del día según las Guías Alimentarias de EE. UU., por edad y sexo.",
     "remove": "Quitar",
     "pending": "planeado · todavía no",
-    "not_logged": "sin anotar · agréguelo arriba si comió"
+    "not_logged": "sin anotar · agréguelo arriba si comió",
+    "covered": "nada planeado · los números de hoy ya están cubiertos"
   },
   "spike": {
     "title": "Picos de hoy · gente como usted",
@@ -500,7 +501,11 @@
     "cups": "tazas",
     "plate_less": "frijoles y vegetales completos, menos de lo demás",
     "then": "luego",
-    "taste": "una probadita"
+    "taste": "una probadita",
+    "why_closest": "Lo de siempre no cabe en lo que queda, así que este es el más cercano que sí.",
+    "only_fitting": "Solo aparecen platos que mantienen el día en su meta.",
+    "covered_title": "{slot}: los números de hoy ya están cubiertos",
+    "covered_body": "Las calorías y los carbohidratos ya llegan a la meta de hoy, así que no hay nada planeado. ¿Le da hambre más tarde? Coma, y anótelo arriba. Diez minutos afuera también cuentan."
   },
   "foods": {
     "white-rice": "Arroz blanco",

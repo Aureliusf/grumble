@@ -5,7 +5,8 @@ import { isLean, mealBudget, plate, portionFor, slotOf, SLOTS, type Slot } from 
 import { sum, type Nutrients } from '#shared/nutrition'
 import { peakDelta } from '#shared/simulate'
 import { COMPONENTS, type PricedItem } from '#shared/meals'
-import { howToEat } from '#shared/recipe'
+import { howToEat, partsToDish, type Part } from '#shared/recipe'
+import precomputed from '~~/data/dish-components.json'
 
 // After a meal is logged: simulate the next one. Pick any dish (the balanced day's pick comes first);
 // Grumble works out how much of it fits what's left of the day, and shows the numbers, where the day
@@ -27,52 +28,85 @@ const open = computed(() => {
   return SLOTS.slice(last + 1).filter(s => !slots.value.includes(s))
 })
 const recommended = computed(() => (slot.value ? day.value.plates.find(p => p.slot === slot.value && !p.fixed) : undefined))
-
-// The dish being simulated: the recommendation until the person picks another.
-const picked = ref<string | null>(null)
-watch(slot, () => { picked.value = null })
-const dishId = computed({
-  get: () => picked.value ?? recommended.value?.dish.id ?? '',
-  set: (v: string) => { picked.value = v },
-})
 const byId = computed(() => new Map(dishes.value.map(d => [d.id, d])))
-const dish = computed(() => byId.value.get(dishId.value))
-
 const fits = (d: Dish) => !!slot.value && (slot.value === 'breakfast' ? slotOf(d) === 'breakfast' : slotOf(d) === 'lunch' || slotOf(d) === 'dinner')
-const items = computed<SelectMenuItem[][]>(() => {
-  if (!slot.value) return []
-  const item = (d: Dish): SelectMenuItem => ({ label: d.name, value: d.id })
-  const label = (l: string): SelectMenuItem => ({ type: 'label', label: l })
-  const rec = recommended.value?.dish
-  const loved = graph.value.dishes.rotation.map(r => byId.value.get(r.dish_id)).filter((d): d is Dish => !!d && d.id !== rec?.id)
-  const shown = new Set([rec?.id, ...loved.map(d => d.id)])
-  const lean = dishes.value.filter(d => fits(d) && isLean(d) && !shown.has(d.id))
-  lean.forEach(d => shown.add(d.id))
-  const rest = dishes.value.filter(d => fits(d) && !shown.has(d.id)).sort((a, b) => a.name.localeCompare(b.name))
-  return [
-    ...(rec ? [[label(t('next.group_rec')), item(rec)]] : []),
-    ...(loved.length ? [[label(t('next.group_yours')), ...loved.map(item)]] : []),
-    ...(lean.length ? [[label(t('next.group_lean')), ...lean.map(item)]] : []),
-    [label(t('next.group_all', { slot: t(`day.slots.${slot.value}`).toLowerCase() })), ...rest.map(item)],
-  ]
-})
 
 const ateTotals = computed(() => sum(day.value.plates.filter(p => p.fixed).map(p => p.n)))
 const budget = computed(() => (slot.value ? mealBudget(targets.value, ateTotals.value, slot.value, open.value) : null))
 
-// The dish's parts (precomputed, instant; see data/dish-components.json). Without them, the whole dish scales.
+// A dish's parts: precomputed for all 127 (data/dish-components.json); /api/recipe only fills a gap.
+const PRE = (precomputed as { dishes: Record<string, Part[]> }).dishes
 const recipes = useState<Record<string, PricedItem[] | null>>('recipes', () => ({}))
+const partsOf = (d: Dish): PricedItem[] | null => (PRE[d.id] ? partsToDish(PRE[d.id]!, d) : recipes.value[d.id] ?? null)
+
+// The plate Grumble would serve of a dish: trimmed first/then/last when its parts are known, else the whole dish scaled.
+function served(d: Dish) {
+  const b = budget.value!
+  const items = partsOf(d)
+  if (items) { const how = howToEat(items, b); return { how, n: how.n, portion: 1 } }
+  const portion = portionFor(d, b)
+  return { how: null, n: plate(slot.value ?? 'dinner', d, portion).n, portion }
+}
+
+// Only dishes that, served that way, keep the day inside its calorie and carb targets (5% slack).
+const SLACK = 1.05
+const candidates = computed(() => {
+  if (!slot.value || !budget.value) return []
+  return dishes.value.filter(fits).map(d => ({ d, s: served(d) })).filter(({ s }) => {
+    const after = sum([ateTotals.value, s.n])
+    return after.calories <= targets.value.calories * SLACK && after.carbs_g <= targets.value.carbs_g * SLACK
+  })
+})
+const candidateIds = computed(() => new Set(candidates.value.map(c => c.d.id)))
+// Nothing fits: today's numbers are covered. No next meal is planned; logging stays open above.
+const covered = computed(() => !!slot.value && !candidates.value.length)
+
+// Default: the balanced day's pick if it fits, else the fitting dish that comes closest to what's left.
+const fallbackId = computed(() => {
+  const rec = recommended.value?.dish.id
+  if (rec && candidateIds.value.has(rec)) return rec
+  const want = budget.value?.calories ?? 0
+  return [...candidates.value].sort((a, b) => Math.abs(want - a.s.n.calories) - Math.abs(want - b.s.n.calories))[0]?.d.id ?? ''
+})
+const picked = ref<string | null>(null)
+watch(slot, () => { picked.value = null })
+const dishId = computed({
+  get: () => (picked.value && candidateIds.value.has(picked.value) ? picked.value : fallbackId.value),
+  set: (v: string) => { picked.value = v },
+})
+const dish = computed(() => byId.value.get(dishId.value))
+const isRecommended = computed(() => dishId.value === recommended.value?.dish.id)
+
+const items = computed<SelectMenuItem[][]>(() => {
+  if (!slot.value) return []
+  const ok = (d: Dish) => candidateIds.value.has(d.id)
+  const item = (d: Dish): SelectMenuItem => ({ label: d.name, value: d.id })
+  const label = (l: string): SelectMenuItem => ({ type: 'label', label: l })
+  const rec = recommended.value?.dish && ok(recommended.value.dish) ? recommended.value.dish : undefined
+  const loved = graph.value.dishes.rotation.map(r => byId.value.get(r.dish_id)).filter((d): d is Dish => !!d && ok(d) && d.id !== rec?.id)
+  const shown = new Set([rec?.id, ...loved.map(d => d.id)])
+  const lean = candidates.value.map(c => c.d).filter(d => isLean(d) && !shown.has(d.id))
+  lean.forEach(d => shown.add(d.id))
+  const rest = candidates.value.map(c => c.d).filter(d => !shown.has(d.id)).sort((a, b) => a.name.localeCompare(b.name))
+  return [
+    ...(rec ? [[label(t('next.group_rec')), item(rec)]] : []),
+    ...(loved.length ? [[label(t('next.group_yours')), ...loved.map(item)]] : []),
+    ...(lean.length ? [[label(t('next.group_lean')), ...lean.map(item)]] : []),
+    ...(rest.length ? [[label(t('next.group_all', { slot: t(`day.slots.${slot.value}`).toLowerCase() })), ...rest.map(item)]] : []),
+  ]
+})
+
+// A dish missing from the precomputed file: ask /api/recipe once.
 watch(dishId, async (id) => {
-  if (!id || id in recipes.value) return
+  if (!id || PRE[id] || id in recipes.value) return
   const res = await apiCall<{ items: PricedItem[] } | null>('/api/recipe', () => null, { method: 'POST', body: { dish_id: id } })
   recipes.value = { ...recipes.value, [id]: res?.items?.length ? res.items : null }
 }, { immediate: true })
-const parts = computed(() => recipes.value[dishId.value] ?? null)
 
-// How to eat it: beans, vegetables and protein first and whole; starches and fried sides last and less.
-const how = computed(() => (parts.value && budget.value ? howToEat(parts.value, budget.value) : null))
-const portion = computed(() => (how.value ? 1 : dish.value && budget.value ? portionFor(dish.value, budget.value) : 1))
-const plateN = computed<Nutrients | null>(() => how.value?.n ?? (dish.value ? plate(slot.value ?? 'dinner', dish.value, portion.value).n : null))
+const servedNow = computed(() => (dish.value && budget.value ? served(dish.value) : null))
+const how = computed(() => servedNow.value?.how ?? null)
+const portion = computed(() => servedNow.value?.portion ?? 1)
+const plateN = computed<Nutrients | null>(() => servedNow.value?.n ?? null)
 const sim = computed(() => (dish.value && slot.value && plateN.value ? { ...plate(slot.value, dish.value, 1), n: plateN.value } : null))
 
 // Where the day lands with this meal: eaten + this plate (the other open meals aren't counted yet).
@@ -103,14 +137,22 @@ function amount(id: string, g: number) {
 const foodName = (i: PricedItem) => (te(`foods.${i.id}`) ? t(`foods.${i.id}`) : i.name.split(',')[0])
 
 // Whatever the card shows is the planned meal for the rest of the app ("The rest of today", the spike bar).
-watch([slot, dishId, plateN], ([s, id, n]) => {
-  pending.value = s && id && n ? { slot: s, dish_id: id, portion: 1, n } : null
+watch([slot, dishId, plateN, covered], ([s, id, n, c]) => {
+  pending.value = s && c ? { slot: s, dish_id: '', portion: 0, covered: true } : s && id && n ? { slot: s, dish_id: id, portion: 1, n } : null
 }, { immediate: true })
 const r = (n: number) => Math.round(n)
 </script>
 
 <template>
-  <div v-if="slot && recommended" class="mt-4 rounded-[var(--radius-grumble)] border-2 border-cafecito-200 dark:border-crema-800 p-3">
+  <!-- nothing fits what's left: today's covered; logging above stays open -->
+  <div v-if="slot && covered" class="mt-4 rounded-[var(--radius-grumble)] border-2 border-dashed border-cafecito-200 dark:border-crema-800 p-3">
+    <p class="text-[15px] font-semibold text-cafecito-700 flex items-center gap-1.5">
+      <UIcon name="i-lucide-check" class="size-4" />{{ t('next.covered_title', { slot: t(`day.slots.${slot}`) }) }}
+    </p>
+    <p class="mt-1 text-[15px] leading-snug">{{ t('next.covered_body') }}</p>
+  </div>
+
+  <div v-else-if="slot && dish" class="mt-4 rounded-[var(--radius-grumble)] border-2 border-cafecito-200 dark:border-crema-800 p-3">
     <p class="text-[15px] font-semibold text-cafecito-700 flex items-center gap-1.5">
       <UIcon name="i-lucide-arrow-right" class="size-4" />{{ t('next.title', { slot: t(`day.slots.${slot}`) }) }}
     </p>
@@ -125,8 +167,10 @@ const r = (n: number) => Math.round(n)
       :ui="{ base: 'rounded-full font-display font-semibold' }"
     />
     <p class="mt-1.5 text-[15px] text-crema-800/70 leading-snug">
-      <template v-if="dishId === recommended.dish.id">{{ heavy ? t('next.why_heavy', { dish: heavy }) : t('next.why_fit') }}</template>
-      <template v-else>{{ t('next.why_picked') }}</template>
+      <template v-if="isRecommended">{{ heavy ? t('next.why_heavy', { dish: heavy }) : t('next.why_fit') }}</template>
+      <template v-else-if="picked === dishId">{{ t('next.why_picked') }}</template>
+      <template v-else>{{ t('next.why_closest') }}</template>
+      {{ t('next.only_fitting') }}
     </p>
 
     <div v-if="sim" class="mt-3">

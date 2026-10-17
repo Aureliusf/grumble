@@ -421,7 +421,8 @@
     "targets_note": "Day targets from the US Dietary Guidelines, by age and sex.",
     "remove": "Remove",
     "pending": "planned · not eaten yet",
-    "not_logged": "not logged · add it above if you ate"
+    "not_logged": "not logged · add it above if you ate",
+    "covered": "nothing planned · today's numbers are covered"
   },
   "spike": {
     "title": "Today's spikes · people like you",
@@ -500,7 +501,11 @@
     "cups": "cups",
     "plate_less": "beans and vegetables whole, less of the rest",
     "then": "then",
-    "taste": "a taste"
+    "taste": "a taste",
+    "why_closest": "The usual pick doesn't fit what's left, so here's the closest that does.",
+    "only_fitting": "Only dishes that keep today on target are listed.",
+    "covered_title": "{slot}: today's numbers are covered",
+    "covered_body": "Calories and carbs already reach today's targets, so nothing's planned. Hungry later? Eat, and log it above. Ten minutes outside counts too."
   },
   "foods": {
     "white-rice": "White rice",

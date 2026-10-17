@@ -10,7 +10,8 @@ export interface Eaten { slot: Slot; label: string; said: string; items: PricedI
 const KEY = 'grumble.eaten'
 
 // The meal the next-meal simulator is showing: planned, not eaten. Shared so every view agrees; not saved.
-export const usePendingMeal = () => useState<{ slot: Slot; dish_id: string; portion: number; n?: Nutrients } | null>('pendingMeal', () => null)
+// `covered`: nothing fits what's left of the day, so that meal isn't planned (it can still be logged).
+export const usePendingMeal = () => useState<{ slot: Slot; dish_id: string; portion: number; n?: Nutrients; covered?: boolean } | null>('pendingMeal', () => null)
 
 // What the person said they ate today. Part of the day log beside the graph (05 §Data written per day).
 export function useEaten() {
@@ -76,6 +77,8 @@ export function useDay(personId: string) {
   const pending = usePendingMeal()
   const today = computed(() => {
     const p = pending.value
+    if (p?.covered && !eaten.value.some(e => e.slot === p.slot))
+      return balanceDay({ ...common.value, fixed: ate.value, skip: [...skipped.value, p.slot] })
     const d = p && !eaten.value.some(e => e.slot === p.slot) ? byId.value.get(p.dish_id) : undefined
     if (!d || !p) return todayEaten.value
     // The simulator may hand over the adjusted plate (less rice, same beans); use its numbers when it does.
@@ -86,5 +89,8 @@ export function useDay(personId: string) {
   // The same fixed plates with ordinary plates around them, for the what-if comparison.
   const usual = computed(() => usualDay(today.value.plates.filter(p => p.fixed), dishes.value, targets.value, person.value.food_background))
 
-  return { graph, dishes, person, targets, anchor, plan, today, todayEaten, usual, eaten, pending, skipped }
+  // Meals with nothing planned because the day's targets are already met.
+  const covered = computed<Slot[]>(() => (pending.value?.covered && !eaten.value.some(e => e.slot === pending.value!.slot) ? [pending.value.slot] : []))
+
+  return { graph, dishes, person, targets, anchor, plan, today, todayEaten, usual, eaten, pending, skipped, covered }
 }

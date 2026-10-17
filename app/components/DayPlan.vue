@@ -4,7 +4,7 @@ import type { BalancedDay } from '#shared/balance'
 // One day: three plates and the day's totals against the targets.
 import { SLOTS, type Slot } from '#shared/balance'
 
-const props = defineProps<{ day: BalancedDay; fixedLabel: string; removable?: boolean; skipped?: Slot[] }>()
+const props = defineProps<{ day: BalancedDay; fixedLabel: string; removable?: boolean; skipped?: Slot[]; covered?: Slot[] }>()
 const emit = defineEmits<{ remove: [slot: string] }>()
 const { t } = useI18n()
 
@@ -30,12 +30,12 @@ const meters = computed(() => {
 
     <!-- a meal already past and not logged: shown, not planned -->
     <div
-      v-for="s in SLOTS.filter(x => skipped?.includes(x) && !day.plates.some(p => p.slot === x))"
+      v-for="s in SLOTS.filter(x => (skipped?.includes(x) || covered?.includes(x)) && !day.plates.some(p => p.slot === x))"
       :key="`skip-${s}`"
       class="rounded-[var(--radius-grumble)] border-2 border-dashed border-crema-200 dark:border-crema-800 px-4 py-3 flex gap-3 text-[15px] text-crema-800/60"
     >
       <span class="w-20 shrink-0 font-semibold">{{ t(`day.slots.${s}`) }}</span>
-      <span>{{ t('day.not_logged') }}</span>
+      <span>{{ covered?.includes(s) ? t('day.covered') : t('day.not_logged') }}</span>
     </div>
 
     <div

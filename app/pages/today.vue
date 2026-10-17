@@ -11,7 +11,7 @@ const demo = useDemoState()
 
 const { data: today } = useApi<TodayResponse>(`/api/today/${PERSON}`, fixtures.today)
 const { data: dishes } = useApi(`/api/dishes?person_id=${PERSON}`, fixtures.dishes)
-const { today: day, eaten, skipped } = useDay(PERSON)
+const { today: day, eaten, skipped, covered } = useDay(PERSON)
 
 const answers = reactive<{ energy?: 1|2|3|4|5; hunger?: 1|2|3|4|5; mood?: 1|2|3|4|5; company?: Checkin['company'] }>({})
 const result = ref<TodayResponse | null>(null)
@@ -132,7 +132,7 @@ async function onAction(actionId: string) {
   <template v-if="!isRed && eaten.length">
     <DayFeedback />
     <h2 class="font-display font-semibold text-[26px] mt-2">{{ t('today.rest') }}</h2>
-    <DayPlan :day="day" :fixed-label="t('day.ate')" :skipped="skipped" />
+    <DayPlan :day="day" :fixed-label="t('day.ate')" :skipped="skipped" :covered="covered" />
   </template>
 
   <Transition
