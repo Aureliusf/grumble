@@ -4,7 +4,7 @@ import { N_DINNERS, dishById, graphs } from '../utils/data'
 import { movesFor } from '../utils/moves'
 import { simulate } from '../utils/sim'
 import { peakDelta } from '../../shared/simulate'
-import { resolveLate } from '../utils/time'
+import { dinnerTime, resolveLate } from '../utils/time'
 import type { SimulateRequest } from '../shared/types'
 
 const marisol = graphs.N0771, jean = graphs.N1904
@@ -59,6 +59,16 @@ it("the move runs at her own standard (dinner by 8), and 8 itself isn't late", (
   expect(r.grumble.late).toBe(false)
   expect(resolveLate('20:00', marisol.person.schedule)).toBe(false)
   expect(resolveLate('20:30', marisol.person.schedule)).toBe(true)
+})
+
+it('a dinner on a 3.5 h standard is never late (Jean, and an early sleeper)', () => {
+  expect(dinnerTime(jean)).toBe('05:30')
+  expect(resolveLate(dinnerTime(jean), jean.person.schedule)).toBe(false)
+  const early = { type: 'retired', sleep_start: '22:00', sleep_end: '06:00' }
+  const g = { person: { schedule: early }, standards: { items: [{ id: 'x', kind: 'last_meal_by', statement: '', value: '3.5h', relative_to_sleep: true }] } }
+  expect(dinnerTime(g)).toBe('18:30')
+  expect(resolveLate('18:30', early)).toBe(false)
+  expect(resolveLate('19:00', early)).toBe(true)
 })
 
 it('Jean (night shift, sleeps 09:00): 02:00 is not late, 06:00 is', () => {

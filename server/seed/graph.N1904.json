@@ -35,19 +35,19 @@
   },
   "standards": {
     "items": [
-      { "id": "last-meal-4h", "kind": "last_meal_by", "statement": "Last meal four hours before I sleep", "value": "4h", "relative_to_sleep": true, "why": "Timing counts from when you sleep, not the clock", "negotiated_on": "2025-01-06" },
+      { "id": "last-meal-3h30", "kind": "last_meal_by", "statement": "Last meal three and a half hours before I sleep", "value": "3.5h", "relative_to_sleep": true, "why": "Timing counts from when you sleep, not the clock", "negotiated_on": "2025-01-06" },
       { "id": "walk-10", "kind": "walk_after_dinner_min", "statement": "Ten minutes walking after my break meal", "value": 10, "unit": "min", "why": "Ten minutes cut the peak; more didn't add anything", "negotiated_on": "2025-01-06" }
     ]
   },
   "procedures": {
     "items": [
-      { "standard_id": "last-meal-4h", "source": "meal_log", "cadence": "daily", "computation": "last logged item > 5 kcal is at least 4 h before sleep_start" },
+      { "standard_id": "last-meal-3h30", "source": "meal_log", "cadence": "daily", "computation": "last logged item > 5 kcal is at least 3.5 h before sleep_start" },
       { "standard_id": "walk-10", "source": "tracker_steps", "cadence": "daily", "computation": "steps in the 60 min after the last meal >= 800" }
     ]
   },
   "thresholds": {
-    "daily": { "amber_if": ["last-meal-4h missed", "walk-10 missed"], "red_if": ["no food logged and no check-in"], "amber_action": "nudge", "red_action": "coach_notified" },
-    "weekly": { "amber_if": ["last-meal-4h missed 3+ days", "walk-10 missed 4+ days"], "red_if": ["no log 3 consecutive days", "mood <= 2 on 3 days", "cgm time above 180 mg/dL > 25%"], "red_action": "coach_calls" }
+    "daily": { "amber_if": ["last-meal-3h30 missed", "walk-10 missed"], "red_if": ["no food logged and no check-in"], "amber_action": "nudge", "red_action": "coach_notified" },
+    "weekly": { "amber_if": ["last-meal-3h30 missed 3+ days", "walk-10 missed 4+ days"], "red_if": ["no log 3 consecutive days", "mood <= 2 on 3 days", "cgm time above 180 mg/dL > 25%"], "red_action": "coach_calls" }
   },
   "accountable": {
     "coach": { "name": "Lourdes", "contact": "sylvester-survivorship" },
