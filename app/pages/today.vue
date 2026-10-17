@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Checkin, Lang, Table, TodayResponse } from '#shared/types'
 import { SLOTS, type Slot } from '#shared/balance'
-import { localParse, priceItem, totalOf, type PricedItem } from '#shared/meals'
 import { fixtures } from '~/fixtures'
+import { localMeal, type MealParse } from '~/intake/meal'
 
 const PERSON = 'N0771'
 const { t, locale } = useI18n()
@@ -32,16 +32,12 @@ const ateText = ref('')
 const ateSlot = ref<Slot>('lunch')
 const adding = ref(false)
 const lastSay = ref('')
-interface LogResponse { label: string; items: PricedItem[]; say: string }
 
 async function addEaten() {
   const text = ateText.value.trim()
   if (!text) return
   adding.value = true
-  const res = await apiCall<LogResponse>('/api/log', () => {
-    const items = localParse(text, dishes.value).map(priceItem).filter((x): x is PricedItem => !!x)
-    return { label: text, items, say: '' }
-  }, { method: 'POST', body: { text, lang: locale.value } })
+  const res = await apiCall<MealParse>('/api/log', () => localMeal(text, dishes.value, ''), { method: 'POST', body: { text, lang: locale.value } })
   if (res.items.length) {
     const prev = eaten.value.find(e => e.slot === ateSlot.value)
     const entry = prev
@@ -55,8 +51,6 @@ async function addEaten() {
 }
 const removeEaten = (slot: string) => { eaten.value = eaten.value.filter(e => e.slot !== slot) }
 const logged = computed(() => SLOTS.map(s => eaten.value.find(e => e.slot === s)).filter(e => !!e))
-const r = (n: number) => Math.round(n)
-const amount = (i: PricedItem) => (i.kind === 'component' ? `${i.grams} g` : `×${i.portion}`)
 
 async function submit() {
   sending.value = true
@@ -128,15 +122,7 @@ async function onAction(actionId: string) {
         <p class="font-semibold">{{ t(`day.slots.${e.slot}`) }} · <span class="font-normal">{{ e.label }}</span></p>
         <UButton icon="i-lucide-x" size="xs" color="neutral" variant="ghost" :aria-label="t('day.remove')" @click="removeEaten(e.slot)" />
       </div>
-      <ul class="mt-1 flex flex-col gap-0.5 text-[15px]">
-        <li v-for="(i, k) in e.items" :key="k" class="flex justify-between gap-3 tabular">
-          <span class="text-crema-800/80 truncate">{{ i.name }} <span class="text-crema-800/50">· {{ i.said }}</span></span>
-          <span class="shrink-0 text-crema-800/70">{{ amount(i) }} · {{ r(i.n.calories) }} kcal</span>
-        </li>
-      </ul>
-      <p class="mt-1 text-xs text-crema-800/60 tabular">
-        {{ r(totalOf(e.items).calories) }} kcal · {{ r(totalOf(e.items).carbs_g) }} g {{ t('day.carbs') }} · {{ r(totalOf(e.items).fiber_g) }} g {{ t('day.fiber') }} · {{ r(totalOf(e.items).protein_g) }} g {{ t('day.protein') }}
-      </p>
+      <MealItems :items="e.items" />
     </div>
     <p v-if="logged.length" class="mt-2 text-xs text-crema-800/50">{{ t('today.usda_note') }}</p>
   </UCard>

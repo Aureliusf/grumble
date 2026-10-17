@@ -40,7 +40,7 @@ export const STEPS: Step[] = [
   { id: 'cancer', stage: 1, type: 'cancer' },
 
   // Stage 2 — the four risks: taste, convenience, money, company (company last)
-  // Taste opens with one meal in their own words; Claude matches it to dishes.json (server/api/meal.post.ts).
+  // Taste opens with one meal in their own words; Claude splits it into parts and a meal type (server/api/log.post.ts).
   { id: 'meal', stage: 2, type: 'meal' },
   { id: 'refuses', stage: 2, type: 'list', field: 'refuses' },
   { id: 'grew_up_on', stage: 2, type: 'text', field: 'grew_up_on' },

@@ -36,6 +36,21 @@ export function priceItem(i: LoggedItem): PricedItem | null {
 
 export const totalOf = (items: PricedItem[]) => sum(items.map(i => i.n))
 
+// A meal's parts as a rotation portion_override: grams for a food, plate fraction for a dish (the id says which).
+export const partsOf = (items: LoggedItem[]) =>
+  items.reduce<Record<string, number>>((p, i) => ({ ...p, [i.id]: (p[i.id] ?? 0) + ((i.kind === 'component' ? i.grams : i.portion) ?? 0) }), {})
+
+// The graph keeps a custom meal's id as a slug; this is how it reads on screen.
+export const unslug = (id: string) => (id.charAt(0).toUpperCase() + id.slice(1)).replace(/-/g, ' ')
+
+// A loved meal that isn't in dishes.json, as a dish with the summed numbers of its parts.
+export function mealFromParts(id: string, name: string, parts: Record<string, number | string>, type: Dish['typical_meal_type']): Dish | null {
+  const items = Object.entries(parts)
+    .map(([k, v]) => priceItem(componentById.has(k) ? { kind: 'component', id: k, grams: Number(v), said: '' } : { kind: 'dish', id: k, portion: Number(v), said: '' }))
+    .filter((x): x is PricedItem => !!x)
+  return items.length ? { ...totalOf(items), id, name, cuisine: '', typical_meal_type: type, mediterranean_style: false } : null
+}
+
 // Household measures Claude may use, anchored to USDA weights where USDA lists one.
 export const HAND_MEASURES = 'palm of meat, chicken or fish ≈ 85 g (3 oz, USDA); a cup of cooked rice ≈ 158 g, of cooked beans ≈ 172 g (USDA); a fist ≈ 1 cup; a cupped hand ≈ 1/2 cup; a thumb ≈ 1 tablespoon'
 
