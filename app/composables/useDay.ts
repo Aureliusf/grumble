@@ -1,7 +1,7 @@
 import type { Dish, FoodGraph } from '#shared/types'
 import { balanceDay, slotOf, SLOTS, usualDay, type Slot } from '#shared/balance'
 import { dailyTargets, type Sex } from '#shared/nutrition'
-import { totalOf, type PricedItem } from '#shared/meals'
+import { mealFromParts, totalOf, unslug, type PricedItem } from '#shared/meals'
 import { fixtures } from '~/fixtures'
 
 // One meal the person logged: what they said, and the foods it came to.
@@ -46,7 +46,7 @@ export function useDay(personId: string) {
   // The meal they love: the starred rotation dish (dinner first), else the first one with numbers.
   const anchor = computed(() => {
     const rot = graph.value.dishes.rotation
-      .map(r => ({ r, d: byId.value.get(r.dish_id) }))
+      .map(r => ({ r, d: byId.value.get(r.dish_id) ?? (r.portion_override ? mealFromParts(r.dish_id, unslug(r.dish_id), r.portion_override, r.slot as Dish['typical_meal_type']) : null) }))
       .filter((x): x is { r: typeof x.r; d: Dish } => !!x.d && !!(SLOTS.includes(x.r.slot as Slot) ? x.r.slot : slotOf(x.d)))
     const pick = rot.find(x => x.r.star && x.r.slot === 'dinner') ?? rot.find(x => x.r.star) ?? rot[0]
     if (!pick) return null

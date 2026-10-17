@@ -3,6 +3,7 @@
 import type { Dish, Lang, SugarGroup } from '#shared/types'
 import params from '~~/data/simulator-params.json'
 import marisol from '~~/data/example-food-graph.marisol.json'
+import { mealFromParts, unslug } from '#shared/meals'
 
 export type ScheduleType = 'day job' | 'night shift' | 'works from home' | 'retired' | 'not working'
 export type StandardKind =
@@ -25,6 +26,8 @@ export interface IntakeAnswers {
   cancer_type?: string
   years_since?: number
   loves: string[]
+  love_slots: Record<string, string>                   // per loved meal: when it's eaten (rotation slot)
+  love_parts: Record<string, Record<string, number>>   // per loved meal not in dishes.json: its parts (rotation portion_override)
   refuses: string[]
   grew_up_on?: string
   appetite?: 'steady' | 'low' | 'cycles'
@@ -72,6 +75,8 @@ export const emptyAnswers = (language: Lang): IntakeAnswers => ({
   sleep_start: '23:00',
   sleep_end: '07:00',
   loves: [],
+  love_slots: {},
+  love_parts: {},
   refuses: [],
   places: [],
   eats_with: [],
@@ -247,6 +252,12 @@ const SLOT: Record<Dish['typical_meal_type'], 'breakfast' | 'lunch' | 'dinner' |
 }
 export const slotFor = (d: Dish) => SLOT[d.typical_meal_type] ?? 'dinner'
 
+// A loved meal as a dish: the one from dishes.json, or their own meal rebuilt from its parts.
+export function lovedDish(a: IntakeAnswers, id: string, byId: Map<string, Dish>): Dish | null {
+  const parts = a.love_parts[id]
+  return byId.get(id) ?? (parts ? mealFromParts(slug(id), unslug(id), parts, (a.love_slots[id] ?? 'dinner') as Dish['typical_meal_type']) : null)
+}
+
 // --- places: Versailles and La Carreta templates from the example graph; a generic one otherwise ---
 const KNOWN_PLACES = Object.fromEntries(marisol.dishes.places.map(p => [p.venue.toLowerCase(), p]))
 export function placeFor(venue: string) {
@@ -257,7 +268,7 @@ export function placeFor(venue: string) {
 }
 
 export const slug = (s: string) =>
-  s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
 // The program default coach (02 §Rules: never null).
 export const DEFAULT_COACH = { ...marisol.accountable.coach }
@@ -309,6 +320,8 @@ export function answersFromGraph(g: AnyGraph): IntakeAnswers {
     cancer_type: person.cancer_type,
     years_since: person.years_since_treatment,
     loves: risks.taste?.loves ?? [],
+    love_slots: Object.fromEntries((g.dishes?.rotation ?? []).map((r: AnyGraph) => [r.dish_id, r.slot])),
+    love_parts: Object.fromEntries((g.dishes?.rotation ?? []).filter((r: AnyGraph) => r.portion_override).map((r: AnyGraph) => [r.dish_id, r.portion_override])),
     refuses: risks.taste?.refuses ?? [],
     grew_up_on: risks.taste?.grew_up_on,
     appetite: risks.taste?.appetite_pattern,

@@ -2,7 +2,7 @@
 import Ajv2020 from 'ajv/dist/2020'
 import type { Dish } from '#shared/types'
 import schema from '~~/data/food-graph.schema.json'
-import { DEFAULT_COACH, flagsFor, moveText, sugarGroup, movesFor, placeFor, procedureFor, slotFor, slug, type IntakeAnswers, type Tr } from './rules'
+import { DEFAULT_COACH, flagsFor, lovedDish, moveText, sugarGroup, movesFor, placeFor, procedureFor, slotFor, slug, type IntakeAnswers, type Tr } from './rules'
 
 const ajv = new Ajv2020({ allErrors: true, strict: false, validateFormats: false })
 const validate = ajv.compile(schema)
@@ -38,14 +38,16 @@ export function buildGraph(a: IntakeAnswers, dishes: Dish[], tr: Tr) {
   })
 
   const rotation = a.loves.map((id) => {
-    const d = byId.get(id)
-    if (!d) return { dish_id: slug(id), slot: 'dinner' as const, star: a.starred.includes(id) || undefined, flags: [] }
+    const d = lovedDish(a, id, byId)
+    const slot = a.love_slots[id] ?? (d ? slotFor(d) : 'dinner')
+    if (!d) return { dish_id: slug(id), slot, star: a.starred.includes(id) || undefined, flags: [] }
     const moves = movesFor(d, a.appetite)
     return clean({
       dish_id: d.id,
-      slot: slotFor(d),
-      star: a.starred.includes(d.id) || undefined,
+      slot,
+      star: a.starred.includes(id) || undefined,
       move: moves.map(m => moveText(m, d, tr, a.language)).join(' '),
+      portion_override: a.love_parts[id],
       flags: flagsFor(d),
     })
   })
