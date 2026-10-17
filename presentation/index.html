@@ -70,6 +70,20 @@
   .chart svg { display: block; margin-top: 14px; width: 100%; height: auto; }
   .chart text { font-family: var(--sans); }
 
+  /* the four levers */
+  .levers4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 34px; }
+  .lever { background: #fff; border-radius: 28px; padding: 26px 26px 24px; box-shadow: 0 2px 10px rgba(59,36,21,.06); display: flex; flex-direction: column; }
+  .lever.hero { outline: 4px solid var(--coral); }
+  .lever-name { font-family: var(--display); font-weight: 700; font-size: 30px; }
+  .lever .big { font-family: var(--display); font-weight: 700; font-size: 40px; color: var(--coral-600); margin-top: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .lever .big small { font-size: 22px; color: var(--ink-3); font-weight: 600; }
+  .lever .what { font-size: 18px; line-height: 1.35; color: var(--ink-2); margin-top: 6px; }
+  .tag { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; padding: 3px 10px; border-radius: 999px; align-self: flex-start; }
+  .tag.real { background: #e7f0e4; color: #3f5a35; }
+  .tag.synth { background: var(--cafe-100); color: var(--cafe-700); }
+  .lever .does { font-size: 18px; line-height: 1.4; color: var(--ink); margin-top: auto; padding-top: 16px; border-top: 2px solid var(--crema-200); }
+  .lever .does b { color: var(--coral-600); }
+
   /* the table slide */
   .table-row { display: grid; grid-template-columns: 520px 1fr; gap: 64px; margin-top: 24px; align-items: center; }
   .table-fig svg { display: block; width: 520px; height: auto; }
@@ -197,58 +211,44 @@
     <aside class="notes">~30 s. "This is real data: 808 cancer survivors in NHANES. The ones with severe depressive symptoms eat 370 fewer calories a day and a third less fiber, and twice as many have diabetes. Distress shows up as skipped meals, not binges. So Grumble asks how the day is going, sends the coach after three low days, and never labels anyone. And it never pretends to be your friend: it gets you to a person."</aside>
   </section>
 
-  <!-- 3 · What works -->
+  <!-- 3 · The four levers: what shapes what ends up on the plate -->
   <section class="slide">
-    <div class="kicker">What the challenge data says</div>
-    <h1>The relationship did the work. Ten minutes did the rest.</h1>
-    <div class="charts">
-      <div class="chart">
-        <h2>Coaching moved HbA1c 4× more than tips</h2>
-        <div class="sub">Drop in HbA1c over 12 weeks, percentage points · ~560 finishers per arm</div>
-        <svg viewBox="0 0 640 300" role="img" aria-label="HbA1c drop: tips by email 0.06, coaching 0.22, coaching plus overnight fast 0.26">
-          <title>HbA1c drop: tips 0.06, coaching 0.22, coaching + fast 0.26</title>
-          <line x1="40" x2="620" y1="250" y2="250" stroke="#e7dccf" stroke-width="2"/>
-          <!-- bars: height ∝ drop; max 0.26 → 200 px -->
-          <g>
-            <rect x="70"  y="203.8" width="130" height="46.2"  rx="4" fill="#d3b48f"><title>Tips by email: −0.06</title></rect>
-            <rect x="255" y="80.8"  width="130" height="169.2" rx="4" fill="#f05a3d"><title>Coaching: −0.22</title></rect>
-            <rect x="440" y="50"    width="130" height="200"   rx="4" fill="#d3b48f"><title>Coaching + overnight fast: −0.26</title></rect>
-          </g>
-          <g font-size="30" font-weight="700" fill="#2a221b" text-anchor="middle" style="font-family:var(--display)">
-            <text x="135" y="192">−0.06</text><text x="320" y="69">−0.22</text><text x="505" y="38">−0.26</text>
-          </g>
-          <g font-size="20" fill="#5b5047" text-anchor="middle">
-            <text x="135" y="280">Tips by email</text><text x="320" y="280">Coaching</text><text x="505" y="280">Coaching + fast</text>
-          </g>
-        </svg>
+    <div class="kicker">The levers</div>
+    <h1>Four things shape what ends up on the plate.</h1>
+    <div class="levers4">
+      <div class="lever">
+        <div class="lever-name">Money</div>
+        <div class="big">1.1× <small>vs</small> 2.6×</div>
+        <div class="what">income vs the poverty line: survivors with severe distress vs none</div>
+        <span class="tag real">NHANES · real</span>
+        <div class="does"><b>Grumble:</b> every fix is cheap (beans are the cheapest thing on the menu). The table is free; a donor pays $20 a seat.</div>
       </div>
-      <div class="chart">
-        <h2>A 10-minute walk after dinner is the whole effect</h2>
-        <div class="sub">Dinner glucose peak above baseline, mg/dL · by walk after</div>
-        <svg viewBox="0 0 640 300" role="img" aria-label="Dinner peak: no walk 65, up to 10 minutes 42, up to 20 minutes 46, over 20 minutes 47">
-          <title>Dinner peak: no walk 65, ≤10 min 42, ≤20 min 46, >20 min 47 mg/dL</title>
-          <line x1="40" x2="620" y1="250" y2="250" stroke="#e7dccf" stroke-width="2"/>
-          <!-- max 65 → 200 px -->
-          <g>
-            <rect x="60"  y="50"    width="110" height="200"   rx="4" fill="#d3b48f"><title>No walk: 65</title></rect>
-            <rect x="200" y="120.8" width="110" height="129.2" rx="4" fill="#f05a3d"><title>Up to 10 min: 42</title></rect>
-            <rect x="340" y="109.8" width="110" height="140.2" rx="4" fill="#d3b48f"><title>Up to 20 min: 46</title></rect>
-            <rect x="480" y="106.8" width="110" height="143.2" rx="4" fill="#d3b48f"><title>Over 20 min: 47</title></rect>
-          </g>
-          <line x1="200" x2="590" y1="120.8" y2="120.8" stroke="#2a221b" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 6"/>
-          <g font-size="30" font-weight="700" fill="#2a221b" text-anchor="middle" style="font-family:var(--display)">
-            <text x="115" y="38">65</text><text x="255" y="109">42</text><text x="395" y="98">46</text><text x="535" y="95">47</text>
-          </g>
-          <g font-size="20" fill="#5b5047" text-anchor="middle">
-            <text x="115" y="280">No walk</text><text x="255" y="280">≤ 10 min</text><text x="395" y="280">≤ 20 min</text><text x="535" y="280">> 20 min</text>
-          </g>
-        </svg>
+      <div class="lever hero">
+        <div class="lever-name">Company</div>
+        <div class="big">−0.22 <small>vs</small> −0.06</div>
+        <div class="what">HbA1c over 12 weeks: a coach checking in vs tips by email</div>
+        <span class="tag synth">challenge data · synthetic</span>
+        <div class="does"><b>Grumble:</b> asks every day who's at the table, names a person, offers the Tuesday table. Three low days and the coach calls.</div>
+      </div>
+      <div class="lever">
+        <div class="lever-name">The meals</div>
+        <div class="big">10.9 <small>vs</small> 15.4 g</div>
+        <div class="what">fiber a day: survivors with severe distress vs none. Each 10 g of carbs adds about 6 mg/dL to the peak.</div>
+        <span class="tag real">NHANES · real</span> <span class="tag synth">carbs: challenge data</span>
+        <div class="does"><b>Grumble:</b> keeps the dish and changes the plate: one cup of rice, beans first. The rest of the day rebalances.</div>
+      </div>
+      <div class="lever">
+        <div class="lever-name">Time and routine</div>
+        <div class="big">+24 <small>/</small> −23</div>
+        <div class="what">mg/dL at the peak: dinner after 8 pm / a 10-minute walk after (20 minutes adds nothing). Night shift finished the program 69% vs 84%.</div>
+        <span class="tag synth">challenge data · synthetic</span>
+        <div class="does"><b>Grumble:</b> "late" is set by your own bedtime. One ten-minute walk, not a step count.</div>
       </div>
     </div>
     <div class="foot">
-      <span class="src">Challenge data (synthetic, the Crane Lab's design): 12-week program, randomized arms; CGM on 21,231 meals from 500 participants. Dinner after 8 pm adds +24 mg/dL to the peak for prediabetes.</span>
+      <span class="src">NHANES 2011–2014: 808 US cancer survivors, PHQ-9 none (n=493) vs severe (n=42), unweighted, observational. Challenge data: the Crane Lab's synthetic 12-week program (~560 per arm) and CGM on 21,231 meals; prediabetes group shown. Associations, not proof of cause.</span>
     </div>
-    <aside class="notes">~30 s. "The challenge data answers its own questions. Coaching moved HbA1c four times more than emailed tips: the relationship did the work. A late dinner adds 24 points to the peak. And a walk after dinner cuts it, but ten minutes is the whole effect; twenty adds nothing. Early dinner, a short walk, a person across the table. That's a description of a dinner party."</aside>
+    <aside class="notes">~25 s. "Four things in a person's life shape what ends up on the plate: money, company, the meals themselves, and time. Real survivor data: distress travels with lower income and less fiber. The challenge data: a coach checking in moved HbA1c about four times more than emailed tips, a late dinner adds 24 to the peak, and a ten-minute walk takes 23 off. Grumble has a move for each one." Say "in the challenge data" for the synthetic numbers; don't say "proved".</aside>
   </section>
 
   <!-- 4 · The table: the social part, the center of the product -->
@@ -289,7 +289,7 @@
           <li><b>Dinner at 6:30</b>, well before the late window<span>A late dinner adds +24 mg/dL to the peak</span></li>
           <li><b>Food they already love</b>, portions worked out<span>Vaca frita, beans first, one cup of rice</span></li>
           <li><b>A walk down Calle Ocho after</b><span>Ten minutes cuts the peak 23 mg/dL</span></li>
-          <li><b>A person across the table</b><span>Coaching moved HbA1c 4× more than tips</span></li>
+          <li><b>A person across the table</b><span>A coach checking in moved HbA1c ~4× more than emailed tips (challenge data)</span></li>
         </ul>
       </div>
     </div>
@@ -299,7 +299,7 @@
       <div><b>One tap</b> saves the seat. "What is this?" answers who pays and what's the catch.</div>
       <div><b>Survivors host</b>; donors fund a seat for $20, a table for $160, through Sylvester.</div>
     </div>
-    <aside class="notes">~30 s. This is the slide. "So we built the thing the data points at: a table. Every Tuesday at 6:30 at Versailles, hosted by a survivor a few years out. One evening hits every lever: dinner early, food they already love with the portions set, a walk down Calle Ocho after, and a person across the table, which is what moved HbA1c four times more than tips. Grumble's job is to get people there: it asks every day who's at the table tonight, and when the answer is 'just me', the card names a person, never the word lonely. Nobody at the table pays; donors fund a seat for twenty dollars."</aside>
+    <aside class="notes">~30 s. This is the slide. "So we built the thing the data points at: a table. Every Tuesday at 6:30 at Versailles, hosted by a survivor a few years out. One evening hits every lever: dinner early, food they already love with the portions set, a walk down Calle Ocho after, and a person across the table, which in the challenge data is what moved HbA1c about four times more than emailed tips. Grumble's job is to get people there: it asks every day who's at the table tonight, and when the answer is 'just me', the card names a person, never the word lonely. Nobody at the table pays; donors fund a seat for twenty dollars."</aside>
   </section>
 
   <!-- 5 · What we built -->
@@ -363,7 +363,7 @@
   <section class="slide">
     <div class="close-row">
       <div>
-        <p class="quote">Coaching beat tips four to one. <em>The relationship did the work.</em> So we built a table.</p>
+        <p class="quote">Four levers. One evening. <em>Someone across the table.</em></p>
         <div class="next">
           <p><b>What's real, what's not.</b> NHANES is real survivors. The program and CGM patterns are the challenge's synthetic data, and we say so on screen: "people like you", a range, never a forecast. Nutrients are USDA.</p>
           <p><b>Next.</b> Pair a real CGM. The coach view at Sylvester: who to call first. Kreyòl for the check-in. The first real Tuesday at Versailles.</p>
@@ -372,7 +372,7 @@
       <img class="square-logo" src="../public/grumble-square.png" alt="Grumble">
     </div>
     <div class="foot"><span></span><span>Thank you.</span></div>
-    <aside class="notes">~20 s. Land the line, then stop talking. If asked about real people: "The synthetic patterns are Sylvester's design. The real finding is NHANES: distressed survivors eat less and run higher HbA1c. Grumble collects what the data doesn't have: who you ate with."</aside>
+    <aside class="notes">~20 s. "Money, company, the meals, time. One evening at Versailles pulls all four, with someone across the table. That's Grumble." Land the line, then stop talking. If asked about real people: "The synthetic patterns are Sylvester's design. The real finding is NHANES: distressed survivors eat less and run higher HbA1c. Grumble collects what the data doesn't have: who you ate with."</aside>
   </section>
 </div>
 
