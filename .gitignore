@@ -8,3 +8,10 @@ dist
 .env
 .DS_Store
 *.log
+
+# local datasets (backend)
+backend/data/
+analysis/dataset-audit.json
+analysis/meal-responses.csv
+Challenge4_Dose_and_Timing/
+Challenge4_Dose_and_Timing.zip

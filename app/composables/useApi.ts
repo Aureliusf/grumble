@@ -11,7 +11,7 @@ export async function apiCall<T>(
   const lang = useNuxtApp().$i18n.locale.value as Lang
   const dev = useDevStrip()
   try {
-    const res = await $fetch<T>(path, { method: opts.method ?? 'GET', body: opts.body, query: { lang } })
+    const res = await $fetch<T>(path, { method: opts.method ?? 'GET', body: opts.body, query: { lang } }) as T
     // A route that doesn't exist yet comes back as the SPA's HTML with a 200; that's a miss too.
     if (res === null || typeof res !== 'object') throw new Error(`${path}: not JSON`)
     return res

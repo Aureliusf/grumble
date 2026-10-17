@@ -4,6 +4,10 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxtjs/i18n'],
   css: ['~/assets/css/main.css'],
   vite: { optimizeDeps: { include: ['ajv/dist/2020'] } },
+  // Aurelio's server/ was written as a standalone Nitro app without noUncheckedIndexedAccess, and Nuxt's typed
+  // $fetch routes pull those files into the app's type project too, so the flag is off everywhere.
+  typescript: { tsConfig: { compilerOptions: { noUncheckedIndexedAccess: false } } },
+  nitro: { typescript: { tsConfig: { compilerOptions: { noUncheckedIndexedAccess: false } } } },
   ssr: false,
   colorMode: { preference: 'light' },
   fonts: {

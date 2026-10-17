@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "updated": "2025-01-13T09:00:00Z",
+  "person": {
+    "id": "N1904",
+    "display_name": "Jean",
+    "language": "en",
+    "age": 65,
+    "sex": "male",
+    "food_background": "Haitian",
+    "cancer_type": "prostate",
+    "years_since_treatment": 3.9,
+    "blood_sugar_group": "type 2 diabetes",
+    "wears_cgm": true,
+    "schedule": { "type": "night shift", "sleep_start": "09:00", "sleep_end": "16:30", "work_days": ["Mon", "Tue", "Wed", "Thu", "Fri"] },
+    "has_dog": false,
+    "dietary_restrictions": []
+  },
+  "risks": {
+    "company": {
+      "eats_with": ["the night crew on break"],
+      "usual_dinner_company": "alone",
+      "would_call_on_a_bad_day": "my brother",
+      "open_to_table": false,
+      "open_to_hosting": false
+    },
+    "taste": {
+      "loves": ["griot-with-diri-ak-pwa-and-pikliz", "bannann-peze-with-fried-pork", "poisson-gros-sel-with-boiled-plantain", "soup-joumou"],
+      "refuses": [],
+      "grew_up_on": "Haitian, Little Haiti",
+      "appetite_pattern": "steady"
+    },
+    "money": { "who_cooks": "self" },
+    "convenience": { "meals_out_per_week": 2, "cooks_days_per_week": 4, "usual_places": ["Chef Creole"] }
+  },
+  "standards": {
+    "items": [
+      { "id": "last-meal-3h", "kind": "last_meal_by", "statement": "Last meal three hours before I sleep", "value": "3h", "relative_to_sleep": true, "why": "Timing counts from when you sleep, not the clock", "negotiated_on": "2025-01-06" },
+      { "id": "walk-10", "kind": "walk_after_dinner_min", "statement": "Ten minutes walking after my break meal", "value": 10, "unit": "min", "why": "Ten minutes cut the peak; more didn't add anything", "negotiated_on": "2025-01-06" }
+    ]
+  },
+  "procedures": {
+    "items": [
+      { "standard_id": "last-meal-3h", "source": "meal_log", "cadence": "daily", "computation": "last logged item > 5 kcal is at least 3 h before sleep_start" },
+      { "standard_id": "walk-10", "source": "tracker_steps", "cadence": "daily", "computation": "steps in the 60 min after the last meal >= 800" }
+    ]
+  },
+  "thresholds": {
+    "daily": { "amber_if": ["last-meal-3h missed", "walk-10 missed"], "red_if": ["no food logged and no check-in"], "amber_action": "nudge", "red_action": "coach_notified" },
+    "weekly": { "amber_if": ["last-meal-3h missed 3+ days", "walk-10 missed 4+ days"], "red_if": ["no log 3 consecutive days", "mood <= 2 on 3 days", "cgm time above 180 mg/dL > 25%"], "red_action": "coach_calls" }
+  },
+  "accountable": {
+    "coach": { "name": "Lourdes", "contact": "sylvester-survivorship" },
+    "buddy": null,
+    "table": { "role": "none", "usual_night": "Tue", "last_attended": null },
+    "dog": null
+  },
+  "dishes": {
+    "rotation": [
+      { "dish_id": "griot-with-diri-ak-pwa-and-pikliz", "slot": "dinner", "star": true, "move": "Pwa first, one scoop of diri.", "flags": ["high_fiber"] },
+      { "dish_id": "poisson-gros-sel-with-boiled-plantain", "slot": "lunch", "move": "Two pieces of plantain, not four.", "flags": [] },
+      { "dish_id": "soup-joumou", "slot": "dinner", "move": "As is.", "flags": ["low_appetite_ok"] }
+    ],
+    "places": [
+      { "venue": "Chef Creole", "order": "Griot with diri ak pwa, extra pikliz, one scoop of rice", "avoid": "the second scoop", "confidence": "estimated" }
+    ]
+  },
+  "contract": { "framing": "suggestive", "nag_tolerance": "low", "quiet_hours": ["09:00-16:30"], "never_mention": [] }
+}

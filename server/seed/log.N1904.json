@@ -1,0 +1,132 @@
+{
+ "person_id": "N1904",
+ "note": "hand-written; three days with mood <= 2 in the trailing week so the red week and the coach alert show",
+ "days": [
+  {
+   "date": "2024-12-31",
+   "food_logged": true,
+   "last_ate": "02:10",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-01",
+   "food_logged": true,
+   "last_ate": "01:45",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-02",
+   "food_logged": true,
+   "last_ate": "02:30",
+   "walked_after_dinner_min": 15,
+   "mood_1_to_5": 4,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-03",
+   "food_logged": true,
+   "last_ate": "02:05",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-04",
+   "food_logged": true,
+   "last_ate": "01:50",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-05",
+   "food_logged": true,
+   "last_ate": "02:40",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 2,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-06",
+   "food_logged": true,
+   "last_ate": "02:15",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-07",
+   "food_logged": true,
+   "last_ate": "01:30",
+   "walked_after_dinner_min": 12,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-08",
+   "food_logged": true,
+   "last_ate": "02:20",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 2,
+   "energy_1_to_5": 2,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-09",
+   "food_logged": true,
+   "last_ate": "02:00",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-10",
+   "food_logged": true,
+   "last_ate": "02:35",
+   "walked_after_dinner_min": 10,
+   "mood_1_to_5": 2,
+   "energy_1_to_5": 2,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-11",
+   "food_logged": true,
+   "last_ate": "01:55",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-12",
+   "food_logged": true,
+   "last_ate": "02:10",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 3,
+   "energy_1_to_5": 3,
+   "hunger_1_to_5": 3
+  },
+  {
+   "date": "2025-01-13",
+   "food_logged": true,
+   "last_ate": "02:25",
+   "walked_after_dinner_min": 0,
+   "mood_1_to_5": 2,
+   "energy_1_to_5": 2,
+   "hunger_1_to_5": 3
+  }
+ ]
+}
