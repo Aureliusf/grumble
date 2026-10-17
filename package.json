@@ -8,7 +8,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
-    "test": "vitest run"
+    "test": "vitest run",
+    "deck": "echo 'Deck: http://127.0.0.1:8765/presentation/' && python3 -m http.server 8765 --bind 127.0.0.1"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.135.0",
