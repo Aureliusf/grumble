@@ -2,8 +2,9 @@
 import type { Dish, FoodGraph, Lang } from '#shared/types'
 import { fixtures } from '~/fixtures'
 import { buildGraph } from '~/intake/build'
-import { answersFromGraph, DEFAULT_COACH, emptyAnswers, figureItOut, mergeProposals, proposeStandards, type IntakeAnswers, type Proposal, type Tr } from '~/intake/rules'
-import { localMatch, type MealMatch } from '~/intake/meal'
+import { partsOf, unslug } from '#shared/meals'
+import { answersFromGraph, DEFAULT_COACH, emptyAnswers, figureItOut, lovedDish, mergeProposals, proposeStandards, type IntakeAnswers, type Proposal, type Tr } from '~/intake/rules'
+import { localMeal, loveKey, type MealParse } from '~/intake/meal'
 import { SECTIONS, STEPS, type Step } from '~/intake/steps'
 
 const { t, tm, rt, locale } = useI18n()
@@ -24,26 +25,33 @@ const finishAfterSection = ref(false)
 const proposals = ref<Proposal[]>([])
 const result = ref<{ ok: boolean; errors: string[] } | null>(null)
 
-// Stage 2 opens with one meal in their words; Claude finds the closest dish (server/api/meal.post.ts).
+// Stage 2 opens with one meal in their words; Claude splits it into parts like a Today log and says
+// when it's eaten (server/api/log.post.ts). One dish from dishes.json stays whole.
 const mealText = ref('')
-const match = ref<MealMatch | null>(null)
+const match = ref<MealParse | null>(null)
 const matching = ref(false)
 watch(mealText, () => { match.value = null })
 
 async function findMeal() {
   matching.value = true
   const text = mealText.value.trim()
-  const res = await apiCall<MealMatch>('/api/meal', () =>
-    localMatch(text, dishes.value, d => (d ? t('intake.ui.closest', { dish: d.name }) : t('intake.ui.no_match'))),
+  const res = await apiCall<MealParse>('/api/log', () =>
+    localMeal(text, dishes.value, t('intake.ui.no_match')),
   { method: 'POST', body: { text, lang: answers.language } })
   match.value = res
-  const love = res.dish_id !== 'none' ? res.dish_id : res.meal || text
+  const love = loveKey(res)
   // A later run adds to what they love (up to five, newest kept); the first run starts the list.
   answers.loves = refining.value ? [...answers.loves.filter(l => l !== love), love].slice(-5) : [love]
+  answers.love_slots = { ...answers.love_slots, [love]: res.meal_type }
+  if (!byId.value.has(love) && res.items.length) answers.love_parts = { ...answers.love_parts, [love]: partsOf(res.items) }
   answers.food = answers.food ?? (res.cuisine || undefined)
   matching.value = false
 }
-const matchedName = computed(() => (match.value ? byId.value.get(match.value.dish_id)?.name : undefined))
+const matchedLove = computed(() => (match.value ? loveKey(match.value) : ''))
+const matchedSlot = computed({
+  get: () => answers.love_slots[matchedLove.value] ?? '',
+  set: (v: string) => { answers.love_slots = { ...answers.love_slots, [matchedLove.value]: v } },
+})
 
 // Generated copy is written in the person's language with an English copy beside it.
 const tr: Tr = (key, named = {}, lang) => t(key, named, { locale: lang ?? answers.language })
@@ -88,7 +96,7 @@ function enter(s: Step) {
 
 // This run's proposals, merged with what earlier runs accepted and declined.
 function currentProposals() {
-  const loved = answers.loves.map(id => byId.value.get(id)).filter((d): d is Dish => !!d)
+  const loved = answers.loves.map(id => lovedDish(answers, id, byId.value)).filter((d): d is Dish => !!d)
   const previous = answers.standards.filter(p => p.id !== 'figure-it-out')
   return mergeProposals(proposeStandards(answers, loved, tr), previous, answers.declined, !refining.value)
 }
@@ -174,7 +182,7 @@ function startOver() {
   mealText.value = ''
 }
 
-const dishName = (id: string) => byId.value.get(id)?.name ?? id
+const dishName = (id: string) => byId.value.get(id)?.name ?? unslug(id)
 const summaries = computed(() => {
   const a = answers
   const opt = (k: string, v?: string) => (v ? t(`intake.opt.${k}.${v}`) : '')
@@ -208,10 +216,7 @@ const isSay = computed(() => ['say', 'done'].includes(step.value.type))
         <UInput v-model="mealText" :placeholder="t('intake.ui.type_here')" size="xl" class="flex-1" :disabled="matching" :ui="{ base: 'rounded-full' }" />
         <UButton type="submit" color="primary" :loading="matching" :disabled="!mealText.trim()">{{ t('intake.ui.add') }}</UButton>
       </form>
-      <div v-if="match" class="mt-3 flex flex-col gap-2">
-        <p class="font-display font-semibold text-[17px] leading-snug">{{ match.say }}</p>
-        <UBadge v-if="matchedName" color="primary" variant="soft" size="lg" icon="i-lucide-utensils" class="rounded-full self-start">{{ matchedName }}</UBadge>
-      </div>
+      <IntakeMeal v-if="match" v-model="matchedSlot" :meal="match" class="mt-3" />
     </UCard>
 
     <div class="flex flex-col gap-2">
@@ -321,14 +326,11 @@ const isSay = computed(() => ['say', 'done'].includes(step.value.type))
           </form>
           <p v-if="!match && !matching" class="text-[15px] text-crema-800/60">{{ t('intake.ui.meal_hint') }}</p>
           <p v-if="matching" class="text-[15px] text-crema-800/60 flex items-center gap-2"><UIcon name="i-lucide-loader-circle" class="size-5 animate-spin" />{{ t('intake.ui.matching') }}</p>
-          <div v-if="match" class="rounded-[var(--radius-grumble)] bg-white dark:bg-crema-900 shadow-sm p-4 flex flex-col gap-2">
-            <p class="font-display font-semibold text-[20px] leading-snug">{{ match.say }}</p>
-            <UBadge v-if="matchedName" color="primary" variant="soft" size="lg" icon="i-lucide-utensils" class="rounded-full self-start">{{ matchedName }}</UBadge>
-          </div>
+          <IntakeMeal v-if="match" v-model="matchedSlot" :meal="match" />
         </template>
         <IntakeProposals v-else-if="step.type === 'proposals'" v-model="proposals" :coach="DEFAULT_COACH.name" />
         <IntakeProcedures v-else-if="step.type === 'procedures'" v-model="answers.manual" :standards="answers.standards" />
-        <IntakeRotation v-else-if="step.type === 'rotation'" v-model="answers.starred" :loves="answers.loves" :dishes="dishes" :appetite="answers.appetite" :lang="answers.language" />
+        <IntakeRotation v-else-if="step.type === 'rotation'" v-model="answers.starred" :answers="answers" :dishes="dishes" :lang="answers.language" />
 
         <!-- done -->
         <template v-else-if="step.type === 'done' && result">

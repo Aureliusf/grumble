@@ -246,6 +246,12 @@
       "sex": "Y para los números: ¿mujer u hombre?"
     },
     "opt": {
+      "meal_type": {
+        "breakfast": "Desayuno",
+        "lunch": "Almuerzo",
+        "dinner": "Comida",
+        "snack": "Merienda"
+      },
       "work": {
         "day job": "Trabajo de día",
         "night shift": "Turno de noche",
@@ -327,7 +333,8 @@
       "matching": "Pensándolo…",
       "closest": "Lo más parecido que tengo: {dish}",
       "no_match": "Todavía no tengo números para ese.",
-      "find": "Siguiente"
+      "find": "Siguiente",
+      "meal_type": "Cuándo lo come normalmente"
     },
     "source": {
       "meal_log": "Lo que anota",

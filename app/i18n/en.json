@@ -246,6 +246,12 @@
       "sex": "And for the numbers: female or male?"
     },
     "opt": {
+      "meal_type": {
+        "breakfast": "Breakfast",
+        "lunch": "Lunch",
+        "dinner": "Dinner",
+        "snack": "Snack"
+      },
       "work": {
         "day job": "Day job",
         "night shift": "Night shift",
@@ -327,7 +333,8 @@
       "matching": "Thinking about it…",
       "closest": "Closest I've got: {dish}",
       "no_match": "I don't have numbers for that one yet.",
-      "find": "Next"
+      "find": "Next",
+      "meal_type": "When you'd usually eat it"
     },
     "source": {
       "meal_log": "What you log",
