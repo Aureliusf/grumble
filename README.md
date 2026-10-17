@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/grumble-logo.png" alt="Grumble logo" width="240"></p>
+
 # Grumble — spec root
 
 **Grumble** is a companion app for people in Miami who have finished cancer treatment. It shows them how their meals, meal times and movement shape their blood sugar, and turns that into advice they will follow, because it starts from the food they already love and the people they could eat it with.
