@@ -39,7 +39,8 @@
     },
     "p2-table": {
       "title": "Versailles, {time}.",
-      "body": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho."
+      "body": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. Tu silla está lista si la quieres. Después, caminar por la Ocho.",
+      "body_covered": "{host} tiene la mesa. Hay {dish_lc}, primero los frijoles. El plato está cubierto, unos ${cost}. Tu silla está lista si la quieres. Después, caminar por la Ocho."
     },
     "p3-buddy": {
       "body": "{time}. Y escríbele a {buddy} para la caminata. Diez minutos, hasta la esquina de {buddy} y de vuelta."
@@ -55,6 +56,9 @@
     },
     "p7-light": {
       "body": "Nada pesado. {time}."
+    },
+    "p8-money": {
+      "body": "{dish}, unos ${cost}. Primero los frijoles. {time}. {walk}"
     },
     "p9-earlier": {
       "body": "{time}, más temprano que anoche. Eso es todo."
